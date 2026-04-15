@@ -1,0 +1,8 @@
+﻿RCC : warning : No resources in 'SystemProgrammingv2.qrc'.
+  
+  Moc'ing SystemProgrammingv2.h...
+  main.cpp
+  SystemProgrammingv2.cpp
+  qrc_SystemProgrammingv2.cpp
+  moc_SystemProgrammingv2.cpp
+  SystemProgrammingv2.vcxproj -> C:\Users\kobev\source\repos\SystemProgrammingv2\x64\Debug\SystemProgrammingv2.exe
