@@ -6,6 +6,8 @@ public:
 		: email(email), password(password)
 	{
 	}
+	std::string toString();
+
 private:
 	std::string email;
 	std::string password;

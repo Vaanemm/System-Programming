@@ -16,6 +16,8 @@ int main(int argc, char *argv[])
 
 	User u("test@example.com", "secret");
 
+	std::cout << u.toString() << std::endl;
+
 	return a.exec();
 
 }
