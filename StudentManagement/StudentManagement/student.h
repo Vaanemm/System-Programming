@@ -1,8 +1,8 @@
 #pragma once
 #include "user.h"
 
-class Teacher : public User {
-public:
+class Student : public User {
+public: 
 	using User::User; // use constructor 
 
 };
