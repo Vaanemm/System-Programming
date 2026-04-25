@@ -3,10 +3,9 @@
 
 class User {
 public:
-<<<<<<< HEAD
 	User(const std::string& _email, const std::string& _password, const std::string& _name,
-		const std::string& _surname, const Date& _dob);
-		: email(_email), password(_password), name(_name), surname(_surname), dob(_dob)
+		const std::string& _surname, const Date& _dob)
+		: m_email(_email), m_password(_password), m_name(_name), m_surname(_surname), m_dob(_dob)
 
 	virtual ~User(); // only for this
 
@@ -15,13 +14,8 @@ public:
 		std::string GetEmail() const;
 		std::string GetPassword() const;
 		Date GetDob() const;
-=======
-	User(const std::string& email, const std::string& password)
-		: email(email), password(password)
-	{
-	}
+
 	std::string toString();
->>>>>>> 329605e7a3c6b9d81c204a059ab779946e4c964a
 
 private:
 	std::string m_email;
