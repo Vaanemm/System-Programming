@@ -2,8 +2,8 @@
 #include "teacher.h"
 #include "subjects.h"
 
-Assignment::Assignment(std::string _name, Subject* _subject) :
-	m_name(_name), m_subject(_subject) {}
+Assignment::Assignment(std::string _name, std::string _description, Subject* _subject) :
+	m_name(_name), m_description(_description), m_subject(_subject) {}
 
 std::string Assignment::GetName() const {
 	return m_name;
@@ -22,6 +22,8 @@ std::string Assignment::ToString() const {
 	std::string output;
 	output = "Asssignment: \n";
 	output += "Assignment name: " + GetName() + "\n";
+	output += "Subject: " + m_subject->GetName() + "\n";
+	output += "Description: " + m_description + "\n";
 	output += "Teacher: " + GetTeacher();
 	return output;
 }

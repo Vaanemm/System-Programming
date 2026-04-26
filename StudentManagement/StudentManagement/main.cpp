@@ -46,7 +46,7 @@ int main(int argc, char *argv[])
 
 	std::cout << prof.ToString() << std::endl;
 
-	Assignment assi("Sterke toets", &physics);
+	Assignment assi("Sterke toets", "ja het is moeilijk he", &physics);
 
 	std::cout << assi.ToString() << std::endl;
 
