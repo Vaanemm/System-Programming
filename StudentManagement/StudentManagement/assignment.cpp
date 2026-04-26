@@ -1,4 +1,4 @@
-#include <Assignment.h>
+#include <assignment.h>
 #include "teacher.h"
 #include "subjects.h"
 

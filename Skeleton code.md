@@ -69,7 +69,7 @@ Assignment
 Submission (will always be inside the student assignment vector):
 
 * raw pointer to assignment
-* file that student uploaded (pdf, image, txt,...)
+* Content that student uploaded (pdf, image, txt,...)
 * grade
 
 
