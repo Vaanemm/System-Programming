@@ -115,6 +115,7 @@
   <ItemGroup>
     <ClCompile Include="main.cpp" />
     <ClCompile Include="parent.cpp" />
+    <ClCompile Include="school.cpp" />
     <ClCompile Include="student.cpp" />
     <ClCompile Include="StudentManagement.cpp" />
     <ClCompile Include="teacher.cpp" />
@@ -129,6 +130,7 @@
   <ItemGroup>
     <ClInclude Include="date.h" />
     <ClInclude Include="parent.h" />
+    <ClInclude Include="school.h" />
     <ClInclude Include="student.h" />
     <QtMoc Include="student_management.h" />
     <ClInclude Include="teacher.h" />
