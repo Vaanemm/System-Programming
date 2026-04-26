@@ -4,6 +4,7 @@
 #include <QDebug>
 #include "User.h"
 #include "student.h"
+#include "subjects.h"
 
 
 
@@ -23,6 +24,12 @@ int main(int argc, char *argv[])
 	User u("test@example.com", "secret", "john", "name", dob);
 
 	std::cout << u.ToString() << std::endl;
+
+	Teacher prof("prof@example.com", "secret", "prof", "name", dob);
+
+	Subject physics(SubjectName::Physics, &prof);
+
+	std::cout << physics.ToString() << std::endl;
 
 	return a.exec();
 

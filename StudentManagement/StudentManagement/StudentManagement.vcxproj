@@ -117,7 +117,8 @@
     <ClCompile Include="parent.cpp" />
     <ClCompile Include="school.cpp" />
     <ClCompile Include="student.cpp" />
-    <ClCompile Include="StudentManagement.cpp" />
+    <ClCompile Include="student_management.cpp" />
+    <ClCompile Include="subjects.cpp" />
     <ClCompile Include="teacher.cpp" />
     <ClCompile Include="user.cpp" />
   </ItemGroup>
@@ -133,6 +134,7 @@
     <ClInclude Include="school.h" />
     <ClInclude Include="student.h" />
     <QtMoc Include="student_management.h" />
+    <ClInclude Include="subjects.h" />
     <ClInclude Include="teacher.h" />
     <ClInclude Include="user.h" />
   </ItemGroup>
