@@ -6,6 +6,7 @@
 #include "student.h"
 #include "subjects.h"
 #include "parent.h"
+#include "assignment.h"
 
 
 
@@ -44,6 +45,10 @@ int main(int argc, char *argv[])
 	std::cout << par.ToString() << std::endl;
 
 	std::cout << prof.ToString() << std::endl;
+
+	Assignment assi("Sterke toets", &physics);
+
+	std::cout << assi.ToString() << std::endl;
 
 	w.show();
 	return a.exec();

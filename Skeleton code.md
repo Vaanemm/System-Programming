@@ -59,9 +59,9 @@ Subject:
 
 Assignment
 
-* name
+* /name
 * (extra info)
-* raw pointer to subject
+* /raw pointer to subject
 * vector with raw pointer to all submissions
 
 

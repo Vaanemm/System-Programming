@@ -19,17 +19,14 @@ std::string Subject::GetName() const {
 	}
 }
 
-std::string Subject::GetTeacher() const {
-	if (m_teacher != nullptr) { // have to see if it exists
-		return m_teacher->GetName();
-	}
-	return "No teacher assigned";
+Teacher* Subject::GetTeacher() const {
+	return m_teacher;
 }
 
 std::string Subject::ToString() const {
 	std::string output;
 	output += "Subject information: \n";
 	output += "Subject name: " + GetName() + "\n";
-	output += "with teacher: " + GetTeacher();
+	output += "with teacher: " + GetTeacher()->GetName();
 	return output;
 }

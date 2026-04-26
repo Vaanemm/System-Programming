@@ -12,7 +12,7 @@ public:
 	~Subject();
 
 	std::string GetName() const;
-	std::string GetTeacher() const;
+	Teacher* GetTeacher() const;
 	std::string ToString() const;
 
 private:
