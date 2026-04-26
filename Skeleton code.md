@@ -12,7 +12,7 @@ School:
 
 
 
-DOB (struct):
+/DOB (struct):
 
 * day
 * month
@@ -20,7 +20,7 @@ DOB (struct):
 
 
 
-User : 
+/User : 
 
 * email 
 * password
