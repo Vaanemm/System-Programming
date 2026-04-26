@@ -29,11 +29,13 @@ int main(int argc, char *argv[])
 	Teacher prof("prof@example.com", "secret", "prof", "name", dob);
 
 	Subject physics(SubjectName::Physics, &prof);
+	Subject math(SubjectName::Mathematics, &prof);
 
 	std::cout << physics.ToString() << std::endl;
 
 	Student stud("student@example.com", "secret", "stud", "name", dob);
 	stud.AddSubject(&physics);
+	stud.AddSubject(&math);
 
 	std::cout << stud.ToString() << std::endl;
 

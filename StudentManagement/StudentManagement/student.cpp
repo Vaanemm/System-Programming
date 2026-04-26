@@ -7,23 +7,34 @@ Student::Student(const std::string& _email,
 	const Date& _dob)
 	: User(_email, _password, _name, _surname, _dob) {}
 
-Subject* Student::GetSubject() const {
-	return m_subject;
+const std::vector<Subject*>& Student::GetSubjects() const {
+	return m_subjects;
+}
+
+void Student::AddSubject(Subject* subject) {
+	m_subjects.push_back(subject);
 }
 
 std::string Student::ToString() const {
 	std::string output;
 	output = "User information: \n";
 	output += "First name: " + GetName() + "\n";
-	if (m_subject != nullptr) {
-		output += "Subjects: " + GetSubject()->GetName();
+	output += "Subjects:";
+	if (m_subjects.empty()) {
+		output += "None assigned";
 	}
 	else {
-		output += "Subjects: None assigned";
-	}
-	return output;
-}
+		for (size_t i = 0; i < m_subjects.size(); i++) {
+			output += m_subjects[i]->GetName();
 
-void Student::AddSubject(Subject* subject) {
-	m_subject = subject;
+			if (i < m_subjects.size() - 1) { // add comma if necessary
+				output += ", ";
+			}
+			else {
+				output += ".";
+			}
+		}
+	}
+	
+	return output;
 }
