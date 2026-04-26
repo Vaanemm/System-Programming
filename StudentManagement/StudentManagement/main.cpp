@@ -2,7 +2,7 @@
 #include <QtWidgets/QApplication>
 #include <iostream>
 #include <QDebug>
-#include "User.h"
+#include "user.h"
 #include "student.h"
 #include "subjects.h"
 
@@ -31,6 +31,10 @@ int main(int argc, char *argv[])
 
 	std::cout << physics.ToString() << std::endl;
 
+	Student stud("student@example.com", "secret", "stud", "name", dob, &physics);
+
+	std::cout << stud.ToString() << std::endl;
+	w.show();
 	return a.exec();
 
 }

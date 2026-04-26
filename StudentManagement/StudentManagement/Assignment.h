@@ -1,5 +1,6 @@
 #include <iostream>
 #include "subjects.h"
+#include "teacher.h"
 
 class Assignment {
 public:

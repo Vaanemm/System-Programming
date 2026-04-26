@@ -113,7 +113,6 @@
     </QtRcc>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="Assignment.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="parent.cpp" />
     <ClCompile Include="school.cpp" />
