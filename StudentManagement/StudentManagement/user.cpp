@@ -31,3 +31,11 @@ std::string User::GetPassword() const {
 Date User::GetDob() const {
 	return m_dob;
 }
+
+std::string User::ToString() const {
+	std::string output;
+	output = "User information: \n";
+	output += "First name: " + GetName();
+	return output;
+
+}

@@ -14,6 +14,7 @@ public:
 	std::string GetEmail() const;
 	std::string GetPassword() const;
 	Date GetDob() const;
+	std::string ToString() const;
 
 private:
 	std::string m_email;

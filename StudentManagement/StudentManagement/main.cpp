@@ -1,4 +1,4 @@
-#include "StudentManagement.h"
+#include "student_management.h"
 #include <QtWidgets/QApplication>
 #include <iostream>
 #include <QDebug>
@@ -15,9 +15,14 @@ int main(int argc, char *argv[])
 	std::cout << "Hello World" << std::endl;
 	qDebug() << "Hello World";
 
-	User u("test@example.com", "secret");
+	Date dob;
+	dob.day = 15;
+	dob.month = 6;
+	dob.year = 2000;
 
-	std::cout << u.toString() << std::endl;
+	User u("test@example.com", "secret", "john", "name", dob);
+
+	std::cout << u.ToString() << std::endl;
 
 	return a.exec();
 

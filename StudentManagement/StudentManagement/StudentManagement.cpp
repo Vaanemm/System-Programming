@@ -1,4 +1,4 @@
-#include "StudentManagement.h"
+#include "student_management.h"
 #include <iostream>
 #include <QDebug>
 
