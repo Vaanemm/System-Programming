@@ -40,6 +40,8 @@ int main(int argc, char *argv[])
 
 	std::cout << par.ToString() << std::endl;
 
+	std::cout << prof.ToString() << std::endl;
+
 	w.show();
 	return a.exec();
 

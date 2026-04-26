@@ -45,7 +45,7 @@ Parent (inherits from user):
 
 Teacher (inherits from user):
 
-* vector with raw pointer to subjects
+* /vector with raw pointer to subjects
 
 
 
