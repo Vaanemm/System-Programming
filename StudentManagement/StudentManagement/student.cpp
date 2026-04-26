@@ -19,5 +19,4 @@ std::string Student::ToString() const {
 	output += "First name: " + GetName() + "\n";
 	output += "Subjects: " + GetSubject()->GetName();
 	return output;
-
 }

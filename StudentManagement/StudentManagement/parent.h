@@ -1,8 +1,15 @@
 #pragma once
 #include "user.h"
+#include "student.h"
 
 class Parent : public User {
 public:
-	using User::User; // use constructor 
+	Parent(const std::string& _email, const std::string& _password, const std::string& _name,
+		const std::string& _surname, const Date& _dob, Student* _student);
 
+	Student* GetStudent() const;
+	std::string ToString() const;
+
+private:
+	Student* m_student;
 };

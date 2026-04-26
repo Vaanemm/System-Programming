@@ -5,6 +5,7 @@
 #include "user.h"
 #include "student.h"
 #include "subjects.h"
+#include "parent.h"
 
 
 
@@ -34,6 +35,11 @@ int main(int argc, char *argv[])
 	Student stud("student@example.com", "secret", "stud", "name", dob, &physics);
 
 	std::cout << stud.ToString() << std::endl;
+
+	Parent par("parent@example.com", "secret", "parent", "name", dob, &stud);
+
+	std::cout << par.ToString() << std::endl;
+
 	w.show();
 	return a.exec();
 

@@ -14,32 +14,32 @@ School:
 
 /DOB (struct):
 
-* day
-* month
-* year
+* /day
+* /month
+* /year
 
 
 
-/User : 
+User :
 
-* email 
-* password
-* name
-* surname
-* date of birth
+* /email
+* /password
+* /name
+* /surname
+* /date of birth
 
 
 
-Student (inherits from user): 
+Student (inherits from user):
 
-* vector with raw pointer to subjects
+* /vector with raw pointer to subjects
 * vector with unique pointer to submissions (class)
 
 
 
-Parent (inherits from user): 
+Parent (inherits from user):
 
-* raw pointer to student object
+* /raw pointer to student object
 
 
 
@@ -54,6 +54,7 @@ Subject:
 * name
 * raw pointer to teacher
 * vector with unique pointer to assignments
+
 
 
 Assignment
@@ -106,6 +107,4 @@ Subject:
 Submission:
 
 &#x09;grade\_submission(grade)
-
-
 
