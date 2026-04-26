@@ -32,7 +32,8 @@ int main(int argc, char *argv[])
 
 	std::cout << physics.ToString() << std::endl;
 
-	Student stud("student@example.com", "secret", "stud", "name", dob, &physics);
+	Student stud("student@example.com", "secret", "stud", "name", dob);
+	stud.AddSubject(&physics);
 
 	std::cout << stud.ToString() << std::endl;
 

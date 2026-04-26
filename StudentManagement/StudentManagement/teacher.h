@@ -12,5 +12,5 @@ public:
 	std::string ToString() const;
 
 private:
-	Subject* m_subject;
+	Subject* m_subject = nullptr;
 };

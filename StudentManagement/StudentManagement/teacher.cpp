@@ -16,7 +16,7 @@ std::string Teacher::ToString() const {
 	std::string output;
 	output = "Teacher information: \n";
 	output += "First name: " + GetName() + "\n";
-	if (m_subject != nullptr){ // here we do a check because no course is given in constructor so not nesserarily existing
+	if (m_subject != nullptr){
 		output += "Subjects: " + GetSubject()->GetName();
 	}
 	else {
