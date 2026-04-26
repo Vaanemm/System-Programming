@@ -4,9 +4,9 @@ Classes:
 
 School:
 
-* vector with unique\_ptr to students
-* vector with unique\_ptr to parents
-* vector with unique\_ptr to teachers
+* /vector with unique\_ptr to students
+* /vector with unique\_ptr to parents
+* /vector with unique\_ptr to teachers
 * (or one vector with unique\_ptr to all users)
 * vector with unique\_ptr to subjects
 

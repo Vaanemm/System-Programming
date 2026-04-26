@@ -10,6 +10,10 @@ class StudentManagement : public QMainWindow
 public:
 	StudentManagement(QWidget *parent = Q_NULLPTR);
 
+private slots:
+	void handleLogin();
+	void goToSignup();
+
 private:
 	Ui::StudentManagementClass ui;
 };

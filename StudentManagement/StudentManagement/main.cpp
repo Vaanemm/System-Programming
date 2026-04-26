@@ -7,6 +7,7 @@
 #include "subjects.h"
 #include "parent.h"
 #include "assignment.h"
+#include "school.h"
 
 
 
@@ -23,11 +24,14 @@ int main(int argc, char *argv[])
 	dob.month = 6;
 	dob.year = 2000;
 
+	School school;
+
 	User u("test@example.com", "secret", "john", "name", dob);
 
 	std::cout << u.ToString() << std::endl;
 
 	Teacher prof("prof@example.com", "secret", "prof", "name", dob);
+	school.AddTeacher(prof);
 
 	Subject physics(SubjectName::Physics, &prof);
 	Subject math(SubjectName::Mathematics, &prof);
@@ -37,10 +41,12 @@ int main(int argc, char *argv[])
 	Student stud("student@example.com", "secret", "stud", "name", dob);
 	stud.AddSubject(&physics);
 	stud.AddSubject(&math);
+	school.AddStudent(stud);
 
 	std::cout << stud.ToString() << std::endl;
 
 	Parent par("parent@example.com", "secret", "parent", "name", dob, &stud);
+	school.AddParent(par);
 
 	std::cout << par.ToString() << std::endl;
 

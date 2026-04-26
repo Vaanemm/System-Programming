@@ -5,9 +5,8 @@
 StudentManagement::StudentManagement(QWidget *parent)
 	: QMainWindow(parent)
 {
-	std::cout << "Hello World" << std::endl;
-	qDebug() << "Hello World";
-
-
 	ui.setupUi(this);
+
+	connect(ui.btnLogin, &QPushButton::clicked, this, &StudentManagement::handleLogin);
+	connect(ui.btnGoToSignup, &QPushButton::clicked, this, &StudentManagement::goToSignup);
 }
