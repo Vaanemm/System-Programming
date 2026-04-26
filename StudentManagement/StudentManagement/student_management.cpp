@@ -2,8 +2,8 @@
 #include <iostream>
 #include <QDebug>
 
-StudentManagement::StudentManagement(QWidget *parent)
-	: QMainWindow(parent)
+StudentManagement::StudentManagement(School& _s, QWidget *parent)
+	: QMainWindow(parent), m_school(_s)
 {
 	ui.setupUi(this);
 

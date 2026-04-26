@@ -14,7 +14,10 @@
 int main(int argc, char *argv[])
 {
 	QApplication a(argc, argv);
-	StudentManagement w;
+
+	School school;
+
+	StudentManagement w(school);
 	w.show();
 	std::cout << "Hello World" << std::endl;
 	qDebug() << "Hello World";
@@ -23,8 +26,6 @@ int main(int argc, char *argv[])
 	dob.day = 15;
 	dob.month = 6;
 	dob.year = 2000;
-
-	School school;
 
 	User u("test@example.com", "secret", "john", "name", dob);
 
