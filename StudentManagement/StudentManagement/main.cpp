@@ -3,6 +3,7 @@
 #include <iostream>
 #include <QDebug>
 #include "User.h"
+#include "student.h"
 
 
 
