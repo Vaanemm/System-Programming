@@ -51,8 +51,8 @@ Teacher (inherits from user):
 
 Subject:
 
-* name
-* raw pointer to teacher
+* /name
+* /raw pointer to teacher
 * vector with unique pointer to assignments
 
 
@@ -92,13 +92,13 @@ User:
 
 Student:
 
-&#x09;Enroll(subject)
+&#x09;/Enroll(subject)
 
 &#x09;CreateSubmission(assignment, file)
 
 Teacher:
 
-&#x09;Enroll(subject)
+&#x09;/Enroll(subject)
 
 Subject:
 
