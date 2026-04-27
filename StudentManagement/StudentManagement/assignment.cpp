@@ -1,7 +1,7 @@
 #include <assignment.h>
 #include "teacher.h"
 #include "subjects.h"
-
+//constructor
 Assignment::Assignment(std::string _name, std::string _description, Subject* _subject) :
 	m_name(_name), m_description(_description), m_subject(_subject) {}
 
