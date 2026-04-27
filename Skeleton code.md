@@ -9,6 +9,7 @@ School:
 * /vector with unique\_ptr to teachers
 * (or one vector with unique\_ptr to all users)
 * vector with unique\_ptr to subjects
+* raw pointer to current\_user
 
 
 
@@ -106,5 +107,19 @@ Subject:
 
 Submission:
 
-&#x09;grade\_submission(grade)
+* &#x09;grade\_submission(grade)
+
+
+
+extra:
+	paging
+
+&#x09;emit keyword, belongs to qt, to signal stuff to main thread?
+	iets met library gebruiken (zoals boost voor parsing text of splitting text)
+
+&#x09;final project: subject: System 2026 - Your name - Final
+
+&#x09;one week before the exam so 6 of June in the evening
+
+
 
