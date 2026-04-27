@@ -5,11 +5,11 @@
 class Parent : public User {
 public:
 	Parent(const std::string& _email, const std::string& _password, const std::string& _name,
-		const std::string& _surname, const Date& _dob, Student* _student);
+		const std::string& _surname, const Date& _dob, std::unique_ptr<Student> _student);
 
 	Student* GetStudent() const;
 	std::string ToString() const;
 
 private:
-	Student* m_student;
+	std::unique_ptr<Student> m_student;
 };

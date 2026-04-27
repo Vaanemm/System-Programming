@@ -5,7 +5,7 @@
 
 class Assignment {
 public:
-	Assignment(std::string _name, std::string _description, Subject* _subject);
+	Assignment(std::string _name, std::string _description, std::unique_ptr<Subject> _subject);
 
 	std::string GetName() const;
 	std::string GetTeacher() const;
@@ -15,6 +15,6 @@ public:
 private:
 	std::string m_name;
 	std::string m_description;
-	Subject* m_subject;
+	std::unique_ptr<Subject> m_subject;
 	Teacher* m_teacher;
 };

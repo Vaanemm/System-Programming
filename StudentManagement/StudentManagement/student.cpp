@@ -7,11 +7,11 @@ Student::Student(const std::string& _email,
 	const Date& _dob)
 	: User(_email, _password, _name, _surname, _dob) {}
 
-const std::vector<Subject*>& Student::GetSubjects() const {
+const std::vector<std::unique_ptr<Subject>>& Student::GetSubjects() const {
 	return m_subjects;
 }
 
-void Student::AddSubject(Subject* subject) {
+void Student::AddSubject(std::unique_ptr<Subject> subject) {
 	m_subjects.push_back(subject);
 }
 

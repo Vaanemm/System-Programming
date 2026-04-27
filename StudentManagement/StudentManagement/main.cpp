@@ -31,29 +31,29 @@ int main(int argc, char *argv[])
 
 	std::cout << u.ToString() << std::endl;
 
-	Teacher prof("prof@example.com", "secret", "prof", "name", dob);
-	school.AddTeacher(prof);
+	std::unique_ptr<Teacher> prof_ptr = std::unique_ptr<Teacher>(new Teacher("prof@example.com", "secret", "prof", "name", dob));
+	//school.AddTeacher(prof);
 
-	Subject physics(SubjectName::Physics, &prof);
-	Subject math(SubjectName::Mathematics, &prof);
+	std::unique_ptr<Subject> physics_ptr = std::unique_ptr<Subject>(new Subject(SubjectName::Physics, std::move(prof_ptr)));
+	std::unique_ptr<Subject> math_ptr = std::unique_ptr<Subject>(new Subject(SubjectName::Mathematics, std::move(prof_ptr)));
 
-	std::cout << physics.ToString() << std::endl;
+	std::cout << physics_ptr->ToString() << std::endl;
 
-	Student stud("student@example.com", "secret", "stud", "name", dob);
-	stud.AddSubject(&physics);
-	stud.AddSubject(&math);
-	school.AddStudent(stud);
+	std::unique_ptr<Student> stud_ptr = std::unique_ptr<Student>(new Student("student@example.com", "secret", "stud", "name", dob));
+	stud_ptr->AddSubject(std::move(physics_ptr));
+	stud_ptr->AddSubject(std::move(math_ptr));
+	//school.AddStudent(stud);
 
-	std::cout << stud.ToString() << std::endl;
+	std::cout << stud_ptr->ToString() << std::endl;
 
-	Parent par("parent@example.com", "secret", "parent", "name", dob, &stud);
-	school.AddParent(par);
+	Parent par("parent@example.com", "secret", "parent", "name", dob, std::move(stud_ptr));
+	//school.AddParent(par);
 
 	std::cout << par.ToString() << std::endl;
 
-	std::cout << prof.ToString() << std::endl;
+	std::cout << prof_ptr->ToString() << std::endl;
 
-	Assignment assi("Sterke toets", "ja het is moeilijk he", &physics);
+	Assignment assi("Sterke toets", "ja het is moeilijk he", std::move(physics_ptr));
 
 	std::cout << assi.ToString() << std::endl;
 

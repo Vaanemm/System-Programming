@@ -1,7 +1,7 @@
 #include "subjects.h"
 
-Subject::Subject(SubjectName _name, Teacher* _teacher) :
-	m_name(_name), m_teacher(_teacher) {}
+Subject::Subject(SubjectName _name, std::unique_ptr<Teacher> _teacher) :
+	m_name(_name), m_teacher(std::move(_teacher)) {} // have to move because unique ptr!
 
 Subject::~Subject() {
 
@@ -20,7 +20,7 @@ std::string Subject::GetName() const {
 }
 
 Teacher* Subject::GetTeacher() const {
-	return m_teacher;
+	return m_teacher.get(); // gets from heap the teacher
 }
 
 std::string Subject::ToString() const {
