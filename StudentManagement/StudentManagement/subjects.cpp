@@ -1,6 +1,6 @@
 #include "subjects.h"
 
-Subject::Subject(SubjectName _name, std::unique_ptr<Teacher> _teacher) :
+Subject::Subject(SubjectName _name, std::shared_ptr<Teacher> _teacher) :
 	m_name(_name), m_teacher(std::move(_teacher)) {} // have to move because unique ptr!
 
 Subject::~Subject() {

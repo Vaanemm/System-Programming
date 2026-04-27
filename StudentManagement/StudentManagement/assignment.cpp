@@ -2,7 +2,7 @@
 #include "teacher.h"
 #include "subjects.h"
 //constructor
-Assignment::Assignment(std::string _name, std::string _description, std::unique_ptr<Subject> _subject) :
+Assignment::Assignment(std::string _name, std::string _description, std::shared_ptr<Subject> _subject) :
 	m_name(_name), m_description(_description), m_subject(std::move(_subject)) {}
 
 std::string Assignment::GetName() const {

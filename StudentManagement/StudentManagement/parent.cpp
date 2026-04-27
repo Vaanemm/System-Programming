@@ -5,7 +5,7 @@ Parent::Parent(const std::string& _email,
 	const std::string& _name,
 	const std::string& _surname,
 	const Date& _dob,
-	std::unique_ptr<Student> _student)
+	std::shared_ptr<Student> _student)
 	: User(_email, _password, _name, _surname, _dob),// this goes to user class
 	m_student(std::move(_student)) {}//specific to student class)
 

@@ -7,7 +7,7 @@ enum class SubjectName : int {
 
 class Subject {
 public:
-	Subject(SubjectName _name, std::unique_ptr<Teacher> _teacher);
+	Subject(SubjectName _name, std::shared_ptr<Teacher> _teacher);
 
 	~Subject();
 
@@ -17,5 +17,5 @@ public:
 
 private:
 	SubjectName m_name;
-	std::unique_ptr<Teacher> m_teacher;
+	std::shared_ptr<Teacher> m_teacher;
 };
