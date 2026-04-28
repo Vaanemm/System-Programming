@@ -33,37 +33,37 @@ User :
 
 Student (inherits from user):
 
-* /vector with raw pointer to subjects
+* /vector with shared pointer to subjects
 * vector with unique pointer to submissions (class)
 
 
 
 Parent (inherits from user):
 
-* /raw pointer to student object
+* /shared pointer to student object
 
 
 
 Teacher (inherits from user):
 
-* /vector with raw pointer to subjects
+* /vector with shared pointer to subjects
 
 
 
 Subject:
 
 * /name
-* /raw pointer to teacher
-* vector with unique pointer to assignments
+* /shared pointer to teacher
+* /vector with unique pointers to assignments
 
 
 
 Assignment
 
 * /name
-* (extra info)
-* /raw pointer to subject
-* vector with raw pointer to all submissions
+* /extra info
+* /shared pointer to subject
+* vector with unique pointer to all submissions
 
 
 
@@ -112,14 +112,12 @@ Submission:
 
 
 extra:
-	paging
+paging
 
 &#x09;emit keyword, belongs to qt, to signal stuff to main thread?
-	iets met library gebruiken (zoals boost voor parsing text of splitting text)
+iets met library gebruiken (zoals boost voor parsing text of splitting text)
 
 &#x09;final project: subject: System 2026 - Your name - Final
 
 &#x09;one week before the exam so 6 of June in the evening
-
-
 

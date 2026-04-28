@@ -53,9 +53,9 @@ int main(int argc, char *argv[])
 
 	std::cout << prof_ptr->ToString() << std::endl;
 
-	Assignment assi("Sterke toets", "ja het is moeilijk he", physics_ptr);
+	physics_ptr->MakeAssignment("Sterke toets", "ja het is moeilijk he");
 
-	std::cout << assi.ToString() << std::endl;
+	std::cout << physics_ptr->SubjectAssignmentToString() << std::endl;
 
 	w.show();
 	return a.exec();
