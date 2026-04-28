@@ -1,12 +1,12 @@
 #include "submission.h"
-#include "assignment.h"
 #include <iostream>
 
-Submission::Submission(Assignment* _assignment) :
-	m_assignment(_assignment), m_content(""), m_grade(-1) {}
 
-std::string Submission::GetContent() const {
-	return m_content;
+Submission::Submission(int _grade, std::string _description, std::shared_ptr<Assignment> _assignment) :
+	m_assignment(_assignment), m_description(_description), m_grade(_grade) {}
+
+std::string Submission::GetDescription() const {
+	return m_description;
 }
 
 std::string Submission::GetAssignment() const {
@@ -17,11 +17,19 @@ std::string Submission::GetAssignment() const {
 	return "No teacher assigned";
 }
 
+void Submission::SetGrade(int _grade) {
+	m_grade = _grade;
+}
+
+void Submission::SetDescription(std::string _description) {
+	m_description = _description;
+}
+
 std::string Submission::ToString() const {
 	std::string output;
 	output = "Submission: \n";
 	output += "Assignment name: " + GetAssignment() + "\n";
-	output += "Content: " + GetContent() + "\n";
+	output += "Content: " + GetDescription() + "\n";
 	output += "Grade: " + std::to_string(m_grade) + "\n";
 	return output;
 }

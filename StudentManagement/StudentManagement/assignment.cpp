@@ -1,6 +1,9 @@
 #include <assignment.h>
 #include "teacher.h"
 #include "subjects.h"
+#include "submission.h"
+
+
 //constructor
 Assignment::Assignment(std::string _name, std::string _description, std::shared_ptr<Subject> _subject) :
 	m_name(_name), m_description(_description), m_subject(std::move(_subject)) {}
@@ -18,6 +21,11 @@ std::string Assignment::GetTeacher() const {
 	return "No teacher assigned";
 }
 
+void Assignment::MakeSubmission(int _grade, std::string _description) {
+	std::unique_ptr<Submission> m_submission_ptr = std::unique_ptr<Submission>(new Submission(_grade, _description, shared_from_this()));
+	m_submissions_ptr.push_back(std::move(m_submission_ptr));
+}
+
 std::string Assignment::ToString() const {
 	std::string output;
 	output = "Asssignment: \n";
@@ -25,5 +33,13 @@ std::string Assignment::ToString() const {
 	output += "Subject: " + m_subject->GetName() + "\n";
 	output += "Description: " + m_description + "\n";
 	output += "Teacher: " + GetTeacher();
+	return output;
+}
+
+std::string Assignment::AssignmentSubmissionToString() const {
+	std::string output;
+	for (const auto& submission : m_submissions_ptr) { //here we give by reference just to print in the function
+		output += submission->ToString();
+	}
 	return output;
 }

@@ -57,6 +57,11 @@ int main(int argc, char *argv[])
 
 	std::cout << physics_ptr->SubjectAssignmentToString() << std::endl;
 
+	auto assignments = physics_ptr->GetAssignments();
+	auto current_assignment = assignments[0];
+	current_assignment->MakeSubmission(6, "that was shit ngl");
+	std::cout << current_assignment->AssignmentSubmissionToString() << std::endl;
+
 	w.show();
 	return a.exec();
 

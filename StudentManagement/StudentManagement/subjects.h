@@ -17,11 +17,13 @@ public:
 	std::string GetName() const;
 	Teacher* GetTeacher() const;
 	std::string ToString() const;
+
 	void MakeAssignment(std::string _name, std::string _description);
 	std::string SubjectAssignmentToString() const;
+	const std::vector<std::shared_ptr<Assignment>>& GetAssignments() const;
 
 private:
 	SubjectName m_name;
 	std::shared_ptr<Teacher> m_teacher;
-	std::vector<std::unique_ptr<Assignment>> m_assignments_ptr;
+	std::vector<std::shared_ptr<Assignment>> m_assignments_ptr;
 };
