@@ -27,9 +27,9 @@ int main(int argc, char *argv[])
 	dob.month = 6;
 	dob.year = 2000;
 
-	User u("test@example.com", "secret", "john", "name", dob);
+	std::shared_ptr<User> u_ptr = std::shared_ptr<User>(new User("test@example.com", "secret", "john", "name", dob));
 
-	std::cout << u.ToString() << std::endl;
+	std::cout << u_ptr->ToString() << std::endl;
 
 	std::shared_ptr<Teacher> prof_ptr = std::shared_ptr<Teacher>(new Teacher("prof@example.com", "secret", "prof", "name", dob));
 	//school.AddTeacher(prof);
@@ -46,10 +46,10 @@ int main(int argc, char *argv[])
 
 	std::cout << stud_ptr->ToString() << std::endl;
 
-	Parent par("parent@example.com", "secret", "parent", "name", dob, (stud_ptr));
+	std::shared_ptr<Parent> par_ptr = std::shared_ptr<Parent>(new Parent("parent@example.com", "secret", "parent", "name", dob, (stud_ptr)));
 	//school.AddParent(par);
 
-	std::cout << par.ToString() << std::endl;
+	std::cout << par_ptr->ToString() << std::endl;
 
 	std::cout << prof_ptr->ToString() << std::endl;
 
