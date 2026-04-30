@@ -25,11 +25,6 @@ public:
 	std::string PrepareForDatabase() const;
 	void updateUser(const std::string& email, const std::string& password, const std::string& name, const std::string& surname, const Date& dob);
 
-
-<<<<<<< Updated upstream
-=======
->>>>>>> Stashed changes
-
 private:
 	std::string m_email;
 	std::string m_password;

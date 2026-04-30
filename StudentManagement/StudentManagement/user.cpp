@@ -5,7 +5,6 @@ User::User(const std::string& _email, const std::string& _password,
 	const Date& _dob)
 	: m_email(_email), m_password(_password), m_name(_name),
 	m_surname(_surname), m_dob(_dob)
-	//we kunnen dit ook veranderen naar setters nu we die toch hebben ma kwni of da beter of slechter is
 {
 }
 
@@ -41,7 +40,6 @@ std::string User::ToString() const {
 	output += "\n -------------------- \n";
 	return output;
 }
-<<<<<<< Updated upstream
 
 std::string User::PrepareForDatabase() const {
 	std::string database_line;
@@ -50,19 +48,7 @@ std::string User::PrepareForDatabase() const {
 	database_line += GetEmail() + ", ";
 	database_line += GetPassword() + ", ";
 	return database_line;
-=======
-<<<<<<< HEAD
-=======
->>>>>>> Stashed changes
-
-std::string User::PrepareForDatabase() const {
-	std::string database_line;
-	database_line += GetName() + ", ";
-	database_line += GetSurname() + ", ";
-	database_line += GetEmail() + ", ";
-	database_line += GetPassword() + ", ";
-	return database_line;
->>>>>>> f586a05343bef65034d66be752474b04c91b4783
+}
 
 void User::updateUser(const std::string& email, const std::string& password,
 	const std::string& name, const std::string& surname, const Date& dob)
