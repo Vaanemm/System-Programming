@@ -23,11 +23,11 @@ public:
 	
 	std::string ToString() const;
 	std::string PrepareForDatabase() const;
+	void updateUser(const std::string& email, const std::string& password, const std::string& name, const std::string& surname, const Date& dob);
+
 
 <<<<<<< Updated upstream
 =======
-
-	void updateUser(const std::string& email, const std::string& password, const std::string& name, const std::string& surname, const Date& dob);
 >>>>>>> Stashed changes
 
 private:
