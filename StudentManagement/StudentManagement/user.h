@@ -14,13 +14,13 @@ public:
 	std::string GetEmail() const;
 	std::string GetPassword() const;
 	Date GetDob() const;
-	
+
 	void SetEmail(const std::string& email);
 	void SetPassword(const std::string& password);
 	void SetName(const std::string& name);
 	void SetSurname(const std::string& surname);
 	void SetDob(const Date& dob);
-	
+
 	std::string ToString() const;
 	std::string PrepareForDatabase() const;
 	void updateUser(const std::string& email, const std::string& password, const std::string& name, const std::string& surname, const Date& dob);
