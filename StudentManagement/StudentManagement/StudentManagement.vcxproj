@@ -114,6 +114,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="assignment.cpp" />
+    <ClCompile Include="database.cpp" />
     <ClCompile Include="login.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="parent.cpp" />
@@ -133,6 +134,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="assignment.h" />
+    <ClInclude Include="database.h" />
     <ClInclude Include="date.h" />
     <ClInclude Include="parent.h" />
     <ClInclude Include="school.h" />

@@ -15,6 +15,8 @@ public:
 	std::string GetPassword() const;
 	Date GetDob() const;
 	std::string ToString() const;
+	std::string PrepareForDatabase() const;
+
 
 private:
 	std::string m_email;

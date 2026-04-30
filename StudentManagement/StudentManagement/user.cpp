@@ -39,5 +39,14 @@ std::string User::ToString() const {
 	//spacer for clarity while printing
 	output += "\n -------------------- \n";
 	return output;
+}
+
+std::string User::PrepareForDatabase() const {
+	std::string database_line;
+	database_line += GetName() + ", ";
+	database_line += GetSurname() + ", ";
+	database_line += GetEmail() + ", ";
+	database_line += GetPassword() + ", ";
+	return database_line;
 
 }
