@@ -27,6 +27,7 @@ public:
 <<<<<<< Updated upstream
 =======
 
+	void updateUser(const std::string& email, const std::string& password, const std::string& name, const std::string& surname, const Date& dob);
 >>>>>>> Stashed changes
 
 private:
