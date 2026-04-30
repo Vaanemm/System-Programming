@@ -32,6 +32,10 @@ int main(int argc, char *argv[])
 
 	std::cout << u_ptr->ToString() << std::endl;
 
+	u_ptr->updateUser("test@example.com", "secret", "kobe", "name", dob);
+
+	std::cout << u_ptr->ToString() << std::endl;
+
 	std::shared_ptr<Teacher> prof_ptr = std::shared_ptr<Teacher>(new Teacher("prof@example.com", "secret", "prof", "name", dob));
 	//school.AddTeacher(prof);
 
@@ -48,6 +52,10 @@ int main(int argc, char *argv[])
 	stud_list.push_back(stud_ptr);
 	write2(stud_list);
 	//school.AddStudent(stud);
+
+	std::cout << stud_ptr->ToString() << std::endl;
+
+	stud_ptr->updateUser("test@example.com", "secret", "KOBE", "name", dob);
 
 	std::cout << stud_ptr->ToString() << std::endl;
 
