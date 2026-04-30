@@ -35,6 +35,7 @@ std::string Student::ToString() const {
 			}
 		}
 	}
-	
+	//spacer for clarity while printing
+	output += "\n -------------------- \n";
 	return output;
 }

@@ -18,5 +18,7 @@ std::string Parent::ToString() const {
 	output = "User information: \n";
 	output += "First name: " + GetName() + "\n";
 	output += "His child is: " + GetStudent()->GetName();
+	//spacer for clarity while printing
+	output += "\n -------------------- \n";
 	return output;
 }

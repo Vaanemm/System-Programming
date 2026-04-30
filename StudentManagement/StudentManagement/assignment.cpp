@@ -33,6 +33,9 @@ std::string Assignment::ToString() const {
 	output += "Subject: " + m_subject->GetName() + "\n";
 	output += "Description: " + m_description + "\n";
 	output += "Teacher: " + GetTeacher();
+	//spacer for clarity while printing
+	output += "\n -------------------- \n";
+
 	return output;
 }
 

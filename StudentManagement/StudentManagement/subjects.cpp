@@ -30,6 +30,8 @@ std::string Subject::ToString() const {
 	output += "Subject information: \n";
 	output += "Subject name: " + GetName() + "\n";
 	output += "with teacher: " + GetTeacher()->GetName();
+	//spacer for clarity while printing
+	output += "\n -------------------- \n";
 	return output;
 }
 

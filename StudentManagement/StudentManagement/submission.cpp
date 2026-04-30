@@ -31,5 +31,8 @@ std::string Submission::ToString() const {
 	output += "Assignment name: " + GetAssignment() + "\n";
 	output += "Content: " + GetDescription() + "\n";
 	output += "Grade: " + std::to_string(m_grade) + "\n";
+	//spacer for clarity while printing
+	output += " -------------------- \n";
+
 	return output;
 }

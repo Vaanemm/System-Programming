@@ -36,6 +36,8 @@ std::string User::ToString() const {
 	std::string output;
 	output = "User information: \n";
 	output += "First name: " + GetName();
+	//spacer for clarity while printing
+	output += "\n -------------------- \n";
 	return output;
 
 }
