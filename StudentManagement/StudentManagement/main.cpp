@@ -55,7 +55,7 @@ int main(int argc, char *argv[])
 
 	std::cout << stud_ptr->ToString() << std::endl;
 
-	stud_ptr->updateUser("test@example.com", "secret", "KOBE", "name", dob);
+	stud_ptr->updateUser("student@example.com", "secret", "KOBE", "name", dob);
 
 	std::cout << stud_ptr->ToString() << std::endl;
 

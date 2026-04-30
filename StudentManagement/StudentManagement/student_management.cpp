@@ -1,6 +1,7 @@
 #include "student_management.h"
 #include <iostream>
 #include <QDebug>
+#include <QPushButton>
 
 StudentManagement::StudentManagement(School& _s, QWidget *parent)
 	: QMainWindow(parent), m_school(_s)
