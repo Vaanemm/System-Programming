@@ -1,1390 +1,1418 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>StudentManagementClass</class>
- <widget class="QMainWindow" name="StudentManagementClass">
-  <property name="geometry">
-   <rect>
-    <x>0</x>
-    <y>0</y>
-    <width>2000</width>
-    <height>1400</height>
-   </rect>
-  </property>
-  <property name="windowTitle">
-   <string>SystemProgrammingv2</string>
-  </property>
-  <widget class="QWidget" name="centralWidget">
-   <layout class="QGridLayout" name="gridLayout_6">
-    <item row="0" column="0">
-     <widget class="QStackedWidget" name="stackedWidget">
-      <property name="currentIndex">
-       <number>0</number>
-      </property>
-      <widget class="QWidget" name="Login">
-       <layout class="QGridLayout" name="gridLayout">
-        <item row="0" column="0">
-         <widget class="QGroupBox" name="groupBox">
-          <property name="minimumSize">
-           <size>
-            <width>500</width>
-            <height>200</height>
-           </size>
-          </property>
-          <property name="maximumSize">
-           <size>
-            <width>400</width>
-            <height>16777215</height>
-           </size>
-          </property>
-          <property name="font">
-           <font>
-            <pointsize>14</pointsize>
-           </font>
-          </property>
-          <property name="styleSheet">
-           <string notr="true">QGroupBox {
-	border: none;
-}</string>
-          </property>
-          <property name="title">
-           <string/>
-          </property>
-          <layout class="QVBoxLayout" name="verticalLayout_2">
-           <item>
-            <layout class="QVBoxLayout" name="verticalLayout">
-             <property name="spacing">
-              <number>20</number>
-             </property>
-             <property name="leftMargin">
-              <number>0</number>
-             </property>
-             <item>
-              <widget class="QLabel" name="EnterMail">
-               <property name="minimumSize">
-                <size>
-                 <width>400</width>
-                 <height>0</height>
-                </size>
-               </property>
-               <property name="maximumSize">
-                <size>
-                 <width>16777215</width>
-                 <height>30</height>
-                </size>
-               </property>
-               <property name="font">
-                <font>
-                 <pointsize>12</pointsize>
-                 <weight>75</weight>
-                 <bold>true</bold>
-                </font>
-               </property>
-               <property name="text">
-                <string>Please enter your e-mail:</string>
-               </property>
-              </widget>
-             </item>
-             <item>
-              <widget class="QLineEdit" name="_mail">
-               <property name="minimumSize">
-                <size>
-                 <width>400</width>
-                 <height>40</height>
-                </size>
-               </property>
-               <property name="font">
-                <font>
-                 <pointsize>12</pointsize>
-                </font>
-               </property>
-              </widget>
-             </item>
-             <item>
-              <widget class="QLabel" name="EnterPassword">
-               <property name="minimumSize">
-                <size>
-                 <width>400</width>
-                 <height>40</height>
-                </size>
-               </property>
-               <property name="maximumSize">
-                <size>
-                 <width>16777215</width>
-                 <height>30</height>
-                </size>
-               </property>
-               <property name="font">
-                <font>
-                 <pointsize>12</pointsize>
-                 <weight>75</weight>
-                 <bold>true</bold>
-                </font>
-               </property>
-               <property name="text">
-                <string>Please enter your password:</string>
-               </property>
-              </widget>
-             </item>
-             <item>
-              <widget class="QLineEdit" name="_password">
-               <property name="minimumSize">
-                <size>
-                 <width>400</width>
-                 <height>40</height>
-                </size>
-               </property>
-               <property name="font">
-                <font>
-                 <pointsize>12</pointsize>
-                </font>
-               </property>
-              </widget>
-             </item>
-             <item>
-              <widget class="QPushButton" name="btnLogin">
-               <property name="minimumSize">
-                <size>
-                 <width>400</width>
-                 <height>0</height>
-                </size>
-               </property>
-               <property name="text">
-                <string>Sign In</string>
-               </property>
-               <property name="iconSize">
-                <size>
-                 <width>25</width>
-                 <height>16</height>
-                </size>
-               </property>
-              </widget>
-             </item>
-             <item>
-              <widget class="QPushButton" name="btnGoToSignup">
-               <property name="minimumSize">
-                <size>
-                 <width>400</width>
-                 <height>40</height>
-                </size>
-               </property>
-               <property name="text">
-                <string>No Account? Sign up here!</string>
-               </property>
-              </widget>
-             </item>
-            </layout>
-           </item>
-          </layout>
-         </widget>
-        </item>
-       </layout>
-      </widget>
-      <widget class="QWidget" name="Enrollment">
-       <property name="styleSheet">
-        <string notr="true">QWidget {
-	font-size: 25px;
-}
+	<class>StudentManagementClass</class>
+	<widget class="QMainWindow" name="StudentManagementClass">
+		<property name="geometry">
+			<rect>
+				<x>0</x>
+				<y>0</y>
+				<width>2000</width>
+				<height>1400</height>
+			</rect>
+		</property>
+		<property name="windowTitle">
+			<string>SystemProgrammingv2</string>
+		</property>
+		<widget class="QWidget" name="centralWidget">
+			<layout class="QGridLayout" name="gridLayout_6">
+				<item row="0" column="0">
+					<widget class="QStackedWidget" name="stackedWidget">
+						<property name="currentIndex">
+							<number>0</number>
+						</property>
+						<widget class="QWidget" name="Login">
+							<layout class="QGridLayout" name="gridLayout">
+								<item row="0" column="0">
+									<widget class="QGroupBox" name="groupBox">
+										<property name="minimumSize">
+											<size>
+												<width>500</width>
+												<height>200</height>
+											</size>
+										</property>
+										<property name="maximumSize">
+											<size>
+												<width>400</width>
+												<height>16777215</height>
+											</size>
+										</property>
+										<property name="font">
+											<font>
+												<pointsize>14</pointsize>
+											</font>
+										</property>
+										<property name="styleSheet">
+											<string notr="true">
+												QGroupBox {
+												border: none;
+												}
+											</string>
+										</property>
+										<property name="title">
+											<string/>
+										</property>
+										<layout class="QVBoxLayout" name="verticalLayout_2">
+											<item>
+												<layout class="QVBoxLayout" name="verticalLayout">
+													<property name="spacing">
+														<number>20</number>
+													</property>
+													<property name="leftMargin">
+														<number>0</number>
+													</property>
+													<item>
+														<widget class="QLabel" name="EnterMail">
+															<property name="minimumSize">
+																<size>
+																	<width>400</width>
+																	<height>0</height>
+																</size>
+															</property>
+															<property name="maximumSize">
+																<size>
+																	<width>16777215</width>
+																	<height>30</height>
+																</size>
+															</property>
+															<property name="font">
+																<font>
+																	<pointsize>12</pointsize>
+																	<weight>75</weight>
+																	<bold>true</bold>
+																</font>
+															</property>
+															<property name="text">
+																<string>Please enter your e-mail:</string>
+															</property>
+														</widget>
+													</item>
+													<item>
+														<widget class="QLineEdit" name="_mail">
+															<property name="minimumSize">
+																<size>
+																	<width>400</width>
+																	<height>40</height>
+																</size>
+															</property>
+															<property name="font">
+																<font>
+																	<pointsize>12</pointsize>
+																</font>
+															</property>
+														</widget>
+													</item>
+													<item>
+														<widget class="QLabel" name="EnterPassword">
+															<property name="minimumSize">
+																<size>
+																	<width>400</width>
+																	<height>40</height>
+																</size>
+															</property>
+															<property name="maximumSize">
+																<size>
+																	<width>16777215</width>
+																	<height>30</height>
+																</size>
+															</property>
+															<property name="font">
+																<font>
+																	<pointsize>12</pointsize>
+																	<weight>75</weight>
+																	<bold>true</bold>
+																</font>
+															</property>
+															<property name="text">
+																<string>Please enter your password:</string>
+															</property>
+														</widget>
+													</item>
+													<item>
+														<widget class="QLineEdit" name="_password">
+															<property name="minimumSize">
+																<size>
+																	<width>400</width>
+																	<height>40</height>
+																</size>
+															</property>
+															<property name="font">
+																<font>
+																	<pointsize>12</pointsize>
+																</font>
+															</property>
+														</widget>
+													</item>
+													<item>
+														<widget class="QPushButton" name="btnLogin">
+															<property name="minimumSize">
+																<size>
+																	<width>400</width>
+																	<height>0</height>
+																</size>
+															</property>
+															<property name="text">
+																<string>Sign In</string>
+															</property>
+															<property name="iconSize">
+																<size>
+																	<width>25</width>
+																	<height>16</height>
+																</size>
+															</property>
+														</widget>
+													</item>
+													<item>
+														<widget class="QPushButton" name="btnGoToSignup">
+															<property name="minimumSize">
+																<size>
+																	<width>400</width>
+																	<height>40</height>
+																</size>
+															</property>
+															<property name="text">
+																<string>No Account? Sign up here!</string>
+															</property>
+														</widget>
+													</item>
+												</layout>
+											</item>
+										</layout>
+									</widget>
+								</item>
+							</layout>
+						</widget>
+						<widget class="QWidget" name="Enrollment">
+							<property name="styleSheet">
+								<string notr="true">
+									QWidget {
+									font-size: 25px;
+									}
 
-QScrollArea {
-	border: 4px solid gray;
-	border-radius: 4px;
-}
+									QScrollArea {
+									border: 4px solid gray;
+									border-radius: 4px;
+									}
 
-QGroupBox::title {
-	subcontrol-origin: margin;
-    left: 10px;
-    padding: 0 3px 0 3px;
-}</string>
-       </property>
-       <layout class="QFormLayout" name="formLayout_4">
-        <item row="0" column="0">
-         <widget class="QPushButton" name="btnBackToMain">
-          <property name="text">
-           <string>Back</string>
-          </property>
-         </widget>
-        </item>
-        <item row="0" column="1">
-         <widget class="QLabel" name="label_4">
-          <property name="text">
-           <string>ENROLLMENT</string>
-          </property>
-         </widget>
-        </item>
-        <item row="1" column="1">
-         <widget class="QScrollArea" name="enrollmentLayout">
-          <property name="minimumSize">
-           <size>
-            <width>1100</width>
-            <height>1200</height>
-           </size>
-          </property>
-          <property name="widgetResizable">
-           <bool>true</bool>
-          </property>
-          <widget class="QWidget" name="scrollAreaWidgetContents_2">
-           <property name="geometry">
-            <rect>
-             <x>0</x>
-             <y>0</y>
-             <width>1092</width>
-             <height>1192</height>
-            </rect>
-           </property>
-          </widget>
-         </widget>
-        </item>
-       </layout>
-      </widget>
-      <widget class="QWidget" name="pageSignup">
-       <property name="styleSheet">
-        <string notr="true">QWidget {
-	font-size: 25px;
-}
+									QGroupBox::title {
+									subcontrol-origin: margin;
+									left: 10px;
+									padding: 0 3px 0 3px;
+									}
+								</string>
+							</property>
+							<layout class="QFormLayout" name="formLayout_4">
+								<item row="0" column="0">
+									<widget class="QPushButton" name="btnBackToMain">
+										<property name="text">
+											<string>Back</string>
+										</property>
+									</widget>
+								</item>
+								<item row="0" column="1">
+									<widget class="QLabel" name="label_4">
+										<property name="text">
+											<string>ENROLLMENT</string>
+										</property>
+									</widget>
+								</item>
+								<item row="1" column="1">
+									<widget class="QScrollArea" name="enrollmentLayout">
+										<property name="minimumSize">
+											<size>
+												<width>1100</width>
+												<height>1200</height>
+											</size>
+										</property>
+										<property name="widgetResizable">
+											<bool>true</bool>
+										</property>
+										<widget class="QWidget" name="scrollAreaWidgetContents_2">
+											<property name="geometry">
+												<rect>
+													<x>0</x>
+													<y>0</y>
+													<width>1092</width>
+													<height>1192</height>
+												</rect>
+											</property>
+										</widget>
+									</widget>
+								</item>
+							</layout>
+						</widget>
+						<widget class="QWidget" name="pageSignup">
+							<property name="styleSheet">
+								<string notr="true">
+									QWidget {
+									font-size: 25px;
+									}
 
-QGroupBox {
-	border: 4px solid gray;
-	border-radius: 4px;
-}
+									QGroupBox {
+									border: 4px solid gray;
+									border-radius: 4px;
+									}
 
-QGroupBox::title {
-	subcontrol-origin: margin;
-    left: 10px;
-    padding: 0 3px 0 3px;
-}</string>
-       </property>
-       <layout class="QGridLayout" name="gridLayout_4">
-        <item row="0" column="0">
-         <widget class="QPushButton" name="btnSignupBackToLogin">
-          <property name="minimumSize">
-           <size>
-            <width>0</width>
-            <height>40</height>
-           </size>
-          </property>
-          <property name="text">
-           <string>Back to login</string>
-          </property>
-         </widget>
-        </item>
-        <item row="0" column="1">
-         <spacer name="verticalSpacer_3">
-          <property name="orientation">
-           <enum>Qt::Vertical</enum>
-          </property>
-          <property name="sizeHint" stdset="0">
-           <size>
-            <width>20</width>
-            <height>117</height>
-           </size>
-          </property>
-         </spacer>
-        </item>
-        <item row="1" column="0">
-         <spacer name="horizontalSpacer_3">
-          <property name="orientation">
-           <enum>Qt::Horizontal</enum>
-          </property>
-          <property name="sizeHint" stdset="0">
-           <size>
-            <width>314</width>
-            <height>20</height>
-           </size>
-          </property>
-         </spacer>
-        </item>
-        <item row="1" column="1" rowspan="2">
-         <widget class="QGroupBox" name="groupBox_3">
-          <property name="title">
-           <string/>
-          </property>
-          <layout class="QFormLayout" name="formLayout">
-           <property name="verticalSpacing">
-            <number>15</number>
-           </property>
-           <item row="0" column="0">
-            <widget class="QLabel" name="regemailenter">
-             <property name="text">
-              <string>email</string>
-             </property>
-            </widget>
-           </item>
-           <item row="1" column="0" colspan="2">
-            <widget class="QLineEdit" name="regemail"/>
-           </item>
-           <item row="2" column="0">
-            <widget class="QLabel" name="regnameenter">
-             <property name="text">
-              <string>name</string>
-             </property>
-            </widget>
-           </item>
-           <item row="3" column="0" colspan="2">
-            <widget class="QLineEdit" name="regname"/>
-           </item>
-           <item row="4" column="0">
-            <widget class="QLabel" name="regsurnameenter">
-             <property name="text">
-              <string>surname</string>
-             </property>
-            </widget>
-           </item>
-           <item row="5" column="0" colspan="2">
-            <widget class="QLineEdit" name="regsurname"/>
-           </item>
-           <item row="6" column="0">
-            <widget class="QLabel" name="regpasswordenter">
-             <property name="text">
-              <string>password</string>
-             </property>
-            </widget>
-           </item>
-           <item row="7" column="0" colspan="2">
-            <widget class="QLineEdit" name="regpassword"/>
-           </item>
-           <item row="8" column="0" colspan="2">
-            <widget class="QLabel" name="regdobenter">
-             <property name="text">
-              <string>date of birth</string>
-             </property>
-            </widget>
-           </item>
-           <item row="9" column="0" colspan="2">
-            <widget class="QDateEdit" name="regdate"/>
-           </item>
-           <item row="10" column="0">
-            <widget class="QLabel" name="label">
-             <property name="text">
-              <string>role</string>
-             </property>
-            </widget>
-           </item>
-           <item row="11" column="0">
-            <widget class="QComboBox" name="regrole">
-             <item>
-              <property name="text">
-               <string>Leerling</string>
-              </property>
-             </item>
-             <item>
-              <property name="text">
-               <string>Leerkracht</string>
-              </property>
-             </item>
-             <item>
-              <property name="text">
-               <string>Ouder</string>
-              </property>
-             </item>
-            </widget>
-           </item>
-           <item row="14" column="0">
-            <widget class="QPushButton" name="btnCreateAccount">
-             <property name="text">
-              <string>Submit</string>
-             </property>
-            </widget>
-           </item>
-           <item row="12" column="0">
-            <widget class="QLabel" name="txtRegisterChilEmail">
-             <property name="enabled">
-              <bool>true</bool>
-             </property>
-             <property name="text">
-              <string>Email child</string>
-             </property>
-            </widget>
-           </item>
-           <item row="13" column="0">
-            <widget class="QLineEdit" name="regChildEmail">
-             <property name="enabled">
-              <bool>true</bool>
-             </property>
-             <property name="autoFillBackground">
-              <bool>false</bool>
-             </property>
-            </widget>
-           </item>
-          </layout>
-         </widget>
-        </item>
-        <item row="2" column="2">
-         <spacer name="horizontalSpacer_4">
-          <property name="orientation">
-           <enum>Qt::Horizontal</enum>
-          </property>
-          <property name="sizeHint" stdset="0">
-           <size>
-            <width>314</width>
-            <height>20</height>
-           </size>
-          </property>
-         </spacer>
-        </item>
-        <item row="3" column="1">
-         <spacer name="verticalSpacer_4">
-          <property name="orientation">
-           <enum>Qt::Vertical</enum>
-          </property>
-          <property name="sizeHint" stdset="0">
-           <size>
-            <width>20</width>
-            <height>117</height>
-           </size>
-          </property>
-         </spacer>
-        </item>
-       </layout>
-      </widget>
-      <widget class="QWidget" name="Info">
-       <property name="styleSheet">
-        <string notr="true">QWidget {
-	font-size: 25px;
-}
+									QGroupBox::title {
+									subcontrol-origin: margin;
+									left: 10px;
+									padding: 0 3px 0 3px;
+									}
+								</string>
+							</property>
+							<layout class="QGridLayout" name="gridLayout_4">
+								<item row="0" column="0">
+									<widget class="QPushButton" name="btnSignupBackToLogin">
+										<property name="minimumSize">
+											<size>
+												<width>0</width>
+												<height>40</height>
+											</size>
+										</property>
+										<property name="text">
+											<string>Back to login</string>
+										</property>
+									</widget>
+								</item>
+								<item row="0" column="1">
+									<spacer name="verticalSpacer_3">
+										<property name="orientation">
+											<enum>Qt::Vertical</enum>
+										</property>
+										<property name="sizeHint" stdset="0">
+											<size>
+												<width>20</width>
+												<height>117</height>
+											</size>
+										</property>
+									</spacer>
+								</item>
+								<item row="1" column="0">
+									<spacer name="horizontalSpacer_3">
+										<property name="orientation">
+											<enum>Qt::Horizontal</enum>
+										</property>
+										<property name="sizeHint" stdset="0">
+											<size>
+												<width>314</width>
+												<height>20</height>
+											</size>
+										</property>
+									</spacer>
+								</item>
+								<item row="1" column="1" rowspan="2">
+									<widget class="QGroupBox" name="groupBox_3">
+										<property name="title">
+											<string/>
+										</property>
+										<layout class="QFormLayout" name="formLayout">
+											<property name="verticalSpacing">
+												<number>15</number>
+											</property>
+											<item row="0" column="0">
+												<widget class="QLabel" name="regemailenter">
+													<property name="text">
+														<string>email</string>
+													</property>
+												</widget>
+											</item>
+											<item row="1" column="0" colspan="2">
+												<widget class="QLineEdit" name="regemail"/>
+											</item>
+											<item row="2" column="0">
+												<widget class="QLabel" name="regnameenter">
+													<property name="text">
+														<string>name</string>
+													</property>
+												</widget>
+											</item>
+											<item row="3" column="0" colspan="2">
+												<widget class="QLineEdit" name="regname"/>
+											</item>
+											<item row="4" column="0">
+												<widget class="QLabel" name="regsurnameenter">
+													<property name="text">
+														<string>surname</string>
+													</property>
+												</widget>
+											</item>
+											<item row="5" column="0" colspan="2">
+												<widget class="QLineEdit" name="regsurname"/>
+											</item>
+											<item row="6" column="0">
+												<widget class="QLabel" name="regpasswordenter">
+													<property name="text">
+														<string>password</string>
+													</property>
+												</widget>
+											</item>
+											<item row="7" column="0" colspan="2">
+												<widget class="QLineEdit" name="regpassword"/>
+											</item>
+											<item row="8" column="0" colspan="2">
+												<widget class="QLabel" name="regdobenter">
+													<property name="text">
+														<string>date of birth</string>
+													</property>
+												</widget>
+											</item>
+											<item row="9" column="0" colspan="2">
+												<widget class="QDateEdit" name="regdate"/>
+											</item>
+											<item row="10" column="0">
+												<widget class="QLabel" name="label">
+													<property name="text">
+														<string>role</string>
+													</property>
+												</widget>
+											</item>
+											<item row="11" column="0">
+												<widget class="QComboBox" name="regrole">
+													<item>
+														<property name="text">
+															<string>Leerling</string>
+														</property>
+													</item>
+													<item>
+														<property name="text">
+															<string>Leerkracht</string>
+														</property>
+													</item>
+													<item>
+														<property name="text">
+															<string>Ouder</string>
+														</property>
+													</item>
+												</widget>
+											</item>
+											<item row="14" column="0">
+												<widget class="QPushButton" name="btnCreateAccount">
+													<property name="text">
+														<string>Submit</string>
+													</property>
+												</widget>
+											</item>
+											<item row="12" column="0">
+												<widget class="QLabel" name="txtRegisterChilEmail">
+													<property name="enabled">
+														<bool>true</bool>
+													</property>
+													<property name="text">
+														<string>Email child</string>
+													</property>
+												</widget>
+											</item>
+											<item row="13" column="0">
+												<widget class="QLineEdit" name="regChildEmail">
+													<property name="enabled">
+														<bool>true</bool>
+													</property>
+													<property name="autoFillBackground">
+														<bool>false</bool>
+													</property>
+												</widget>
+											</item>
+										</layout>
+									</widget>
+								</item>
+								<item row="2" column="2">
+									<spacer name="horizontalSpacer_4">
+										<property name="orientation">
+											<enum>Qt::Horizontal</enum>
+										</property>
+										<property name="sizeHint" stdset="0">
+											<size>
+												<width>314</width>
+												<height>20</height>
+											</size>
+										</property>
+									</spacer>
+								</item>
+								<item row="3" column="1">
+									<spacer name="verticalSpacer_4">
+										<property name="orientation">
+											<enum>Qt::Vertical</enum>
+										</property>
+										<property name="sizeHint" stdset="0">
+											<size>
+												<width>20</width>
+												<height>117</height>
+											</size>
+										</property>
+									</spacer>
+								</item>
+							</layout>
+						</widget>
+						<widget class="QWidget" name="Info">
+							<property name="styleSheet">
+								<string notr="true">
+									QWidget {
+									font-size: 25px;
+									}
 
-QGroupBox {
-	border: 4px solid gray;
-	border-radius: 4px;
-}
+									QGroupBox {
+									border: 4px solid gray;
+									border-radius: 4px;
+									}
 
-QGroupBox::title {
-	subcontrol-origin: margin;
-    left: 10px;
-    padding: 0 3px 0 3px;
-}
+									QGroupBox::title {
+									subcontrol-origin: margin;
+									left: 10px;
+									padding: 0 3px 0 3px;
+									}
 
-QPushButton {
-	min-height: 40px;
-}</string>
-       </property>
-       <layout class="QGridLayout" name="gridLayout_9">
-        <item row="0" column="0" rowspan="2" colspan="2">
-         <layout class="QGridLayout" name="gridLayout_2">
-          <item row="4" column="2">
-           <spacer name="verticalSpacer">
-            <property name="orientation">
-             <enum>Qt::Vertical</enum>
-            </property>
-            <property name="sizeHint" stdset="0">
-             <size>
-              <width>20</width>
-              <height>118</height>
-             </size>
-            </property>
-           </spacer>
-          </item>
-          <item row="1" column="2">
-           <spacer name="verticalSpacer_2">
-            <property name="orientation">
-             <enum>Qt::Vertical</enum>
-            </property>
-            <property name="sizeHint" stdset="0">
-             <size>
-              <width>20</width>
-              <height>118</height>
-             </size>
-            </property>
-           </spacer>
-          </item>
-          <item row="1" column="3">
-           <widget class="QPushButton" name="btnInfoGoToEdit">
-            <property name="text">
-             <string>Edit your account</string>
-            </property>
-           </widget>
-          </item>
-          <item row="1" column="0">
-           <widget class="QPushButton" name="btnInfoBackToLogin">
-            <property name="text">
-             <string>Sign Out</string>
-            </property>
-           </widget>
-          </item>
-          <item row="4" column="0">
-           <widget class="QPushButton" name="btnInfoCreateAssignment">
-            <property name="text">
-             <string>Create an Assigment</string>
-            </property>
-           </widget>
-          </item>
-          <item row="3" column="2">
-           <widget class="QGroupBox" name="groupBox_2">
-            <property name="enabled">
-             <bool>true</bool>
-            </property>
-            <property name="minimumSize">
-             <size>
-              <width>600</width>
-              <height>350</height>
-             </size>
-            </property>
-            <property name="title">
-             <string/>
-            </property>
-            <layout class="QHBoxLayout" name="horizontalLayout">
-             <item>
-              <widget class="QTreeWidget" name="treeAssignments">
-               <column>
-                <property name="text">
-                 <string notr="true">1</string>
-                </property>
-               </column>
-              </widget>
-             </item>
-            </layout>
-           </widget>
-          </item>
-          <item row="4" column="3">
-           <widget class="QPushButton" name="btnToEnrollment">
-            <property name="text">
-             <string>Select courses</string>
-            </property>
-           </widget>
-          </item>
-          <item row="3" column="0">
-           <spacer name="horizontalSpacer">
-            <property name="orientation">
-             <enum>Qt::Horizontal</enum>
-            </property>
-            <property name="sizeHint" stdset="0">
-             <size>
-              <width>173</width>
-              <height>20</height>
-             </size>
-            </property>
-           </spacer>
-          </item>
-          <item row="2" column="3">
-           <widget class="QPushButton" name="btnGoToMail">
-            <property name="text">
-             <string>Mail</string>
-            </property>
-           </widget>
-          </item>
-          <item row="3" column="3">
-           <spacer name="horizontalSpacer_2">
-            <property name="orientation">
-             <enum>Qt::Horizontal</enum>
-            </property>
-            <property name="sizeHint" stdset="0">
-             <size>
-              <width>173</width>
-              <height>20</height>
-             </size>
-            </property>
-           </spacer>
-          </item>
-         </layout>
-        </item>
-        <item row="1" column="1">
-         <widget class="QWidget" name="assignmentFrame" native="true">
-          <property name="styleSheet">
-           <string notr="true">background-color: rgb(240, 240, 240);
-border: 2px solid black;
-QWidget {
-	font-size: 25px;
-}
+									QPushButton {
+									min-height: 40px;
+									}
+								</string>
+							</property>
+							<layout class="QGridLayout" name="gridLayout_9">
+								<item row="0" column="0" rowspan="2" colspan="2">
+									<layout class="QGridLayout" name="gridLayout_2">
+										<item row="4" column="2">
+											<spacer name="verticalSpacer">
+												<property name="orientation">
+													<enum>Qt::Vertical</enum>
+												</property>
+												<property name="sizeHint" stdset="0">
+													<size>
+														<width>20</width>
+														<height>118</height>
+													</size>
+												</property>
+											</spacer>
+										</item>
+										<item row="1" column="2">
+											<spacer name="verticalSpacer_2">
+												<property name="orientation">
+													<enum>Qt::Vertical</enum>
+												</property>
+												<property name="sizeHint" stdset="0">
+													<size>
+														<width>20</width>
+														<height>118</height>
+													</size>
+												</property>
+											</spacer>
+										</item>
+										<item row="1" column="3">
+											<widget class="QPushButton" name="btnInfoGoToEdit">
+												<property name="text">
+													<string>Edit your account</string>
+												</property>
+											</widget>
+										</item>
+										<item row="1" column="0">
+											<widget class="QPushButton" name="btnInfoBackToLogin">
+												<property name="text">
+													<string>Sign Out</string>
+												</property>
+											</widget>
+										</item>
+										<item row="4" column="0">
+											<widget class="QPushButton" name="btnInfoCreateAssignment">
+												<property name="text">
+													<string>Create an Assigment</string>
+												</property>
+											</widget>
+										</item>
+										<item row="3" column="2">
+											<widget class="QGroupBox" name="groupBox_2">
+												<property name="enabled">
+													<bool>true</bool>
+												</property>
+												<property name="minimumSize">
+													<size>
+														<width>600</width>
+														<height>350</height>
+													</size>
+												</property>
+												<property name="title">
+													<string/>
+												</property>
+												<layout class="QHBoxLayout" name="horizontalLayout">
+													<item>
+														<widget class="QTreeWidget" name="treeAssignments">
+															<column>
+																<property name="text">
+																	<string notr="true">1</string>
+																</property>
+															</column>
+														</widget>
+													</item>
+												</layout>
+											</widget>
+										</item>
+										<item row="4" column="3">
+											<widget class="QPushButton" name="btnToEnrollment">
+												<property name="text">
+													<string>Select courses</string>
+												</property>
+											</widget>
+										</item>
+										<item row="3" column="0">
+											<spacer name="horizontalSpacer">
+												<property name="orientation">
+													<enum>Qt::Horizontal</enum>
+												</property>
+												<property name="sizeHint" stdset="0">
+													<size>
+														<width>173</width>
+														<height>20</height>
+													</size>
+												</property>
+											</spacer>
+										</item>
+										<item row="2" column="3">
+											<widget class="QPushButton" name="btnGoToMail">
+												<property name="text">
+													<string>Mail</string>
+												</property>
+											</widget>
+										</item>
+										<item row="3" column="3">
+											<spacer name="horizontalSpacer_2">
+												<property name="orientation">
+													<enum>Qt::Horizontal</enum>
+												</property>
+												<property name="sizeHint" stdset="0">
+													<size>
+														<width>173</width>
+														<height>20</height>
+													</size>
+												</property>
+											</spacer>
+										</item>
+									</layout>
+								</item>
+								<item row="1" column="1">
+									<widget class="QWidget" name="assignmentFrame" native="true">
+										<property name="styleSheet">
+											<string notr="true">
+												background-color: rgb(240, 240, 240);
+												border: 2px solid black;
+												QWidget {
+												font-size: 25px;
+												}
 
-QGroupBox {
-	border: 4px solid gray;
-	border-radius: 4px;
-}
+												QGroupBox {
+												border: 4px solid gray;
+												border-radius: 4px;
+												}
 
-QGroupBox::title {
-	subcontrol-origin: margin;
-    left: 10px;
-    padding: 0 3px 0 3px;
-}</string>
-          </property>
-          <layout class="QGridLayout" name="gridLayout_3">
-           <item row="0" column="1">
-            <spacer name="verticalSpacer_8">
-             <property name="orientation">
-              <enum>Qt::Vertical</enum>
-             </property>
-             <property name="sizeHint" stdset="0">
-              <size>
-               <width>20</width>
-               <height>40</height>
-              </size>
-             </property>
-            </spacer>
-           </item>
-           <item row="1" column="0">
-            <spacer name="horizontalSpacer_7">
-             <property name="orientation">
-              <enum>Qt::Horizontal</enum>
-             </property>
-             <property name="sizeHint" stdset="0">
-              <size>
-               <width>189</width>
-               <height>20</height>
-              </size>
-             </property>
-            </spacer>
-           </item>
-           <item row="1" column="1">
-            <layout class="QVBoxLayout" name="verticalLayout_3">
-             <property name="spacing">
-              <number>20</number>
-             </property>
-             <item>
-              <widget class="QComboBox" name="comboTeacherSubjects">
-               <property name="minimumSize">
-                <size>
-                 <width>0</width>
-                 <height>40</height>
-                </size>
-               </property>
-               <property name="styleSheet">
-                <string notr="true">background-color: white;
-border: 1px solid gray</string>
-               </property>
-               <property name="currentIndex">
-                <number>5</number>
-               </property>
-               <item>
-                <property name="text">
-                 <string>Wiskunde</string>
-                </property>
-               </item>
-               <item>
-                <property name="text">
-                 <string>Biologie</string>
-                </property>
-               </item>
-               <item>
-                <property name="text">
-                 <string>Chemie</string>
-                </property>
-               </item>
-               <item>
-                <property name="text">
-                 <string>Fysica</string>
-                </property>
-               </item>
-               <item>
-                <property name="text">
-                 <string>Nederlands</string>
-                </property>
-               </item>
-               <item>
-                <property name="text">
-                 <string>Lichaamlijke Opvoeding</string>
-                </property>
-               </item>
-              </widget>
-             </item>
-             <item>
-              <widget class="QLineEdit" name="editAssignTitle">
-               <property name="minimumSize">
-                <size>
-                 <width>0</width>
-                 <height>40</height>
-                </size>
-               </property>
-               <property name="styleSheet">
-                <string notr="true">background-color: white;
-border: 1px solid gray</string>
-               </property>
-              </widget>
-             </item>
-             <item>
-              <widget class="QTextEdit" name="editAssignDesc">
-               <property name="minimumSize">
-                <size>
-                 <width>0</width>
-                 <height>40</height>
-                </size>
-               </property>
-               <property name="styleSheet">
-                <string notr="true">background-color: white;
-border: 1px solid gray</string>
-               </property>
-              </widget>
-             </item>
-             <item>
-              <widget class="QDateEdit" name="dateAssignDue">
-               <property name="minimumSize">
-                <size>
-                 <width>0</width>
-                 <height>40</height>
-                </size>
-               </property>
-               <property name="styleSheet">
-                <string notr="true">background-color: white;
-border: 1px solid gray</string>
-               </property>
-               <property name="calendarPopup">
-                <bool>true</bool>
-               </property>
-              </widget>
-             </item>
-             <item>
-              <widget class="QPushButton" name="btnCreateAssignment">
-               <property name="minimumSize">
-                <size>
-                 <width>0</width>
-                 <height>42</height>
-                </size>
-               </property>
-               <property name="styleSheet">
-                <string notr="true">background-color: white;
-border: 1px solid gray</string>
-               </property>
-               <property name="text">
-                <string>Post Assignment</string>
-               </property>
-              </widget>
-             </item>
-            </layout>
-           </item>
-           <item row="1" column="2">
-            <spacer name="horizontalSpacer_8">
-             <property name="orientation">
-              <enum>Qt::Horizontal</enum>
-             </property>
-             <property name="sizeHint" stdset="0">
-              <size>
-               <width>188</width>
-               <height>20</height>
-              </size>
-             </property>
-            </spacer>
-           </item>
-           <item row="2" column="1">
-            <spacer name="verticalSpacer_7">
-             <property name="orientation">
-              <enum>Qt::Vertical</enum>
-             </property>
-             <property name="sizeHint" stdset="0">
-              <size>
-               <width>20</width>
-               <height>39</height>
-              </size>
-             </property>
-            </spacer>
-           </item>
-           <item row="0" column="0">
-            <widget class="QPushButton" name="btnInfoCancelAssignment">
-             <property name="styleSheet">
-              <string notr="true">background-color: white;
-border: 1px solid gray</string>
-             </property>
-             <property name="text">
-              <string>Cancel</string>
-             </property>
-            </widget>
-           </item>
-          </layout>
-         </widget>
-        </item>
-       </layout>
-      </widget>
-      <widget class="QWidget" name="EditAccount">
-       <property name="styleSheet">
-        <string notr="true">QWidget {
-	font-size: 25px;
-}
+												QGroupBox::title {
+												subcontrol-origin: margin;
+												left: 10px;
+												padding: 0 3px 0 3px;
+												}
+											</string>
+										</property>
+										<layout class="QGridLayout" name="gridLayout_3">
+											<item row="0" column="1">
+												<spacer name="verticalSpacer_8">
+													<property name="orientation">
+														<enum>Qt::Vertical</enum>
+													</property>
+													<property name="sizeHint" stdset="0">
+														<size>
+															<width>20</width>
+															<height>40</height>
+														</size>
+													</property>
+												</spacer>
+											</item>
+											<item row="1" column="0">
+												<spacer name="horizontalSpacer_7">
+													<property name="orientation">
+														<enum>Qt::Horizontal</enum>
+													</property>
+													<property name="sizeHint" stdset="0">
+														<size>
+															<width>189</width>
+															<height>20</height>
+														</size>
+													</property>
+												</spacer>
+											</item>
+											<item row="1" column="1">
+												<layout class="QVBoxLayout" name="verticalLayout_3">
+													<property name="spacing">
+														<number>20</number>
+													</property>
+													<item>
+														<widget class="QComboBox" name="comboTeacherSubjects">
+															<property name="minimumSize">
+																<size>
+																	<width>0</width>
+																	<height>40</height>
+																</size>
+															</property>
+															<property name="styleSheet">
+																<string notr="true">
+																	background-color: white;
+																	border: 1px solid gray
+																</string>
+															</property>
+															<property name="currentIndex">
+																<number>5</number>
+															</property>
+															<item>
+																<property name="text">
+																	<string>Wiskunde</string>
+																</property>
+															</item>
+															<item>
+																<property name="text">
+																	<string>Biologie</string>
+																</property>
+															</item>
+															<item>
+																<property name="text">
+																	<string>Chemie</string>
+																</property>
+															</item>
+															<item>
+																<property name="text">
+																	<string>Fysica</string>
+																</property>
+															</item>
+															<item>
+																<property name="text">
+																	<string>Nederlands</string>
+																</property>
+															</item>
+															<item>
+																<property name="text">
+																	<string>Lichaamlijke Opvoeding</string>
+																</property>
+															</item>
+														</widget>
+													</item>
+													<item>
+														<widget class="QLineEdit" name="editAssignTitle">
+															<property name="minimumSize">
+																<size>
+																	<width>0</width>
+																	<height>40</height>
+																</size>
+															</property>
+															<property name="styleSheet">
+																<string notr="true">
+																	background-color: white;
+																	border: 1px solid gray
+																</string>
+															</property>
+														</widget>
+													</item>
+													<item>
+														<widget class="QTextEdit" name="editAssignDesc">
+															<property name="minimumSize">
+																<size>
+																	<width>0</width>
+																	<height>40</height>
+																</size>
+															</property>
+															<property name="styleSheet">
+																<string notr="true">
+																	background-color: white;
+																	border: 1px solid gray
+																</string>
+															</property>
+														</widget>
+													</item>
+													<item>
+														<widget class="QDateEdit" name="dateAssignDue">
+															<property name="minimumSize">
+																<size>
+																	<width>0</width>
+																	<height>40</height>
+																</size>
+															</property>
+															<property name="styleSheet">
+																<string notr="true">
+																	background-color: white;
+																	border: 1px solid gray
+																</string>
+															</property>
+															<property name="calendarPopup">
+																<bool>true</bool>
+															</property>
+														</widget>
+													</item>
+													<item>
+														<widget class="QPushButton" name="btnCreateAssignment">
+															<property name="minimumSize">
+																<size>
+																	<width>0</width>
+																	<height>42</height>
+																</size>
+															</property>
+															<property name="styleSheet">
+																<string notr="true">
+																	background-color: white;
+																	border: 1px solid gray
+																</string>
+															</property>
+															<property name="text">
+																<string>Post Assignment</string>
+															</property>
+														</widget>
+													</item>
+												</layout>
+											</item>
+											<item row="1" column="2">
+												<spacer name="horizontalSpacer_8">
+													<property name="orientation">
+														<enum>Qt::Horizontal</enum>
+													</property>
+													<property name="sizeHint" stdset="0">
+														<size>
+															<width>188</width>
+															<height>20</height>
+														</size>
+													</property>
+												</spacer>
+											</item>
+											<item row="2" column="1">
+												<spacer name="verticalSpacer_7">
+													<property name="orientation">
+														<enum>Qt::Vertical</enum>
+													</property>
+													<property name="sizeHint" stdset="0">
+														<size>
+															<width>20</width>
+															<height>39</height>
+														</size>
+													</property>
+												</spacer>
+											</item>
+											<item row="0" column="0">
+												<widget class="QPushButton" name="btnInfoCancelAssignment">
+													<property name="styleSheet">
+														<string notr="true">
+															background-color: white;
+															border: 1px solid gray
+														</string>
+													</property>
+													<property name="text">
+														<string>Cancel</string>
+													</property>
+												</widget>
+											</item>
+										</layout>
+									</widget>
+								</item>
+							</layout>
+						</widget>
+						<widget class="QWidget" name="EditAccount">
+							<property name="styleSheet">
+								<string notr="true">
+									QWidget {
+									font-size: 25px;
+									}
 
-QGroupBox {
-	border: 4px solid gray;
-	border-radius: 4px;
-}
+									QGroupBox {
+									border: 4px solid gray;
+									border-radius: 4px;
+									}
 
-QGroupBox::title {
-	subcontrol-origin: margin;
-    left: 10px;
-    padding: 0 3px 0 3px;
-}</string>
-       </property>
-       <layout class="QGridLayout" name="gridLayout_5">
-        <item row="2" column="0">
-         <spacer name="horizontalSpacer_5">
-          <property name="orientation">
-           <enum>Qt::Horizontal</enum>
-          </property>
-          <property name="sizeHint" stdset="0">
-           <size>
-            <width>314</width>
-            <height>20</height>
-           </size>
-          </property>
-         </spacer>
-        </item>
-        <item row="1" column="0">
-         <widget class="QPushButton" name="btnEditGoToLogin">
-          <property name="minimumSize">
-           <size>
-            <width>0</width>
-            <height>40</height>
-           </size>
-          </property>
-          <property name="text">
-           <string>Cancel</string>
-          </property>
-         </widget>
-        </item>
-        <item row="1" column="2">
-         <widget class="QPushButton" name="btnEditDelete">
-          <property name="minimumSize">
-           <size>
-            <width>0</width>
-            <height>40</height>
-           </size>
-          </property>
-          <property name="text">
-           <string>Delete Account</string>
-          </property>
-         </widget>
-        </item>
-        <item row="4" column="1">
-         <spacer name="verticalSpacer_6">
-          <property name="orientation">
-           <enum>Qt::Vertical</enum>
-          </property>
-          <property name="sizeHint" stdset="0">
-           <size>
-            <width>20</width>
-            <height>186</height>
-           </size>
-          </property>
-         </spacer>
-        </item>
-        <item row="3" column="2">
-         <spacer name="horizontalSpacer_6">
-          <property name="orientation">
-           <enum>Qt::Horizontal</enum>
-          </property>
-          <property name="sizeHint" stdset="0">
-           <size>
-            <width>314</width>
-            <height>20</height>
-           </size>
-          </property>
-         </spacer>
-        </item>
-        <item row="1" column="1">
-         <spacer name="verticalSpacer_5">
-          <property name="orientation">
-           <enum>Qt::Vertical</enum>
-          </property>
-          <property name="sizeHint" stdset="0">
-           <size>
-            <width>20</width>
-            <height>186</height>
-           </size>
-          </property>
-         </spacer>
-        </item>
-        <item row="2" column="1" rowspan="2">
-         <widget class="QGroupBox" name="groupBox_4">
-          <property name="title">
-           <string/>
-          </property>
-          <layout class="QFormLayout" name="formLayout_2">
-           <property name="verticalSpacing">
-            <number>20</number>
-           </property>
-           <item row="0" column="0">
-            <widget class="QLabel" name="label_2">
-             <property name="text">
-              <string>edit email</string>
-             </property>
-            </widget>
-           </item>
-           <item row="1" column="0" colspan="2">
-            <widget class="QLineEdit" name="editemail"/>
-           </item>
-           <item row="2" column="0">
-            <widget class="QLabel" name="label_3">
-             <property name="text">
-              <string>edit password</string>
-             </property>
-            </widget>
-           </item>
-           <item row="3" column="0" colspan="2">
-            <widget class="QLineEdit" name="editpassword"/>
-           </item>
-           <item row="4" column="0">
-            <widget class="QLabel" name="label_6">
-             <property name="text">
-              <string>edit date of birth</string>
-             </property>
-            </widget>
-           </item>
-           <item row="5" column="0">
-            <widget class="QDateEdit" name="editdob">
-             <property name="alignment">
-              <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
-             </property>
-            </widget>
-           </item>
-           <item row="7" column="0">
-            <widget class="QPushButton" name="btnEditConfirm">
-             <property name="text">
-              <string>Confirm changes</string>
-             </property>
-            </widget>
-           </item>
-          </layout>
-         </widget>
-        </item>
-       </layout>
-      </widget>
-      <widget class="QWidget" name="MailDashboard">
-       <property name="styleSheet">
-        <string notr="true">QWidget {
-	font-size: 25px;
-}
+									QGroupBox::title {
+									subcontrol-origin: margin;
+									left: 10px;
+									padding: 0 3px 0 3px;
+									}
+								</string>
+							</property>
+							<layout class="QGridLayout" name="gridLayout_5">
+								<item row="2" column="0">
+									<spacer name="horizontalSpacer_5">
+										<property name="orientation">
+											<enum>Qt::Horizontal</enum>
+										</property>
+										<property name="sizeHint" stdset="0">
+											<size>
+												<width>314</width>
+												<height>20</height>
+											</size>
+										</property>
+									</spacer>
+								</item>
+								<item row="1" column="0">
+									<widget class="QPushButton" name="btnEditGoToLogin">
+										<property name="minimumSize">
+											<size>
+												<width>0</width>
+												<height>40</height>
+											</size>
+										</property>
+										<property name="text">
+											<string>Cancel</string>
+										</property>
+									</widget>
+								</item>
+								<item row="1" column="2">
+									<widget class="QPushButton" name="btnEditDelete">
+										<property name="minimumSize">
+											<size>
+												<width>0</width>
+												<height>40</height>
+											</size>
+										</property>
+										<property name="text">
+											<string>Delete Account</string>
+										</property>
+									</widget>
+								</item>
+								<item row="4" column="1">
+									<spacer name="verticalSpacer_6">
+										<property name="orientation">
+											<enum>Qt::Vertical</enum>
+										</property>
+										<property name="sizeHint" stdset="0">
+											<size>
+												<width>20</width>
+												<height>186</height>
+											</size>
+										</property>
+									</spacer>
+								</item>
+								<item row="3" column="2">
+									<spacer name="horizontalSpacer_6">
+										<property name="orientation">
+											<enum>Qt::Horizontal</enum>
+										</property>
+										<property name="sizeHint" stdset="0">
+											<size>
+												<width>314</width>
+												<height>20</height>
+											</size>
+										</property>
+									</spacer>
+								</item>
+								<item row="1" column="1">
+									<spacer name="verticalSpacer_5">
+										<property name="orientation">
+											<enum>Qt::Vertical</enum>
+										</property>
+										<property name="sizeHint" stdset="0">
+											<size>
+												<width>20</width>
+												<height>186</height>
+											</size>
+										</property>
+									</spacer>
+								</item>
+								<item row="2" column="1" rowspan="2">
+									<widget class="QGroupBox" name="groupBox_4">
+										<property name="title">
+											<string/>
+										</property>
+										<layout class="QFormLayout" name="formLayout_2">
+											<property name="verticalSpacing">
+												<number>20</number>
+											</property>
+											<item row="0" column="0">
+												<widget class="QLabel" name="label_2">
+													<property name="text">
+														<string>edit email</string>
+													</property>
+												</widget>
+											</item>
+											<item row="1" column="0" colspan="2">
+												<widget class="QLineEdit" name="editemail"/>
+											</item>
+											<item row="2" column="0">
+												<widget class="QLabel" name="label_3">
+													<property name="text">
+														<string>edit password</string>
+													</property>
+												</widget>
+											</item>
+											<item row="3" column="0" colspan="2">
+												<widget class="QLineEdit" name="editpassword"/>
+											</item>
+											<item row="4" column="0">
+												<widget class="QLabel" name="label_6">
+													<property name="text">
+														<string>edit date of birth</string>
+													</property>
+												</widget>
+											</item>
+											<item row="5" column="0">
+												<widget class="QDateEdit" name="editdob">
+													<property name="alignment">
+														<set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+													</property>
+												</widget>
+											</item>
+											<item row="7" column="0">
+												<widget class="QPushButton" name="btnEditConfirm">
+													<property name="text">
+														<string>Confirm changes</string>
+													</property>
+												</widget>
+											</item>
+										</layout>
+									</widget>
+								</item>
+							</layout>
+						</widget>
+						<widget class="QWidget" name="MailDashboard">
+							<property name="styleSheet">
+								<string notr="true">
+									QWidget {
+									font-size: 25px;
+									}
 
-QTextEdit {
-	font=size: 25px;
-}
+									QTextEdit {
+									font=size: 25px;
+									}
 
-QScrollArea {
-	border: 4px solid gray;
-	border-radius: 4px;
-}
+									QScrollArea {
+									border: 4px solid gray;
+									border-radius: 4px;
+									}
 
-QGroupBox::title {
-	subcontrol-origin: margin;
-    left: 10px;
-    padding: 0 3px 0 3px;
-}</string>
-       </property>
-       <layout class="QGridLayout" name="gridLayout_8">
-        <item row="0" column="0">
-         <layout class="QGridLayout" name="gridLayout_10">
-          <item row="0" column="0">
-           <layout class="QGridLayout" name="gridLayout_11">
-            <item row="0" column="0">
-             <spacer name="horizontalSpacer_9">
-              <property name="orientation">
-               <enum>Qt::Horizontal</enum>
-              </property>
-              <property name="sizeHint" stdset="0">
-               <size>
-                <width>40</width>
-                <height>20</height>
-               </size>
-              </property>
-             </spacer>
-            </item>
-            <item row="0" column="1">
-             <widget class="QPushButton" name="btnGoBack">
-              <property name="text">
-               <string>Back</string>
-              </property>
-             </widget>
-            </item>
-           </layout>
-          </item>
-          <item row="1" column="0">
-           <widget class="QTabWidget" name="tabWidget">
-            <property name="currentIndex">
-             <number>0</number>
-            </property>
-            <widget class="QWidget" name="Inbox">
-             <attribute name="title">
-              <string>Inbox</string>
-             </attribute>
-             <layout class="QHBoxLayout" name="horizontalLayout_8">
-              <item>
-               <spacer name="horizontalSpacer_14">
-                <property name="orientation">
-                 <enum>Qt::Horizontal</enum>
-                </property>
-                <property name="sizeHint" stdset="0">
-                 <size>
-                  <width>256</width>
-                  <height>20</height>
-                 </size>
-                </property>
-               </spacer>
-              </item>
-              <item>
-               <layout class="QVBoxLayout" name="verticalLayout_8">
-                <item>
-                 <spacer name="verticalSpacer_13">
-                  <property name="orientation">
-                   <enum>Qt::Vertical</enum>
-                  </property>
-                  <property name="sizeHint" stdset="0">
-                   <size>
-                    <width>20</width>
-                    <height>40</height>
-                   </size>
-                  </property>
-                 </spacer>
-                </item>
-                <item>
-                 <layout class="QHBoxLayout" name="horizontalLayout_6">
-                  <item>
-                   <widget class="QListWidget" name="listInbox">
-                    <property name="minimumSize">
-                     <size>
-                      <width>700</width>
-                      <height>0</height>
-                     </size>
-                    </property>
-                   </widget>
-                  </item>
-                  <item>
-                   <widget class="QTextEdit" name="txtInbox">
-                    <property name="minimumSize">
-                     <size>
-                      <width>700</width>
-                      <height>800</height>
-                     </size>
-                    </property>
-                    <property name="readOnly">
-                     <bool>true</bool>
-                    </property>
-                   </widget>
-                  </item>
-                 </layout>
-                </item>
-                <item>
-                 <spacer name="verticalSpacer_14">
-                  <property name="orientation">
-                   <enum>Qt::Vertical</enum>
-                  </property>
-                  <property name="sizeHint" stdset="0">
-                   <size>
-                    <width>20</width>
-                    <height>40</height>
-                   </size>
-                  </property>
-                 </spacer>
-                </item>
-               </layout>
-              </item>
-              <item>
-               <spacer name="horizontalSpacer_15">
-                <property name="orientation">
-                 <enum>Qt::Horizontal</enum>
-                </property>
-                <property name="sizeHint" stdset="0">
-                 <size>
-                  <width>256</width>
-                  <height>20</height>
-                 </size>
-                </property>
-               </spacer>
-              </item>
-             </layout>
-            </widget>
-            <widget class="QWidget" name="Sent">
-             <attribute name="title">
-              <string>Sent</string>
-             </attribute>
-             <layout class="QHBoxLayout" name="horizontalLayout_7">
-              <item>
-               <spacer name="horizontalSpacer_12">
-                <property name="orientation">
-                 <enum>Qt::Horizontal</enum>
-                </property>
-                <property name="sizeHint" stdset="0">
-                 <size>
-                  <width>256</width>
-                  <height>20</height>
-                 </size>
-                </property>
-               </spacer>
-              </item>
-              <item>
-               <layout class="QVBoxLayout" name="verticalLayout_7">
-                <item>
-                 <spacer name="verticalSpacer_11">
-                  <property name="orientation">
-                   <enum>Qt::Vertical</enum>
-                  </property>
-                  <property name="sizeHint" stdset="0">
-                   <size>
-                    <width>20</width>
-                    <height>40</height>
-                   </size>
-                  </property>
-                 </spacer>
-                </item>
-                <item>
-                 <layout class="QHBoxLayout" name="horizontalLayout_5">
-                  <item>
-                   <widget class="QListWidget" name="listSent">
-                    <property name="minimumSize">
-                     <size>
-                      <width>700</width>
-                      <height>800</height>
-                     </size>
-                    </property>
-                   </widget>
-                  </item>
-                  <item>
-                   <widget class="QTextEdit" name="txtSent">
-                    <property name="minimumSize">
-                     <size>
-                      <width>700</width>
-                      <height>0</height>
-                     </size>
-                    </property>
-                    <property name="readOnly">
-                     <bool>true</bool>
-                    </property>
-                   </widget>
-                  </item>
-                 </layout>
-                </item>
-                <item>
-                 <spacer name="verticalSpacer_12">
-                  <property name="orientation">
-                   <enum>Qt::Vertical</enum>
-                  </property>
-                  <property name="sizeHint" stdset="0">
-                   <size>
-                    <width>20</width>
-                    <height>40</height>
-                   </size>
-                  </property>
-                 </spacer>
-                </item>
-               </layout>
-              </item>
-              <item>
-               <spacer name="horizontalSpacer_13">
-                <property name="orientation">
-                 <enum>Qt::Horizontal</enum>
-                </property>
-                <property name="sizeHint" stdset="0">
-                 <size>
-                  <width>256</width>
-                  <height>20</height>
-                 </size>
-                </property>
-               </spacer>
-              </item>
-             </layout>
-            </widget>
-            <widget class="QWidget" name="NewMail">
-             <attribute name="title">
-              <string>New Mail</string>
-             </attribute>
-             <layout class="QHBoxLayout" name="horizontalLayout_4">
-              <item>
-               <spacer name="horizontalSpacer_10">
-                <property name="orientation">
-                 <enum>Qt::Horizontal</enum>
-                </property>
-                <property name="sizeHint" stdset="0">
-                 <size>
-                  <width>259</width>
-                  <height>20</height>
-                 </size>
-                </property>
-               </spacer>
-              </item>
-              <item>
-               <layout class="QVBoxLayout" name="verticalLayout_5">
-                <item>
-                 <spacer name="verticalSpacer_9">
-                  <property name="orientation">
-                   <enum>Qt::Vertical</enum>
-                  </property>
-                  <property name="sizeHint" stdset="0">
-                   <size>
-                    <width>20</width>
-                    <height>40</height>
-                   </size>
-                  </property>
-                 </spacer>
-                </item>
-                <item>
-                 <layout class="QVBoxLayout" name="verticalLayout_6">
-                  <item>
-                   <widget class="QLineEdit" name="mailTo">
-                    <property name="minimumSize">
-                     <size>
-                      <width>0</width>
-                      <height>80</height>
-                     </size>
-                    </property>
-                   </widget>
-                  </item>
-                  <item>
-                   <widget class="QLineEdit" name="mailSubject">
-                    <property name="minimumSize">
-                     <size>
-                      <width>0</width>
-                      <height>80</height>
-                     </size>
-                    </property>
-                   </widget>
-                  </item>
-                  <item>
-                   <widget class="QTextEdit" name="mailBody">
-                    <property name="minimumSize">
-                     <size>
-                      <width>0</width>
-                      <height>600</height>
-                     </size>
-                    </property>
-                   </widget>
-                  </item>
-                  <item>
-                   <widget class="QPushButton" name="btnSendMail">
-                    <property name="minimumSize">
-                     <size>
-                      <width>1400</width>
-                      <height>0</height>
-                     </size>
-                    </property>
-                    <property name="text">
-                     <string>PushButton</string>
-                    </property>
-                   </widget>
-                  </item>
-                 </layout>
-                </item>
-                <item>
-                 <spacer name="verticalSpacer_10">
-                  <property name="orientation">
-                   <enum>Qt::Vertical</enum>
-                  </property>
-                  <property name="sizeHint" stdset="0">
-                   <size>
-                    <width>20</width>
-                    <height>40</height>
-                   </size>
-                  </property>
-                 </spacer>
-                </item>
-               </layout>
-              </item>
-              <item>
-               <spacer name="horizontalSpacer_11">
-                <property name="orientation">
-                 <enum>Qt::Horizontal</enum>
-                </property>
-                <property name="sizeHint" stdset="0">
-                 <size>
-                  <width>259</width>
-                  <height>20</height>
-                 </size>
-                </property>
-               </spacer>
-              </item>
-             </layout>
-            </widget>
-           </widget>
-          </item>
-         </layout>
-        </item>
-       </layout>
-      </widget>
-      <widget class="QWidget" name="editGrade">
-       <property name="styleSheet">
-        <string notr="true">QWidget {
-	font-size: 25px;
-}
+									QGroupBox::title {
+									subcontrol-origin: margin;
+									left: 10px;
+									padding: 0 3px 0 3px;
+									}
+								</string>
+							</property>
+							<layout class="QGridLayout" name="gridLayout_8">
+								<item row="0" column="0">
+									<layout class="QGridLayout" name="gridLayout_10">
+										<item row="0" column="0">
+											<layout class="QGridLayout" name="gridLayout_11">
+												<item row="0" column="0">
+													<spacer name="horizontalSpacer_9">
+														<property name="orientation">
+															<enum>Qt::Horizontal</enum>
+														</property>
+														<property name="sizeHint" stdset="0">
+															<size>
+																<width>40</width>
+																<height>20</height>
+															</size>
+														</property>
+													</spacer>
+												</item>
+												<item row="0" column="1">
+													<widget class="QPushButton" name="btnGoBack">
+														<property name="text">
+															<string>Back</string>
+														</property>
+													</widget>
+												</item>
+											</layout>
+										</item>
+										<item row="1" column="0">
+											<widget class="QTabWidget" name="tabWidget">
+												<property name="currentIndex">
+													<number>0</number>
+												</property>
+												<widget class="QWidget" name="Inbox">
+													<attribute name="title">
+														<string>Inbox</string>
+													</attribute>
+													<layout class="QHBoxLayout" name="horizontalLayout_8">
+														<item>
+															<spacer name="horizontalSpacer_14">
+																<property name="orientation">
+																	<enum>Qt::Horizontal</enum>
+																</property>
+																<property name="sizeHint" stdset="0">
+																	<size>
+																		<width>256</width>
+																		<height>20</height>
+																	</size>
+																</property>
+															</spacer>
+														</item>
+														<item>
+															<layout class="QVBoxLayout" name="verticalLayout_8">
+																<item>
+																	<spacer name="verticalSpacer_13">
+																		<property name="orientation">
+																			<enum>Qt::Vertical</enum>
+																		</property>
+																		<property name="sizeHint" stdset="0">
+																			<size>
+																				<width>20</width>
+																				<height>40</height>
+																			</size>
+																		</property>
+																	</spacer>
+																</item>
+																<item>
+																	<layout class="QHBoxLayout" name="horizontalLayout_6">
+																		<item>
+																			<widget class="QListWidget" name="listInbox">
+																				<property name="minimumSize">
+																					<size>
+																						<width>700</width>
+																						<height>0</height>
+																					</size>
+																				</property>
+																			</widget>
+																		</item>
+																		<item>
+																			<widget class="QTextEdit" name="txtInbox">
+																				<property name="minimumSize">
+																					<size>
+																						<width>700</width>
+																						<height>800</height>
+																					</size>
+																				</property>
+																				<property name="readOnly">
+																					<bool>true</bool>
+																				</property>
+																			</widget>
+																		</item>
+																	</layout>
+																</item>
+																<item>
+																	<spacer name="verticalSpacer_14">
+																		<property name="orientation">
+																			<enum>Qt::Vertical</enum>
+																		</property>
+																		<property name="sizeHint" stdset="0">
+																			<size>
+																				<width>20</width>
+																				<height>40</height>
+																			</size>
+																		</property>
+																	</spacer>
+																</item>
+															</layout>
+														</item>
+														<item>
+															<spacer name="horizontalSpacer_15">
+																<property name="orientation">
+																	<enum>Qt::Horizontal</enum>
+																</property>
+																<property name="sizeHint" stdset="0">
+																	<size>
+																		<width>256</width>
+																		<height>20</height>
+																	</size>
+																</property>
+															</spacer>
+														</item>
+													</layout>
+												</widget>
+												<widget class="QWidget" name="Sent">
+													<attribute name="title">
+														<string>Sent</string>
+													</attribute>
+													<layout class="QHBoxLayout" name="horizontalLayout_7">
+														<item>
+															<spacer name="horizontalSpacer_12">
+																<property name="orientation">
+																	<enum>Qt::Horizontal</enum>
+																</property>
+																<property name="sizeHint" stdset="0">
+																	<size>
+																		<width>256</width>
+																		<height>20</height>
+																	</size>
+																</property>
+															</spacer>
+														</item>
+														<item>
+															<layout class="QVBoxLayout" name="verticalLayout_7">
+																<item>
+																	<spacer name="verticalSpacer_11">
+																		<property name="orientation">
+																			<enum>Qt::Vertical</enum>
+																		</property>
+																		<property name="sizeHint" stdset="0">
+																			<size>
+																				<width>20</width>
+																				<height>40</height>
+																			</size>
+																		</property>
+																	</spacer>
+																</item>
+																<item>
+																	<layout class="QHBoxLayout" name="horizontalLayout_5">
+																		<item>
+																			<widget class="QListWidget" name="listSent">
+																				<property name="minimumSize">
+																					<size>
+																						<width>700</width>
+																						<height>800</height>
+																					</size>
+																				</property>
+																			</widget>
+																		</item>
+																		<item>
+																			<widget class="QTextEdit" name="txtSent">
+																				<property name="minimumSize">
+																					<size>
+																						<width>700</width>
+																						<height>0</height>
+																					</size>
+																				</property>
+																				<property name="readOnly">
+																					<bool>true</bool>
+																				</property>
+																			</widget>
+																		</item>
+																	</layout>
+																</item>
+																<item>
+																	<spacer name="verticalSpacer_12">
+																		<property name="orientation">
+																			<enum>Qt::Vertical</enum>
+																		</property>
+																		<property name="sizeHint" stdset="0">
+																			<size>
+																				<width>20</width>
+																				<height>40</height>
+																			</size>
+																		</property>
+																	</spacer>
+																</item>
+															</layout>
+														</item>
+														<item>
+															<spacer name="horizontalSpacer_13">
+																<property name="orientation">
+																	<enum>Qt::Horizontal</enum>
+																</property>
+																<property name="sizeHint" stdset="0">
+																	<size>
+																		<width>256</width>
+																		<height>20</height>
+																	</size>
+																</property>
+															</spacer>
+														</item>
+													</layout>
+												</widget>
+												<widget class="QWidget" name="NewMail">
+													<attribute name="title">
+														<string>New Mail</string>
+													</attribute>
+													<layout class="QHBoxLayout" name="horizontalLayout_4">
+														<item>
+															<spacer name="horizontalSpacer_10">
+																<property name="orientation">
+																	<enum>Qt::Horizontal</enum>
+																</property>
+																<property name="sizeHint" stdset="0">
+																	<size>
+																		<width>259</width>
+																		<height>20</height>
+																	</size>
+																</property>
+															</spacer>
+														</item>
+														<item>
+															<layout class="QVBoxLayout" name="verticalLayout_5">
+																<item>
+																	<spacer name="verticalSpacer_9">
+																		<property name="orientation">
+																			<enum>Qt::Vertical</enum>
+																		</property>
+																		<property name="sizeHint" stdset="0">
+																			<size>
+																				<width>20</width>
+																				<height>40</height>
+																			</size>
+																		</property>
+																	</spacer>
+																</item>
+																<item>
+																	<layout class="QVBoxLayout" name="verticalLayout_6">
+																		<item>
+																			<widget class="QLineEdit" name="mailTo">
+																				<property name="minimumSize">
+																					<size>
+																						<width>0</width>
+																						<height>80</height>
+																					</size>
+																				</property>
+																			</widget>
+																		</item>
+																		<item>
+																			<widget class="QLineEdit" name="mailSubject">
+																				<property name="minimumSize">
+																					<size>
+																						<width>0</width>
+																						<height>80</height>
+																					</size>
+																				</property>
+																			</widget>
+																		</item>
+																		<item>
+																			<widget class="QTextEdit" name="mailBody">
+																				<property name="minimumSize">
+																					<size>
+																						<width>0</width>
+																						<height>600</height>
+																					</size>
+																				</property>
+																			</widget>
+																		</item>
+																		<item>
+																			<widget class="QPushButton" name="btnSendMail">
+																				<property name="minimumSize">
+																					<size>
+																						<width>1400</width>
+																						<height>0</height>
+																					</size>
+																				</property>
+																				<property name="text">
+																					<string>PushButton</string>
+																				</property>
+																			</widget>
+																		</item>
+																	</layout>
+																</item>
+																<item>
+																	<spacer name="verticalSpacer_10">
+																		<property name="orientation">
+																			<enum>Qt::Vertical</enum>
+																		</property>
+																		<property name="sizeHint" stdset="0">
+																			<size>
+																				<width>20</width>
+																				<height>40</height>
+																			</size>
+																		</property>
+																	</spacer>
+																</item>
+															</layout>
+														</item>
+														<item>
+															<spacer name="horizontalSpacer_11">
+																<property name="orientation">
+																	<enum>Qt::Horizontal</enum>
+																</property>
+																<property name="sizeHint" stdset="0">
+																	<size>
+																		<width>259</width>
+																		<height>20</height>
+																	</size>
+																</property>
+															</spacer>
+														</item>
+													</layout>
+												</widget>
+											</widget>
+										</item>
+									</layout>
+								</item>
+							</layout>
+						</widget>
+						<widget class="QWidget" name="editGrade">
+							<property name="styleSheet">
+								<string notr="true">
+									QWidget {
+									font-size: 25px;
+									}
 
-QScrollArea {
-	border: 4px solid gray;
-	border-radius: 4px;
-}
+									QScrollArea {
+									border: 4px solid gray;
+									border-radius: 4px;
+									}
 
-QGroupBox::title {
-	subcontrol-origin: margin;
-    left: 10px;
-    padding: 0 3px 0 3px;
-}</string>
-       </property>
-       <layout class="QGridLayout" name="gridLayout_7">
-        <item row="0" column="0">
-         <layout class="QVBoxLayout" name="verticalLayout_4">
-          <item>
-           <layout class="QHBoxLayout" name="horizontalLayout_2">
-            <item>
-             <widget class="QLabel" name="lblGradeSubject">
-              <property name="text">
-               <string>TextLabel</string>
-              </property>
-             </widget>
-            </item>
-            <item>
-             <widget class="QLabel" name="lblGradeTitle">
-              <property name="text">
-               <string>TextLabel</string>
-              </property>
-             </widget>
-            </item>
-            <item>
-             <widget class="QPushButton" name="btnGradeBackToMain">
-              <property name="text">
-               <string>Back</string>
-              </property>
-             </widget>
-            </item>
-           </layout>
-          </item>
-          <item>
-           <layout class="QHBoxLayout" name="horizontalLayout_3">
-            <item>
-             <widget class="QLabel" name="lblGradeDescription">
-              <property name="text">
-               <string>TextLabel</string>
-              </property>
-             </widget>
-            </item>
-            <item>
-             <widget class="QLabel" name="lblGradeDueDate">
-              <property name="text">
-               <string>TextLabel</string>
-              </property>
-             </widget>
-            </item>
-           </layout>
-          </item>
-          <item>
-           <widget class="QListWidget" name="lstStudentGrades"/>
-          </item>
-          <item>
-           <widget class="QPushButton" name="btnUpdateGrades">
-            <property name="text">
-             <string>Update Grades</string>
-            </property>
-           </widget>
-          </item>
-         </layout>
-        </item>
-       </layout>
-      </widget>
-     </widget>
-    </item>
-   </layout>
-  </widget>
-  <widget class="QMenuBar" name="menuBar">
-   <property name="geometry">
-    <rect>
-     <x>0</x>
-     <y>0</y>
-     <width>2000</width>
-     <height>21</height>
-    </rect>
-   </property>
-  </widget>
-  <widget class="QToolBar" name="mainToolBar">
-   <attribute name="toolBarArea">
-    <enum>TopToolBarArea</enum>
-   </attribute>
-   <attribute name="toolBarBreak">
-    <bool>false</bool>
-   </attribute>
-  </widget>
-  <widget class="QStatusBar" name="statusBar"/>
- </widget>
- <layoutdefault spacing="6" margin="11"/>
- <resources>
-  <include location="SystemProgrammingv2.qrc"/>
- </resources>
- <connections/>
+									QGroupBox::title {
+									subcontrol-origin: margin;
+									left: 10px;
+									padding: 0 3px 0 3px;
+									}
+								</string>
+							</property>
+							<layout class="QGridLayout" name="gridLayout_7">
+								<item row="0" column="0">
+									<layout class="QVBoxLayout" name="verticalLayout_4">
+										<item>
+											<layout class="QHBoxLayout" name="horizontalLayout_2">
+												<item>
+													<widget class="QLabel" name="lblGradeSubject">
+														<property name="text">
+															<string>TextLabel</string>
+														</property>
+													</widget>
+												</item>
+												<item>
+													<widget class="QLabel" name="lblGradeTitle">
+														<property name="text">
+															<string>TextLabel</string>
+														</property>
+													</widget>
+												</item>
+												<item>
+													<widget class="QPushButton" name="btnGradeBackToMain">
+														<property name="text">
+															<string>Back</string>
+														</property>
+													</widget>
+												</item>
+											</layout>
+										</item>
+										<item>
+											<layout class="QHBoxLayout" name="horizontalLayout_3">
+												<item>
+													<widget class="QLabel" name="lblGradeDescription">
+														<property name="text">
+															<string>TextLabel</string>
+														</property>
+													</widget>
+												</item>
+												<item>
+													<widget class="QLabel" name="lblGradeDueDate">
+														<property name="text">
+															<string>TextLabel</string>
+														</property>
+													</widget>
+												</item>
+											</layout>
+										</item>
+										<item>
+											<widget class="QListWidget" name="lstStudentGrades"/>
+										</item>
+										<item>
+											<widget class="QPushButton" name="btnUpdateGrades">
+												<property name="text">
+													<string>Update Grades</string>
+												</property>
+											</widget>
+										</item>
+									</layout>
+								</item>
+							</layout>
+						</widget>
+					</widget>
+				</item>
+			</layout>
+		</widget>
+		<widget class="QMenuBar" name="menuBar">
+			<property name="geometry">
+				<rect>
+					<x>0</x>
+					<y>0</y>
+					<width>2000</width>
+					<height>21</height>
+				</rect>
+			</property>
+		</widget>
+		<widget class="QToolBar" name="mainToolBar">
+			<attribute name="toolBarArea">
+				<enum>TopToolBarArea</enum>
+			</attribute>
+			<attribute name="toolBarBreak">
+				<bool>false</bool>
+			</attribute>
+		</widget>
+		<widget class="QStatusBar" name="statusBar"/>
+	</widget>
+	<layoutdefault spacing="6" margin="11"/>
+	<resources>
+		<include location="StudentManagement.qrc"/>
+	</resources>
+	<connections/>
 </ui>

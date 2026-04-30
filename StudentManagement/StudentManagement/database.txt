@@ -1,1 +1,1 @@
-KOBE, name, test@example.com, secret, 
+stud, name, student@example.com, secret, 
