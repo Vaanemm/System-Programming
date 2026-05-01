@@ -14,6 +14,7 @@ public:
 	std::string GetEmail() const;
 	std::string GetPassword() const;
 	Date GetDob() const;
+	std::string GetDobString() const;
 
 	void SetEmail(const std::string& email);
 	void SetPassword(const std::string& password);

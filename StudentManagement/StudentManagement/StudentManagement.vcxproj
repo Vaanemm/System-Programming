@@ -116,9 +116,9 @@
     <ClCompile Include="assignment.cpp" />
     <ClCompile Include="database.cpp" />
     <ClCompile Include="login.cpp" />
+    <ClCompile Include="mail.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="parent.cpp" />
-    <ClCompile Include="school.cpp" />
     <ClCompile Include="student.cpp" />
     <ClCompile Include="student_management.cpp" />
     <ClCompile Include="subjects.cpp" />
@@ -136,8 +136,8 @@
     <ClInclude Include="assignment.h" />
     <ClInclude Include="database.h" />
     <ClInclude Include="date.h" />
+    <ClInclude Include="mail.h" />
     <ClInclude Include="parent.h" />
-    <ClInclude Include="school.h" />
     <ClInclude Include="student.h" />
     <QtMoc Include="student_management.h" />
     <ClInclude Include="subjects.h" />

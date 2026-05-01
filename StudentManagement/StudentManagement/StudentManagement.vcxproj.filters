@@ -7,9 +7,6 @@
     <ClCompile Include="parent.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="school.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="student.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -37,15 +34,15 @@
     <ClCompile Include="database.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="mail.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="date.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="parent.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="school.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="student.h">
@@ -67,6 +64,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="database.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="mail.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

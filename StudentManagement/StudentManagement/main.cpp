@@ -7,7 +7,6 @@
 #include "subjects.h"
 #include "parent.h"
 #include "assignment.h"
-#include "school.h"
 #include "database.h"
 
 
@@ -16,12 +15,12 @@ int main(int argc, char *argv[])
 {
 	QApplication a(argc, argv);
 
-	School school;
-
-	StudentManagement w(school);
+	StudentManagement w;
 	w.show();
 	std::cout << "Hello World" << std::endl;
 	qDebug() << "Hello World";
+
+	Database m_database;
 
 	Date dob;
 	dob.day = 15;
@@ -47,10 +46,12 @@ int main(int argc, char *argv[])
 	std::shared_ptr<Student> stud_ptr = std::shared_ptr<Student>(new Student("student@example.com", "secret", "stud", "name", dob));
 	stud_ptr->AddSubject(physics_ptr);
 	stud_ptr->AddSubject(math_ptr);
+	std::shared_ptr<Student> second_stud_ptr = std::shared_ptr<Student>(new Student("yo", "big", "stud", "name", dob));
 
 	std::vector<std::shared_ptr<Student>> stud_list;
 	stud_list.push_back(stud_ptr);
-	write2(stud_list);
+	stud_list.push_back(second_stud_ptr);
+	m_database.Write(stud_list);
 	//school.AddStudent(stud);
 
 	std::cout << stud_ptr->ToString() << std::endl;
@@ -75,9 +76,8 @@ int main(int argc, char *argv[])
 	current_assignment->MakeSubmission(6, "that was shit ngl");
 	std::cout << current_assignment->AssignmentSubmissionToString() << std::endl;
 
-	std::string data = read();
+	std::string data = m_database.Read();
 	std::cout << data << std::endl;
 	w.show();
 	return a.exec();
-
 }
