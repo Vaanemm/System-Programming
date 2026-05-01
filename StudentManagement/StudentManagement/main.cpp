@@ -46,9 +46,11 @@ int main(int argc, char *argv[])
 	std::shared_ptr<Student> stud_ptr = std::shared_ptr<Student>(new Student("student@example.com", "secret", "stud", "name", dob));
 	stud_ptr->AddSubject(physics_ptr);
 	stud_ptr->AddSubject(math_ptr);
+	std::shared_ptr<Student> second_stud_ptr = std::shared_ptr<Student>(new Student("yo", "big", "stud", "name", dob));
 
 	std::vector<std::shared_ptr<Student>> stud_list;
 	stud_list.push_back(stud_ptr);
+	stud_list.push_back(second_stud_ptr);
 	m_database.Write(stud_list);
 	//school.AddStudent(stud);
 

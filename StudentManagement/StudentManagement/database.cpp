@@ -1,5 +1,5 @@
 #include "database.h"
-
+#include <iostream>
 #include <fstream>
 #include <sstream>
 #include <vector>
@@ -68,8 +68,8 @@ std::shared_ptr<User> Database::FindUser(const std::string _email, const std::st
 	return nullptr; //no match
 }
 
-//what is the naming convention for functions that are not in a class??
-void send_email(const Mail& mail) {
+//what is the naming convention for functions that are not in a class?? its still a public function i think
+void Database::SendEmail(const Mail& mail) {
 	std::ofstream file_stream;
 	file_stream.open("mails.csv", std::ios::app);
 	if (file_stream.is_open()) {
