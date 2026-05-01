@@ -1,2 +1,2 @@
-Surname, Name, E-mail, Password
-stud, name, student@example.com, secret, 
+Surname, Name, E-mail, Password, Date Of Birth
+stud, name, student@example.com, secret, 15/6/2000,

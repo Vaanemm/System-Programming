@@ -1,16 +1,16 @@
 #include "student_management.h"
 #include <QMessageBox>
-#include "school.h"
+#include "database.h"
 
 void StudentManagement::handleLogin() {
 	QString email = ui.UserNameField->text();
 	QString pass = ui.PasswordField->text();
 
-	User* LoggedIn = m_school.FindUser(email.toStdString(), pass.toStdString());
+	std::shared_ptr<User> LoggedIn = Database::FindUser(email.toStdString(), pass.toStdString());
 
 	if (LoggedIn != nullptr) {
 		ui.stackedWidget->setCurrentIndex(1);
-		m_school.SetCurrentUser(LoggedIn);
+		//Database.SetCurrentUser(LoggedIn);
 	}
 	else {
 		QMessageBox::warning(this, "Error", "Invalid inputs");

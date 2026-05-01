@@ -3,8 +3,8 @@
 #include <QDebug>
 #include <QPushButton>
 
-StudentManagement::StudentManagement(School& _s, QWidget *parent)
-	: QMainWindow(parent), m_school(_s)
+StudentManagement::StudentManagement(QWidget *parent)
+	: QMainWindow(parent)
 {
 	ui.setupUi(this);
 

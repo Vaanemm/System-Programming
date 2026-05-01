@@ -10,7 +10,7 @@ class StudentManagement : public QMainWindow
 	Q_OBJECT
 
 public:
-	StudentManagement(School& _s, QWidget *parent = Q_NULLPTR); // we give the school (where we store everyone)
+	StudentManagement(QWidget *parent = Q_NULLPTR);
 
 private slots:
 	void handleLogin();
@@ -18,5 +18,4 @@ private slots:
 
 private:
 	Ui::StudentManagementClass ui;
-	School& m_school;
 };

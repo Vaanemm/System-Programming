@@ -32,6 +32,10 @@ Date User::GetDob() const {
 	return m_dob;
 }
 
+std::string User::GetDobString() const {
+	return m_dob.ToString();
+}
+
 std::string User::ToString() const {
 	std::string output;
 	output = "User information: \n";
@@ -47,6 +51,7 @@ std::string User::PrepareForDatabase() const {
 	database_line += GetSurname() + ", ";
 	database_line += GetEmail() + ", ";
 	database_line += GetPassword() + ", ";
+	database_line += GetDobString() + ",";
 	return database_line;
 }
 
