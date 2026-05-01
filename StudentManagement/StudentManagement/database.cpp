@@ -9,7 +9,7 @@ std::string read() {
 	if (!file.is_open()) return "nothing yet";
 
 	std::string line;
-	std::getline(file, line); // skips the header
+	std::getline(file, line); // skips the header because puts the pointer to next line, here we don't do anything with the line
 
 	std::stringstream buffer;
 	buffer << file.rdbuf(); // read entire file
