@@ -8,7 +8,6 @@
 class Database {
 public:	
 	std::string Read();
-	void Write(const std::string& content);
 	void Write(const std::vector<std::shared_ptr<Student>>& stud_list);
 	void SendEmail(const Mail& mail);
 

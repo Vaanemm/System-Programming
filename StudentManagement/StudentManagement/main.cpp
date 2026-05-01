@@ -51,7 +51,8 @@ int main(int argc, char *argv[])
 	std::vector<std::shared_ptr<Student>> stud_list;
 	stud_list.push_back(stud_ptr);
 	stud_list.push_back(second_stud_ptr);
-	db.Write(stud_list);
+	db.AddUser(stud_ptr);
+	db.AddUser(second_stud_ptr);
 
 	std::cout << stud_ptr->ToString() << std::endl;
 

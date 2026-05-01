@@ -18,14 +18,6 @@ std::string Database::Read() {
 	return buffer.str();
 }
 
-void Database::Write(const std::string& content) {
-	std::ofstream file("database.csv");
-	if (file.is_open())
-	{	
-		file << content;
-	}
-}
-
 void Database::Write(const std::vector<std::shared_ptr<Student>>& stud_list) { //overloading
 	std::ofstream file("database.csv");
 	if (file.is_open()) {
