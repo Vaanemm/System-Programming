@@ -62,48 +62,32 @@ std::shared_ptr<User> Database::FindUser(const std::string _email, const std::st
 		std::getline(ss, child);
 		Date dob(dob_str);
 
+		bool is_valid;
 		if (_for_login == true) {
-			if (email == _email && password == _password) {
-				if (role == "Student") {
-					std::shared_ptr<Student> stud_ptr = std::shared_ptr<Student>(new Student(email, password, name, surname, dob));
-					return stud_ptr;
-				}
-				else if (role == "Teacher") {
-					std::shared_ptr<Teacher> teach_ptr = std::shared_ptr<Teacher>(new Teacher(email, password, name, surname, dob));
-					return teach_ptr;
-				}
-				else if (role == "Parent") {
-					std::shared_ptr<Parent> par_ptr = std::shared_ptr<Parent>(new Parent(email, password, name, surname, dob, nullptr));
-					return par_ptr;
-				}
-				else {
-					return std::make_shared<User>(email, password, name, surname, dob);
-				}
-			}
+			is_valid = (email == _email && password == _password);
 		}
 		else {
-			if (email == _email) {
-				if (role == "Student") {
-					std::shared_ptr<Student> stud_ptr = std::shared_ptr<Student>(new Student(email, password, name, surname, dob));
-					return stud_ptr;
-				}
-				else if (role == "Teacher") {
-					std::shared_ptr<Teacher> teach_ptr = std::shared_ptr<Teacher>(new Teacher(email, password, name, surname, dob));
-					return teach_ptr;
-				}
-				else if (role == "Parent") {
-					std::shared_ptr<Parent> par_ptr = std::shared_ptr<Parent>(new Parent(email, password, name, surname, dob, nullptr));
-					return par_ptr;
-				}
-				else {
-					return std::make_shared<User>(email, password, name, surname, dob);
-				}
-			}
+			is_valid = (email == _email);
 		}
 
-		
+		if (is_valid) {
+			if (role == "Student") {
+				std::shared_ptr<Student> stud_ptr = std::shared_ptr<Student>(new Student(email, password, name, surname, dob));
+				return stud_ptr;
+			}
+			else if (role == "Teacher") {
+				std::shared_ptr<Teacher> teach_ptr = std::shared_ptr<Teacher>(new Teacher(email, password, name, surname, dob));
+				return teach_ptr;
+			}
+			else if (role == "Parent") {
+				std::shared_ptr<Parent> par_ptr = std::shared_ptr<Parent>(new Parent(email, password, name, surname, dob, nullptr));
+				return par_ptr;
+			}
+			else {
+				return std::make_shared<User>(email, password, name, surname, dob);				
+			}
+		}	
 	}
-
 	return nullptr; //no match
 }
 
