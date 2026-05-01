@@ -3,7 +3,6 @@
 #include <vector>
 #include "student.h"
 #include "mail.h"
-<<<<<<< HEAD
 #include "user.h"
 
 class Database {

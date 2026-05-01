@@ -50,7 +50,7 @@ std::shared_ptr<User> Database::FindUser(const std::string _email, const std::st
 	while (std::getline(file, line)) {
 		std::stringstream ss(line); //this splits the line with commas
 		std::string surname, name, email, password, dob_str;
-		
+
 
 		std::getline(ss, surname, ',');
 		std::getline(ss, name, ',');
@@ -66,6 +66,8 @@ std::shared_ptr<User> Database::FindUser(const std::string _email, const std::st
 	}
 
 	return nullptr; //no match
+}
+
 //what is the naming convention for functions that are not in a class??
 void send_email(const Mail& mail) {
 	std::ofstream file_stream;
