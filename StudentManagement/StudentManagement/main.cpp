@@ -77,7 +77,6 @@ int main(int argc, char *argv[])
 
 	std::string data = read();
 	std::cout << data << std::endl;
-	//write("222222222");
 	w.show();
 	return a.exec();
 
