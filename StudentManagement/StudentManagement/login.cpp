@@ -9,7 +9,7 @@ void StudentManagement::handleLogin() {
 	std::shared_ptr<User> LoggedIn = Database::FindUser(email.toStdString(), pass.toStdString());
 
 	if (LoggedIn != nullptr) {
-		ui.stackedWidget->setCurrentIndex(1);
+		ui.stackedWidget->setCurrentWidget(ui.MainMenuPage);
 		//Database.SetCurrentUser(LoggedIn);
 	}
 	else {
