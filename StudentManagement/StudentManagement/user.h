@@ -15,6 +15,8 @@ public:
 	std::string GetPassword() const;
 	Date GetDob() const;
 	std::string GetDobString() const;
+	virtual std::string GetRole() const;
+	virtual std::string GetChild() const;
 
 	void SetEmail(const std::string& email);
 	void SetPassword(const std::string& password);
@@ -23,7 +25,7 @@ public:
 	void SetDob(const Date& dob);
 
 	std::string ToString() const;
-	std::string PrepareForDatabase() const;
+	virtual std::string PrepareForDatabase() const;
 	void updateUser(const std::string& email, const std::string& password, const std::string& name, const std::string& surname, const Date& dob);
 
 private:

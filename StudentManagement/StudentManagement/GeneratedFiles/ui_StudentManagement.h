@@ -11,6 +11,7 @@
 
 #include <QtCore/QVariant>
 #include <QtWidgets/QApplication>
+#include <QtWidgets/QComboBox>
 #include <QtWidgets/QDateEdit>
 #include <QtWidgets/QFrame>
 #include <QtWidgets/QHBoxLayout>
@@ -64,6 +65,10 @@ public:
     QDateEdit *DobField;
     QLabel *PasswordTextSignUp;
     QLineEdit *PasswordFieldSignUp;
+    QLabel *label;
+    QComboBox *RoleFieldSignUp;
+    QLabel *ChildsName;
+    QLineEdit *ChildsNameField;
     QPushButton *SignUpButton;
     QPushButton *LoginPageButton;
     QSpacerItem *verticalSpacer_3;
@@ -146,18 +151,23 @@ public:
         centralwidget = new QWidget(StudentManagementClass);
         centralwidget->setObjectName(QString::fromUtf8("centralwidget"));
         verticalLayout = new QVBoxLayout(centralwidget);
+        verticalLayout->setSpacing(6);
+        verticalLayout->setContentsMargins(11, 11, 11, 11);
         verticalLayout->setObjectName(QString::fromUtf8("verticalLayout"));
         stackedWidget = new QStackedWidget(centralwidget);
         stackedWidget->setObjectName(QString::fromUtf8("stackedWidget"));
         LoginPage = new QWidget();
         LoginPage->setObjectName(QString::fromUtf8("LoginPage"));
         horizontalLayout_page = new QHBoxLayout(LoginPage);
+        horizontalLayout_page->setSpacing(6);
+        horizontalLayout_page->setContentsMargins(11, 11, 11, 11);
         horizontalLayout_page->setObjectName(QString::fromUtf8("horizontalLayout_page"));
         horizontalSpacer = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
 
         horizontalLayout_page->addItem(horizontalSpacer);
 
         verticalLayout_1 = new QVBoxLayout();
+        verticalLayout_1->setSpacing(6);
         verticalLayout_1->setObjectName(QString::fromUtf8("verticalLayout_1"));
         verticalLayout_1->setSizeConstraint(QLayout::SetFixedSize);
         verticalSpacer_2 = new QSpacerItem(20, 40, QSizePolicy::Minimum, QSizePolicy::Expanding);
@@ -211,12 +221,15 @@ public:
         SignUpPage = new QWidget();
         SignUpPage->setObjectName(QString::fromUtf8("SignUpPage"));
         horizontalLayout_signup = new QHBoxLayout(SignUpPage);
+        horizontalLayout_signup->setSpacing(6);
+        horizontalLayout_signup->setContentsMargins(11, 11, 11, 11);
         horizontalLayout_signup->setObjectName(QString::fromUtf8("horizontalLayout_signup"));
         horizontalSpacer_3 = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
 
         horizontalLayout_signup->addItem(horizontalSpacer_3);
 
         verticalLayout_2 = new QVBoxLayout();
+        verticalLayout_2->setSpacing(6);
         verticalLayout_2->setObjectName(QString::fromUtf8("verticalLayout_2"));
         verticalLayout_2->setSizeConstraint(QLayout::SetFixedSize);
         verticalSpacer_4 = new QSpacerItem(20, 40, QSizePolicy::Minimum, QSizePolicy::Expanding);
@@ -275,6 +288,29 @@ public:
 
         verticalLayout_2->addWidget(PasswordFieldSignUp);
 
+        label = new QLabel(SignUpPage);
+        label->setObjectName(QString::fromUtf8("label"));
+
+        verticalLayout_2->addWidget(label);
+
+        RoleFieldSignUp = new QComboBox(SignUpPage);
+        RoleFieldSignUp->addItem(QString());
+        RoleFieldSignUp->addItem(QString());
+        RoleFieldSignUp->addItem(QString());
+        RoleFieldSignUp->setObjectName(QString::fromUtf8("RoleFieldSignUp"));
+
+        verticalLayout_2->addWidget(RoleFieldSignUp);
+
+        ChildsName = new QLabel(SignUpPage);
+        ChildsName->setObjectName(QString::fromUtf8("ChildsName"));
+
+        verticalLayout_2->addWidget(ChildsName);
+
+        ChildsNameField = new QLineEdit(SignUpPage);
+        ChildsNameField->setObjectName(QString::fromUtf8("ChildsNameField"));
+
+        verticalLayout_2->addWidget(ChildsNameField);
+
         SignUpButton = new QPushButton(SignUpPage);
         SignUpButton->setObjectName(QString::fromUtf8("SignUpButton"));
 
@@ -300,6 +336,8 @@ public:
         SettingsPage = new QWidget();
         SettingsPage->setObjectName(QString::fromUtf8("SettingsPage"));
         verticalLayout_SettingsPage = new QVBoxLayout(SettingsPage);
+        verticalLayout_SettingsPage->setSpacing(6);
+        verticalLayout_SettingsPage->setContentsMargins(11, 11, 11, 11);
         verticalLayout_SettingsPage->setObjectName(QString::fromUtf8("verticalLayout_SettingsPage"));
         navigationBarSettings = new QFrame(SettingsPage);
         navigationBarSettings->setObjectName(QString::fromUtf8("navigationBarSettings"));
@@ -307,6 +345,7 @@ public:
         navigationBarSettings->setMaximumSize(QSize(16777215, 60));
         horizontalLayout_navSettings = new QHBoxLayout(navigationBarSettings);
         horizontalLayout_navSettings->setSpacing(15);
+        horizontalLayout_navSettings->setContentsMargins(11, 11, 11, 11);
         horizontalLayout_navSettings->setObjectName(QString::fromUtf8("horizontalLayout_navSettings"));
         horizontalLayout_navSettings->setContentsMargins(20, 10, 20, 10);
         MainMenuPageButtonSettings = new QPushButton(navigationBarSettings);
@@ -333,12 +372,14 @@ public:
         verticalLayout_SettingsPage->addWidget(navigationBarSettings);
 
         horizontalLayout_2 = new QHBoxLayout();
+        horizontalLayout_2->setSpacing(6);
         horizontalLayout_2->setObjectName(QString::fromUtf8("horizontalLayout_2"));
         horizontalSpacer_6 = new QSpacerItem(0, 0, QSizePolicy::Expanding, QSizePolicy::Minimum);
 
         horizontalLayout_2->addItem(horizontalSpacer_6);
 
         verticalLayout_6 = new QVBoxLayout();
+        verticalLayout_6->setSpacing(6);
         verticalLayout_6->setObjectName(QString::fromUtf8("verticalLayout_6"));
         verticalLayout_6->setSizeConstraint(QLayout::SetFixedSize);
         verticalSpacer_6 = new QSpacerItem(0, 0, QSizePolicy::Minimum, QSizePolicy::Expanding);
@@ -431,12 +472,16 @@ public:
         MailPage = new QWidget();
         MailPage->setObjectName(QString::fromUtf8("MailPage"));
         verticalLayout_MailPage = new QVBoxLayout(MailPage);
+        verticalLayout_MailPage->setSpacing(6);
+        verticalLayout_MailPage->setContentsMargins(11, 11, 11, 11);
         verticalLayout_MailPage->setObjectName(QString::fromUtf8("verticalLayout_MailPage"));
         frame = new QFrame(MailPage);
         frame->setObjectName(QString::fromUtf8("frame"));
         frame->setMinimumSize(QSize(0, 60));
         frame->setMaximumSize(QSize(16777215, 60));
         horizontalLayout_navMail = new QHBoxLayout(frame);
+        horizontalLayout_navMail->setSpacing(6);
+        horizontalLayout_navMail->setContentsMargins(11, 11, 11, 11);
         horizontalLayout_navMail->setObjectName(QString::fromUtf8("horizontalLayout_navMail"));
         MainMenuPageButtonMail = new QPushButton(frame);
         MainMenuPageButtonMail->setObjectName(QString::fromUtf8("MainMenuPageButtonMail"));
@@ -470,6 +515,8 @@ public:
         widget = new QWidget();
         widget->setObjectName(QString::fromUtf8("widget"));
         horizontalLayout_Inbox = new QHBoxLayout(widget);
+        horizontalLayout_Inbox->setSpacing(6);
+        horizontalLayout_Inbox->setContentsMargins(11, 11, 11, 11);
         horizontalLayout_Inbox->setObjectName(QString::fromUtf8("horizontalLayout_Inbox"));
         MailInbox = new QListWidget(widget);
         MailInbox->setObjectName(QString::fromUtf8("MailInbox"));
@@ -486,6 +533,8 @@ public:
         widget_2 = new QWidget();
         widget_2->setObjectName(QString::fromUtf8("widget_2"));
         horizontalLayout_Sent = new QHBoxLayout(widget_2);
+        horizontalLayout_Sent->setSpacing(6);
+        horizontalLayout_Sent->setContentsMargins(11, 11, 11, 11);
         horizontalLayout_Sent->setObjectName(QString::fromUtf8("horizontalLayout_Sent"));
         MailSent = new QListWidget(widget_2);
         MailSent->setObjectName(QString::fromUtf8("MailSent"));
@@ -502,6 +551,8 @@ public:
         widget_3 = new QWidget();
         widget_3->setObjectName(QString::fromUtf8("widget_3"));
         verticalLayout_NewMail = new QVBoxLayout(widget_3);
+        verticalLayout_NewMail->setSpacing(6);
+        verticalLayout_NewMail->setContentsMargins(11, 11, 11, 11);
         verticalLayout_NewMail->setObjectName(QString::fromUtf8("verticalLayout_NewMail"));
         MailTo = new QLineEdit(widget_3);
         MailTo->setObjectName(QString::fromUtf8("MailTo"));
@@ -519,6 +570,7 @@ public:
         verticalLayout_NewMail->addWidget(MailBody);
 
         horizontalLayout_5 = new QHBoxLayout();
+        horizontalLayout_5->setSpacing(6);
         horizontalLayout_5->setObjectName(QString::fromUtf8("horizontalLayout_5"));
         horizontalSpacer_5 = new QSpacerItem(0, 0, QSizePolicy::Expanding, QSizePolicy::Minimum);
 
@@ -540,6 +592,8 @@ public:
         MainMenuPage = new QWidget();
         MainMenuPage->setObjectName(QString::fromUtf8("MainMenuPage"));
         verticalLayout_MainMenu = new QVBoxLayout(MainMenuPage);
+        verticalLayout_MainMenu->setSpacing(6);
+        verticalLayout_MainMenu->setContentsMargins(11, 11, 11, 11);
         verticalLayout_MainMenu->setObjectName(QString::fromUtf8("verticalLayout_MainMenu"));
         NavigationBarFrame = new QFrame(MainMenuPage);
         NavigationBarFrame->setObjectName(QString::fromUtf8("NavigationBarFrame"));
@@ -548,6 +602,8 @@ public:
         NavigationBarFrame->setFrameShape(QFrame::StyledPanel);
         NavigationBarFrame->setFrameShadow(QFrame::Raised);
         horizontalLayout_nav = new QHBoxLayout(NavigationBarFrame);
+        horizontalLayout_nav->setSpacing(6);
+        horizontalLayout_nav->setContentsMargins(11, 11, 11, 11);
         horizontalLayout_nav->setObjectName(QString::fromUtf8("horizontalLayout_nav"));
         horizontalLayout_nav->setContentsMargins(10, 0, 10, 0);
         MainMenuPageButtonMainMenu = new QPushButton(NavigationBarFrame);
@@ -574,8 +630,10 @@ public:
         verticalLayout_MainMenu->addWidget(NavigationBarFrame);
 
         horizontalLayout = new QHBoxLayout();
+        horizontalLayout->setSpacing(6);
         horizontalLayout->setObjectName(QString::fromUtf8("horizontalLayout"));
         verticalLayout_3 = new QVBoxLayout();
+        verticalLayout_3->setSpacing(6);
         verticalLayout_3->setObjectName(QString::fromUtf8("verticalLayout_3"));
         EnrollmentText = new QLabel(MainMenuPage);
         EnrollmentText->setObjectName(QString::fromUtf8("EnrollmentText"));
@@ -596,6 +654,7 @@ public:
         horizontalLayout->addLayout(verticalLayout_3);
 
         verticalLayout_4 = new QVBoxLayout();
+        verticalLayout_4->setSpacing(6);
         verticalLayout_4->setObjectName(QString::fromUtf8("verticalLayout_4"));
         AssignmentsText = new QLabel(MainMenuPage);
         AssignmentsText->setObjectName(QString::fromUtf8("AssignmentsText"));
@@ -616,6 +675,7 @@ public:
         horizontalLayout->addLayout(verticalLayout_4);
 
         verticalLayout_5 = new QVBoxLayout();
+        verticalLayout_5->setSpacing(6);
         verticalLayout_5->setObjectName(QString::fromUtf8("verticalLayout_5"));
         SubmissionsText = new QLabel(MainMenuPage);
         SubmissionsText->setObjectName(QString::fromUtf8("SubmissionsText"));
@@ -664,6 +724,12 @@ public:
         EmailText->setText(QApplication::translate("StudentManagementClass", "E-mail:", nullptr));
         DobText->setText(QApplication::translate("StudentManagementClass", "Date of birth:", nullptr));
         PasswordTextSignUp->setText(QApplication::translate("StudentManagementClass", "Password:", nullptr));
+        label->setText(QApplication::translate("StudentManagementClass", "Role:", nullptr));
+        RoleFieldSignUp->setItemText(0, QApplication::translate("StudentManagementClass", "Student", nullptr));
+        RoleFieldSignUp->setItemText(1, QApplication::translate("StudentManagementClass", "Teacher", nullptr));
+        RoleFieldSignUp->setItemText(2, QApplication::translate("StudentManagementClass", "Parent", nullptr));
+
+        ChildsName->setText(QApplication::translate("StudentManagementClass", "Child's e-mail", nullptr));
         SignUpButton->setText(QApplication::translate("StudentManagementClass", "Sign up", nullptr));
         LoginPageButton->setText(QApplication::translate("StudentManagementClass", "Back to Login", nullptr));
         MainMenuPageButtonSettings->setText(QApplication::translate("StudentManagementClass", "Main Menu", nullptr));

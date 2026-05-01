@@ -35,3 +35,7 @@ std::string Teacher::ToString() const {
 	output += "\n-------------------- \n ";
 	return output;
 }
+
+std::string Teacher::GetRole() const {
+	return "Teacher";
+}

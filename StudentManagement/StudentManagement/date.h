@@ -1,5 +1,7 @@
 #pragma once
 #include <sstream>
+#include <string>
+#include <QDate>
 
 struct Date {
 	int day;
@@ -25,6 +27,12 @@ struct Date {
 
 	std::string ToString() const {
 		return std::to_string(day) + "/" + std::to_string(month) + "/" + std::to_string(year);
+	}
+
+	Date(const QDate& _dob) {
+		year = _dob.year();
+		month = _dob.month();
+		day = _dob.day();
 	}
 
 };

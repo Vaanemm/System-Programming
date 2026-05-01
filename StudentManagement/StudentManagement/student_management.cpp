@@ -10,10 +10,14 @@ StudentManagement::StudentManagement(QWidget *parent)
 
 	//LOGIN SCREEN CONNCETIONS
 	connect(ui.LoginButton, &QPushButton::clicked, this, &StudentManagement::handleLogin);
-	connect(ui.SignUpPageButton, &QPushButton::clicked, this, &StudentManagement::goToSignUp);
+	connect(ui.SignUpPageButton, &QPushButton::clicked, this, &StudentManagement::GoToSignUp);
 
 	//SIGN UP CONNECTIONS
-	connect(ui.LoginPageButton, &QPushButton::clicked, this, &StudentManagement::goToLogin);
+	ui.ChildsNameField->hide();
+	ui.ChildsName->hide();
+	connect(ui.LoginPageButton, &QPushButton::clicked, this, &StudentManagement::GoToLogin);
+	connect(ui.SignUpButton, &QPushButton::clicked, this, &StudentManagement::SignUp);
+	connect(ui.RoleFieldSignUp, &QComboBox::currentTextChanged, this, &StudentManagement::ShowChildSignUp);
 
 	//BAR
 	connect(ui.LogoutButtonMainMenu, &QPushButton::clicked, this, &StudentManagement::handleLogout);
@@ -28,7 +32,4 @@ StudentManagement::StudentManagement(QWidget *parent)
 
 	connect(ui.SettingsPageButtonMainMenu, &QPushButton::clicked, this, &StudentManagement::goToSettings);
 	connect(ui.SettingsPageButtonMail, &QPushButton::clicked, this, &StudentManagement::goToSettings);
-
-
-
 }

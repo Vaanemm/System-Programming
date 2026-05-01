@@ -20,7 +20,7 @@ int main(int argc, char *argv[])
 	std::cout << "Hello World" << std::endl;
 	qDebug() << "Hello World";
 
-	Database m_database;
+	Database db;
 
 	Date dob;
 	dob.day = 15;
@@ -51,8 +51,7 @@ int main(int argc, char *argv[])
 	std::vector<std::shared_ptr<Student>> stud_list;
 	stud_list.push_back(stud_ptr);
 	stud_list.push_back(second_stud_ptr);
-	m_database.Write(stud_list);
-	//school.AddStudent(stud);
+	db.Write(stud_list);
 
 	std::cout << stud_ptr->ToString() << std::endl;
 
@@ -61,7 +60,6 @@ int main(int argc, char *argv[])
 	std::cout << stud_ptr->ToString() << std::endl;
 
 	std::shared_ptr<Parent> par_ptr = std::shared_ptr<Parent>(new Parent("parent@example.com", "secret", "parent", "name", dob, (stud_ptr)));
-	//school.AddParent(par);
 
 	std::cout << par_ptr->ToString() << std::endl;
 
@@ -76,7 +74,7 @@ int main(int argc, char *argv[])
 	current_assignment->MakeSubmission(6, "that was shit ngl");
 	std::cout << current_assignment->AssignmentSubmissionToString() << std::endl;
 
-	std::string data = m_database.Read();
+	std::string data = db.Read();
 	std::cout << data << std::endl;
 	w.show();
 	return a.exec();

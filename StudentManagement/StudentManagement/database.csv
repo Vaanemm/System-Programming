@@ -1,3 +1,4 @@
-Surname, Name, E-mail, Password, Date Of Birth
-stud,name,student@example.com,secret,15/6/2000
-stud,name,yo,big,15/6/2000
+Surname, Name, E-mail, Password, Date Of Birth, Role, (Child)
+stud,name,student@example.com,secret,15/6/2000,Student,None
+stud,name,yo,big,15/6/2000,Student,None
+parent,parent,parent@example.com,secret,1/1/2000,Parent,name

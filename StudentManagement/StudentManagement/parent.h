@@ -10,6 +10,9 @@ public:
 	Student* GetStudent() const;
 	std::string ToString() const;
 
+	std::string GetRole() const override;
+	std::string GetChild() const override;
+
 private:
 	std::shared_ptr<Student> m_student;
 };

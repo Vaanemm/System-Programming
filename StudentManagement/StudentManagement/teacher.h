@@ -11,6 +11,8 @@ public:
 	const std::vector<Subject*>& GetSubjects() const;
 	std::string ToString() const;
 
+	std::string GetRole() const override;
+
 private:
 	std::vector<Subject*> m_subjects;
 };

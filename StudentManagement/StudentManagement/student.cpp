@@ -11,6 +11,10 @@ const std::vector<std::shared_ptr<Subject>>& Student::GetSubjects() const {
 	return m_subjects;
 }
 
+std::string Student::GetRole() const {
+	return "Student";
+}
+
 void Student::AddSubject(std::shared_ptr<Subject> subject) {
 	m_subjects.push_back(subject);
 }

@@ -3,6 +3,7 @@
 #include <fstream>
 #include <sstream>
 #include <vector>
+#include "parent.h"
 
 std::string Database::Read() {
 
@@ -28,16 +29,16 @@ void Database::Write(const std::string& content) {
 void Database::Write(const std::vector<std::shared_ptr<Student>>& stud_list) { //overloading
 	std::ofstream file("database.csv");
 	if (file.is_open()) {
-		file << "Surname, Name, E-mail, Password, Date Of Birth\n";
+		file << "Surname, Name, E-mail, Password, Date Of Birth, Role, (Child)\n";
 		// we add const & in the for loop so the shared pointers doesnt increment its ammount of pointings
-		for (const auto& student : stud_list) {
-			file << student->PrepareForDatabase();
+		for (const auto& user : stud_list) {
+			file << user->PrepareForDatabase();
 		}
 	}
 	file.close();
 }
 
-std::shared_ptr<User> Database::FindUser(const std::string _email, const std::string _password) {
+std::shared_ptr<User> Database::FindUser(const std::string _email, const std::string _password, const bool _for_login) {
 	std::ifstream file("database.csv");
 	std::string line;
 
@@ -49,20 +50,58 @@ std::shared_ptr<User> Database::FindUser(const std::string _email, const std::st
 
 	while (std::getline(file, line)) {
 		std::stringstream ss(line); //this splits the line with commas
-		std::string surname, name, email, password, dob_str;
+		std::string surname, name, email, password, dob_str, role, child;
 
 
 		std::getline(ss, surname, ',');
 		std::getline(ss, name, ',');
 		std::getline(ss, email, ',');
 		std::getline(ss, password, ',');
-		std::getline(ss, dob_str); //it will read until the end of the line
+		std::getline(ss, dob_str, ','); //it will read until the end of the line
+		std::getline(ss, role, ',');
+		std::getline(ss, child);
+		Date dob(dob_str);
 
-		if (email == _email && password == _password) {
-			Date dob(dob_str);
-			std::shared_ptr<User> user_ptr = std::shared_ptr<User>(new User(email, password, name, surname, dob));
-			return user_ptr;
+		if (_for_login == true) {
+			if (email == _email && password == _password) {
+				if (role == "Student") {
+					std::shared_ptr<Student> stud_ptr = std::shared_ptr<Student>(new Student(email, password, name, surname, dob));
+					return stud_ptr;
+				}
+				else if (role == "Teacher") {
+					std::shared_ptr<Teacher> teach_ptr = std::shared_ptr<Teacher>(new Teacher(email, password, name, surname, dob));
+					return teach_ptr;
+				}
+				else if (role == "Parent") {
+					std::shared_ptr<Parent> par_ptr = std::shared_ptr<Parent>(new Parent(email, password, name, surname, dob, nullptr));
+					return par_ptr;
+				}
+				else {
+					return std::make_shared<User>(email, password, name, surname, dob);
+				}
+			}
 		}
+		else {
+			if (email == _email) {
+				if (role == "Student") {
+					std::shared_ptr<Student> stud_ptr = std::shared_ptr<Student>(new Student(email, password, name, surname, dob));
+					return stud_ptr;
+				}
+				else if (role == "Teacher") {
+					std::shared_ptr<Teacher> teach_ptr = std::shared_ptr<Teacher>(new Teacher(email, password, name, surname, dob));
+					return teach_ptr;
+				}
+				else if (role == "Parent") {
+					std::shared_ptr<Parent> par_ptr = std::shared_ptr<Parent>(new Parent(email, password, name, surname, dob, nullptr));
+					return par_ptr;
+				}
+				else {
+					return std::make_shared<User>(email, password, name, surname, dob);
+				}
+			}
+		}
+
+		
 	}
 
 	return nullptr; //no match
@@ -81,4 +120,16 @@ void Database::SendEmail(const Mail& mail) {
 		file_stream << new_email;
 	}
 	return;
+}
+
+void Database::AddUser(const std::shared_ptr<User>& user) {
+	std::ofstream file("database.csv", std::ios::app);
+
+	if (file.is_open()) {
+		file << user->PrepareForDatabase();
+		file.close();
+	}
+	else {
+		std::cerr << "Error: Could not open database to add student." << std::endl;
+	}
 }

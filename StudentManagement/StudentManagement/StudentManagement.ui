@@ -227,6 +227,42 @@
            </widget>
           </item>
           <item>
+           <widget class="QLabel" name="label">
+            <property name="text">
+             <string>Role:</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QComboBox" name="RoleFieldSignUp">
+            <item>
+             <property name="text">
+              <string>Student</string>
+             </property>
+            </item>
+            <item>
+             <property name="text">
+              <string>Teacher</string>
+             </property>
+            </item>
+            <item>
+             <property name="text">
+              <string>Parent</string>
+             </property>
+            </item>
+           </widget>
+          </item>
+          <item>
+           <widget class="QLabel" name="ChildsName">
+            <property name="text">
+             <string>Child's e-mail</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QLineEdit" name="ChildsNameField"/>
+          </item>
+          <item>
            <widget class="QPushButton" name="SignUpButton">
             <property name="text">
              <string>Sign up</string>
@@ -810,6 +846,9 @@
    </layout>
   </widget>
  </widget>
- <resources/>
+ <layoutdefault spacing="6" margin="11"/>
+ <resources>
+  <include location="SystemProgrammingv2.qrc"/>
+ </resources>
  <connections/>
 </ui>

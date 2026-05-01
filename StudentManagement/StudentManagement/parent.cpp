@@ -22,3 +22,11 @@ std::string Parent::ToString() const {
 	output += "\n -------------------- \n";
 	return output;
 }
+
+std::string Parent::GetRole() const {
+	return "Parent";
+}
+
+std::string Parent::GetChild() const {
+	return m_student->GetName();
+}

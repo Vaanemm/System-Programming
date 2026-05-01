@@ -36,6 +36,14 @@ std::string User::GetDobString() const {
 	return m_dob.ToString();
 }
 
+std::string User::GetRole() const {
+	return "User";
+}
+
+std::string User::GetChild() const {
+	return "None";
+}
+
 std::string User::ToString() const {
 	std::string output;
 	output = "User information: \n";
@@ -51,7 +59,9 @@ std::string User::PrepareForDatabase() const {
 	database_line += GetSurname() + ",";
 	database_line += GetEmail() + ",";
 	database_line += GetPassword() + ",";
-	database_line += GetDobString() + "\n";
+	database_line += GetDobString() + ",";
+	database_line += GetRole() + ",";
+	database_line += GetChild() + '\n';
 	return database_line;
 }
 

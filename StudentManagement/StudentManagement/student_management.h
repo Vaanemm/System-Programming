@@ -15,10 +15,12 @@ public:
 private slots:
 	//LOGIN
 	void handleLogin();
-	void goToSignUp();
+	void GoToSignUp();
 
 	//SIGN UP 
-	void goToLogin();
+	void GoToLogin();
+	void SignUp();
+	void ShowChildSignUp();
 
 	//BAR 
 	void handleLogout();

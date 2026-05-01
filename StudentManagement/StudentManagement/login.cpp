@@ -6,7 +6,7 @@ void StudentManagement::handleLogin() {
 	QString email = ui.UserNameField->text();
 	QString pass = ui.PasswordField->text();
 
-	std::shared_ptr<User> LoggedIn = Database::FindUser(email.toStdString(), pass.toStdString());
+	std::shared_ptr<User> LoggedIn = Database::FindUser(email.toStdString(), pass.toStdString(), true);
 
 	if (LoggedIn != nullptr) {
 		ui.stackedWidget->setCurrentWidget(ui.MainMenuPage);
@@ -17,6 +17,6 @@ void StudentManagement::handleLogin() {
 	}
 }
 
-void StudentManagement::goToSignUp() {
+void StudentManagement::GoToSignUp() {
 	ui.stackedWidget->setCurrentWidget(ui.SignUpPage);
 }
