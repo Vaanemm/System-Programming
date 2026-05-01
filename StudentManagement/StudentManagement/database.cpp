@@ -5,6 +5,7 @@
 #include <vector>
 
 std::string Database::Read() {
+
 	std::ifstream file("database.csv");
 	if (!file.is_open()) return "nothing yet";
 
@@ -65,4 +66,17 @@ std::shared_ptr<User> Database::FindUser(const std::string _email, const std::st
 	}
 
 	return nullptr; //no match
+//what is the naming convention for functions that are not in a class??
+void send_email(const Mail& mail) {
+	std::ofstream file_stream;
+	file_stream.open("mails.csv", std::ios::app);
+	if (file_stream.is_open()) {
+		std::string new_email;
+		new_email = mail.GetSender() + ",";
+		new_email += mail.GetReceiver() + ",";
+		new_email += mail.GetSubject() + ",";
+		new_email += mail.GetText() + "\n";
+		file_stream << new_email;
+	}
+	return;
 }

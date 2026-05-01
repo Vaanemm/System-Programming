@@ -8,6 +8,7 @@
 #include "parent.h"
 #include "assignment.h"
 #include "database.h"
+#include "mail.h"
 
 
 
@@ -76,6 +77,10 @@ int main(int argc, char *argv[])
 
 	std::string data = m_database.Read();
 	std::cout << data << std::endl;
+
+	//test for emails
+	Mail mail("alice@gmail.com", "bob@gmail.com", "Meeting", "Are you free tomorrow?");
+	send_email(mail);
 	w.show();
 	return a.exec();
 
