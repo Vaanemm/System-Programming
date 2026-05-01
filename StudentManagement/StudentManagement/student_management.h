@@ -20,13 +20,12 @@ private slots:
 	//SIGN UP 
 	void goToLogin();
 
-
-	//MAIN MENU 
+	//BAR 
 	void handleLogout();
+	void goToMainMenu();
+	void goToSettings();
+	void goToMail();
 
-	//MAIL CONNECTIONS
-
-	//SETTINGS CONNECTIONS
 
 private:
 	Ui::StudentManagementClass ui;

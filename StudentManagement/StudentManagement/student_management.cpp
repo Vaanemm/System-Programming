@@ -15,10 +15,20 @@ StudentManagement::StudentManagement(QWidget *parent)
 	//SIGN UP CONNECTIONS
 	connect(ui.LoginPageButton, &QPushButton::clicked, this, &StudentManagement::goToLogin);
 
-	//MAIN MENU CONNECTIONS
-	connect(ui.LogoutButton, &QPushButton::clicked, this, &StudentManagement::handleLogout);
+	//BAR
+	connect(ui.LogoutButtonMainMenu, &QPushButton::clicked, this, &StudentManagement::handleLogout);
+	connect(ui.LogoutButtonMail, &QPushButton::clicked, this, &StudentManagement::handleLogout);
+	connect(ui.LogoutButtonSettings, &QPushButton::clicked, this, &StudentManagement::handleLogout);
 
-	//MAIL CONNECTIONS
+	connect(ui.MainMenuPageButtonMail, &QPushButton::clicked, this, &StudentManagement::goToMainMenu);
+	connect(ui.MainMenuPageButtonSettings, &QPushButton::clicked, this, &StudentManagement::goToMainMenu);
 
-	//SETTINGS CONNECTIONS
+	connect(ui.MailPageButtonMainMenu, &QPushButton::clicked, this, &StudentManagement::goToMail);
+	connect(ui.MailPageButtonSettings, &QPushButton::clicked, this, &StudentManagement::goToMail);
+
+	connect(ui.SettingsPageButtonMainMenu, &QPushButton::clicked, this, &StudentManagement::goToSettings);
+	connect(ui.SettingsPageButtonMail, &QPushButton::clicked, this, &StudentManagement::goToSettings);
+
+
+
 }

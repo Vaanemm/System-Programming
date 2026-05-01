@@ -43,7 +43,7 @@
     <ClCompile Include="settings.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="signupcpp.cpp">
+    <ClCompile Include="signup.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

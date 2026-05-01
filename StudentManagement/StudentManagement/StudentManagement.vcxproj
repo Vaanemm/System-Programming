@@ -121,7 +121,7 @@
     <ClCompile Include="mainmenu.cpp" />
     <ClCompile Include="parent.cpp" />
     <ClCompile Include="settings.cpp" />
-    <ClCompile Include="signupcpp.cpp" />
+    <ClCompile Include="signup.cpp" />
     <ClCompile Include="student.cpp" />
     <ClCompile Include="student_management.cpp" />
     <ClCompile Include="subjects.cpp" />

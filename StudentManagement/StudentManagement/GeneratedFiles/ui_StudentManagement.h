@@ -22,6 +22,8 @@
 #include <QtWidgets/QPushButton>
 #include <QtWidgets/QSpacerItem>
 #include <QtWidgets/QStackedWidget>
+#include <QtWidgets/QTabWidget>
+#include <QtWidgets/QTextEdit>
 #include <QtWidgets/QTreeWidget>
 #include <QtWidgets/QVBoxLayout>
 #include <QtWidgets/QWidget>
@@ -67,15 +69,64 @@ public:
     QSpacerItem *verticalSpacer_3;
     QSpacerItem *horizontalSpacer_4;
     QWidget *SettingsPage;
+    QVBoxLayout *verticalLayout_SettingsPage;
+    QFrame *navigationBarSettings;
+    QHBoxLayout *horizontalLayout_navSettings;
+    QPushButton *MainMenuPageButtonSettings;
+    QPushButton *MailPageButtonSettings;
+    QPushButton *SettingsPageButtonSettings;
+    QPushButton *LogoutButtonSettings;
+    QHBoxLayout *horizontalLayout_2;
+    QSpacerItem *horizontalSpacer_6;
+    QVBoxLayout *verticalLayout_6;
+    QSpacerItem *verticalSpacer_6;
+    QLabel *SettingsTitle;
+    QLabel *SurnameTextSettings;
+    QLineEdit *SurnameFieldSettings;
+    QLabel *NameTextSettings;
+    QLineEdit *NameFieldSettings;
+    QLabel *EmailTextSettings;
+    QLineEdit *EmailFieldSettings;
+    QLabel *DobTextSettings;
+    QDateEdit *DobFieldSettings;
+    QLabel *PasswordTextSettings;
+    QLineEdit *PasswordFieldSettings;
+    QPushButton *SaveSettingsButton;
+    QSpacerItem *verticalSpacer_5;
+    QSpacerItem *horizontalSpacer_7;
     QWidget *MailPage;
+    QVBoxLayout *verticalLayout_MailPage;
+    QFrame *frame;
+    QHBoxLayout *horizontalLayout_navMail;
+    QPushButton *MainMenuPageButtonMail;
+    QPushButton *MailPageButtonMail;
+    QPushButton *SettingsPageButtonMail;
+    QPushButton *LogoutButtonMail;
+    QTabWidget *tabWidget;
+    QWidget *widget;
+    QHBoxLayout *horizontalLayout_Inbox;
+    QListWidget *MailInbox;
+    QTextEdit *MailInboxInhoud;
+    QWidget *widget_2;
+    QHBoxLayout *horizontalLayout_Sent;
+    QListWidget *MailSent;
+    QTextEdit *MailSentInhoud;
+    QWidget *widget_3;
+    QVBoxLayout *verticalLayout_NewMail;
+    QLineEdit *MailTo;
+    QLineEdit *MailSubject;
+    QTextEdit *MailBody;
+    QHBoxLayout *horizontalLayout_5;
+    QSpacerItem *horizontalSpacer_5;
+    QPushButton *SendMailButton;
     QWidget *MainMenuPage;
     QVBoxLayout *verticalLayout_MainMenu;
-    QFrame *navigationBar;
+    QFrame *NavigationBarFrame;
     QHBoxLayout *horizontalLayout_nav;
-    QPushButton *MainMenuPageButton;
-    QPushButton *MailPageButton;
-    QPushButton *SettingsPageButton;
-    QPushButton *LogoutButton;
+    QPushButton *MainMenuPageButtonMainMenu;
+    QPushButton *MailPageButtonMainMenu;
+    QPushButton *SettingsPageButtonMainMenu;
+    QPushButton *LogoutButtonMainMenu;
     QHBoxLayout *horizontalLayout;
     QVBoxLayout *verticalLayout_3;
     QLabel *EnrollmentText;
@@ -248,45 +299,279 @@ public:
         stackedWidget->addWidget(SignUpPage);
         SettingsPage = new QWidget();
         SettingsPage->setObjectName(QString::fromUtf8("SettingsPage"));
+        verticalLayout_SettingsPage = new QVBoxLayout(SettingsPage);
+        verticalLayout_SettingsPage->setObjectName(QString::fromUtf8("verticalLayout_SettingsPage"));
+        navigationBarSettings = new QFrame(SettingsPage);
+        navigationBarSettings->setObjectName(QString::fromUtf8("navigationBarSettings"));
+        navigationBarSettings->setMinimumSize(QSize(0, 60));
+        navigationBarSettings->setMaximumSize(QSize(16777215, 60));
+        horizontalLayout_navSettings = new QHBoxLayout(navigationBarSettings);
+        horizontalLayout_navSettings->setSpacing(15);
+        horizontalLayout_navSettings->setObjectName(QString::fromUtf8("horizontalLayout_navSettings"));
+        horizontalLayout_navSettings->setContentsMargins(20, 10, 20, 10);
+        MainMenuPageButtonSettings = new QPushButton(navigationBarSettings);
+        MainMenuPageButtonSettings->setObjectName(QString::fromUtf8("MainMenuPageButtonSettings"));
+
+        horizontalLayout_navSettings->addWidget(MainMenuPageButtonSettings);
+
+        MailPageButtonSettings = new QPushButton(navigationBarSettings);
+        MailPageButtonSettings->setObjectName(QString::fromUtf8("MailPageButtonSettings"));
+
+        horizontalLayout_navSettings->addWidget(MailPageButtonSettings);
+
+        SettingsPageButtonSettings = new QPushButton(navigationBarSettings);
+        SettingsPageButtonSettings->setObjectName(QString::fromUtf8("SettingsPageButtonSettings"));
+
+        horizontalLayout_navSettings->addWidget(SettingsPageButtonSettings);
+
+        LogoutButtonSettings = new QPushButton(navigationBarSettings);
+        LogoutButtonSettings->setObjectName(QString::fromUtf8("LogoutButtonSettings"));
+
+        horizontalLayout_navSettings->addWidget(LogoutButtonSettings);
+
+
+        verticalLayout_SettingsPage->addWidget(navigationBarSettings);
+
+        horizontalLayout_2 = new QHBoxLayout();
+        horizontalLayout_2->setObjectName(QString::fromUtf8("horizontalLayout_2"));
+        horizontalSpacer_6 = new QSpacerItem(0, 0, QSizePolicy::Expanding, QSizePolicy::Minimum);
+
+        horizontalLayout_2->addItem(horizontalSpacer_6);
+
+        verticalLayout_6 = new QVBoxLayout();
+        verticalLayout_6->setObjectName(QString::fromUtf8("verticalLayout_6"));
+        verticalLayout_6->setSizeConstraint(QLayout::SetFixedSize);
+        verticalSpacer_6 = new QSpacerItem(0, 0, QSizePolicy::Minimum, QSizePolicy::Expanding);
+
+        verticalLayout_6->addItem(verticalSpacer_6);
+
+        SettingsTitle = new QLabel(SettingsPage);
+        SettingsTitle->setObjectName(QString::fromUtf8("SettingsTitle"));
+        QFont font;
+        font.setPointSize(12);
+        font.setBold(true);
+        font.setWeight(75);
+        SettingsTitle->setFont(font);
+        SettingsTitle->setAlignment(Qt::AlignCenter);
+
+        verticalLayout_6->addWidget(SettingsTitle);
+
+        SurnameTextSettings = new QLabel(SettingsPage);
+        SurnameTextSettings->setObjectName(QString::fromUtf8("SurnameTextSettings"));
+        SurnameTextSettings->setMinimumSize(QSize(400, 0));
+
+        verticalLayout_6->addWidget(SurnameTextSettings);
+
+        SurnameFieldSettings = new QLineEdit(SettingsPage);
+        SurnameFieldSettings->setObjectName(QString::fromUtf8("SurnameFieldSettings"));
+
+        verticalLayout_6->addWidget(SurnameFieldSettings);
+
+        NameTextSettings = new QLabel(SettingsPage);
+        NameTextSettings->setObjectName(QString::fromUtf8("NameTextSettings"));
+
+        verticalLayout_6->addWidget(NameTextSettings);
+
+        NameFieldSettings = new QLineEdit(SettingsPage);
+        NameFieldSettings->setObjectName(QString::fromUtf8("NameFieldSettings"));
+
+        verticalLayout_6->addWidget(NameFieldSettings);
+
+        EmailTextSettings = new QLabel(SettingsPage);
+        EmailTextSettings->setObjectName(QString::fromUtf8("EmailTextSettings"));
+
+        verticalLayout_6->addWidget(EmailTextSettings);
+
+        EmailFieldSettings = new QLineEdit(SettingsPage);
+        EmailFieldSettings->setObjectName(QString::fromUtf8("EmailFieldSettings"));
+
+        verticalLayout_6->addWidget(EmailFieldSettings);
+
+        DobTextSettings = new QLabel(SettingsPage);
+        DobTextSettings->setObjectName(QString::fromUtf8("DobTextSettings"));
+
+        verticalLayout_6->addWidget(DobTextSettings);
+
+        DobFieldSettings = new QDateEdit(SettingsPage);
+        DobFieldSettings->setObjectName(QString::fromUtf8("DobFieldSettings"));
+
+        verticalLayout_6->addWidget(DobFieldSettings);
+
+        PasswordTextSettings = new QLabel(SettingsPage);
+        PasswordTextSettings->setObjectName(QString::fromUtf8("PasswordTextSettings"));
+
+        verticalLayout_6->addWidget(PasswordTextSettings);
+
+        PasswordFieldSettings = new QLineEdit(SettingsPage);
+        PasswordFieldSettings->setObjectName(QString::fromUtf8("PasswordFieldSettings"));
+        PasswordFieldSettings->setEchoMode(QLineEdit::Password);
+
+        verticalLayout_6->addWidget(PasswordFieldSettings);
+
+        SaveSettingsButton = new QPushButton(SettingsPage);
+        SaveSettingsButton->setObjectName(QString::fromUtf8("SaveSettingsButton"));
+
+        verticalLayout_6->addWidget(SaveSettingsButton);
+
+        verticalSpacer_5 = new QSpacerItem(0, 0, QSizePolicy::Minimum, QSizePolicy::Expanding);
+
+        verticalLayout_6->addItem(verticalSpacer_5);
+
+
+        horizontalLayout_2->addLayout(verticalLayout_6);
+
+        horizontalSpacer_7 = new QSpacerItem(0, 0, QSizePolicy::Expanding, QSizePolicy::Minimum);
+
+        horizontalLayout_2->addItem(horizontalSpacer_7);
+
+
+        verticalLayout_SettingsPage->addLayout(horizontalLayout_2);
+
         stackedWidget->addWidget(SettingsPage);
         MailPage = new QWidget();
         MailPage->setObjectName(QString::fromUtf8("MailPage"));
+        verticalLayout_MailPage = new QVBoxLayout(MailPage);
+        verticalLayout_MailPage->setObjectName(QString::fromUtf8("verticalLayout_MailPage"));
+        frame = new QFrame(MailPage);
+        frame->setObjectName(QString::fromUtf8("frame"));
+        frame->setMinimumSize(QSize(0, 60));
+        frame->setMaximumSize(QSize(16777215, 60));
+        horizontalLayout_navMail = new QHBoxLayout(frame);
+        horizontalLayout_navMail->setObjectName(QString::fromUtf8("horizontalLayout_navMail"));
+        MainMenuPageButtonMail = new QPushButton(frame);
+        MainMenuPageButtonMail->setObjectName(QString::fromUtf8("MainMenuPageButtonMail"));
+        MainMenuPageButtonMail->setMinimumSize(QSize(50, 50));
+
+        horizontalLayout_navMail->addWidget(MainMenuPageButtonMail);
+
+        MailPageButtonMail = new QPushButton(frame);
+        MailPageButtonMail->setObjectName(QString::fromUtf8("MailPageButtonMail"));
+        MailPageButtonMail->setMinimumSize(QSize(50, 50));
+
+        horizontalLayout_navMail->addWidget(MailPageButtonMail);
+
+        SettingsPageButtonMail = new QPushButton(frame);
+        SettingsPageButtonMail->setObjectName(QString::fromUtf8("SettingsPageButtonMail"));
+        SettingsPageButtonMail->setMinimumSize(QSize(50, 50));
+
+        horizontalLayout_navMail->addWidget(SettingsPageButtonMail);
+
+        LogoutButtonMail = new QPushButton(frame);
+        LogoutButtonMail->setObjectName(QString::fromUtf8("LogoutButtonMail"));
+        LogoutButtonMail->setMinimumSize(QSize(50, 50));
+
+        horizontalLayout_navMail->addWidget(LogoutButtonMail);
+
+
+        verticalLayout_MailPage->addWidget(frame);
+
+        tabWidget = new QTabWidget(MailPage);
+        tabWidget->setObjectName(QString::fromUtf8("tabWidget"));
+        widget = new QWidget();
+        widget->setObjectName(QString::fromUtf8("widget"));
+        horizontalLayout_Inbox = new QHBoxLayout(widget);
+        horizontalLayout_Inbox->setObjectName(QString::fromUtf8("horizontalLayout_Inbox"));
+        MailInbox = new QListWidget(widget);
+        MailInbox->setObjectName(QString::fromUtf8("MailInbox"));
+
+        horizontalLayout_Inbox->addWidget(MailInbox);
+
+        MailInboxInhoud = new QTextEdit(widget);
+        MailInboxInhoud->setObjectName(QString::fromUtf8("MailInboxInhoud"));
+        MailInboxInhoud->setReadOnly(true);
+
+        horizontalLayout_Inbox->addWidget(MailInboxInhoud);
+
+        tabWidget->addTab(widget, QString());
+        widget_2 = new QWidget();
+        widget_2->setObjectName(QString::fromUtf8("widget_2"));
+        horizontalLayout_Sent = new QHBoxLayout(widget_2);
+        horizontalLayout_Sent->setObjectName(QString::fromUtf8("horizontalLayout_Sent"));
+        MailSent = new QListWidget(widget_2);
+        MailSent->setObjectName(QString::fromUtf8("MailSent"));
+
+        horizontalLayout_Sent->addWidget(MailSent);
+
+        MailSentInhoud = new QTextEdit(widget_2);
+        MailSentInhoud->setObjectName(QString::fromUtf8("MailSentInhoud"));
+        MailSentInhoud->setReadOnly(true);
+
+        horizontalLayout_Sent->addWidget(MailSentInhoud);
+
+        tabWidget->addTab(widget_2, QString());
+        widget_3 = new QWidget();
+        widget_3->setObjectName(QString::fromUtf8("widget_3"));
+        verticalLayout_NewMail = new QVBoxLayout(widget_3);
+        verticalLayout_NewMail->setObjectName(QString::fromUtf8("verticalLayout_NewMail"));
+        MailTo = new QLineEdit(widget_3);
+        MailTo->setObjectName(QString::fromUtf8("MailTo"));
+
+        verticalLayout_NewMail->addWidget(MailTo);
+
+        MailSubject = new QLineEdit(widget_3);
+        MailSubject->setObjectName(QString::fromUtf8("MailSubject"));
+
+        verticalLayout_NewMail->addWidget(MailSubject);
+
+        MailBody = new QTextEdit(widget_3);
+        MailBody->setObjectName(QString::fromUtf8("MailBody"));
+
+        verticalLayout_NewMail->addWidget(MailBody);
+
+        horizontalLayout_5 = new QHBoxLayout();
+        horizontalLayout_5->setObjectName(QString::fromUtf8("horizontalLayout_5"));
+        horizontalSpacer_5 = new QSpacerItem(0, 0, QSizePolicy::Expanding, QSizePolicy::Minimum);
+
+        horizontalLayout_5->addItem(horizontalSpacer_5);
+
+        SendMailButton = new QPushButton(widget_3);
+        SendMailButton->setObjectName(QString::fromUtf8("SendMailButton"));
+
+        horizontalLayout_5->addWidget(SendMailButton);
+
+
+        verticalLayout_NewMail->addLayout(horizontalLayout_5);
+
+        tabWidget->addTab(widget_3, QString());
+
+        verticalLayout_MailPage->addWidget(tabWidget);
+
         stackedWidget->addWidget(MailPage);
         MainMenuPage = new QWidget();
         MainMenuPage->setObjectName(QString::fromUtf8("MainMenuPage"));
         verticalLayout_MainMenu = new QVBoxLayout(MainMenuPage);
         verticalLayout_MainMenu->setObjectName(QString::fromUtf8("verticalLayout_MainMenu"));
-        navigationBar = new QFrame(MainMenuPage);
-        navigationBar->setObjectName(QString::fromUtf8("navigationBar"));
-        navigationBar->setMinimumSize(QSize(0, 60));
-        navigationBar->setMaximumSize(QSize(16777215, 60));
-        navigationBar->setFrameShape(QFrame::StyledPanel);
-        navigationBar->setFrameShadow(QFrame::Raised);
-        horizontalLayout_nav = new QHBoxLayout(navigationBar);
+        NavigationBarFrame = new QFrame(MainMenuPage);
+        NavigationBarFrame->setObjectName(QString::fromUtf8("NavigationBarFrame"));
+        NavigationBarFrame->setMinimumSize(QSize(0, 60));
+        NavigationBarFrame->setMaximumSize(QSize(16777215, 60));
+        NavigationBarFrame->setFrameShape(QFrame::StyledPanel);
+        NavigationBarFrame->setFrameShadow(QFrame::Raised);
+        horizontalLayout_nav = new QHBoxLayout(NavigationBarFrame);
         horizontalLayout_nav->setObjectName(QString::fromUtf8("horizontalLayout_nav"));
         horizontalLayout_nav->setContentsMargins(10, 0, 10, 0);
-        MainMenuPageButton = new QPushButton(navigationBar);
-        MainMenuPageButton->setObjectName(QString::fromUtf8("MainMenuPageButton"));
+        MainMenuPageButtonMainMenu = new QPushButton(NavigationBarFrame);
+        MainMenuPageButtonMainMenu->setObjectName(QString::fromUtf8("MainMenuPageButtonMainMenu"));
 
-        horizontalLayout_nav->addWidget(MainMenuPageButton);
+        horizontalLayout_nav->addWidget(MainMenuPageButtonMainMenu);
 
-        MailPageButton = new QPushButton(navigationBar);
-        MailPageButton->setObjectName(QString::fromUtf8("MailPageButton"));
+        MailPageButtonMainMenu = new QPushButton(NavigationBarFrame);
+        MailPageButtonMainMenu->setObjectName(QString::fromUtf8("MailPageButtonMainMenu"));
 
-        horizontalLayout_nav->addWidget(MailPageButton);
+        horizontalLayout_nav->addWidget(MailPageButtonMainMenu);
 
-        SettingsPageButton = new QPushButton(navigationBar);
-        SettingsPageButton->setObjectName(QString::fromUtf8("SettingsPageButton"));
+        SettingsPageButtonMainMenu = new QPushButton(NavigationBarFrame);
+        SettingsPageButtonMainMenu->setObjectName(QString::fromUtf8("SettingsPageButtonMainMenu"));
 
-        horizontalLayout_nav->addWidget(SettingsPageButton);
+        horizontalLayout_nav->addWidget(SettingsPageButtonMainMenu);
 
-        LogoutButton = new QPushButton(navigationBar);
-        LogoutButton->setObjectName(QString::fromUtf8("LogoutButton"));
+        LogoutButtonMainMenu = new QPushButton(NavigationBarFrame);
+        LogoutButtonMainMenu->setObjectName(QString::fromUtf8("LogoutButtonMainMenu"));
 
-        horizontalLayout_nav->addWidget(LogoutButton);
+        horizontalLayout_nav->addWidget(LogoutButtonMainMenu);
 
 
-        verticalLayout_MainMenu->addWidget(navigationBar);
+        verticalLayout_MainMenu->addWidget(NavigationBarFrame);
 
         horizontalLayout = new QHBoxLayout();
         horizontalLayout->setObjectName(QString::fromUtf8("horizontalLayout"));
@@ -294,10 +579,10 @@ public:
         verticalLayout_3->setObjectName(QString::fromUtf8("verticalLayout_3"));
         EnrollmentText = new QLabel(MainMenuPage);
         EnrollmentText->setObjectName(QString::fromUtf8("EnrollmentText"));
-        QFont font;
-        font.setBold(true);
-        font.setWeight(75);
-        EnrollmentText->setFont(font);
+        QFont font1;
+        font1.setBold(true);
+        font1.setWeight(75);
+        EnrollmentText->setFont(font1);
         EnrollmentText->setAlignment(Qt::AlignCenter);
 
         verticalLayout_3->addWidget(EnrollmentText);
@@ -314,12 +599,15 @@ public:
         verticalLayout_4->setObjectName(QString::fromUtf8("verticalLayout_4"));
         AssignmentsText = new QLabel(MainMenuPage);
         AssignmentsText->setObjectName(QString::fromUtf8("AssignmentsText"));
-        AssignmentsText->setFont(font);
+        AssignmentsText->setFont(font1);
         AssignmentsText->setAlignment(Qt::AlignCenter);
 
         verticalLayout_4->addWidget(AssignmentsText);
 
         AssignmentsTreeWidget = new QTreeWidget(MainMenuPage);
+        QTreeWidgetItem *__qtreewidgetitem = new QTreeWidgetItem();
+        __qtreewidgetitem->setText(0, QString::fromUtf8("1"));
+        AssignmentsTreeWidget->setHeaderItem(__qtreewidgetitem);
         AssignmentsTreeWidget->setObjectName(QString::fromUtf8("AssignmentsTreeWidget"));
 
         verticalLayout_4->addWidget(AssignmentsTreeWidget);
@@ -331,12 +619,15 @@ public:
         verticalLayout_5->setObjectName(QString::fromUtf8("verticalLayout_5"));
         SubmissionsText = new QLabel(MainMenuPage);
         SubmissionsText->setObjectName(QString::fromUtf8("SubmissionsText"));
-        SubmissionsText->setFont(font);
+        SubmissionsText->setFont(font1);
         SubmissionsText->setAlignment(Qt::AlignCenter);
 
         verticalLayout_5->addWidget(SubmissionsText);
 
         SubmissionsTreeWidget = new QTreeWidget(MainMenuPage);
+        QTreeWidgetItem *__qtreewidgetitem1 = new QTreeWidgetItem();
+        __qtreewidgetitem1->setText(0, QString::fromUtf8("1"));
+        SubmissionsTreeWidget->setHeaderItem(__qtreewidgetitem1);
         SubmissionsTreeWidget->setObjectName(QString::fromUtf8("SubmissionsTreeWidget"));
 
         verticalLayout_5->addWidget(SubmissionsTreeWidget);
@@ -355,6 +646,9 @@ public:
 
         retranslateUi(StudentManagementClass);
 
+        tabWidget->setCurrentIndex(0);
+
+
         QMetaObject::connectSlotsByName(StudentManagementClass);
     } // setupUi
 
@@ -372,10 +666,32 @@ public:
         PasswordTextSignUp->setText(QApplication::translate("StudentManagementClass", "Password:", nullptr));
         SignUpButton->setText(QApplication::translate("StudentManagementClass", "Sign up", nullptr));
         LoginPageButton->setText(QApplication::translate("StudentManagementClass", "Back to Login", nullptr));
-        MainMenuPageButton->setText(QApplication::translate("StudentManagementClass", "Main Menu", nullptr));
-        MailPageButton->setText(QApplication::translate("StudentManagementClass", "Mails", nullptr));
-        SettingsPageButton->setText(QApplication::translate("StudentManagementClass", "Settings", nullptr));
-        LogoutButton->setText(QApplication::translate("StudentManagementClass", "Log out", nullptr));
+        MainMenuPageButtonSettings->setText(QApplication::translate("StudentManagementClass", "Main Menu", nullptr));
+        MailPageButtonSettings->setText(QApplication::translate("StudentManagementClass", "Mails", nullptr));
+        SettingsPageButtonSettings->setText(QApplication::translate("StudentManagementClass", "Settings", nullptr));
+        LogoutButtonSettings->setText(QApplication::translate("StudentManagementClass", "Log out", nullptr));
+        SettingsTitle->setText(QApplication::translate("StudentManagementClass", "Account Settings", nullptr));
+        SurnameTextSettings->setText(QApplication::translate("StudentManagementClass", "Surname:", nullptr));
+        NameTextSettings->setText(QApplication::translate("StudentManagementClass", "Name:", nullptr));
+        EmailTextSettings->setText(QApplication::translate("StudentManagementClass", "E-mail (Login):", nullptr));
+        DobTextSettings->setText(QApplication::translate("StudentManagementClass", "Date of birth:", nullptr));
+        PasswordTextSettings->setText(QApplication::translate("StudentManagementClass", "Change Password:", nullptr));
+        SaveSettingsButton->setText(QApplication::translate("StudentManagementClass", "Save changes", nullptr));
+        MainMenuPageButtonMail->setText(QApplication::translate("StudentManagementClass", "Main Menu", nullptr));
+        MailPageButtonMail->setText(QApplication::translate("StudentManagementClass", "Mails", nullptr));
+        SettingsPageButtonMail->setText(QApplication::translate("StudentManagementClass", "Settings", nullptr));
+        LogoutButtonMail->setText(QApplication::translate("StudentManagementClass", "Log out", nullptr));
+        tabWidget->setTabText(tabWidget->indexOf(widget), QApplication::translate("StudentManagementClass", "Inbox", nullptr));
+        tabWidget->setTabText(tabWidget->indexOf(widget_2), QApplication::translate("StudentManagementClass", "Sent", nullptr));
+        MailTo->setPlaceholderText(QApplication::translate("StudentManagementClass", "To (Email address)...", nullptr));
+        MailSubject->setPlaceholderText(QApplication::translate("StudentManagementClass", "Subject...", nullptr));
+        MailBody->setPlaceholderText(QApplication::translate("StudentManagementClass", "Write your message here...", nullptr));
+        SendMailButton->setText(QApplication::translate("StudentManagementClass", "Send Mail", nullptr));
+        tabWidget->setTabText(tabWidget->indexOf(widget_3), QApplication::translate("StudentManagementClass", "New Mail", nullptr));
+        MainMenuPageButtonMainMenu->setText(QApplication::translate("StudentManagementClass", "Main Menu", nullptr));
+        MailPageButtonMainMenu->setText(QApplication::translate("StudentManagementClass", "Mails", nullptr));
+        SettingsPageButtonMainMenu->setText(QApplication::translate("StudentManagementClass", "Settings", nullptr));
+        LogoutButtonMainMenu->setText(QApplication::translate("StudentManagementClass", "Log out", nullptr));
         EnrollmentText->setText(QApplication::translate("StudentManagementClass", "Enrollment", nullptr));
         AssignmentsText->setText(QApplication::translate("StudentManagementClass", "Assignments", nullptr));
         SubmissionsText->setText(QApplication::translate("StudentManagementClass", "Submission + Grades", nullptr));

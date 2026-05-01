@@ -273,12 +273,389 @@
         </item>
        </layout>
       </widget>
-      <widget class="QWidget" name="SettingsPage"/>
-      <widget class="QWidget" name="MailPage"/>
+      <widget class="QWidget" name="SettingsPage">
+       <layout class="QVBoxLayout" name="verticalLayout_SettingsPage">
+        <item>
+         <widget class="QFrame" name="navigationBarSettings">
+          <property name="minimumSize">
+           <size>
+            <width>0</width>
+            <height>60</height>
+           </size>
+          </property>
+          <property name="maximumSize">
+           <size>
+            <width>16777215</width>
+            <height>60</height>
+           </size>
+          </property>
+          <layout class="QHBoxLayout" name="horizontalLayout_navSettings">
+           <property name="spacing">
+            <number>15</number>
+           </property>
+           <property name="leftMargin">
+            <number>20</number>
+           </property>
+           <property name="topMargin">
+            <number>10</number>
+           </property>
+           <property name="rightMargin">
+            <number>20</number>
+           </property>
+           <property name="bottomMargin">
+            <number>10</number>
+           </property>
+           <item>
+            <widget class="QPushButton" name="MainMenuPageButtonSettings">
+             <property name="text">
+              <string>Main Menu</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QPushButton" name="MailPageButtonSettings">
+             <property name="text">
+              <string>Mails</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QPushButton" name="SettingsPageButtonSettings">
+             <property name="text">
+              <string>Settings</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QPushButton" name="LogoutButtonSettings">
+             <property name="text">
+              <string>Log out</string>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </widget>
+        </item>
+        <item>
+         <layout class="QHBoxLayout" name="horizontalLayout_2">
+          <item>
+           <spacer name="horizontalSpacer_6">
+            <property name="orientation">
+             <enum>Qt::Horizontal</enum>
+            </property>
+            <property name="sizeHint" stdset="0">
+             <size>
+              <width>0</width>
+              <height>0</height>
+             </size>
+            </property>
+           </spacer>
+          </item>
+          <item>
+           <layout class="QVBoxLayout" name="verticalLayout_6">
+            <property name="sizeConstraint">
+             <enum>QLayout::SetFixedSize</enum>
+            </property>
+            <item>
+             <spacer name="verticalSpacer_6">
+              <property name="orientation">
+               <enum>Qt::Vertical</enum>
+              </property>
+              <property name="sizeHint" stdset="0">
+               <size>
+                <width>0</width>
+                <height>0</height>
+               </size>
+              </property>
+             </spacer>
+            </item>
+            <item>
+             <widget class="QLabel" name="SettingsTitle">
+              <property name="font">
+               <font>
+                <pointsize>12</pointsize>
+                <weight>75</weight>
+                <bold>true</bold>
+               </font>
+              </property>
+              <property name="text">
+               <string>Account Settings</string>
+              </property>
+              <property name="alignment">
+               <set>Qt::AlignCenter</set>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QLabel" name="SurnameTextSettings">
+              <property name="minimumSize">
+               <size>
+                <width>400</width>
+                <height>0</height>
+               </size>
+              </property>
+              <property name="text">
+               <string>Surname:</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QLineEdit" name="SurnameFieldSettings"/>
+            </item>
+            <item>
+             <widget class="QLabel" name="NameTextSettings">
+              <property name="text">
+               <string>Name:</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QLineEdit" name="NameFieldSettings"/>
+            </item>
+            <item>
+             <widget class="QLabel" name="EmailTextSettings">
+              <property name="text">
+               <string>E-mail (Login):</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QLineEdit" name="EmailFieldSettings"/>
+            </item>
+            <item>
+             <widget class="QLabel" name="DobTextSettings">
+              <property name="text">
+               <string>Date of birth:</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QDateEdit" name="DobFieldSettings"/>
+            </item>
+            <item>
+             <widget class="QLabel" name="PasswordTextSettings">
+              <property name="text">
+               <string>Change Password:</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QLineEdit" name="PasswordFieldSettings">
+              <property name="echoMode">
+               <enum>QLineEdit::Password</enum>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QPushButton" name="SaveSettingsButton">
+              <property name="text">
+               <string>Save changes</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <spacer name="verticalSpacer_5">
+              <property name="orientation">
+               <enum>Qt::Vertical</enum>
+              </property>
+              <property name="sizeHint" stdset="0">
+               <size>
+                <width>0</width>
+                <height>0</height>
+               </size>
+              </property>
+             </spacer>
+            </item>
+           </layout>
+          </item>
+          <item>
+           <spacer name="horizontalSpacer_7">
+            <property name="orientation">
+             <enum>Qt::Horizontal</enum>
+            </property>
+            <property name="sizeHint" stdset="0">
+             <size>
+              <width>0</width>
+              <height>0</height>
+             </size>
+            </property>
+           </spacer>
+          </item>
+         </layout>
+        </item>
+       </layout>
+      </widget>
+      <widget class="QWidget" name="MailPage">
+       <layout class="QVBoxLayout" name="verticalLayout_MailPage">
+        <item>
+         <widget class="QFrame" name="frame">
+          <property name="minimumSize">
+           <size>
+            <width>0</width>
+            <height>60</height>
+           </size>
+          </property>
+          <property name="maximumSize">
+           <size>
+            <width>16777215</width>
+            <height>60</height>
+           </size>
+          </property>
+          <layout class="QHBoxLayout" name="horizontalLayout_navMail">
+           <item>
+            <widget class="QPushButton" name="MainMenuPageButtonMail">
+             <property name="minimumSize">
+              <size>
+               <width>50</width>
+               <height>50</height>
+              </size>
+             </property>
+             <property name="text">
+              <string>Main Menu</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QPushButton" name="MailPageButtonMail">
+             <property name="minimumSize">
+              <size>
+               <width>50</width>
+               <height>50</height>
+              </size>
+             </property>
+             <property name="text">
+              <string>Mails</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QPushButton" name="SettingsPageButtonMail">
+             <property name="minimumSize">
+              <size>
+               <width>50</width>
+               <height>50</height>
+              </size>
+             </property>
+             <property name="text">
+              <string>Settings</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QPushButton" name="LogoutButtonMail">
+             <property name="minimumSize">
+              <size>
+               <width>50</width>
+               <height>50</height>
+              </size>
+             </property>
+             <property name="text">
+              <string>Log out</string>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </widget>
+        </item>
+        <item>
+         <widget class="QTabWidget" name="tabWidget">
+          <property name="currentIndex">
+           <number>0</number>
+          </property>
+          <widget class="QWidget" name="widget">
+           <attribute name="title">
+            <string>Inbox</string>
+           </attribute>
+           <layout class="QHBoxLayout" name="horizontalLayout_Inbox">
+            <item>
+             <widget class="QListWidget" name="MailInbox"/>
+            </item>
+            <item>
+             <widget class="QTextEdit" name="MailInboxInhoud">
+              <property name="readOnly">
+               <bool>true</bool>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </widget>
+          <widget class="QWidget" name="widget_2">
+           <attribute name="title">
+            <string>Sent</string>
+           </attribute>
+           <layout class="QHBoxLayout" name="horizontalLayout_Sent">
+            <item>
+             <widget class="QListWidget" name="MailSent"/>
+            </item>
+            <item>
+             <widget class="QTextEdit" name="MailSentInhoud">
+              <property name="readOnly">
+               <bool>true</bool>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </widget>
+          <widget class="QWidget" name="widget_3">
+           <attribute name="title">
+            <string>New Mail</string>
+           </attribute>
+           <layout class="QVBoxLayout" name="verticalLayout_NewMail">
+            <item>
+             <widget class="QLineEdit" name="MailTo">
+              <property name="placeholderText">
+               <string>To (Email address)...</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QLineEdit" name="MailSubject">
+              <property name="placeholderText">
+               <string>Subject...</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QTextEdit" name="MailBody">
+              <property name="placeholderText">
+               <string>Write your message here...</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <layout class="QHBoxLayout" name="horizontalLayout_5">
+              <item>
+               <spacer name="horizontalSpacer_5">
+                <property name="orientation">
+                 <enum>Qt::Horizontal</enum>
+                </property>
+                <property name="sizeHint" stdset="0">
+                 <size>
+                  <width>0</width>
+                  <height>0</height>
+                 </size>
+                </property>
+               </spacer>
+              </item>
+              <item>
+               <widget class="QPushButton" name="SendMailButton">
+                <property name="text">
+                 <string>Send Mail</string>
+                </property>
+               </widget>
+              </item>
+             </layout>
+            </item>
+           </layout>
+          </widget>
+         </widget>
+        </item>
+       </layout>
+      </widget>
       <widget class="QWidget" name="MainMenuPage">
        <layout class="QVBoxLayout" name="verticalLayout_MainMenu">
         <item>
-         <widget class="QFrame" name="navigationBar">
+         <widget class="QFrame" name="NavigationBarFrame">
           <property name="minimumSize">
            <size>
             <width>0</width>
@@ -311,28 +688,28 @@
             <number>0</number>
            </property>
            <item>
-            <widget class="QPushButton" name="MainMenuPageButton">
+            <widget class="QPushButton" name="MainMenuPageButtonMainMenu">
              <property name="text">
               <string>Main Menu</string>
              </property>
             </widget>
            </item>
            <item>
-            <widget class="QPushButton" name="MailPageButton">
+            <widget class="QPushButton" name="MailPageButtonMainMenu">
              <property name="text">
               <string>Mails</string>
              </property>
             </widget>
            </item>
            <item>
-            <widget class="QPushButton" name="SettingsPageButton">
+            <widget class="QPushButton" name="SettingsPageButtonMainMenu">
              <property name="text">
               <string>Settings</string>
              </property>
             </widget>
            </item>
            <item>
-            <widget class="QPushButton" name="LogoutButton">
+            <widget class="QPushButton" name="LogoutButtonMainMenu">
              <property name="text">
               <string>Log out</string>
              </property>
@@ -385,7 +762,13 @@
              </widget>
             </item>
             <item>
-             <widget class="QTreeWidget" name="AssignmentsTreeWidget"/>
+             <widget class="QTreeWidget" name="AssignmentsTreeWidget">
+              <column>
+               <property name="text">
+                <string notr="true">1</string>
+               </property>
+              </column>
+             </widget>
             </item>
            </layout>
           </item>
@@ -408,7 +791,13 @@
              </widget>
             </item>
             <item>
-             <widget class="QTreeWidget" name="SubmissionsTreeWidget"/>
+             <widget class="QTreeWidget" name="SubmissionsTreeWidget">
+              <column>
+               <property name="text">
+                <string notr="true">1</string>
+               </property>
+              </column>
+             </widget>
             </item>
            </layout>
           </item>
