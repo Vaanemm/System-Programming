@@ -118,7 +118,10 @@
     <ClCompile Include="login.cpp" />
     <ClCompile Include="mail.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="mainmenu.cpp" />
     <ClCompile Include="parent.cpp" />
+    <ClCompile Include="settings.cpp" />
+    <ClCompile Include="signupcpp.cpp" />
     <ClCompile Include="student.cpp" />
     <ClCompile Include="student_management.cpp" />
     <ClCompile Include="subjects.cpp" />
@@ -127,7 +130,9 @@
     <ClCompile Include="user.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <QtUic Include="StudentManagement.ui" />
+    <QtUic Include="StudentManagement.ui">
+      <SubType>Designer</SubType>
+    </QtUic>
   </ItemGroup>
   <ItemGroup>
     <QtRcc Include="StudentManagement.qrc" />

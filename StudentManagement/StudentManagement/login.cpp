@@ -17,6 +17,6 @@ void StudentManagement::handleLogin() {
 	}
 }
 
-void StudentManagement::goToSignup() {
+void StudentManagement::goToSignUp() {
 	ui.stackedWidget->setCurrentWidget(ui.SignUpPage);
 }

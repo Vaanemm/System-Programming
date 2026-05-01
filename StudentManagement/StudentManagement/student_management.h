@@ -13,8 +13,20 @@ public:
 	StudentManagement(QWidget *parent = Q_NULLPTR);
 
 private slots:
+	//LOGIN
 	void handleLogin();
-	void goToSignup();
+	void goToSignUp();
+
+	//SIGN UP 
+	void goToLogin();
+
+
+	//MAIN MENU 
+	void handleLogout();
+
+	//MAIL CONNECTIONS
+
+	//SETTINGS CONNECTIONS
 
 private:
 	Ui::StudentManagementClass ui;
