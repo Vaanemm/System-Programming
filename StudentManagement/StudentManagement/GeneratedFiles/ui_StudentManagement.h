@@ -11,9 +11,11 @@
 
 #include <QtCore/QVariant>
 #include <QtWidgets/QApplication>
+#include <QtWidgets/QLabel>
 #include <QtWidgets/QLineEdit>
 #include <QtWidgets/QMainWindow>
 #include <QtWidgets/QPushButton>
+#include <QtWidgets/QSpacerItem>
 #include <QtWidgets/QStackedWidget>
 #include <QtWidgets/QVBoxLayout>
 #include <QtWidgets/QWidget>
@@ -25,13 +27,22 @@ class Ui_StudentManagementClass
 public:
     QWidget *centralwidget;
     QVBoxLayout *verticalLayout;
-    QLineEdit *_mail;
-    QLineEdit *_password;
-    QPushButton *btnLogin;
-    QPushButton *btnGoToSignup;
     QStackedWidget *stackedWidget;
-    QWidget *page_login;
-    QWidget *page_dashboard;
+    QWidget *LoginPage;
+    QWidget *verticalLayoutWidget;
+    QVBoxLayout *verticalLayout_2;
+    QSpacerItem *verticalSpacer;
+    QLabel *UserNameText;
+    QLineEdit *UserNameField;
+    QLabel *PasswordText;
+    QLineEdit *PasswordField;
+    QPushButton *LoginButton;
+    QPushButton *SignUpPageButton;
+    QSpacerItem *verticalSpacer_2;
+    QWidget *SignUpPage;
+    QWidget *SettingsPage;
+    QWidget *MailPage;
+    QWidget *MainMenuPage;
 
     void setupUi(QMainWindow *StudentManagementClass)
     {
@@ -42,35 +53,73 @@ public:
         centralwidget->setObjectName(QString::fromUtf8("centralwidget"));
         verticalLayout = new QVBoxLayout(centralwidget);
         verticalLayout->setObjectName(QString::fromUtf8("verticalLayout"));
-        _mail = new QLineEdit(centralwidget);
-        _mail->setObjectName(QString::fromUtf8("_mail"));
-
-        verticalLayout->addWidget(_mail);
-
-        _password = new QLineEdit(centralwidget);
-        _password->setObjectName(QString::fromUtf8("_password"));
-        _password->setEchoMode(QLineEdit::Password);
-
-        verticalLayout->addWidget(_password);
-
-        btnLogin = new QPushButton(centralwidget);
-        btnLogin->setObjectName(QString::fromUtf8("btnLogin"));
-
-        verticalLayout->addWidget(btnLogin);
-
-        btnGoToSignup = new QPushButton(centralwidget);
-        btnGoToSignup->setObjectName(QString::fromUtf8("btnGoToSignup"));
-
-        verticalLayout->addWidget(btnGoToSignup);
-
         stackedWidget = new QStackedWidget(centralwidget);
         stackedWidget->setObjectName(QString::fromUtf8("stackedWidget"));
-        page_login = new QWidget();
-        page_login->setObjectName(QString::fromUtf8("page_login"));
-        stackedWidget->addWidget(page_login);
-        page_dashboard = new QWidget();
-        page_dashboard->setObjectName(QString::fromUtf8("page_dashboard"));
-        stackedWidget->addWidget(page_dashboard);
+        LoginPage = new QWidget();
+        LoginPage->setObjectName(QString::fromUtf8("LoginPage"));
+        verticalLayoutWidget = new QWidget(LoginPage);
+        verticalLayoutWidget->setObjectName(QString::fromUtf8("verticalLayoutWidget"));
+        verticalLayoutWidget->setGeometry(QRect(0, 10, 771, 571));
+        verticalLayout_2 = new QVBoxLayout(verticalLayoutWidget);
+        verticalLayout_2->setObjectName(QString::fromUtf8("verticalLayout_2"));
+        verticalLayout_2->setContentsMargins(0, 0, 0, 0);
+        verticalSpacer = new QSpacerItem(20, 160, QSizePolicy::Minimum, QSizePolicy::Fixed);
+
+        verticalLayout_2->addItem(verticalSpacer);
+
+        UserNameText = new QLabel(verticalLayoutWidget);
+        UserNameText->setObjectName(QString::fromUtf8("UserNameText"));
+
+        verticalLayout_2->addWidget(UserNameText);
+
+        UserNameField = new QLineEdit(verticalLayoutWidget);
+        UserNameField->setObjectName(QString::fromUtf8("UserNameField"));
+
+        verticalLayout_2->addWidget(UserNameField);
+
+        PasswordText = new QLabel(verticalLayoutWidget);
+        PasswordText->setObjectName(QString::fromUtf8("PasswordText"));
+
+        verticalLayout_2->addWidget(PasswordText);
+
+        PasswordField = new QLineEdit(verticalLayoutWidget);
+        PasswordField->setObjectName(QString::fromUtf8("PasswordField"));
+        QSizePolicy sizePolicy(QSizePolicy::Expanding, QSizePolicy::Fixed);
+        sizePolicy.setHorizontalStretch(0);
+        sizePolicy.setVerticalStretch(0);
+        sizePolicy.setHeightForWidth(PasswordField->sizePolicy().hasHeightForWidth());
+        PasswordField->setSizePolicy(sizePolicy);
+        PasswordField->setMaxLength(32767);
+
+        verticalLayout_2->addWidget(PasswordField);
+
+        LoginButton = new QPushButton(verticalLayoutWidget);
+        LoginButton->setObjectName(QString::fromUtf8("LoginButton"));
+
+        verticalLayout_2->addWidget(LoginButton);
+
+        SignUpPageButton = new QPushButton(verticalLayoutWidget);
+        SignUpPageButton->setObjectName(QString::fromUtf8("SignUpPageButton"));
+
+        verticalLayout_2->addWidget(SignUpPageButton);
+
+        verticalSpacer_2 = new QSpacerItem(20, 160, QSizePolicy::Minimum, QSizePolicy::Fixed);
+
+        verticalLayout_2->addItem(verticalSpacer_2);
+
+        stackedWidget->addWidget(LoginPage);
+        SignUpPage = new QWidget();
+        SignUpPage->setObjectName(QString::fromUtf8("SignUpPage"));
+        stackedWidget->addWidget(SignUpPage);
+        SettingsPage = new QWidget();
+        SettingsPage->setObjectName(QString::fromUtf8("SettingsPage"));
+        stackedWidget->addWidget(SettingsPage);
+        MailPage = new QWidget();
+        MailPage->setObjectName(QString::fromUtf8("MailPage"));
+        stackedWidget->addWidget(MailPage);
+        MainMenuPage = new QWidget();
+        MainMenuPage->setObjectName(QString::fromUtf8("MainMenuPage"));
+        stackedWidget->addWidget(MainMenuPage);
 
         verticalLayout->addWidget(stackedWidget);
 
@@ -84,10 +133,10 @@ public:
     void retranslateUi(QMainWindow *StudentManagementClass)
     {
         StudentManagementClass->setWindowTitle(QApplication::translate("StudentManagementClass", "Student Management System", nullptr));
-        _mail->setPlaceholderText(QApplication::translate("StudentManagementClass", "Email", nullptr));
-        _password->setPlaceholderText(QApplication::translate("StudentManagementClass", "Password", nullptr));
-        btnLogin->setText(QApplication::translate("StudentManagementClass", "Login", nullptr));
-        btnGoToSignup->setText(QApplication::translate("StudentManagementClass", "Sign Up", nullptr));
+        UserNameText->setText(QApplication::translate("StudentManagementClass", "e-mail:", nullptr));
+        PasswordText->setText(QApplication::translate("StudentManagementClass", "password:", nullptr));
+        LoginButton->setText(QApplication::translate("StudentManagementClass", "Login", nullptr));
+        SignUpPageButton->setText(QApplication::translate("StudentManagementClass", "Sign up", nullptr));
     } // retranslateUi
 
 };

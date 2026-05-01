@@ -3,8 +3,8 @@
 #include "school.h"
 
 void StudentManagement::handleLogin() {
-	QString email = ui._mail->text();
-	QString pass = ui._password->text();
+	QString email = ui.UserNameField->text();
+	QString pass = ui.PasswordField->text();
 
 	User* LoggedIn = m_school.FindUser(email.toStdString(), pass.toStdString());
 

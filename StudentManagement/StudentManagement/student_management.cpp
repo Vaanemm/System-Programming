@@ -8,6 +8,6 @@ StudentManagement::StudentManagement(School& _s, QWidget *parent)
 {
 	ui.setupUi(this);
 
-	connect(ui.btnLogin, &QPushButton::clicked, this, &StudentManagement::handleLogin);
-	connect(ui.btnGoToSignup, &QPushButton::clicked, this, &StudentManagement::goToSignup);
+	connect(ui.LoginButton, &QPushButton::clicked, this, &StudentManagement::handleLogin);
+	connect(ui.SignUpPageButton, &QPushButton::clicked, this, &StudentManagement::goToSignup);
 }
