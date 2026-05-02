@@ -2,6 +2,9 @@
 #include "database.h"
 
 void StudentManagement::handleLogout() {
+	m_logged_in = nullptr;
+	m_all_subjects.clear();
+	ui.EnrollmentListWidget->clear();
 	ui.stackedWidget->setCurrentWidget(ui.LoginPage);
 }
 
