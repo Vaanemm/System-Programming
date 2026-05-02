@@ -150,5 +150,34 @@ void Database::SaveEnrollment(const std::shared_ptr<Subject>& _subject) {
 
 		outFile.close();
 	}
+}
 
+void Database::UpdateUserInDatabase(const std::shared_ptr<User>& updated_user, const std::string& original_email) {
+	std::ifstream file_in("database.csv");
+	std::ostringstream buffer;
+	std::string line;
+	if (!file_in.is_open()) return;
+
+	std::getline(file_in, line);
+	buffer << line << "\n";
+
+	while (std::getline(file_in, line)) {
+		std::stringstream ss(line);
+		std::string surname, name, email;
+		std::getline(ss, surname, ',');
+		std::getline(ss, name, ',');
+		std::getline(ss, email, ',');
+
+		if (email == original_email) {
+			buffer << updated_user->PrepareForDatabase();
+		}
+		else {
+			buffer << line << "\n";
+		}
+	}
+	file_in.close();
+
+	std::ofstream file_out("database.csv");
+	file_out << buffer.str();
+	file_out.close();
 }

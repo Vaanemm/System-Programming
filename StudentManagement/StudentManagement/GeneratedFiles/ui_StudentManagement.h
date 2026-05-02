@@ -698,9 +698,7 @@ public:
         verticalLayout_4->addWidget(AssignmentsText);
 
         AssignmentsTreeWidget = new QTreeWidget(MainMenuPage);
-        QTreeWidgetItem *__qtreewidgetitem = new QTreeWidgetItem();
-        __qtreewidgetitem->setText(0, QString::fromUtf8("1"));
-        AssignmentsTreeWidget->setHeaderItem(__qtreewidgetitem);
+        AssignmentsTreeWidget->headerItem()->setText(0, QString());
         AssignmentsTreeWidget->setObjectName(QString::fromUtf8("AssignmentsTreeWidget"));
         AssignmentsTreeWidget->header()->setVisible(false);
 
@@ -720,9 +718,7 @@ public:
         verticalLayout_5->addWidget(SubmissionsText);
 
         SubmissionsTreeWidget = new QTreeWidget(MainMenuPage);
-        QTreeWidgetItem *__qtreewidgetitem1 = new QTreeWidgetItem();
-        __qtreewidgetitem1->setText(0, QString::fromUtf8("1"));
-        SubmissionsTreeWidget->setHeaderItem(__qtreewidgetitem1);
+        SubmissionsTreeWidget->headerItem()->setText(0, QString());
         SubmissionsTreeWidget->setObjectName(QString::fromUtf8("SubmissionsTreeWidget"));
         SubmissionsTreeWidget->header()->setVisible(false);
 

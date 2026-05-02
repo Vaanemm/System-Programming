@@ -35,4 +35,6 @@ StudentManagement::StudentManagement(QWidget *parent)
 
 	//MAIN WINDOW	
 	connect(ui.AddSubjectButton, &QPushButton::clicked, this, &StudentManagement::AddSubject);
+	//SETTINGS
+	connect(ui.SaveSettingsButton, &QPushButton::clicked, this, &StudentManagement::UpdateAccount);
 }
