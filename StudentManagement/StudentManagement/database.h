@@ -16,6 +16,9 @@ public:
 	static std::shared_ptr<User> FindUser(const std::string _email, const std::string _password, const bool _for_login);
 
 	static bool AddUser(const std::shared_ptr<User>& student);
+
+	// SUBJECTS
+	static void SaveEnrollment(const std::shared_ptr<Subject>& subject);
 };
 
 

@@ -1,5 +1,6 @@
 #pragma once
 #include "teacher.h"
+#include "student.h"
 #include <memory>
 
 class Assignment; //bc we included in assignment subjects, so else it loops around and bugs
@@ -22,8 +23,13 @@ public:
 	std::string SubjectAssignmentToString() const;
 	const std::vector<std::shared_ptr<Assignment>>& GetAssignments() const;
 
+	void AddStudent(const std::string& _students_name);
+
+	const std::vector<std::string>& GetEnrolledStudents() const;
+
 private:
 	SubjectName m_name;
 	std::shared_ptr<Teacher> m_teacher;
+	std::vector<std::string> m_students;
 	std::vector<std::shared_ptr<Assignment>> m_assignments_ptr;
 };

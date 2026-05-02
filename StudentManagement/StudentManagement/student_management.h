@@ -28,6 +28,9 @@ private slots:
 	void goToSettings();
 	void goToMail();
 
+	//MAIN WINDOW	
+	void AddSubject();
+
 
 private:
 	Ui::StudentManagementClass ui;

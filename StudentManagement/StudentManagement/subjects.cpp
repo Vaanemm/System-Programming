@@ -51,3 +51,11 @@ std::string Subject::SubjectAssignmentToString() const{
 const std::vector<std::shared_ptr<Assignment>>& Subject::GetAssignments() const {
 	return m_assignments_ptr;
 }
+
+void Subject::AddStudent(const std::string& _students_name) {
+	m_students.push_back(_students_name);
+}
+
+const std::vector<std::string>& Subject::GetEnrolledStudents() const {
+	return m_students;
+}

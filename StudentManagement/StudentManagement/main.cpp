@@ -74,6 +74,15 @@ int main(int argc, char *argv[])
 	current_assignment->MakeSubmission(6, "that was shit ngl");
 	std::cout << current_assignment->AssignmentSubmissionToString() << std::endl;
 
+	physics_ptr->AddStudent("student1");
+	db.SaveEnrollment(physics_ptr);
+	physics_ptr->AddStudent("student2");
+	db.SaveEnrollment(physics_ptr);
+	math_ptr->AddStudent("student3");
+	db.SaveEnrollment(math_ptr);
+	physics_ptr->AddStudent("student4");
+	db.SaveEnrollment(physics_ptr);
+
 	std::string data = db.Read();
 	std::cout << data << std::endl;
 	w.show();
