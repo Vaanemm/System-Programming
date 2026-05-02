@@ -52,5 +52,9 @@ void StudentManagement::ShowChildSignUp() {
 		ui.ChildsNameField->setVisible(true);
 		ui.ChildsName->setVisible(true);
 	}
+	else {
+		ui.ChildsNameField->setVisible(false);
+		ui.ChildsName->setVisible(false);
+	}
 
 }
