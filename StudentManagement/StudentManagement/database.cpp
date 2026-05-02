@@ -123,12 +123,12 @@ bool Database::AddUser(const std::shared_ptr<User>& user) {
 
 void Database::UpdateUserInDatabase(const std::shared_ptr<User>& updated_user, const std::string& original_email) {
 	std::ifstream file_in("database.csv");
-	std::ostringstream buffer;
+	std::ostringstream ChangedInfo;
 	std::string line;
 	if (!file_in.is_open()) return;
 
 	std::getline(file_in, line);
-	buffer << line << "\n";
+	ChangedInfo << line << "\n";
 
 	while (std::getline(file_in, line)) {
 		std::stringstream ss(line);
@@ -138,15 +138,15 @@ void Database::UpdateUserInDatabase(const std::shared_ptr<User>& updated_user, c
 		std::getline(ss, email, ',');
 
 		if (email == original_email) {
-			buffer << updated_user->PrepareForDatabase();
+			ChangedInfo << updated_user->PrepareForDatabase();
 		}
 		else {
-			buffer << line << "\n";
+			ChangedInfo << line << "\n";
 		}
 	}
 	file_in.close();
 
 	std::ofstream file_out("database.csv");
-	file_out << buffer.str();
+	file_out << ChangedInfo.str();
 	file_out.close();
 }
