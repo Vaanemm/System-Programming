@@ -2,6 +2,7 @@
 
 #include <QtWidgets/QMainWindow>
 #include "ui_StudentManagement.h"
+#include "user.h"
 
 class School; // useful so we can use m_currentuser in login for ex.
 
@@ -28,7 +29,11 @@ private slots:
 	void goToSettings();
 	void goToMail();
 
+	//SETTINGS
+	void UpdateAccount();
+
 
 private:
+	std::shared_ptr<User> m_logged_in = nullptr;
 	Ui::StudentManagementClass ui;
 };

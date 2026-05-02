@@ -801,7 +801,7 @@
              <widget class="QTreeWidget" name="AssignmentsTreeWidget">
               <column>
                <property name="text">
-                <string notr="true">1</string>
+                <string></string>
                </property>
               </column>
              </widget>
@@ -830,7 +830,7 @@
              <widget class="QTreeWidget" name="SubmissionsTreeWidget">
               <column>
                <property name="text">
-                <string notr="true">1</string>
+                <string></string>
                </property>
               </column>
              </widget>
@@ -848,7 +848,7 @@
  </widget>
  <layoutdefault spacing="6" margin="11"/>
  <resources>
-  <include location="SystemProgrammingv2.qrc"/>
+  <include location="StudentManagement.qrc"/>
  </resources>
  <connections/>
 </ui>
