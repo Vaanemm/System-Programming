@@ -647,7 +647,7 @@ public:
         horizontalLayout_3->setContentsMargins(-1, 0, -1, -1);
         pushButton_2 = new QPushButton(MainMenuPage);
         pushButton_2->setObjectName(QString::fromUtf8("pushButton_2"));
-        pushButton_2->setMaximumSize(QSize(30, 16777215));
+        pushButton_2->setMaximumSize(QSize(30, 30));
         pushButton_2->setFlat(true);
 
         horizontalLayout_3->addWidget(pushButton_2);
@@ -672,7 +672,7 @@ public:
 
         AddSubjectButton = new QPushButton(MainMenuPage);
         AddSubjectButton->setObjectName(QString::fromUtf8("AddSubjectButton"));
-        AddSubjectButton->setMaximumSize(QSize(30, 16777215));
+        AddSubjectButton->setMaximumSize(QSize(30, 30));
 
         horizontalLayout_3->addWidget(AddSubjectButton);
 
