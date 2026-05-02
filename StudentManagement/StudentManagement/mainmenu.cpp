@@ -5,6 +5,8 @@ void StudentManagement::handleLogout() {
 	m_logged_in = nullptr;
 	m_all_subjects.clear();
 	ui.EnrollmentListWidget->clear();
+	ui.UserNameField->clear();
+	ui.PasswordField->clear();
 	ui.stackedWidget->setCurrentWidget(ui.LoginPage);
 }
 
@@ -71,6 +73,12 @@ void StudentManagement::AddSubject() {
 				}
 				else {
 					Database::SaveEnrollment(subjects_name, teachers_email, students_email);
+
+					auto student_ptr = std::dynamic_pointer_cast<Student>(m_logged_in);
+					if (student_ptr) {
+						student_ptr->AddSubject(subject);
+					}
+
 					QMessageBox::information(this, "Success", "Enrolled successfully!");
 					enrollBtn->setText("Enrolled");
 					enrollBtn->setEnabled(false);
@@ -84,7 +92,41 @@ void StudentManagement::AddSubject() {
 	else {
 		ui.AddSubjectButton->setText("+");
 		ui.EnrollmentListWidget->clear();
+		RefreshEnrollments();
 	}
 
 	
+}
+
+void StudentManagement::RefreshEnrollments() {
+	ui.EnrollmentListWidget->clear();
+	auto student_ptr = std::dynamic_pointer_cast<Student>(m_logged_in);
+	if (student_ptr) {
+		const auto& subjects = student_ptr->GetSubjects();
+
+		if (subjects.empty()) {
+			ui.EnrollmentListWidget->addItem("No subjects enrolled.");
+			return;
+		}
+
+		for (const auto& subject : subjects) {
+			QListWidgetItem* item = new QListWidgetItem(ui.EnrollmentListWidget);
+
+			//create container
+			QWidget* rowWidget = new QWidget();
+			QHBoxLayout* rowLayout = new QHBoxLayout(rowWidget);
+
+			QLabel* label = new QLabel(QString::fromStdString(subject->GetName()));
+
+			rowLayout->addWidget(label);
+			rowLayout->addStretch();
+			rowLayout->setContentsMargins(5, 2, 5, 2);
+
+			//add the item and set the widget
+			ui.EnrollmentListWidget->addItem(item);
+			ui.EnrollmentListWidget->setItemWidget(item, rowWidget);
+		}
+
+		
+	}
 }

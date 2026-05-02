@@ -11,7 +11,7 @@ void StudentManagement::handleLogin() {
 
 	if (m_logged_in != nullptr) {
 		ui.stackedWidget->setCurrentWidget(ui.MainMenuPage);
-		//Database.SetCurrentUser(LoggedIn);
+		StudentManagement::RefreshEnrollments();
 	}
 	else {
 		QMessageBox::warning(this, "Error", "Invalid inputs");

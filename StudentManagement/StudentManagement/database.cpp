@@ -66,6 +66,34 @@ std::shared_ptr<User> Database::FindUser(const std::string& _email, const std::s
 		if (is_valid) {
 			if (role == "Student") {
 				std::shared_ptr<Student> stud_ptr = std::shared_ptr<Student>(new Student(email, password, name, surname, dob));
+
+				// here we add the students classes he follows
+				std::ifstream enroll_file("enrollment.csv");
+				std::string enroll_line;
+				if (enroll_file.is_open()) {
+					while (std::getline(enroll_file, enroll_line)) {
+						if (enroll_line.empty()) continue;
+
+						std::stringstream ss_enroll(enroll_line);
+						std::string sub_name, teach_email, stud_email;
+
+						std::getline(ss_enroll, sub_name, ',');
+						std::getline(ss_enroll, teach_email, ',');
+						std::getline(ss_enroll, stud_email);
+
+						if (stud_email == email) {
+							SubjectName subject_name = StringToSubjectName(sub_name);
+
+							auto teacher = std::dynamic_pointer_cast<Teacher>(Database::FindUser(teach_email, " ", false));
+
+							// 3. Create the Subject and add it to the student
+							auto new_sub = std::make_shared<Subject>(subject_name, teacher);
+							stud_ptr->AddSubject(new_sub);
+						}
+					}
+					enroll_file.close();
+				}
+
 				return stud_ptr;
 			}
 			else if (role == "Teacher") {

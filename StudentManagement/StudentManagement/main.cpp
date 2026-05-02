@@ -76,13 +76,13 @@ int main(int argc, char *argv[])
 	std::cout << current_assignment->AssignmentSubmissionToString() << std::endl;
 
 	physics_ptr->AddStudent("student1");
-	db.SaveEnrollment(physics_ptr->GetName(), "prof1", "student1");
+	//db.SaveEnrollment(physics_ptr->GetName(), "prof1", "student1");
 	physics_ptr->AddStudent("student2");
-	db.SaveEnrollment(physics_ptr->GetName(), "prof2", "student2");
+	//db.SaveEnrollment(physics_ptr->GetName(), "prof2", "student2");
 	math_ptr->AddStudent("student3");
-	db.SaveEnrollment(math_ptr->GetName(), "prof3", "student3");
+	//db.SaveEnrollment(math_ptr->GetName(), "prof3", "student3");
 	physics_ptr->AddStudent("student4");
-	db.SaveEnrollment(physics_ptr->GetName(), "prof4", "student4");
+	//db.SaveEnrollment(physics_ptr->GetName(), "prof4", "student4");
 
 	std::string data = db.Read();
 	std::cout << data << std::endl;
