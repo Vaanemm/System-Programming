@@ -17,6 +17,9 @@ public:
 
 	static void UpdateUserInDatabase(const std::shared_ptr<User>& updated_user, const std::string& original_email);
 	static bool AddUser(const std::shared_ptr<User>& student);
+
+	// SUBJECTS
+	static void SaveEnrollment(const std::shared_ptr<Subject>& subject);
 };
 
 

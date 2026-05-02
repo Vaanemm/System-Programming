@@ -29,6 +29,8 @@ private slots:
 	void goToSettings();
 	void goToMail();
 
+	//MAIN WINDOW	
+	void AddSubject();
 	//SETTINGS
 	void UpdateAccount();
 

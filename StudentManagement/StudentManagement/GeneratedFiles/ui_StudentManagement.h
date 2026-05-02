@@ -134,7 +134,12 @@ public:
     QPushButton *LogoutButtonMainMenu;
     QHBoxLayout *horizontalLayout;
     QVBoxLayout *verticalLayout_3;
-    QLabel *EnrollmentText;
+    QHBoxLayout *horizontalLayout_3;
+    QPushButton *pushButton_2;
+    QSpacerItem *horizontalSpacer_9;
+    QLabel *label_3;
+    QSpacerItem *horizontalSpacer_8;
+    QPushButton *AddSubjectButton;
     QListWidget *EnrollmentListWidget;
     QVBoxLayout *verticalLayout_4;
     QLabel *AssignmentsText;
@@ -635,15 +640,44 @@ public:
         verticalLayout_3 = new QVBoxLayout();
         verticalLayout_3->setSpacing(6);
         verticalLayout_3->setObjectName(QString::fromUtf8("verticalLayout_3"));
-        EnrollmentText = new QLabel(MainMenuPage);
-        EnrollmentText->setObjectName(QString::fromUtf8("EnrollmentText"));
+        horizontalLayout_3 = new QHBoxLayout();
+        horizontalLayout_3->setSpacing(6);
+        horizontalLayout_3->setObjectName(QString::fromUtf8("horizontalLayout_3"));
+        horizontalLayout_3->setSizeConstraint(QLayout::SetDefaultConstraint);
+        horizontalLayout_3->setContentsMargins(-1, 0, -1, -1);
+        pushButton_2 = new QPushButton(MainMenuPage);
+        pushButton_2->setObjectName(QString::fromUtf8("pushButton_2"));
+        pushButton_2->setMaximumSize(QSize(30, 16777215));
+        pushButton_2->setFlat(true);
+
+        horizontalLayout_3->addWidget(pushButton_2);
+
+        horizontalSpacer_9 = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
+
+        horizontalLayout_3->addItem(horizontalSpacer_9);
+
+        label_3 = new QLabel(MainMenuPage);
+        label_3->setObjectName(QString::fromUtf8("label_3"));
         QFont font1;
         font1.setBold(true);
         font1.setWeight(75);
-        EnrollmentText->setFont(font1);
-        EnrollmentText->setAlignment(Qt::AlignCenter);
+        label_3->setFont(font1);
+        label_3->setAlignment(Qt::AlignCenter);
 
-        verticalLayout_3->addWidget(EnrollmentText);
+        horizontalLayout_3->addWidget(label_3);
+
+        horizontalSpacer_8 = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
+
+        horizontalLayout_3->addItem(horizontalSpacer_8);
+
+        AddSubjectButton = new QPushButton(MainMenuPage);
+        AddSubjectButton->setObjectName(QString::fromUtf8("AddSubjectButton"));
+        AddSubjectButton->setMaximumSize(QSize(30, 16777215));
+
+        horizontalLayout_3->addWidget(AddSubjectButton);
+
+
+        verticalLayout_3->addLayout(horizontalLayout_3);
 
         EnrollmentListWidget = new QListWidget(MainMenuPage);
         EnrollmentListWidget->setObjectName(QString::fromUtf8("EnrollmentListWidget"));
@@ -666,6 +700,7 @@ public:
         AssignmentsTreeWidget = new QTreeWidget(MainMenuPage);
         AssignmentsTreeWidget->headerItem()->setText(0, QString());
         AssignmentsTreeWidget->setObjectName(QString::fromUtf8("AssignmentsTreeWidget"));
+        AssignmentsTreeWidget->header()->setVisible(false);
 
         verticalLayout_4->addWidget(AssignmentsTreeWidget);
 
@@ -685,6 +720,7 @@ public:
         SubmissionsTreeWidget = new QTreeWidget(MainMenuPage);
         SubmissionsTreeWidget->headerItem()->setText(0, QString());
         SubmissionsTreeWidget->setObjectName(QString::fromUtf8("SubmissionsTreeWidget"));
+        SubmissionsTreeWidget->header()->setVisible(false);
 
         verticalLayout_5->addWidget(SubmissionsTreeWidget);
 
@@ -754,7 +790,9 @@ public:
         MailPageButtonMainMenu->setText(QApplication::translate("StudentManagementClass", "Mails", nullptr));
         SettingsPageButtonMainMenu->setText(QApplication::translate("StudentManagementClass", "Settings", nullptr));
         LogoutButtonMainMenu->setText(QApplication::translate("StudentManagementClass", "Log out", nullptr));
-        EnrollmentText->setText(QApplication::translate("StudentManagementClass", "Enrollment", nullptr));
+        pushButton_2->setText(QString());
+        label_3->setText(QApplication::translate("StudentManagementClass", "Enrollment", nullptr));
+        AddSubjectButton->setText(QApplication::translate("StudentManagementClass", "+", nullptr));
         AssignmentsText->setText(QApplication::translate("StudentManagementClass", "Assignments", nullptr));
         SubmissionsText->setText(QApplication::translate("StudentManagementClass", "Submission + Grades", nullptr));
     } // retranslateUi

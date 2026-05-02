@@ -121,6 +121,37 @@ bool Database::AddUser(const std::shared_ptr<User>& user) {
 	}
 }
 
+void Database::SaveEnrollment(const std::shared_ptr<Subject>& _subject) {
+	std::string target_subject = _subject->GetName();
+	std::vector<std::string> lines_to_keep;
+	std::string line;
+
+	// we first read the whole file and keep the lines that we want to modify
+	std::ifstream inFile("enrollment.csv");
+	if (inFile.is_open()) {
+		while (std::getline(inFile, line)) {
+			if (line.find(target_subject + ",") != 0) { // if its not the subject we're changing
+				lines_to_keep.push_back(line);
+			}
+		}
+		inFile.close();
+	}
+
+	// now we rewrite every line with the subjects of subject
+	std::ofstream outFile("enrollment.csv", std::ios::trunc);
+	if (outFile.is_open()) {
+		for (const auto& old_line : lines_to_keep) { //write the lines we don't change
+			outFile << old_line << "\n";
+		}
+
+		for (const std::string& student : _subject->GetEnrolledStudents()) { // write all the subject
+			outFile << target_subject << "," << student << "\n";
+		}
+
+		outFile.close();
+	}
+}
+
 void Database::UpdateUserInDatabase(const std::shared_ptr<User>& updated_user, const std::string& original_email) {
 	std::ifstream file_in("database.csv");
 	std::ostringstream ChangedInfo;
