@@ -4,6 +4,7 @@
 #include "student.h"
 #include "mail.h"
 #include "user.h"
+#include <QMessageBox>
 
 class Database {
 public:	
@@ -14,7 +15,7 @@ public:
 	// static so we don't have to create an object and can user Database::FindUser
 	static std::shared_ptr<User> FindUser(const std::string _email, const std::string _password, const bool _for_login);
 
-	static void AddUser(const std::shared_ptr<User>& student);
+	static bool AddUser(const std::shared_ptr<User>& student);
 };
 
 

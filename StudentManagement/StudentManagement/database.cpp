@@ -98,14 +98,25 @@ void Database::SendEmail(const Mail& mail) {
 	return;
 }
 
-void Database::AddUser(const std::shared_ptr<User>& user) {
+bool Database::AddUser(const std::shared_ptr<User>& user) {
 	std::ofstream file("database.csv", std::ios::app);
 
 	if (file.is_open()) {
-		file << user->PrepareForDatabase();
-		file.close();
+		std::string user_name = user->GetName();
+		std::shared_ptr<User> new_user = FindUser(user_name, " ", false);
+
+		if (new_user == nullptr) {
+			file << user->PrepareForDatabase();
+			return true;
+		}
+		else {
+			QMessageBox::critical(nullptr, "Error", "This e-mail is already taken");
+			return false;
+		}
+		
 	}
 	else {
-		std::cerr << "Error: Could not open database to add student." << std::endl;
+		QMessageBox::critical(nullptr, "Error", "Could not open database to add student.");
+		return false;
 	}
 }

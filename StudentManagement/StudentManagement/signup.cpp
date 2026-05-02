@@ -42,8 +42,21 @@ void StudentManagement::SignUp() {
 	else {
 		std::cout << "No role found " << std::endl;
 	}
-	Database::AddUser(new_user);
-	ui.stackedWidget->setCurrentWidget(ui.LoginPage);
+
+	bool success = Database::AddUser(new_user);
+	if (success == true) {
+		ui.stackedWidget->setCurrentWidget(ui.LoginPage);
+	}
+	else {
+		ui.SurnameField->clear();
+		ui.NameField->clear();
+		ui.EmailField->clear();
+		ui.DobField->clear();
+		ui.PasswordFieldSignUp->clear();
+		ui.ChildsNameField->clear();
+		ui.RoleFieldSignUp->clear();
+	}
+	
 }
 
 void StudentManagement::ShowChildSignUp() {
