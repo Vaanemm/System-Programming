@@ -36,7 +36,7 @@ int main(int argc, char *argv[])
 	std::cout << u_ptr->ToString() << std::endl;
 
 	std::shared_ptr<Teacher> prof_ptr = std::shared_ptr<Teacher>(new Teacher("prof@example.com", "secret", "prof", "name", dob));
-	//school.AddTeacher(prof);
+	//db.AddUser(prof_ptr);
 
 	std::shared_ptr<Subject> physics_ptr = std::shared_ptr<Subject>(new Subject(SubjectName::Physics, prof_ptr));
 	std::shared_ptr<Subject> math_ptr = std::shared_ptr<Subject>(new Subject(SubjectName::Mathematics, prof_ptr));
@@ -60,6 +60,7 @@ int main(int argc, char *argv[])
 	std::cout << stud_ptr->ToString() << std::endl;
 
 	std::shared_ptr<Parent> par_ptr = std::shared_ptr<Parent>(new Parent("parent@example.com", "secret", "parent", "name", dob, (stud_ptr)));
+	//db.AddUser(par_ptr);
 
 	std::cout << par_ptr->ToString() << std::endl;
 
@@ -75,13 +76,13 @@ int main(int argc, char *argv[])
 	std::cout << current_assignment->AssignmentSubmissionToString() << std::endl;
 
 	physics_ptr->AddStudent("student1");
-	db.SaveEnrollment(physics_ptr);
+	db.SaveEnrollment(physics_ptr->GetName(), "prof1", "student1");
 	physics_ptr->AddStudent("student2");
-	db.SaveEnrollment(physics_ptr);
+	db.SaveEnrollment(physics_ptr->GetName(), "prof2", "student2");
 	math_ptr->AddStudent("student3");
-	db.SaveEnrollment(math_ptr);
+	db.SaveEnrollment(math_ptr->GetName(), "prof3", "student3");
 	physics_ptr->AddStudent("student4");
-	db.SaveEnrollment(physics_ptr);
+	db.SaveEnrollment(physics_ptr->GetName(), "prof4", "student4");
 
 	std::string data = db.Read();
 	std::cout << data << std::endl;

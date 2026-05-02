@@ -3,7 +3,17 @@
 #include "submission.h"
 
 Subject::Subject(SubjectName _name, std::shared_ptr<Teacher> _teacher) :
-	m_name(_name), m_teacher(std::move(_teacher)) {} // have to move because unique ptr!
+	m_name(_name), m_teacher(_teacher) {} // have to move because unique ptr!
+
+SubjectName StringToSubjectName(const std::string& name) {
+	if (name == "Mathematics") return SubjectName::Mathematics;
+	if (name == "Biology")     return SubjectName::Biology;
+	if (name == "Chemistry")   return SubjectName::Chemistry;
+	if (name == "Physics")     return SubjectName::Physics;
+	if (name == "Dutch")       return SubjectName::Dutch;
+	if (name == "Sports")      return SubjectName::Sports;
+	return SubjectName::Mathematics; // Default fallback
+}
 
 Subject::~Subject() {
 
@@ -52,8 +62,8 @@ const std::vector<std::shared_ptr<Assignment>>& Subject::GetAssignments() const 
 	return m_assignments_ptr;
 }
 
-void Subject::AddStudent(const std::string& _students_name) {
-	m_students.push_back(_students_name);
+void Subject::AddStudent(const std::string& _students_email) {
+	m_students.push_back(_students_email);
 }
 
 const std::vector<std::string>& Subject::GetEnrolledStudents() const {

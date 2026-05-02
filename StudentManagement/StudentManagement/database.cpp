@@ -3,6 +3,7 @@
 #include <fstream>
 #include <sstream>
 #include <vector>
+#include <set>
 #include "parent.h"
 
 std::string Database::Read() {
@@ -30,7 +31,7 @@ void Database::Write(const std::vector<std::shared_ptr<Student>>& stud_list) { /
 	file.close();
 }
 
-std::shared_ptr<User> Database::FindUser(const std::string _email, const std::string _password, const bool _for_login) {
+std::shared_ptr<User> Database::FindUser(const std::string& _email, const std::string& _password, const bool _for_login) {
 	std::ifstream file("database.csv");
 	std::string line;
 
@@ -76,7 +77,8 @@ std::shared_ptr<User> Database::FindUser(const std::string _email, const std::st
 				return par_ptr;
 			}
 			else {
-				return std::make_shared<User>(email, password, name, surname, dob);				
+				std::shared_ptr<User> user_ptr = std::shared_ptr<User>(new User(email, password, name, surname, dob));
+				return user_ptr;
 			}
 		}	
 	}
@@ -102,7 +104,7 @@ bool Database::AddUser(const std::shared_ptr<User>& user) {
 	std::ofstream file("database.csv", std::ios::app);
 
 	if (file.is_open()) {
-		std::string user_name = user->GetName();
+		std::string user_name = user->GetEmail();
 		std::shared_ptr<User> new_user = FindUser(user_name, " ", false);
 
 		if (new_user == nullptr) {
@@ -121,34 +123,14 @@ bool Database::AddUser(const std::shared_ptr<User>& user) {
 	}
 }
 
-void Database::SaveEnrollment(const std::shared_ptr<Subject>& _subject) {
-	std::string target_subject = _subject->GetName();
-	std::vector<std::string> lines_to_keep;
-	std::string line;
-
-	// we first read the whole file and keep the lines that we want to modify
-	std::ifstream inFile("enrollment.csv");
-	if (inFile.is_open()) {
-		while (std::getline(inFile, line)) {
-			if (line.find(target_subject + ",") != 0) { // if its not the subject we're changing
-				lines_to_keep.push_back(line);
-			}
-		}
-		inFile.close();
-	}
-
-	// now we rewrite every line with the subjects of subject
-	std::ofstream outFile("enrollment.csv", std::ios::trunc);
+void Database::SaveEnrollment(const std::string& subject_name, const std::string& teacher_email, const std::string& student_email) {
+	std::ofstream outFile("enrollment.csv", std::ios::app);
 	if (outFile.is_open()) {
-		for (const auto& old_line : lines_to_keep) { //write the lines we don't change
-			outFile << old_line << "\n";
-		}
-
-		for (const std::string& student : _subject->GetEnrolledStudents()) { // write all the subject
-			outFile << target_subject << "," << student << "\n";
-		}
-
+		outFile << subject_name << "," << teacher_email << "," << student_email << "\n";
 		outFile.close();
+	}
+	else {
+		std::cerr << "Error: Could not open enrollment.csv for appending." << std::endl;
 	}
 }
 
@@ -180,4 +162,54 @@ void Database::UpdateUserInDatabase(const std::shared_ptr<User>& updated_user, c
 	std::ofstream file_out("database.csv");
 	file_out << buffer.str();
 	file_out.close();
+}
+
+std::vector<SubjectTeacher> Database::GetAllSubjects() {
+	std::set<SubjectTeacher> unique_pairs;  //this will take all the names once
+	std::ifstream file_in("enrollment.csv"); 
+	std::string line;
+
+	if (!file_in.is_open()) {
+		return {};
+	}
+
+	while (std::getline(file_in, line)) {
+		if (line.empty()) continue;
+
+		std::stringstream ss(line);
+		std::string subject, teacher, student;
+
+		std::getline(ss, subject, ',');
+		std::getline(ss, teacher, ',');
+		std::getline(ss, student);   
+
+		unique_pairs.insert({ subject, teacher });
+	}
+	return std::vector<SubjectTeacher>(unique_pairs.begin(), unique_pairs.end());
+}
+
+bool Database::CheckUserInSubject(const std::string& subjects_name, const std::string& students_email) {
+	std::ifstream file("enrollment.csv");
+	std::string line;
+
+	if (!file.is_open()) {
+		std::cout << "enrollment couldn't open" << std::endl;
+	}
+
+	while (std::getline(file, line)) {
+		if (line.empty()) continue;
+
+		std::stringstream ss(line);
+		std::string subject, teacher, student;
+
+		std::getline(ss, subject, ',');
+		std::getline(ss, teacher, ',');
+		std::getline(ss, student);
+
+		if (subject == subjects_name && student == students_email) {
+			file.close();
+			return true; // Match found
+		}
+	}
+	return false;
 }

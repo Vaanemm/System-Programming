@@ -1,6 +1,7 @@
 #include "student_management.h"
 #include <QMessageBox>
 #include "database.h"
+#include <iostream>
 
 void StudentManagement::handleLogin() {
 	QString email = ui.UserNameField->text();

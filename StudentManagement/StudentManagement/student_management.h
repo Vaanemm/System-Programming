@@ -4,6 +4,7 @@
 #include "ui_StudentManagement.h"
 #include "user.h"
 
+class Subject;
 class School; // useful so we can use m_currentuser in login for ex.
 
 class StudentManagement : public QMainWindow
@@ -38,4 +39,6 @@ private slots:
 private:
 	std::shared_ptr<User> m_logged_in = nullptr;
 	Ui::StudentManagementClass ui;
+	
+	std::vector<std::shared_ptr<Subject>> m_all_subjects;
 };

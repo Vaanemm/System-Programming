@@ -9,6 +9,8 @@ enum class SubjectName : int {
 	Mathematics = 1, Biology = 2, Chemistry = 3, Physics = 4, Dutch = 5, Sports = 6
 }; // we use integers so if we change the name of a course, it has no impact
 
+SubjectName StringToSubjectName(const std::string& name);
+
 class Subject : public std::enable_shared_from_this<Subject> { // this is bc i need the shared ptr of subject in MakeAssignment
 public:
 	Subject(SubjectName _name, std::shared_ptr<Teacher> _teacher);
@@ -23,7 +25,7 @@ public:
 	std::string SubjectAssignmentToString() const;
 	const std::vector<std::shared_ptr<Assignment>>& GetAssignments() const;
 
-	void AddStudent(const std::string& _students_name);
+	void AddStudent(const std::string& _students_email);
 
 	const std::vector<std::string>& GetEnrolledStudents() const;
 
