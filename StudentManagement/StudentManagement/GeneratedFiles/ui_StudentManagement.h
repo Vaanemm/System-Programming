@@ -144,6 +144,15 @@ public:
     QVBoxLayout *verticalLayout_4;
     QLabel *AssignmentsText;
     QTreeWidget *AssignmentsTreeWidget;
+    QFrame *frame_2;
+    QVBoxLayout *verticalLayout_9;
+    QLabel *CreateAssignmentText;
+    QLabel *SelectCourseText;
+    QComboBox *SelectCourseComboBox;
+    QLabel *TitleText;
+    QLineEdit *TitleField;
+    QLabel *DescriptionText;
+    QLineEdit *DescriptionField;
     QPushButton *CreateAssignmentButton;
     QVBoxLayout *verticalLayout_5;
     QLabel *SubmissionsText;
@@ -706,11 +715,64 @@ public:
 
         verticalLayout_4->addWidget(AssignmentsTreeWidget);
 
-        CreateAssignmentButton = new QPushButton(MainMenuPage);
+        frame_2 = new QFrame(MainMenuPage);
+        frame_2->setObjectName(QString::fromUtf8("frame_2"));
+        frame_2->setMinimumSize(QSize(0, 0));
+        frame_2->setFrameShape(QFrame::StyledPanel);
+        frame_2->setFrameShadow(QFrame::Raised);
+        verticalLayout_9 = new QVBoxLayout(frame_2);
+        verticalLayout_9->setSpacing(6);
+        verticalLayout_9->setContentsMargins(11, 11, 11, 11);
+        verticalLayout_9->setObjectName(QString::fromUtf8("verticalLayout_9"));
+        CreateAssignmentText = new QLabel(frame_2);
+        CreateAssignmentText->setObjectName(QString::fromUtf8("CreateAssignmentText"));
+        QFont font2;
+        font2.setPointSize(10);
+        font2.setBold(true);
+        font2.setWeight(75);
+        CreateAssignmentText->setFont(font2);
+        CreateAssignmentText->setAlignment(Qt::AlignCenter);
+
+        verticalLayout_9->addWidget(CreateAssignmentText);
+
+        SelectCourseText = new QLabel(frame_2);
+        SelectCourseText->setObjectName(QString::fromUtf8("SelectCourseText"));
+
+        verticalLayout_9->addWidget(SelectCourseText);
+
+        SelectCourseComboBox = new QComboBox(frame_2);
+        SelectCourseComboBox->setObjectName(QString::fromUtf8("SelectCourseComboBox"));
+
+        verticalLayout_9->addWidget(SelectCourseComboBox);
+
+        TitleText = new QLabel(frame_2);
+        TitleText->setObjectName(QString::fromUtf8("TitleText"));
+
+        verticalLayout_9->addWidget(TitleText);
+
+        TitleField = new QLineEdit(frame_2);
+        TitleField->setObjectName(QString::fromUtf8("TitleField"));
+
+        verticalLayout_9->addWidget(TitleField);
+
+        DescriptionText = new QLabel(frame_2);
+        DescriptionText->setObjectName(QString::fromUtf8("DescriptionText"));
+
+        verticalLayout_9->addWidget(DescriptionText);
+
+        DescriptionField = new QLineEdit(frame_2);
+        DescriptionField->setObjectName(QString::fromUtf8("DescriptionField"));
+
+        verticalLayout_9->addWidget(DescriptionField);
+
+        CreateAssignmentButton = new QPushButton(frame_2);
         CreateAssignmentButton->setObjectName(QString::fromUtf8("CreateAssignmentButton"));
         CreateAssignmentButton->setMinimumSize(QSize(0, 50));
 
-        verticalLayout_4->addWidget(CreateAssignmentButton);
+        verticalLayout_9->addWidget(CreateAssignmentButton);
+
+
+        verticalLayout_4->addWidget(frame_2);
 
 
         horizontalLayout->addLayout(verticalLayout_4);
@@ -803,6 +865,10 @@ public:
         label_3->setText(QApplication::translate("StudentManagementClass", "Enrollment", nullptr));
         AddSubjectButton->setText(QApplication::translate("StudentManagementClass", "+", nullptr));
         AssignmentsText->setText(QApplication::translate("StudentManagementClass", "Assignments", nullptr));
+        CreateAssignmentText->setText(QApplication::translate("StudentManagementClass", "Create assignment", nullptr));
+        SelectCourseText->setText(QApplication::translate("StudentManagementClass", "Course:", nullptr));
+        TitleText->setText(QApplication::translate("StudentManagementClass", "Title:", nullptr));
+        DescriptionText->setText(QApplication::translate("StudentManagementClass", "Description:", nullptr));
         CreateAssignmentButton->setText(QApplication::translate("StudentManagementClass", "Create assignment", nullptr));
         SubmissionsText->setText(QApplication::translate("StudentManagementClass", "Submission + Grades", nullptr));
     } // retranslateUi

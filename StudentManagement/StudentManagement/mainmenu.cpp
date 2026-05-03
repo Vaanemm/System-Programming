@@ -135,7 +135,16 @@ void StudentManagement::CheckRole()
 {
 	bool isTeacher = m_logged_in->GetRole() == "Teacher";
 	bool isStudent = m_logged_in->GetRole() == "Student";
-	bool isStudent = m_logged_in->GetRole() == "Parent";
+	bool isParent = m_logged_in->GetRole() == "Parent";
 
-	ui.CreateAssignmentButton->setVisible(isTeacher);
+	ui.frame_2->setVisible(isTeacher);
+}
+
+void StudentManagement::CreateAssignment() {
+	QString qstring_title = ui.TitleField->text();
+	QString qstring_description = ui.DescriptionField->text();
+
+	std::string title = qstring_title.toStdString();
+	std::string description = qstring_description.toStdString();
+
 }

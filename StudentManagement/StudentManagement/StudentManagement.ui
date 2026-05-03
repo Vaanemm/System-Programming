@@ -887,16 +887,81 @@
              </widget>
             </item>
             <item>
-             <widget class="QPushButton" name="CreateAssignmentButton">
+             <widget class="QFrame" name="frame_2">
               <property name="minimumSize">
                <size>
                 <width>0</width>
-                <height>50</height>
+                <height>0</height>
                </size>
               </property>
-              <property name="text">
-               <string>Create assignment</string>
+              <property name="frameShape">
+               <enum>QFrame::StyledPanel</enum>
               </property>
+              <property name="frameShadow">
+               <enum>QFrame::Raised</enum>
+              </property>
+              <layout class="QVBoxLayout" name="verticalLayout_9">
+               <item>
+                <widget class="QLabel" name="CreateAssignmentText">
+                 <property name="font">
+                  <font>
+                   <pointsize>10</pointsize>
+                   <weight>75</weight>
+                   <bold>true</bold>
+                  </font>
+                 </property>
+                 <property name="text">
+                  <string>Create assignment</string>
+                 </property>
+                 <property name="alignment">
+                  <set>Qt::AlignCenter</set>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <widget class="QLabel" name="SelectCourseText">
+                 <property name="text">
+                  <string>Course:</string>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <widget class="QComboBox" name="SelectCourseComboBox"/>
+               </item>
+               <item>
+                <widget class="QLabel" name="TitleText">
+                 <property name="text">
+                  <string>Title:</string>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <widget class="QLineEdit" name="TitleField"/>
+               </item>
+               <item>
+                <widget class="QLabel" name="DescriptionText">
+                 <property name="text">
+                  <string>Description:</string>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <widget class="QLineEdit" name="DescriptionField"/>
+               </item>
+               <item>
+                <widget class="QPushButton" name="CreateAssignmentButton">
+                 <property name="minimumSize">
+                  <size>
+                   <width>0</width>
+                   <height>50</height>
+                  </size>
+                 </property>
+                 <property name="text">
+                  <string>Create assignment</string>
+                 </property>
+                </widget>
+               </item>
+              </layout>
              </widget>
             </item>
            </layout>
