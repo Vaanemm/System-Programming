@@ -33,6 +33,7 @@ private slots:
 	//MAIN WINDOW	
 	void AddSubject();
 	void RefreshEnrollments();
+	void CheckRole();
 
 	//SETTINGS
 	void UpdateAccount();

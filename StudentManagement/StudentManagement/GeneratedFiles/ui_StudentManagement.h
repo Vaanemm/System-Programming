@@ -144,6 +144,7 @@ public:
     QVBoxLayout *verticalLayout_4;
     QLabel *AssignmentsText;
     QTreeWidget *AssignmentsTreeWidget;
+    QPushButton *CreateAssignmentButton;
     QVBoxLayout *verticalLayout_5;
     QLabel *SubmissionsText;
     QTreeWidget *SubmissionsTreeWidget;
@@ -700,9 +701,16 @@ public:
         AssignmentsTreeWidget = new QTreeWidget(MainMenuPage);
         AssignmentsTreeWidget->headerItem()->setText(0, QString());
         AssignmentsTreeWidget->setObjectName(QString::fromUtf8("AssignmentsTreeWidget"));
+        AssignmentsTreeWidget->setMinimumSize(QSize(0, 0));
         AssignmentsTreeWidget->header()->setVisible(false);
 
         verticalLayout_4->addWidget(AssignmentsTreeWidget);
+
+        CreateAssignmentButton = new QPushButton(MainMenuPage);
+        CreateAssignmentButton->setObjectName(QString::fromUtf8("CreateAssignmentButton"));
+        CreateAssignmentButton->setMinimumSize(QSize(0, 50));
+
+        verticalLayout_4->addWidget(CreateAssignmentButton);
 
 
         horizontalLayout->addLayout(verticalLayout_4);
@@ -738,6 +746,7 @@ public:
 
         retranslateUi(StudentManagementClass);
 
+        stackedWidget->setCurrentIndex(0);
         tabWidget->setCurrentIndex(0);
 
 
@@ -794,6 +803,7 @@ public:
         label_3->setText(QApplication::translate("StudentManagementClass", "Enrollment", nullptr));
         AddSubjectButton->setText(QApplication::translate("StudentManagementClass", "+", nullptr));
         AssignmentsText->setText(QApplication::translate("StudentManagementClass", "Assignments", nullptr));
+        CreateAssignmentButton->setText(QApplication::translate("StudentManagementClass", "Create assignment", nullptr));
         SubmissionsText->setText(QApplication::translate("StudentManagementClass", "Submission + Grades", nullptr));
     } // retranslateUi
 

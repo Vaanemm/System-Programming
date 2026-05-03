@@ -130,3 +130,12 @@ void StudentManagement::RefreshEnrollments() {
 		
 	}
 }
+
+void StudentManagement::CheckRole()
+{
+	bool isTeacher = m_logged_in->GetRole() == "Teacher";
+	bool isStudent = m_logged_in->GetRole() == "Student";
+	bool isStudent = m_logged_in->GetRole() == "Parent";
+
+	ui.CreateAssignmentButton->setVisible(isTeacher);
+}
