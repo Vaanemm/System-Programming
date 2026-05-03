@@ -35,6 +35,7 @@ private slots:
 	void RefreshEnrollments();
 	void CheckRole();
 	void CreateAssignment();
+	void FillInComboBoxSubjects();
 
 	//SETTINGS
 	void UpdateAccount();

@@ -1,5 +1,7 @@
 #include "student_management.h"
 #include "database.h"
+#include <iostream>
+
 
 void StudentManagement::handleLogout() {
 	m_logged_in = nullptr;
@@ -138,6 +140,10 @@ void StudentManagement::CheckRole()
 	bool isParent = m_logged_in->GetRole() == "Parent";
 
 	ui.frame_2->setVisible(isTeacher);
+
+	if (isTeacher) {
+		FillInComboBoxSubjects();
+	}
 }
 
 void StudentManagement::CreateAssignment() {
@@ -146,5 +152,30 @@ void StudentManagement::CreateAssignment() {
 
 	std::string title = qstring_title.toStdString();
 	std::string description = qstring_description.toStdString();
+
+	int index = ui.SelectCourseComboBox->currentIndex();
+	if (index >= 0 && index < m_all_subjects.size()) {
+		m_all_subjects[index]->MakeAssignment(title, description);
+
+		ui.TitleField->clear();
+		ui.DescriptionField->clear();
+
+		QMessageBox::information(this, "LETSSS GOOOO", "W");
+	}
+}
+
+void StudentManagement::FillInComboBoxSubjects()
+{
+	ui.SelectCourseComboBox->clear();
+	m_all_subjects.clear();
+
+	std::vector<SubjectTeacher> all_subjects_string = Database::GetAllSubjects();
+	for (const auto& entry : all_subjects_string) {
+		std::shared_ptr<Teacher> teacher_ptr = std::dynamic_pointer_cast<Teacher>(Database::FindUser(entry.teacher_name, " ", false));
+		SubjectName subject = StringToSubjectName(entry.subject_name);
+		std::shared_ptr<Subject> new_subject = std::shared_ptr<Subject>(new Subject(subject, teacher_ptr));
+		m_all_subjects.push_back(new_subject);
+		ui.SelectCourseComboBox->addItem(QString::fromStdString(new_subject->GetName()));
+	}
 
 }

@@ -32,6 +32,9 @@ public:
 	static void SaveEnrollment(const std::string& subject_name, const std::string& teacher_email, const std::string& student_email);
 	static std::vector<SubjectTeacher> GetAllSubjects();
 	static bool CheckUserInSubject(const std::string& subjects_name, const std::string& students_email);
+
+	//ASSIGNMENTS
+	static void SaveAssignment(const std::string& subject_name, const std::string& name, const std::string& description);
 };
 
 

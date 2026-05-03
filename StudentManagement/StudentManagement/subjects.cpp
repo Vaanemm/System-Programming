@@ -1,6 +1,7 @@
 #include "subjects.h"
 #include "assignment.h" // here we have to inlcude because we use it!
 #include "submission.h"
+#include "database.h"
 
 Subject::Subject(SubjectName _name, std::shared_ptr<Teacher> _teacher) :
 	m_name(_name), m_teacher(_teacher) {} // have to move because unique ptr!
@@ -48,6 +49,7 @@ std::string Subject::ToString() const {
 void Subject::MakeAssignment(std::string _name, std::string _description) {
 	std::shared_ptr<Assignment> m_assignment_ptr = std::shared_ptr<Assignment>(new Assignment(_name, _description, shared_from_this()));
 	m_assignments_ptr.push_back(std::move(m_assignment_ptr));
+	Database::SaveAssignment(GetName(), _name, _description);
 }
 
 std::string Subject::SubjectAssignmentToString() const{

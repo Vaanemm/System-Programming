@@ -162,6 +162,15 @@ void Database::SaveEnrollment(const std::string& subject_name, const std::string
 	}
 }
 
+void Database::SaveAssignment(const std::string& subject_name, const std::string& name, const std::string& description)
+{
+	std::ofstream file("assignments.csv", std::ios::app);
+	if (file.is_open()) {
+		file << subject_name << "," << name << "," << description << "\n";
+		file.close();
+	}
+}
+
 void Database::UpdateUserInDatabase(const std::shared_ptr<User>& updated_user, const std::string& original_email) {
 	std::ifstream file_in("database.csv");
 	std::ostringstream ChangedInfo;
