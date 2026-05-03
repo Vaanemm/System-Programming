@@ -101,7 +101,8 @@ std::shared_ptr<User> Database::FindUser(const std::string& _email, const std::s
 				return teach_ptr;
 			}
 			else if (role == "Parent") {
-				std::shared_ptr<Parent> par_ptr = std::shared_ptr<Parent>(new Parent(email, password, name, surname, dob, nullptr));
+				auto child_ptr = std::dynamic_pointer_cast<Student>(Database::FindUser(child, " ", false));
+				std::shared_ptr<Parent> par_ptr = std::shared_ptr<Parent>(new Parent(email, password, name, surname, dob, child_ptr));
 				return par_ptr;
 			}
 			else {
@@ -162,13 +163,32 @@ void Database::SaveEnrollment(const std::string& subject_name, const std::string
 	}
 }
 
-void Database::SaveAssignment(const std::string& subject_name, const std::string& name, const std::string& description)
+void Database::SaveAssignment(const std::string& subject_name, const std::string& title, const std::string& description)
 {
 	std::ofstream file("assignments.csv", std::ios::app);
 	if (file.is_open()) {
-		file << subject_name << "," << name << "," << description << "\n";
+		file << subject_name << "," << title << "," << description << "\n";
 		file.close();
 	}
+}
+
+std::vector<std::tuple<std::string, std::string, std::string>> Database::GetAllAssignments()
+{
+	std::vector<std::tuple<std::string, std::string, std::string>> assignments;
+	std::ifstream file("assignments.csv");
+	std::string line;
+	if (!file.is_open()) return {};
+
+	while (std::getline(file, line)) {
+		if (line.empty()) continue;
+		std::stringstream ss(line);
+		std::string subject, name, description;
+		std::getline(ss, subject, ',');
+		std::getline(ss, name, ',');
+		std::getline(ss, description);
+		assignments.push_back({ subject, name, description });
+	}
+	return assignments;
 }
 
 void Database::UpdateUserInDatabase(const std::shared_ptr<User>& updated_user, const std::string& original_email) {

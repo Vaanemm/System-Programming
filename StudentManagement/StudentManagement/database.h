@@ -35,6 +35,8 @@ public:
 
 	//ASSIGNMENTS
 	static void SaveAssignment(const std::string& subject_name, const std::string& name, const std::string& description);
+	static std::vector<std::tuple<std::string, std::string, std::string>> GetAllAssignments();
+
 };
 
 

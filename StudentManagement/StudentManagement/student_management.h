@@ -31,11 +31,18 @@ private slots:
 	void goToMail();
 
 	//MAIN WINDOW	
+	
+	//enrollment
 	void AddSubject();
 	void RefreshEnrollments();
+	
+	
 	void CheckRole();
+	
+	//assigments
 	void CreateAssignment();
 	void FillInComboBoxSubjects();
+	void ViewAssignments();
 
 	//SETTINGS
 	void UpdateAccount();

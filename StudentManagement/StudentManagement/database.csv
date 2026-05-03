@@ -5,3 +5,5 @@ yo,yo,yo,big,1/1/2000,Student,None
 k,k,k,k,1/1/2000,Student,None
 z,z,z,z,1/1/2000,Student,None
 i,i,i,i,1/1/2000,Student,None
+l,l,l,l,1/1/2000,Parent,k
+a,a,a,a,1/1/2000,Teacher,None

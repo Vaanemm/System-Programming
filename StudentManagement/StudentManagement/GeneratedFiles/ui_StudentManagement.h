@@ -709,8 +709,12 @@ public:
 
         AssignmentsTreeWidget = new QTreeWidget(MainMenuPage);
         AssignmentsTreeWidget->headerItem()->setText(0, QString());
+        QTreeWidgetItem *__qtreewidgetitem = new QTreeWidgetItem();
+        __qtreewidgetitem->setText(1, QString::fromUtf8("2"));
+        AssignmentsTreeWidget->setHeaderItem(__qtreewidgetitem);
         AssignmentsTreeWidget->setObjectName(QString::fromUtf8("AssignmentsTreeWidget"));
         AssignmentsTreeWidget->setMinimumSize(QSize(0, 0));
+        AssignmentsTreeWidget->setColumnCount(2);
         AssignmentsTreeWidget->header()->setVisible(false);
 
         verticalLayout_4->addWidget(AssignmentsTreeWidget);

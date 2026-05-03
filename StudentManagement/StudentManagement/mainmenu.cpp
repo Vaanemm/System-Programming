@@ -1,5 +1,7 @@
 #include "student_management.h"
 #include "database.h"
+#include "assignment.h"
+#include "parent.h"
 #include <iostream>
 
 
@@ -144,6 +146,10 @@ void StudentManagement::CheckRole()
 	if (isTeacher) {
 		FillInComboBoxSubjects();
 	}
+
+	if (isStudent || isParent) {
+		ViewAssignments();
+	}
 }
 
 void StudentManagement::CreateAssignment() {
@@ -173,9 +179,49 @@ void StudentManagement::FillInComboBoxSubjects()
 	for (const auto& entry : all_subjects_string) {
 		std::shared_ptr<Teacher> teacher_ptr = std::dynamic_pointer_cast<Teacher>(Database::FindUser(entry.teacher_name, " ", false));
 		SubjectName subject = StringToSubjectName(entry.subject_name);
+		
 		std::shared_ptr<Subject> new_subject = std::shared_ptr<Subject>(new Subject(subject, teacher_ptr));
 		m_all_subjects.push_back(new_subject);
 		ui.SelectCourseComboBox->addItem(QString::fromStdString(new_subject->GetName()));
 	}
-
 }
+
+void StudentManagement::ViewAssignments()
+{
+	ui.AssignmentsTreeWidget->clear();
+	//dynamic pointers ipv getters omdat getstudent en getsubjects niet in user zitten, kan mss fixe met iets van virtual
+	auto student_ptr = std::dynamic_pointer_cast<Student>(m_logged_in);
+	auto parent_ptr = std::dynamic_pointer_cast<Parent>(m_logged_in);
+
+	std::vector<std::shared_ptr<Subject>> subjects_to_show;
+
+	if (student_ptr) {
+		subjects_to_show = student_ptr->GetSubjects();
+	}
+	else if (parent_ptr) {
+		Student* child = parent_ptr->GetStudent();
+		if (child) {
+			subjects_to_show = child->GetSubjects();
+		}
+	}
+
+	if (subjects_to_show.empty()) return;
+
+	auto all_assignments = Database::GetAllAssignments();
+
+	for (const auto& subject : subjects_to_show) {
+		QTreeWidgetItem* subjectItem = new QTreeWidgetItem(ui.AssignmentsTreeWidget);
+		subjectItem->setText(0, QString::fromStdString(subject->GetName()));
+
+		for (const auto& assignment : all_assignments) {
+			if (std::get<0>(assignment) == subject->GetName()) {
+				QTreeWidgetItem* assignmentItem = new QTreeWidgetItem(subjectItem);
+				assignmentItem->setText(0, QString::fromStdString(std::get<1>(assignment)));
+				assignmentItem->setText(1, QString::fromStdString(std::get<2>(assignment)));
+			}
+		}
+	}
+	ui.AssignmentsTreeWidget->expandAll();
+}
+
+

@@ -12,6 +12,11 @@ std::string Assignment::GetName() const {
 	return m_name;
 }
 
+std::string Assignment::GetDescription() const {
+	return m_description;
+}
+
+
 std::string Assignment::GetTeacher() const {
 	Teacher* m_teacher = m_subject->GetTeacher();
 

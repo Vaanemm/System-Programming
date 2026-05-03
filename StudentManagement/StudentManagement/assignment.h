@@ -10,6 +10,7 @@ public:
 	Assignment(std::string _name, std::string _description, std::shared_ptr<Subject> _subject);
 
 	std::string GetName() const;
+	std::string GetDescription() const;
 	std::string GetTeacher() const;
 	std::string ToString() const;
 
