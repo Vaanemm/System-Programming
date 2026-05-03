@@ -165,6 +165,7 @@ void StudentManagement::CreateAssignment() {
 
 		ui.TitleField->clear();
 		ui.DescriptionField->clear();
+		ViewAssignments();
 
 		QMessageBox::information(this, "LETSSS GOOOO", "W");
 	}
