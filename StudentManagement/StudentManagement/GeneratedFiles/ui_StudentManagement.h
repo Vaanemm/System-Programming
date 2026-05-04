@@ -181,7 +181,7 @@ public:
     {
         if (StudentManagementClass->objectName().isEmpty())
             StudentManagementClass->setObjectName(QString::fromUtf8("StudentManagementClass"));
-        StudentManagementClass->resize(1037, 499);
+        StudentManagementClass->resize(1037, 849);
         centralwidget = new QWidget(StudentManagementClass);
         centralwidget->setObjectName(QString::fromUtf8("centralwidget"));
         verticalLayout = new QVBoxLayout(centralwidget);
@@ -934,7 +934,7 @@ public:
 
         retranslateUi(StudentManagementClass);
 
-        stackedWidget->setCurrentIndex(3);
+        stackedWidget->setCurrentIndex(0);
         tabWidget->setCurrentIndex(0);
 
 
