@@ -35,8 +35,8 @@ public:
 	static void SaveTeacherForSubject(const std::string& subject_name, const std::string& teacher_email);
 
 	//ASSIGNMENTS
-	static void SaveAssignment(const std::string& subject_name, const std::string& name, const std::string& description);
-	static std::vector<std::tuple<std::string, std::string, std::string>> GetAllAssignments();
+	static void SaveAssignment(const std::string& subject_name, const std::string& name, const std::string& description, const std::string& file_path = "");
+	static std::vector<std::tuple<std::string, std::string, std::string, std::string>> GetAllAssignments();
 
 	//Mails
 	static void SendEmail(const Mail& mail);

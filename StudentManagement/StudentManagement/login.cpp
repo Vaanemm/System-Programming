@@ -12,8 +12,8 @@ void StudentManagement::handleLogin() {
 	if (m_logged_in != nullptr) {
 		ui.stackedWidget->setCurrentWidget(ui.MainMenuPage);
 		StudentManagement::RefreshEnrollments();
-		StudentManagement::CheckRole();
 		StudentManagement::ViewAssignments();
+		ui.frame_3->hide();
 	}
 	else {
 		QMessageBox::warning(this, "Error", "Invalid inputs");

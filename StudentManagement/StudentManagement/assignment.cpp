@@ -5,8 +5,8 @@
 
 
 //constructor
-Assignment::Assignment(std::string _name, std::string _description, std::shared_ptr<Subject> _subject) :
-	m_name(_name), m_description(_description), m_subject(std::move(_subject)) {}
+Assignment::Assignment(std::string _name, std::string _description, std::shared_ptr<Subject> _subject, std::string _file_path)
+	: m_name(_name), m_description(_description), m_subject(std::move(_subject)), m_file_path(_file_path) {}
 
 std::string Assignment::GetName() const {
 	return m_name;
@@ -16,6 +16,9 @@ std::string Assignment::GetDescription() const {
 	return m_description;
 }
 
+std::string Assignment::GetFilePath() const {
+	return m_file_path;
+}
 
 std::string Assignment::GetTeacher() const {
 	Teacher* m_teacher = m_subject->GetTeacher();

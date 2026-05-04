@@ -21,7 +21,7 @@ public:
 	Teacher* GetTeacher() const;
 	std::string ToString() const;
 
-	void MakeAssignment(std::string _name, std::string _description);
+	void MakeAssignment(const std::string& _name, const std::string& _description, const std::string& file_path = "");
 	std::string SubjectAssignmentToString() const;
 	const std::vector<std::shared_ptr<Assignment>>& GetAssignments() const;
 

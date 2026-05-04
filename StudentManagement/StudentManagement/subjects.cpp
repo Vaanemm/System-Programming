@@ -46,10 +46,11 @@ std::string Subject::ToString() const {
 	return output;
 }
 
-void Subject::MakeAssignment(std::string _name, std::string _description) {
-	std::shared_ptr<Assignment> m_assignment_ptr = std::shared_ptr<Assignment>(new Assignment(_name, _description, shared_from_this()));
-	m_assignments_ptr.push_back(std::move(m_assignment_ptr));
-	Database::SaveAssignment(GetName(), _name, _description);
+void Subject::MakeAssignment(const std::string& title, const std::string& description, const std::string& file_path)
+{
+	std::shared_ptr<Assignment> assignment = std::make_shared<Assignment>(title, description, shared_from_this(), file_path);
+	m_assignments_ptr.push_back(assignment);
+	Database::SaveAssignment(GetName(), title, description, file_path);
 }
 
 std::string Subject::SubjectAssignmentToString() const{
