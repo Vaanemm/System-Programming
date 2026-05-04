@@ -12,6 +12,10 @@ const std::vector<std::shared_ptr<Subject>>& Teacher::GetSubjects() const {
 	return m_subjects;
 }
 
+void Teacher::AddSubject(std::shared_ptr<Subject> _subject) {
+	m_subjects.push_back(_subject);
+}
+
 std::string Teacher::ToString() const {
 	std::string output;
 	output = "Teacher information: \n";
