@@ -104,8 +104,13 @@ void StudentManagement::AddSubject() {
 
 void StudentManagement::RefreshEnrollments() {
 	ui.EnrollmentListWidget->clear();
+	ui.AddSubjectButton->hide();
 	auto student_ptr = std::dynamic_pointer_cast<Student>(m_logged_in);
+	auto parent_ptr = std::dynamic_pointer_cast<Parent>(m_logged_in);
+	auto teacher_ptr = std::dynamic_pointer_cast<Teacher>(m_logged_in);
+
 	if (student_ptr) {
+		ui.AddSubjectButton->show();
 		const auto& subjects = student_ptr->GetSubjects();
 
 		if (subjects.empty()) {
@@ -132,6 +137,40 @@ void StudentManagement::RefreshEnrollments() {
 		}
 
 		
+	}
+	else if (parent_ptr) {
+		ui.label_3->setText("Child's enrollments");
+		ui.AddSubjectButton->show();
+		const auto& child_email = parent_ptr->GetChild();
+
+		std::shared_ptr<User> child_user = Database::FindUser(child_email, " ", false);
+		std::shared_ptr<Student> child_ptr = std::dynamic_pointer_cast<Student>(child_user);
+		if (child_ptr == nullptr) {
+			std::cout << "child bestaat niet" << std::endl;
+		}
+
+		const auto& subjects = child_ptr->GetSubjects();
+		if (subjects.empty()) {
+			ui.EnrollmentListWidget->addItem("No subjects enrolled.");
+			return;
+		}
+
+		for (const auto& subject : subjects) {
+			QListWidgetItem* item = new QListWidgetItem(ui.EnrollmentListWidget);
+
+			QWidget* rowWidget = new QWidget();
+			QHBoxLayout* rowLayout = new QHBoxLayout(rowWidget);
+
+			QLabel* label = new QLabel(QString::fromStdString(subject->GetName()));
+
+			rowLayout->addWidget(label);
+			rowLayout->addStretch();
+			rowLayout->setContentsMargins(5, 2, 5, 2);
+
+			ui.EnrollmentListWidget->addItem(item);
+			ui.EnrollmentListWidget->setItemWidget(item, rowWidget);
+		}
+
 	}
 }
 
