@@ -13,6 +13,7 @@ void StudentManagement::handleLogin() {
 		ui.stackedWidget->setCurrentWidget(ui.MainMenuPage);
 		StudentManagement::RefreshEnrollments();
 		StudentManagement::CheckRole();
+		StudentManagement::ViewAssignments();
 	}
 	else {
 		QMessageBox::warning(this, "Error", "Invalid inputs");
