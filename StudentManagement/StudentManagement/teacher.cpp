@@ -8,7 +8,7 @@ Teacher::Teacher(const std::string& _email,
 	const Date& _dob)
 	: User(_email, _password, _name, _surname, _dob) {} // this goes to user class
 
-const std::vector<Subject*>& Teacher::GetSubjects() const {
+const std::vector<std::shared_ptr<Subject>>& Teacher::GetSubjects() const {
 	return m_subjects;
 }
 

@@ -193,8 +193,10 @@ void StudentManagement::ViewAssignments()
 	//dynamic pointers ipv getters omdat getstudent en getsubjects niet in user zitten, kan mss fixe met iets van virtual
 	auto student_ptr = std::dynamic_pointer_cast<Student>(m_logged_in);
 	auto parent_ptr = std::dynamic_pointer_cast<Parent>(m_logged_in);
+	auto teacher_ptr = std::dynamic_pointer_cast<Teacher>(m_logged_in);
 
 	std::vector<std::shared_ptr<Subject>> subjects_to_show;
+	std::vector<SubjectTeacher> all_subjects_string = Database::GetAllSubjects();
 
 	if (student_ptr) {
 		subjects_to_show = student_ptr->GetSubjects();
@@ -204,6 +206,11 @@ void StudentManagement::ViewAssignments()
 		if (child) {
 			subjects_to_show = child->GetSubjects();
 		}
+	}
+	else {
+
+		//std::cout << all_subjects_string->ToString() << std::endl;
+		subjects_to_show = teacher_ptr->GetSubjects();
 	}
 
 	if (subjects_to_show.empty()) return;
