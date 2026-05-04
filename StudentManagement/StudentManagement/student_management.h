@@ -47,6 +47,9 @@ private slots:
 	//SETTINGS
 	void UpdateAccount();
 
+	//Mail
+	void SendNewMail();
+
 
 private:
 	std::shared_ptr<User> m_logged_in = nullptr;
