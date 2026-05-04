@@ -42,6 +42,9 @@ private slots:
 	void ViewAssignments();
 	void ShowCreateAssignment();
 	void UploadFile();
+	void OpenAssignment(QTreeWidgetItem* item, int column);
+	void DownloadFile();
+	void CloseAssignmentInfo();
 
 	//SETTINGS
 	void UpdateAccount();

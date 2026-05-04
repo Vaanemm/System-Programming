@@ -149,6 +149,18 @@ public:
     QSpacerItem *horizontalSpacer_11;
     QPushButton *AddAssignmentButton;
     QTreeWidget *AssignmentsTreeWidget;
+    QFrame *frame_3;
+    QVBoxLayout *verticalLayout_7;
+    QLabel *label_2;
+    QLabel *label_5;
+    QLabel *CourseInfoText;
+    QLabel *label_7;
+    QLabel *AssignmentInfoText;
+    QLabel *label_9;
+    QLabel *DescriptionText_2;
+    QLabel *label_11;
+    QPushButton *DownloadFileButton;
+    QPushButton *CloseAssignmentInfoButton;
     QFrame *frame_2;
     QVBoxLayout *verticalLayout_9;
     QLabel *CreateAssignmentText;
@@ -746,14 +758,82 @@ public:
         AssignmentsTreeWidget = new QTreeWidget(MainMenuPage);
         AssignmentsTreeWidget->headerItem()->setText(0, QString());
         QTreeWidgetItem *__qtreewidgetitem = new QTreeWidgetItem();
+        __qtreewidgetitem->setText(2, QString::fromUtf8("3"));
         __qtreewidgetitem->setText(1, QString::fromUtf8("2"));
         AssignmentsTreeWidget->setHeaderItem(__qtreewidgetitem);
         AssignmentsTreeWidget->setObjectName(QString::fromUtf8("AssignmentsTreeWidget"));
         AssignmentsTreeWidget->setMinimumSize(QSize(0, 0));
-        AssignmentsTreeWidget->setColumnCount(2);
+        AssignmentsTreeWidget->setColumnCount(3);
         AssignmentsTreeWidget->header()->setVisible(false);
 
         verticalLayout_4->addWidget(AssignmentsTreeWidget);
+
+        frame_3 = new QFrame(MainMenuPage);
+        frame_3->setObjectName(QString::fromUtf8("frame_3"));
+        frame_3->setFrameShape(QFrame::StyledPanel);
+        frame_3->setFrameShadow(QFrame::Raised);
+        verticalLayout_7 = new QVBoxLayout(frame_3);
+        verticalLayout_7->setSpacing(6);
+        verticalLayout_7->setContentsMargins(11, 11, 11, 11);
+        verticalLayout_7->setObjectName(QString::fromUtf8("verticalLayout_7"));
+        label_2 = new QLabel(frame_3);
+        label_2->setObjectName(QString::fromUtf8("label_2"));
+        QFont font2;
+        font2.setPointSize(10);
+        font2.setBold(true);
+        font2.setWeight(75);
+        label_2->setFont(font2);
+        label_2->setAlignment(Qt::AlignCenter);
+
+        verticalLayout_7->addWidget(label_2);
+
+        label_5 = new QLabel(frame_3);
+        label_5->setObjectName(QString::fromUtf8("label_5"));
+
+        verticalLayout_7->addWidget(label_5);
+
+        CourseInfoText = new QLabel(frame_3);
+        CourseInfoText->setObjectName(QString::fromUtf8("CourseInfoText"));
+
+        verticalLayout_7->addWidget(CourseInfoText);
+
+        label_7 = new QLabel(frame_3);
+        label_7->setObjectName(QString::fromUtf8("label_7"));
+
+        verticalLayout_7->addWidget(label_7);
+
+        AssignmentInfoText = new QLabel(frame_3);
+        AssignmentInfoText->setObjectName(QString::fromUtf8("AssignmentInfoText"));
+
+        verticalLayout_7->addWidget(AssignmentInfoText);
+
+        label_9 = new QLabel(frame_3);
+        label_9->setObjectName(QString::fromUtf8("label_9"));
+
+        verticalLayout_7->addWidget(label_9);
+
+        DescriptionText_2 = new QLabel(frame_3);
+        DescriptionText_2->setObjectName(QString::fromUtf8("DescriptionText_2"));
+
+        verticalLayout_7->addWidget(DescriptionText_2);
+
+        label_11 = new QLabel(frame_3);
+        label_11->setObjectName(QString::fromUtf8("label_11"));
+
+        verticalLayout_7->addWidget(label_11);
+
+        DownloadFileButton = new QPushButton(frame_3);
+        DownloadFileButton->setObjectName(QString::fromUtf8("DownloadFileButton"));
+
+        verticalLayout_7->addWidget(DownloadFileButton);
+
+        CloseAssignmentInfoButton = new QPushButton(frame_3);
+        CloseAssignmentInfoButton->setObjectName(QString::fromUtf8("CloseAssignmentInfoButton"));
+
+        verticalLayout_7->addWidget(CloseAssignmentInfoButton);
+
+
+        verticalLayout_4->addWidget(frame_3);
 
         frame_2 = new QFrame(MainMenuPage);
         frame_2->setObjectName(QString::fromUtf8("frame_2"));
@@ -766,10 +846,6 @@ public:
         verticalLayout_9->setObjectName(QString::fromUtf8("verticalLayout_9"));
         CreateAssignmentText = new QLabel(frame_2);
         CreateAssignmentText->setObjectName(QString::fromUtf8("CreateAssignmentText"));
-        QFont font2;
-        font2.setPointSize(10);
-        font2.setBold(true);
-        font2.setWeight(75);
         CreateAssignmentText->setFont(font2);
         CreateAssignmentText->setAlignment(Qt::AlignCenter);
 
@@ -917,6 +993,16 @@ public:
         pushButton_3->setText(QString());
         label_4->setText(QApplication::translate("StudentManagementClass", "Assignments", nullptr));
         AddAssignmentButton->setText(QApplication::translate("StudentManagementClass", "+", nullptr));
+        label_2->setText(QApplication::translate("StudentManagementClass", "Assignment info", nullptr));
+        label_5->setText(QApplication::translate("StudentManagementClass", "Course:", nullptr));
+        CourseInfoText->setText(QString());
+        label_7->setText(QApplication::translate("StudentManagementClass", "Assignment:", nullptr));
+        AssignmentInfoText->setText(QString());
+        label_9->setText(QApplication::translate("StudentManagementClass", "Description:", nullptr));
+        DescriptionText_2->setText(QString());
+        label_11->setText(QApplication::translate("StudentManagementClass", "Download file:", nullptr));
+        DownloadFileButton->setText(QApplication::translate("StudentManagementClass", "File", nullptr));
+        CloseAssignmentInfoButton->setText(QApplication::translate("StudentManagementClass", "Close assignment info", nullptr));
         CreateAssignmentText->setText(QApplication::translate("StudentManagementClass", "Create assignment", nullptr));
         SelectCourseText->setText(QApplication::translate("StudentManagementClass", "Course:", nullptr));
         TitleText->setText(QApplication::translate("StudentManagementClass", "Title:", nullptr));

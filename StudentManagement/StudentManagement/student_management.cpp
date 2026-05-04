@@ -37,6 +37,9 @@ StudentManagement::StudentManagement(QWidget *parent)
 	connect(ui.CreateAssignmentButton, &QPushButton::clicked, this, &StudentManagement::CreateAssignment);
 	connect(ui.AddAssignmentButton, &QPushButton::clicked, this, &StudentManagement::ShowCreateAssignment);
 	connect(ui.SelectFileButton, &QPushButton::clicked, this, &StudentManagement::UploadFile);
+	connect(ui.DownloadFileButton, &QPushButton::clicked, this, &StudentManagement::DownloadFile);
+	connect(ui.AssignmentsTreeWidget, &QTreeWidget::itemClicked, this, &StudentManagement::OpenAssignment);
+	connect(ui.CloseAssignmentInfoButton, &QPushButton::clicked, this, &StudentManagement::CloseAssignmentInfo);
 
 	//SETTINGS
 	connect(ui.SaveSettingsButton, &QPushButton::clicked, this, &StudentManagement::UpdateAccount);

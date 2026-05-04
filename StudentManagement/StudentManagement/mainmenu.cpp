@@ -339,7 +339,11 @@ void StudentManagement::ViewAssignments()
 			if (std::get<0>(assignment) == subject->GetName()) {
 				QTreeWidgetItem* assignmentItem = new QTreeWidgetItem(subjectItem);
 				assignmentItem->setText(0, QString::fromStdString(std::get<1>(assignment)));
-				assignmentItem->setText(1, QString::fromStdString(std::get<2>(assignment)));
+				assignmentItem->setText(1, QString::fromStdString(std::get<2>(assignment))); 
+				assignmentItem->setText(2, QString::fromStdString(std::get<3>(assignment)));
+				//ik zet ze uit omdat je nu assignment info hebt, ma ik gebruik ze wel dus kan niet weg
+				ui.AssignmentsTreeWidget->setColumnHidden(1, true); 
+				ui.AssignmentsTreeWidget->setColumnHidden(2, true);
 			}
 		}
 	}
@@ -367,5 +371,38 @@ void StudentManagement::UploadFile()
 
 		ui.SelectFileButton->setText("File selected");
 	}
+}
+//Qt UI elementen kunnen enkel met normale pointers
+void StudentManagement::OpenAssignment(QTreeWidgetItem* item, int column) {
+	if (item->parent() == nullptr) return;
+
+	std::string title = item->text(0).toStdString();
+	std::string description = item->text(1).toStdString();
+	std::string file_path = item->text(2).toStdString();
+
+	ui.AssignmentInfoText->setText(QString::fromStdString(title));
+	ui.CourseInfoText->setText(QString::fromStdString(item->parent()->text(0).toStdString()));
+	ui.DescriptionText_2->setText(QString::fromStdString(description));
+
+	if (!file_path.empty()) {
+		ui.DownloadFileButton->setEnabled(true);
+		m_selected_file_path = file_path;
+	}
+	else {
+		ui.DownloadFileButton->setEnabled(false);
+	}
+
+	ui.frame_3->show();
+}
+
+void StudentManagement::DownloadFile() {
+	if (!m_selected_file_path.empty()) {
+		std::string command = "start \"\" \"" + m_selected_file_path + "\"";
+		system(command.c_str());
+	}
+}
+
+void StudentManagement::CloseAssignmentInfo() {
+	ui.frame_3->hide();
 }
 
