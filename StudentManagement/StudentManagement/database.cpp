@@ -154,6 +154,33 @@ void Database::SendEmail(const Mail& mail) {
 	return;
 }
 
+std::vector<std::unique_ptr<Mail>> Database::GetMailsForReceiver(const std::string& receiver) {
+	std::ifstream file("mails.csv");
+	std::vector<std::unique_ptr<Mail>> ReceivedMails;
+
+	std::string line;
+
+	if (file.is_open()) {
+		while (std::getline(file, line)) {
+			std::stringstream ss(line);
+			std::string sender, receiver2, subject, body;
+
+			std::getline(ss, sender, ',');
+			std::getline(ss, receiver2, ',');
+			std::getline(ss, subject, ',');
+			std::getline(ss, body);
+
+			Mail mail_for_list(sender, receiver2, subject, body);
+			if (receiver2 == receiver) {
+				ReceivedMails.push_back(std::make_unique<Mail>(sender, receiver, subject, body));
+			}
+		}
+	}
+	return ReceivedMails;
+
+
+}
+
 bool Database::AddUser(const std::shared_ptr<User>& user) {
 	std::ofstream file("database.csv", std::ios::app);
 

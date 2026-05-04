@@ -49,6 +49,7 @@ private slots:
 
 	//Mail
 	void SendNewMail();
+	void RefreshInbox();
 
 
 private:
