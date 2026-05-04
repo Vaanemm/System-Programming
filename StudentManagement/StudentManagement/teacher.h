@@ -8,11 +8,13 @@ public:
 	Teacher(const std::string& _email, const std::string& _password, const std::string& _name,
 		const std::string& _surname, const Date& _dob);
 
-	const std::vector<Subject*>& GetSubjects() const;
+	const std::vector<std::shared_ptr<Subject>>& GetSubjects() const;
+	void AddSubject(std::shared_ptr<Subject> _subject);
+
 	std::string ToString() const;
 
 	std::string GetRole() const override;
 
 private:
-	std::vector<Subject*> m_subjects;
+	std::vector<std::shared_ptr<Subject>> m_subjects;
 };

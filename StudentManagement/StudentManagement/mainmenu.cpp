@@ -4,7 +4,6 @@
 #include "parent.h"
 #include <iostream>
 
-
 void StudentManagement::handleLogout() {
 	m_logged_in = nullptr;
 	m_all_subjects.clear();
@@ -53,44 +52,99 @@ void StudentManagement::AddSubject() {
 			QLabel* label = new QLabel(QString::fromStdString(subject->GetName()));
 			QPushButton* enrollBtn = new QPushButton("Enroll");
 
-			std::string students_email = m_logged_in->GetEmail();
-			std::string subjects_name = subject->GetName();
+			auto student = std::dynamic_pointer_cast<Student>(m_logged_in);
+			auto teacher = std::dynamic_pointer_cast<Teacher>(m_logged_in);
 
-			if (Database::CheckUserInSubject(subjects_name, students_email)) {
-				enrollBtn->setText("Enrolled");
-				enrollBtn->setEnabled(false); // Make it non-clickable
-			}
-
-			rowLayout->addWidget(label);
-			rowLayout->addStretch();
-			rowLayout->addWidget(enrollBtn);
-			rowLayout->setContentsMargins(5, 2, 5, 2);
-
-			connect(enrollBtn, &QPushButton::clicked, [this, subject, enrollBtn]() {
-				std::string students_email = m_logged_in->GetEmail();
+			if (student) {
+				std::string students_email = student->GetEmail();
 				std::string subjects_name = subject->GetName();
-				std::string teachers_email = subject->GetTeacher()->GetEmail();
-				bool is_already = Database::CheckUserInSubject(subjects_name, students_email);
 
-				if (is_already) {
-					QMessageBox::critical(this, "Error", "Student already enrolled");
+
+
+				if (Database::CheckUserInSubject(subjects_name, students_email)) {
+					enrollBtn->setText("Enrolled");
+					enrollBtn->setEnabled(false); // Make it non-clickable
 				}
-				else {
-					Database::SaveEnrollment(subjects_name, teachers_email, students_email);
 
-					auto student_ptr = std::dynamic_pointer_cast<Student>(m_logged_in);
-					if (student_ptr) {
-						student_ptr->AddSubject(subject);
+
+
+				rowLayout->addWidget(label);
+				rowLayout->addStretch();
+				rowLayout->addWidget(enrollBtn);
+				rowLayout->setContentsMargins(5, 2, 5, 2);
+
+				connect(enrollBtn, &QPushButton::clicked, [this, subject, enrollBtn]() {
+					std::string students_email = m_logged_in->GetEmail();
+					std::string subjects_name = subject->GetName();
+					std::string teachers_email = subject->GetTeacher()->GetEmail();
+					bool is_already = Database::CheckUserInSubject(subjects_name, students_email);
+
+					if (is_already) {
+						QMessageBox::critical(this, "Error", "Student already enrolled");
+					}
+					else {
+						Database::SaveEnrollment(subjects_name, teachers_email, students_email);
+
+						auto student_ptr = std::dynamic_pointer_cast<Student>(m_logged_in);
+						if (student_ptr) {
+							student_ptr->AddSubject(subject);
+						}
+
+						QMessageBox::information(this, "Success", "Enrolled successfully!");
+						enrollBtn->setText("Enrolled");
+						enrollBtn->setEnabled(false);
+					}
+				});
+
+				ui.EnrollmentListWidget->addItem(item);
+				ui.EnrollmentListWidget->setItemWidget(item, rowWidget);
+			}
+			else if (teacher) {
+				std::string teachers_email = teacher->GetEmail();
+				std::string subjects_name = subject->GetName();
+
+				bool is_already_enrolled = false;
+				for (const auto& subject_of_teacher : teacher->GetSubjects()) {
+					if (subject_of_teacher->GetName() == subjects_name) {
+						is_already_enrolled = true;
+						break;
+					}
+				}
+				if (is_already_enrolled) {
+					enrollBtn->setText("Enrolled");
+					enrollBtn->setEnabled(false);
+				} 
+				else if (!Database::CheckTeacherEmptyInSubject(subjects_name)) {
+					enrollBtn->setText("Not available");
+					enrollBtn->setEnabled(false); // Make it non-clickable
+				}
+				rowLayout->addWidget(label);
+				rowLayout->addStretch();
+				rowLayout->addWidget(enrollBtn);
+				rowLayout->setContentsMargins(5, 2, 5, 2);
+
+				connect(enrollBtn, &QPushButton::clicked, [this, subject, enrollBtn]() {
+					std::string teachers_email = m_logged_in->GetEmail();
+					std::string subjects_name = subject->GetName();
+
+
+					Database::SaveTeacherForSubject(subjects_name, teachers_email);
+
+					auto teacher_ptr = std::dynamic_pointer_cast<Teacher>(m_logged_in);
+					if (teacher_ptr) {
+						teacher_ptr->AddSubject(subject);
 					}
 
 					QMessageBox::information(this, "Success", "Enrolled successfully!");
 					enrollBtn->setText("Enrolled");
 					enrollBtn->setEnabled(false);
-				}
-			});
 
-			ui.EnrollmentListWidget->addItem(item);
-			ui.EnrollmentListWidget->setItemWidget(item, rowWidget);
+				});
+				ui.EnrollmentListWidget->addItem(item);
+				ui.EnrollmentListWidget->setItemWidget(item, rowWidget);
+			}
+
+			
 		}
 	}
 	else {
@@ -104,8 +158,13 @@ void StudentManagement::AddSubject() {
 
 void StudentManagement::RefreshEnrollments() {
 	ui.EnrollmentListWidget->clear();
+	ui.AddSubjectButton->hide();
 	auto student_ptr = std::dynamic_pointer_cast<Student>(m_logged_in);
+	auto parent_ptr = std::dynamic_pointer_cast<Parent>(m_logged_in);
+	auto teacher_ptr = std::dynamic_pointer_cast<Teacher>(m_logged_in);
+
 	if (student_ptr) {
+		ui.AddSubjectButton->show();
 		const auto& subjects = student_ptr->GetSubjects();
 
 		if (subjects.empty()) {
@@ -133,6 +192,67 @@ void StudentManagement::RefreshEnrollments() {
 
 		
 	}
+	else if (parent_ptr) {
+		ui.label_3->setText("Child's enrollments");
+		ui.AddSubjectButton->show();
+		const auto& child_email = parent_ptr->GetChild();
+
+		std::shared_ptr<User> child_user = Database::FindUser(child_email, " ", false);
+		std::shared_ptr<Student> child_ptr = std::dynamic_pointer_cast<Student>(child_user);
+		if (child_ptr == nullptr) {
+			std::cout << "child bestaat niet" << std::endl;
+		}
+
+		const auto& subjects = child_ptr->GetSubjects();
+		if (subjects.empty()) {
+			ui.EnrollmentListWidget->addItem("No subjects enrolled.");
+			return;
+		}
+
+		for (const auto& subject : subjects) {
+			QListWidgetItem* item = new QListWidgetItem(ui.EnrollmentListWidget);
+
+			QWidget* rowWidget = new QWidget();
+			QHBoxLayout* rowLayout = new QHBoxLayout(rowWidget);
+
+			QLabel* label = new QLabel(QString::fromStdString(subject->GetName()));
+
+			rowLayout->addWidget(label);
+			rowLayout->addStretch();
+			rowLayout->setContentsMargins(5, 2, 5, 2);
+
+			ui.EnrollmentListWidget->addItem(item);
+			ui.EnrollmentListWidget->setItemWidget(item, rowWidget);
+		}
+
+	}
+	else if (teacher_ptr) {
+		ui.AddSubjectButton->show();
+		const auto& subjects = teacher_ptr->GetSubjects();
+
+		if (subjects.empty()) {
+			ui.EnrollmentListWidget->addItem("No subjects enrolled.");
+			return;
+		}
+
+		for (const auto& subject : subjects) {
+			QListWidgetItem* item = new QListWidgetItem(ui.EnrollmentListWidget);
+
+			//create container
+			QWidget* rowWidget = new QWidget();
+			QHBoxLayout* rowLayout = new QHBoxLayout(rowWidget);
+
+			QLabel* label = new QLabel(QString::fromStdString(subject->GetName()));
+
+			rowLayout->addWidget(label);
+			rowLayout->addStretch();
+			rowLayout->setContentsMargins(5, 2, 5, 2);
+
+			//add the item and set the widget
+			ui.EnrollmentListWidget->addItem(item);
+			ui.EnrollmentListWidget->setItemWidget(item, rowWidget);
+		}
+	}
 }
 
 void StudentManagement::CheckRole()
@@ -145,10 +265,6 @@ void StudentManagement::CheckRole()
 
 	if (isTeacher) {
 		FillInComboBoxSubjects();
-	}
-
-	if (isStudent || isParent) {
-		ViewAssignments();
 	}
 }
 
@@ -193,6 +309,7 @@ void StudentManagement::ViewAssignments()
 	//dynamic pointers ipv getters omdat getstudent en getsubjects niet in user zitten, kan mss fixe met iets van virtual
 	auto student_ptr = std::dynamic_pointer_cast<Student>(m_logged_in);
 	auto parent_ptr = std::dynamic_pointer_cast<Parent>(m_logged_in);
+	auto teacher_ptr = std::dynamic_pointer_cast<Teacher>(m_logged_in);
 
 	std::vector<std::shared_ptr<Subject>> subjects_to_show;
 
@@ -204,6 +321,9 @@ void StudentManagement::ViewAssignments()
 		if (child) {
 			subjects_to_show = child->GetSubjects();
 		}
+	}
+	else if (teacher_ptr) {
+		subjects_to_show = teacher_ptr->GetSubjects();
 	}
 
 	if (subjects_to_show.empty()) return;

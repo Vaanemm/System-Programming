@@ -86,7 +86,6 @@ std::shared_ptr<User> Database::FindUser(const std::string& _email, const std::s
 
 							auto teacher = std::dynamic_pointer_cast<Teacher>(Database::FindUser(teach_email, " ", false));
 
-							// 3. Create the Subject and add it to the student
 							auto new_sub = std::make_shared<Subject>(subject_name, teacher);
 							stud_ptr->AddSubject(new_sub);
 						}
@@ -98,6 +97,32 @@ std::shared_ptr<User> Database::FindUser(const std::string& _email, const std::s
 			}
 			else if (role == "Teacher") {
 				std::shared_ptr<Teacher> teach_ptr = std::shared_ptr<Teacher>(new Teacher(email, password, name, surname, dob));
+
+				// now we have to populate the m_all_subjects vector...
+				std::ifstream enroll_file("enrollment.csv");
+				std::string enroll_line;
+				if (enroll_file.is_open()) {
+					while (std::getline(enroll_file, enroll_line)) {
+						if (enroll_line.empty()) continue;
+
+						std::stringstream ss_enroll(enroll_line);
+						std::string sub_name, teach_email, stud_email;
+
+						std::getline(ss_enroll, sub_name, ',');
+						std::getline(ss_enroll, teach_email, ',');
+						std::getline(ss_enroll, stud_email);
+
+						if (teach_email == email) {
+							SubjectName subject_name = StringToSubjectName(sub_name);
+
+							auto new_subject = std::make_shared<Subject>(subject_name, teach_ptr);
+							teach_ptr->AddSubject(new_subject);
+
+						}
+					}
+					enroll_file.close();
+				}
+
 				return teach_ptr;
 			}
 			else if (role == "Parent") {
@@ -161,6 +186,37 @@ void Database::SaveEnrollment(const std::string& subject_name, const std::string
 	else {
 		std::cerr << "Error: Could not open enrollment.csv for appending." << std::endl;
 	}
+}
+
+void Database::SaveTeacherForSubject(const std::string& subject_name, const std::string& teacher_email) {
+	std::ifstream file_in("enrollment.csv");
+	std::ostringstream ChangedInfo;
+	std::string line;
+	if (!file_in.is_open()) return;
+
+	std::getline(file_in, line);
+	ChangedInfo << line << "\n";
+
+	while (std::getline(file_in, line)) {
+		std::stringstream ss(line);
+		std::string subject, teacher, student;
+		std::getline(ss, subject, ',');
+		std::getline(ss, teacher, ',');
+		std::getline(ss, student, ',');
+
+		if (subject == subject_name) {
+			std::string new_line = subject_name + "," + teacher_email + ",";
+			ChangedInfo << new_line << "\n";
+		}
+		else {
+			ChangedInfo << line << "\n";
+		}
+	}
+	file_in.close();
+
+	std::ofstream file_out("enrollment.csv");
+	file_out << ChangedInfo.str();
+	file_out.close();
 }
 
 void Database::SaveAssignment(const std::string& subject_name, const std::string& title, const std::string& description)
@@ -264,6 +320,32 @@ bool Database::CheckUserInSubject(const std::string& subjects_name, const std::s
 		std::getline(ss, student);
 
 		if (subject == subjects_name && student == students_email) {
+			file.close();
+			return true; // Match found
+		}
+	}
+	return false;
+}
+
+bool Database::CheckTeacherEmptyInSubject(const std::string& subjects_name) {
+	std::ifstream file("enrollment.csv");
+	std::string line;
+
+	if (!file.is_open()) {
+		std::cout << "enrollment couldn't open" << std::endl;
+	}
+
+	while (std::getline(file, line)) {
+		if (line.empty()) continue;
+
+		std::stringstream ss(line);
+		std::string subject, teacher, student;
+
+		std::getline(ss, subject, ',');
+		std::getline(ss, teacher, ',');
+		std::getline(ss, student);
+
+		if (subject == subjects_name && (teacher == " " || teacher.empty())) {
 			file.close();
 			return true; // Match found
 		}
