@@ -163,6 +163,37 @@ void Database::SaveEnrollment(const std::string& subject_name, const std::string
 	}
 }
 
+void Database::SaveTeacherForSubject(const std::string& subject_name, const std::string& teacher_email) {
+	std::ifstream file_in("enrollment.csv");
+	std::ostringstream ChangedInfo;
+	std::string line;
+	if (!file_in.is_open()) return;
+
+	std::getline(file_in, line);
+	ChangedInfo << line << "\n";
+
+	while (std::getline(file_in, line)) {
+		std::stringstream ss(line);
+		std::string subject, teacher, student;
+		std::getline(ss, subject, ',');
+		std::getline(ss, teacher, ',');
+		std::getline(ss, student, ',');
+
+		if (subject == subject_name) {
+			std::string new_line = subject_name + "," + teacher_email + ",";
+			ChangedInfo << new_line << "\n";
+		}
+		else {
+			ChangedInfo << line << "\n";
+		}
+	}
+	file_in.close();
+
+	std::ofstream file_out("enrollment.csv");
+	file_out << ChangedInfo.str();
+	file_out.close();
+}
+
 void Database::SaveAssignment(const std::string& subject_name, const std::string& title, const std::string& description)
 {
 	std::ofstream file("assignments.csv", std::ios::app);
@@ -264,6 +295,32 @@ bool Database::CheckUserInSubject(const std::string& subjects_name, const std::s
 		std::getline(ss, student);
 
 		if (subject == subjects_name && student == students_email) {
+			file.close();
+			return true; // Match found
+		}
+	}
+	return false;
+}
+
+bool Database::CheckTeacherEmptyInSubject(const std::string& subjects_name) {
+	std::ifstream file("enrollment.csv");
+	std::string line;
+
+	if (!file.is_open()) {
+		std::cout << "enrollment couldn't open" << std::endl;
+	}
+
+	while (std::getline(file, line)) {
+		if (line.empty()) continue;
+
+		std::stringstream ss(line);
+		std::string subject, teacher, student;
+
+		std::getline(ss, subject, ',');
+		std::getline(ss, teacher, ',');
+		std::getline(ss, student);
+
+		if (subject == subjects_name && (teacher == " " || teacher.empty())) {
 			file.close();
 			return true; // Match found
 		}

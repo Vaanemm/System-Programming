@@ -9,6 +9,8 @@ public:
 		const std::string& _surname, const Date& _dob);
 
 	const std::vector<std::shared_ptr<Subject>>& GetSubjects() const;
+	void AddSubject(std::shared_ptr<Subject> _subject);
+
 	std::string ToString() const;
 
 	std::string GetRole() const override;
