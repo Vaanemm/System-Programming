@@ -35,14 +35,13 @@ private slots:
 	//enrollment
 	void AddSubject();
 	void RefreshEnrollments();
-	
-	
-	void CheckRole();
-	
+		
 	//assigments
 	void CreateAssignment();
 	void FillInComboBoxSubjects();
 	void ViewAssignments();
+	void ShowCreateAssignment();
+	void UploadFile();
 
 	//SETTINGS
 	void UpdateAccount();
@@ -52,5 +51,6 @@ private:
 	std::shared_ptr<User> m_logged_in = nullptr;
 	Ui::StudentManagementClass ui;
 	
+	std::string m_selected_file_path;
 	std::vector<std::shared_ptr<Subject>> m_all_subjects;
 };

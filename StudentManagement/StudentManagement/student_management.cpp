@@ -35,6 +35,8 @@ StudentManagement::StudentManagement(QWidget *parent)
 	//MAIN WINDOW	
 	connect(ui.AddSubjectButton, &QPushButton::clicked, this, &StudentManagement::AddSubject);
 	connect(ui.CreateAssignmentButton, &QPushButton::clicked, this, &StudentManagement::CreateAssignment);
+	connect(ui.AddAssignmentButton, &QPushButton::clicked, this, &StudentManagement::ShowCreateAssignment);
+	connect(ui.SelectFileButton, &QPushButton::clicked, this, &StudentManagement::UploadFile);
 
 	//SETTINGS
 	connect(ui.SaveSettingsButton, &QPushButton::clicked, this, &StudentManagement::UpdateAccount);

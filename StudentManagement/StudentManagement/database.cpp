@@ -194,18 +194,18 @@ void Database::SaveTeacherForSubject(const std::string& subject_name, const std:
 	file_out.close();
 }
 
-void Database::SaveAssignment(const std::string& subject_name, const std::string& title, const std::string& description)
+void Database::SaveAssignment(const std::string& subject_name, const std::string& name, const std::string& description, const std::string& file_path)
 {
 	std::ofstream file("assignments.csv", std::ios::app);
 	if (file.is_open()) {
-		file << subject_name << "," << title << "," << description << "\n";
+		file << subject_name << "," << name << "," << description << "," << file_path << "\n";
 		file.close();
 	}
 }
 
-std::vector<std::tuple<std::string, std::string, std::string>> Database::GetAllAssignments()
-{
-	std::vector<std::tuple<std::string, std::string, std::string>> assignments;
+std::vector<std::tuple<std::string, std::string, std::string, std::string>> Database::GetAllAssignments() {
+
+	std::vector<std::tuple<std::string, std::string, std::string, std::string>> assignments; 
 	std::ifstream file("assignments.csv");
 	std::string line;
 	if (!file.is_open()) return {};
@@ -213,11 +213,12 @@ std::vector<std::tuple<std::string, std::string, std::string>> Database::GetAllA
 	while (std::getline(file, line)) {
 		if (line.empty()) continue;
 		std::stringstream ss(line);
-		std::string subject, name, description;
+		std::string subject, name, description, file_path;
 		std::getline(ss, subject, ',');
 		std::getline(ss, name, ',');
-		std::getline(ss, description);
-		assignments.push_back({ subject, name, description });
+		std::getline(ss, description, ',');
+		std::getline(ss, file_path, ',');
+		assignments.push_back({ subject, name, description, file_path });
 	}
 	return assignments;
 }

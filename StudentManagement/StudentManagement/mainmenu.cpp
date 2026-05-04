@@ -3,6 +3,8 @@
 #include "assignment.h"
 #include "parent.h"
 #include <iostream>
+#include <QFileDialog>
+#include <QFileInfo>
 
 void StudentManagement::handleLogout() {
 	m_logged_in = nullptr;
@@ -255,19 +257,6 @@ void StudentManagement::RefreshEnrollments() {
 	}
 }
 
-void StudentManagement::CheckRole()
-{
-	bool isTeacher = m_logged_in->GetRole() == "Teacher";
-	bool isStudent = m_logged_in->GetRole() == "Student";
-	bool isParent = m_logged_in->GetRole() == "Parent";
-
-	ui.frame_2->setVisible(isTeacher);
-
-	if (isTeacher) {
-		FillInComboBoxSubjects();
-	}
-}
-
 void StudentManagement::CreateAssignment() {
 	QString qstring_title = ui.TitleField->text();
 	QString qstring_description = ui.DescriptionField->text();
@@ -275,12 +264,20 @@ void StudentManagement::CreateAssignment() {
 	std::string title = qstring_title.toStdString();
 	std::string description = qstring_description.toStdString();
 
+	if (title.empty() || description.empty()) {
+		QMessageBox::warning(this, "Not good", "You have to fill in: title and description");
+		return;
+	}
+
 	int index = ui.SelectCourseComboBox->currentIndex();
 	if (index >= 0 && index < m_all_subjects.size()) {
-		m_all_subjects[index]->MakeAssignment(title, description);
+		m_all_subjects[index]->MakeAssignment(title, description, m_selected_file_path);
 
+		m_selected_file_path.clear();
+		ui.SelectFileButton->setText("Select File");
 		ui.TitleField->clear();
 		ui.DescriptionField->clear();
+
 		ViewAssignments();
 
 		QMessageBox::information(this, "LETSSS GOOOO", "W");
@@ -306,10 +303,14 @@ void StudentManagement::FillInComboBoxSubjects()
 void StudentManagement::ViewAssignments()
 {
 	ui.AssignmentsTreeWidget->clear();
+	ui.frame_2->hide();
+	ui.AddAssignmentButton->hide();
+
 	//dynamic pointers ipv getters omdat getstudent en getsubjects niet in user zitten, kan mss fixe met iets van virtual
 	auto student_ptr = std::dynamic_pointer_cast<Student>(m_logged_in);
 	auto parent_ptr = std::dynamic_pointer_cast<Parent>(m_logged_in);
 	auto teacher_ptr = std::dynamic_pointer_cast<Teacher>(m_logged_in);
+
 
 	std::vector<std::shared_ptr<Subject>> subjects_to_show;
 
@@ -323,6 +324,7 @@ void StudentManagement::ViewAssignments()
 		}
 	}
 	else if (teacher_ptr) {
+		ui.AddAssignmentButton->show();
 		subjects_to_show = teacher_ptr->GetSubjects();
 	}
 
@@ -345,4 +347,26 @@ void StudentManagement::ViewAssignments()
 	ui.AssignmentsTreeWidget->expandAll();
 }
 
+void StudentManagement::ShowCreateAssignment() {
+	if (ui.AddAssignmentButton->text() == "+") {
+		ui.AddAssignmentButton->setText("-");
+		FillInComboBoxSubjects();
+		ui.frame_2->show();
+	}
+	else {
+		ui.AddAssignmentButton->setText("+");
+		ui.frame_2->hide();
+	}
+}
+
+void StudentManagement::UploadFile()
+{
+	QString file_path = QFileDialog::getOpenFileName(this,"Pick a file",QString(),"");
+
+	if (!file_path.isEmpty()) {
+		m_selected_file_path = file_path.toStdString();
+
+		ui.SelectFileButton->setText("File selected");
+	}
+}
 
