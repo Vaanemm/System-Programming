@@ -277,6 +277,7 @@ void StudentManagement::CreateAssignment() {
 		ui.SelectFileButton->setText("Select File");
 		ui.TitleField->clear();
 		ui.DescriptionField->clear();
+		ui.AddAssignmentButton->setText("+");
 
 		ViewAssignments();
 
@@ -289,14 +290,12 @@ void StudentManagement::FillInComboBoxSubjects()
 	ui.SelectCourseComboBox->clear();
 	m_all_subjects.clear();
 
-	std::vector<SubjectTeacher> all_subjects_string = Database::GetAllSubjects();
-	for (const auto& entry : all_subjects_string) {
-		std::shared_ptr<Teacher> teacher_ptr = std::dynamic_pointer_cast<Teacher>(Database::FindUser(entry.teacher_name, " ", false));
-		SubjectName subject = StringToSubjectName(entry.subject_name);
-		
-		std::shared_ptr<Subject> new_subject = std::shared_ptr<Subject>(new Subject(subject, teacher_ptr));
-		m_all_subjects.push_back(new_subject);
-		ui.SelectCourseComboBox->addItem(QString::fromStdString(new_subject->GetName()));
+	auto teacher_ptr = std::dynamic_pointer_cast<Teacher>(m_logged_in);
+	if (!teacher_ptr) return;
+
+	for (const auto& subject : teacher_ptr->GetSubjects()) {
+		m_all_subjects.push_back(subject);
+		ui.SelectCourseComboBox->addItem(QString::fromStdString(subject->GetName()));
 	}
 }
 
