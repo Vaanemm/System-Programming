@@ -139,6 +139,7 @@ void StudentManagement::RefreshEnrollments() {
 		
 	}
 	else if (parent_ptr) {
+		ui.label_3->setText("Child's enrollments");
 		ui.AddSubjectButton->show();
 		const auto& child_email = parent_ptr->GetChild();
 
