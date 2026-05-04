@@ -4,7 +4,6 @@
 #include "parent.h"
 #include <iostream>
 
-
 void StudentManagement::handleLogout() {
 	m_logged_in = nullptr;
 	m_all_subjects.clear();
@@ -267,10 +266,6 @@ void StudentManagement::CheckRole()
 	if (isTeacher) {
 		FillInComboBoxSubjects();
 	}
-
-	if (isStudent || isParent) {
-		ViewAssignments();
-	}
 }
 
 void StudentManagement::CreateAssignment() {
@@ -317,7 +312,6 @@ void StudentManagement::ViewAssignments()
 	auto teacher_ptr = std::dynamic_pointer_cast<Teacher>(m_logged_in);
 
 	std::vector<std::shared_ptr<Subject>> subjects_to_show;
-	std::vector<SubjectTeacher> all_subjects_string = Database::GetAllSubjects();
 
 	if (student_ptr) {
 		subjects_to_show = student_ptr->GetSubjects();
@@ -328,9 +322,7 @@ void StudentManagement::ViewAssignments()
 			subjects_to_show = child->GetSubjects();
 		}
 	}
-	else {
-
-		//std::cout << all_subjects_string->ToString() << std::endl;
+	else if (teacher_ptr) {
 		subjects_to_show = teacher_ptr->GetSubjects();
 	}
 
