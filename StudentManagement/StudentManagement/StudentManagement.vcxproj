@@ -117,6 +117,7 @@
     <ClCompile Include="database.cpp" />
     <ClCompile Include="login.cpp" />
     <ClCompile Include="mail.cpp" />
+    <ClCompile Include="mailing_system.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="mainmenu.cpp" />
     <ClCompile Include="parent.cpp" />

@@ -20,7 +20,6 @@ class Database {
 public:	
 	std::string Read();
 	static void Write(const std::vector<std::shared_ptr<Student>>& stud_list);
-	void SendEmail(const Mail& mail);
 
 	// static so we don't have to create an object and can user Database::FindUser
 	static std::shared_ptr<User> FindUser(const std::string& _email, const std::string& _password, const bool _for_login);
@@ -38,6 +37,9 @@ public:
 	//ASSIGNMENTS
 	static void SaveAssignment(const std::string& subject_name, const std::string& name, const std::string& description, const std::string& file_path = "");
 	static std::vector<std::tuple<std::string, std::string, std::string, std::string>> GetAllAssignments();
+
+	//Mails
+	static void SendEmail(const Mail& mail);
 
 };
 

@@ -86,7 +86,6 @@ std::shared_ptr<User> Database::FindUser(const std::string& _email, const std::s
 
 							auto teacher = std::dynamic_pointer_cast<Teacher>(Database::FindUser(teach_email, " ", false));
 
-							// 3. Create the Subject and add it to the student
 							auto new_sub = std::make_shared<Subject>(subject_name, teacher);
 							stud_ptr->AddSubject(new_sub);
 						}
@@ -98,6 +97,32 @@ std::shared_ptr<User> Database::FindUser(const std::string& _email, const std::s
 			}
 			else if (role == "Teacher") {
 				std::shared_ptr<Teacher> teach_ptr = std::shared_ptr<Teacher>(new Teacher(email, password, name, surname, dob));
+
+				// now we have to populate the m_all_subjects vector...
+				std::ifstream enroll_file("enrollment.csv");
+				std::string enroll_line;
+				if (enroll_file.is_open()) {
+					while (std::getline(enroll_file, enroll_line)) {
+						if (enroll_line.empty()) continue;
+
+						std::stringstream ss_enroll(enroll_line);
+						std::string sub_name, teach_email, stud_email;
+
+						std::getline(ss_enroll, sub_name, ',');
+						std::getline(ss_enroll, teach_email, ',');
+						std::getline(ss_enroll, stud_email);
+
+						if (teach_email == email) {
+							SubjectName subject_name = StringToSubjectName(sub_name);
+
+							auto new_subject = std::make_shared<Subject>(subject_name, teach_ptr);
+							teach_ptr->AddSubject(new_subject);
+
+						}
+					}
+					enroll_file.close();
+				}
+
 				return teach_ptr;
 			}
 			else if (role == "Parent") {
