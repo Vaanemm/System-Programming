@@ -15,7 +15,7 @@ public:
 	std::string GetFilePath() const;
 	std::string ToString() const;
 
-	void MakeSubmission(int _grade, std::string _description);
+	void MakeSubmission(std::string _student_email, std::string _file_path = "", int _grade = 0, std::string _description = "");
 	std::string AssignmentSubmissionToString() const;
 
 

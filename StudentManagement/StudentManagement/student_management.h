@@ -46,6 +46,14 @@ private slots:
 	void DownloadFile();
 	void CloseAssignmentInfo();
 
+	//submissions
+	void UploadSubmissionFile();
+	void SubmitAssignment();
+	void ViewSubmissions();
+	void CloseSubmissionInfo();
+	void OpenSubmission(QTreeWidgetItem* item, int column);
+	void GradeSubmission();
+
 	//SETTINGS
 	void UpdateAccount();
 
@@ -61,5 +69,10 @@ private:
 	Ui::StudentManagementClass ui;
 	
 	std::string m_selected_file_path;
+	std::string m_submission_file_path;
+
+	QTreeWidgetItem* m_selected_assignment_item = nullptr;
+
+
 	std::vector<std::shared_ptr<Subject>> m_all_subjects;
 };

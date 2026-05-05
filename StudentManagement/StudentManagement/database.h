@@ -38,6 +38,12 @@ public:
 	static void SaveAssignment(const std::string& subject_name, const std::string& name, const std::string& description, const std::string& file_path = "");
 	static std::vector<std::tuple<std::string, std::string, std::string, std::string>> GetAllAssignments();
 
+	//SUBMISSIONS
+	static void SaveSubmission(const std::string& subject_name, const std::string& assignment_title,	const std::string& student_email, const std::string& file_path);
+	static std::vector<std::tuple<std::string, std::string, std::string, std::string, std::string, std::string>> Database::GetSubmissions(const std::string& filter_email, bool is_student, const std::vector<std::string>& subject_names);
+	static bool HasStudentSubmitted(const std::string& subject_name, const std::string& assignment_title, const std::string& student_email);
+	static void UpdateSubmissionGrade(const std::string& subject_name, const std::string& assignment_title, const std::string& student_email, int grade, const std::string& comment);
+
 	//Mails
 	static void SendEmail(const Mail& mail);
 	static std::vector<std::unique_ptr<Mail>> Database::GetMailsForReceiver(const std::string& receiver);

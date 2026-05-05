@@ -29,8 +29,8 @@ std::string Assignment::GetTeacher() const {
 	return "No teacher assigned";
 }
 
-void Assignment::MakeSubmission(int _grade, std::string _description) {
-	std::unique_ptr<Submission> m_submission_ptr = std::unique_ptr<Submission>(new Submission(_grade, _description, shared_from_this()));
+void Assignment::MakeSubmission(std::string _student_email, std::string _file_path, int _grade, std::string _description) {
+	std::unique_ptr<Submission> m_submission_ptr = std::unique_ptr<Submission>(new Submission(_grade, _description, shared_from_this(), _student_email, _file_path));
 	m_submissions_ptr.push_back(std::move(m_submission_ptr));
 }
 

@@ -403,3 +403,100 @@ bool Database::CheckTeacherEmptyInSubject(const std::string& subjects_name) {
 	}
 	return false;
 }
+
+void Database::SaveSubmission(const std::string& subject_name, const std::string& assignment_title, const std::string& student_email, const std::string& file_path) {
+	std::ofstream file("submissions.csv", std::ios::app);
+	if (file.is_open()) {
+		file << subject_name << "," << assignment_title << ","
+			<< student_email << "," << file_path << ",0,\n";
+		file.close();
+	}
+}
+
+std::vector<std::tuple<std::string, std::string, std::string, std::string, std::string, std::string>> Database::GetSubmissions(const std::string& filter_email, bool is_student, const std::vector<std::string>& subject_names) {
+	std::ifstream file("submissions.csv");
+	std::vector<std::tuple<std::string, std::string, std::string, std::string, std::string, std::string>> results;
+	std::string line;
+	if (!file.is_open()) return {};
+
+	while (std::getline(file, line)) {
+		if (line.empty()) continue;
+		std::stringstream ss(line);
+		std::string subject, title, student_email, file_path, grade, comment;
+		std::getline(ss, subject, ',');
+		std::getline(ss, title, ',');
+		std::getline(ss, student_email, ',');
+		std::getline(ss, file_path, ',');
+		std::getline(ss, grade, ',');
+		std::getline(ss, comment);
+
+		if (is_student) {
+			if (student_email == filter_email)
+				results.push_back({ subject, title, student_email, file_path, grade, comment });
+		}
+		else {
+			bool subject_match = false;
+			for (const auto& s : subject_names) {
+				if (subject == s) {
+					subject_match = true;
+					break;
+				}
+			}
+			if (subject_match)
+				results.push_back({ subject, title, student_email, file_path, grade, comment });
+		}
+	}
+	return results;
+}
+
+bool Database::HasStudentSubmitted(const std::string& subject_name, const std::string& assignment_title, const std::string& student_email) {
+	std::ifstream file("submissions.csv");
+	std::string line;
+	if (!file.is_open()) return false;
+
+	while (std::getline(file, line)) {
+		if (line.empty()) continue;
+		std::stringstream ss(line);
+		std::string subject, title, s_email, file_path;
+		std::getline(ss, subject, ',');
+		std::getline(ss, title, ',');
+		std::getline(ss, s_email, ',');
+		std::getline(ss, file_path);
+
+		if (subject == subject_name && title == assignment_title && s_email == student_email)
+			return true;
+	}
+	return false;
+}
+
+void Database::UpdateSubmissionGrade(const std::string& subject_name, const std::string& assignment_title, const std::string& student_email, int grade, const std::string& comment) {
+	std::ifstream file_in("submissions.csv");
+	std::ostringstream updated_data;
+	std::string line;
+	if (!file_in.is_open()) return;
+
+	while (std::getline(file_in, line)) {
+		if (line.empty()) continue;
+		std::stringstream ss(line);
+		std::string subject, title, email, file_path, old_grade, old_comment;
+
+		std::getline(ss, subject, ',');
+		std::getline(ss, title, ',');
+		std::getline(ss, email, ',');
+		std::getline(ss, file_path, ',');
+		std::getline(ss, old_grade, ',');
+		std::getline(ss, old_comment);
+
+		if (subject == subject_name && title == assignment_title && email == student_email) {
+			updated_data << subject << "," << title << "," << email << "," << file_path << "," << grade << "," << comment << "\n";
+		}
+		else {
+			updated_data << line << "\n";
+		}
+	}
+	file_in.close();
+
+	std::ofstream file_out("submissions.csv");
+	file_out << updated_data.str();
+	file_out.close();
+}

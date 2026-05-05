@@ -13,7 +13,10 @@ void StudentManagement::handleLogin() {
 		ui.stackedWidget->setCurrentWidget(ui.MainMenuPage);
 		StudentManagement::RefreshEnrollments();
 		StudentManagement::ViewAssignments();
-		ui.frame_3->hide();
+		StudentManagement::ViewSubmissions();
+		StudentManagement::CloseAssignmentInfo();
+		StudentManagement::CloseSubmissionInfo();
+
 	}
 	else {
 		QMessageBox::warning(this, "Error", "Invalid inputs");

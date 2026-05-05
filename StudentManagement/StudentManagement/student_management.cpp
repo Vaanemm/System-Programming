@@ -40,7 +40,14 @@ StudentManagement::StudentManagement(QWidget *parent)
 	connect(ui.DownloadFileButton, &QPushButton::clicked, this, &StudentManagement::DownloadFile);
 	connect(ui.AssignmentsTreeWidget, &QTreeWidget::itemClicked, this, &StudentManagement::OpenAssignment);
 	connect(ui.CloseAssignmentInfoButton, &QPushButton::clicked, this, &StudentManagement::CloseAssignmentInfo);
+	connect(ui.UploadSubmissionButton, &QPushButton::clicked, this, &StudentManagement::UploadSubmissionFile);
+	connect(ui.SubmitAssignmentButton, &QPushButton::clicked, this, &StudentManagement::SubmitAssignment);
+	connect(ui.SubmissionsTreeWidget, &QTreeWidget::itemClicked, this, &StudentManagement::OpenSubmission);
+	connect(ui.CloseSubmissionInfoButton, &QPushButton::clicked, this, &StudentManagement::CloseSubmissionInfo);
+	connect(ui.GradeSubmissionFile, &QPushButton::clicked, this, &StudentManagement::GradeSubmission);
 
+
+	
 	//SETTINGS
 	connect(ui.SaveSettingsButton, &QPushButton::clicked, this, &StudentManagement::UpdateAccount);
 

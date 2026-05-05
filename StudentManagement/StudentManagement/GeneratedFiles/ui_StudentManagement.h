@@ -22,6 +22,7 @@
 #include <QtWidgets/QMainWindow>
 #include <QtWidgets/QPushButton>
 #include <QtWidgets/QSpacerItem>
+#include <QtWidgets/QSpinBox>
 #include <QtWidgets/QStackedWidget>
 #include <QtWidgets/QTabWidget>
 #include <QtWidgets/QTextEdit>
@@ -157,6 +158,9 @@ public:
     QLabel *DescriptionText_2;
     QLabel *label_11;
     QPushButton *DownloadFileButton;
+    QLabel *label_5;
+    QPushButton *UploadSubmissionButton;
+    QPushButton *SubmitAssignmentButton;
     QPushButton *CloseAssignmentInfoButton;
     QFrame *frame_2;
     QVBoxLayout *verticalLayout_9;
@@ -173,6 +177,22 @@ public:
     QVBoxLayout *verticalLayout_5;
     QLabel *SubmissionsText;
     QTreeWidget *SubmissionsTreeWidget;
+    QFrame *frame_4;
+    QVBoxLayout *verticalLayout_8;
+    QLabel *SubmissionInfoText;
+    QLabel *CourseSubmissionText;
+    QLabel *NameSubmissionText;
+    QLabel *DescriptionSubmissionText;
+    QLabel *GradeSubmissionText;
+    QLabel *NameStudentSubmissionText;
+    QLabel *label_9;
+    QPushButton *DownloadSubmissionFileButton;
+    QLabel *label_10;
+    QSpinBox *GradeSubmissionSpinBox;
+    QLabel *CommentsSubmissionText;
+    QLineEdit *CommentsSubmissionField;
+    QPushButton *GradeSubmissionFile;
+    QPushButton *CloseSubmissionInfoButton;
 
     void setupUi(QMainWindow *StudentManagementClass)
     {
@@ -809,6 +829,21 @@ public:
 
         verticalLayout_7->addWidget(DownloadFileButton);
 
+        label_5 = new QLabel(frame_3);
+        label_5->setObjectName(QString::fromUtf8("label_5"));
+
+        verticalLayout_7->addWidget(label_5);
+
+        UploadSubmissionButton = new QPushButton(frame_3);
+        UploadSubmissionButton->setObjectName(QString::fromUtf8("UploadSubmissionButton"));
+
+        verticalLayout_7->addWidget(UploadSubmissionButton);
+
+        SubmitAssignmentButton = new QPushButton(frame_3);
+        SubmitAssignmentButton->setObjectName(QString::fromUtf8("SubmitAssignmentButton"));
+
+        verticalLayout_7->addWidget(SubmitAssignmentButton);
+
         CloseAssignmentInfoButton = new QPushButton(frame_3);
         CloseAssignmentInfoButton->setObjectName(QString::fromUtf8("CloseAssignmentInfoButton"));
 
@@ -902,6 +937,106 @@ public:
 
         verticalLayout_5->addWidget(SubmissionsTreeWidget);
 
+        frame_4 = new QFrame(MainMenuPage);
+        frame_4->setObjectName(QString::fromUtf8("frame_4"));
+        frame_4->setFont(font2);
+        frame_4->setFrameShape(QFrame::StyledPanel);
+        frame_4->setFrameShadow(QFrame::Raised);
+        verticalLayout_8 = new QVBoxLayout(frame_4);
+        verticalLayout_8->setSpacing(6);
+        verticalLayout_8->setContentsMargins(11, 11, 11, 11);
+        verticalLayout_8->setObjectName(QString::fromUtf8("verticalLayout_8"));
+        SubmissionInfoText = new QLabel(frame_4);
+        SubmissionInfoText->setObjectName(QString::fromUtf8("SubmissionInfoText"));
+        SubmissionInfoText->setAlignment(Qt::AlignCenter);
+
+        verticalLayout_8->addWidget(SubmissionInfoText);
+
+        CourseSubmissionText = new QLabel(frame_4);
+        CourseSubmissionText->setObjectName(QString::fromUtf8("CourseSubmissionText"));
+        QFont font3;
+        font3.setPointSize(8);
+        font3.setBold(false);
+        font3.setWeight(50);
+        CourseSubmissionText->setFont(font3);
+
+        verticalLayout_8->addWidget(CourseSubmissionText);
+
+        NameSubmissionText = new QLabel(frame_4);
+        NameSubmissionText->setObjectName(QString::fromUtf8("NameSubmissionText"));
+        NameSubmissionText->setFont(font3);
+
+        verticalLayout_8->addWidget(NameSubmissionText);
+
+        DescriptionSubmissionText = new QLabel(frame_4);
+        DescriptionSubmissionText->setObjectName(QString::fromUtf8("DescriptionSubmissionText"));
+        DescriptionSubmissionText->setFont(font3);
+
+        verticalLayout_8->addWidget(DescriptionSubmissionText);
+
+        GradeSubmissionText = new QLabel(frame_4);
+        GradeSubmissionText->setObjectName(QString::fromUtf8("GradeSubmissionText"));
+        GradeSubmissionText->setFont(font3);
+
+        verticalLayout_8->addWidget(GradeSubmissionText);
+
+        NameStudentSubmissionText = new QLabel(frame_4);
+        NameStudentSubmissionText->setObjectName(QString::fromUtf8("NameStudentSubmissionText"));
+        NameStudentSubmissionText->setFont(font3);
+
+        verticalLayout_8->addWidget(NameStudentSubmissionText);
+
+        label_9 = new QLabel(frame_4);
+        label_9->setObjectName(QString::fromUtf8("label_9"));
+        label_9->setFont(font3);
+
+        verticalLayout_8->addWidget(label_9);
+
+        DownloadSubmissionFileButton = new QPushButton(frame_4);
+        DownloadSubmissionFileButton->setObjectName(QString::fromUtf8("DownloadSubmissionFileButton"));
+        DownloadSubmissionFileButton->setFont(font3);
+
+        verticalLayout_8->addWidget(DownloadSubmissionFileButton);
+
+        label_10 = new QLabel(frame_4);
+        label_10->setObjectName(QString::fromUtf8("label_10"));
+        label_10->setFont(font3);
+
+        verticalLayout_8->addWidget(label_10);
+
+        GradeSubmissionSpinBox = new QSpinBox(frame_4);
+        GradeSubmissionSpinBox->setObjectName(QString::fromUtf8("GradeSubmissionSpinBox"));
+        GradeSubmissionSpinBox->setFont(font3);
+
+        verticalLayout_8->addWidget(GradeSubmissionSpinBox);
+
+        CommentsSubmissionText = new QLabel(frame_4);
+        CommentsSubmissionText->setObjectName(QString::fromUtf8("CommentsSubmissionText"));
+        CommentsSubmissionText->setFont(font3);
+
+        verticalLayout_8->addWidget(CommentsSubmissionText);
+
+        CommentsSubmissionField = new QLineEdit(frame_4);
+        CommentsSubmissionField->setObjectName(QString::fromUtf8("CommentsSubmissionField"));
+        CommentsSubmissionField->setFont(font3);
+
+        verticalLayout_8->addWidget(CommentsSubmissionField);
+
+        GradeSubmissionFile = new QPushButton(frame_4);
+        GradeSubmissionFile->setObjectName(QString::fromUtf8("GradeSubmissionFile"));
+        GradeSubmissionFile->setFont(font3);
+
+        verticalLayout_8->addWidget(GradeSubmissionFile);
+
+        CloseSubmissionInfoButton = new QPushButton(frame_4);
+        CloseSubmissionInfoButton->setObjectName(QString::fromUtf8("CloseSubmissionInfoButton"));
+        CloseSubmissionInfoButton->setFont(font3);
+
+        verticalLayout_8->addWidget(CloseSubmissionInfoButton);
+
+
+        verticalLayout_5->addWidget(frame_4);
+
 
         horizontalLayout->addLayout(verticalLayout_5);
 
@@ -981,15 +1116,30 @@ public:
         DescriptionText_2->setText(QString());
         label_11->setText(QApplication::translate("StudentManagementClass", "Download file:", nullptr));
         DownloadFileButton->setText(QApplication::translate("StudentManagementClass", "File", nullptr));
+        label_5->setText(QApplication::translate("StudentManagementClass", "Download file:", nullptr));
+        UploadSubmissionButton->setText(QApplication::translate("StudentManagementClass", "Assignment file", nullptr));
+        SubmitAssignmentButton->setText(QApplication::translate("StudentManagementClass", "Submit assignment", nullptr));
         CloseAssignmentInfoButton->setText(QApplication::translate("StudentManagementClass", "Close assignment info", nullptr));
         CreateAssignmentText->setText(QApplication::translate("StudentManagementClass", "Create assignment", nullptr));
         SelectCourseText->setText(QApplication::translate("StudentManagementClass", "Course:", nullptr));
         TitleText->setText(QApplication::translate("StudentManagementClass", "Title:", nullptr));
         DescriptionText->setText(QApplication::translate("StudentManagementClass", "Description:", nullptr));
-        SelectFileText->setText(QApplication::translate("StudentManagementClass", "Upload file:", nullptr));
+        SelectFileText->setText(QApplication::translate("StudentManagementClass", "Upload assignment file:", nullptr));
         SelectFileButton->setText(QApplication::translate("StudentManagementClass", "Select file", nullptr));
         CreateAssignmentButton->setText(QApplication::translate("StudentManagementClass", "Create assignment", nullptr));
         SubmissionsText->setText(QApplication::translate("StudentManagementClass", "Submission + Grades", nullptr));
+        SubmissionInfoText->setText(QApplication::translate("StudentManagementClass", "Submission info", nullptr));
+        CourseSubmissionText->setText(QString());
+        NameSubmissionText->setText(QString());
+        DescriptionSubmissionText->setText(QString());
+        GradeSubmissionText->setText(QString());
+        NameStudentSubmissionText->setText(QString());
+        label_9->setText(QApplication::translate("StudentManagementClass", "Download file:", nullptr));
+        DownloadSubmissionFileButton->setText(QApplication::translate("StudentManagementClass", "Submission file", nullptr));
+        label_10->setText(QApplication::translate("StudentManagementClass", "Give grade:", nullptr));
+        CommentsSubmissionText->setText(QApplication::translate("StudentManagementClass", "Comments:", nullptr));
+        GradeSubmissionFile->setText(QApplication::translate("StudentManagementClass", "Grade submission", nullptr));
+        CloseSubmissionInfoButton->setText(QApplication::translate("StudentManagementClass", "Close submission info", nullptr));
     } // retranslateUi
 
 };

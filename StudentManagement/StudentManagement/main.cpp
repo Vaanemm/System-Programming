@@ -72,7 +72,7 @@ int main(int argc, char *argv[])
 
 	auto assignments = physics_ptr->GetAssignments();
 	auto current_assignment = assignments[0];
-	current_assignment->MakeSubmission(6, "that was shit ngl");
+	//current_assignment->MakeSubmission(6, "that was shit ngl");
 	std::cout << current_assignment->AssignmentSubmissionToString() << std::endl;
 
 	physics_ptr->AddStudent("student1");
