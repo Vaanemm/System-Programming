@@ -115,6 +115,7 @@
   <ItemGroup>
     <ClCompile Include="assignment.cpp" />
     <ClCompile Include="database.cpp" />
+    <ClCompile Include="error.cpp" />
     <ClCompile Include="login.cpp" />
     <ClCompile Include="mail.cpp" />
     <ClCompile Include="mailing_system.cpp" />
@@ -142,6 +143,7 @@
     <ClInclude Include="assignment.h" />
     <ClInclude Include="database.h" />
     <ClInclude Include="date.h" />
+    <ClInclude Include="errors_class.h" />
     <ClInclude Include="mail.h" />
     <ClInclude Include="parent.h" />
     <ClInclude Include="student.h" />

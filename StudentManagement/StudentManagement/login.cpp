@@ -2,6 +2,7 @@
 #include <QMessageBox>
 #include "database.h"
 #include <iostream>
+#include <errors_class.h>
 
 void StudentManagement::handleLogin() {
 	QString email = ui.UserNameField->text();
@@ -19,7 +20,10 @@ void StudentManagement::handleLogin() {
 
 	}
 	else {
-		QMessageBox::warning(this, "Error", "Invalid inputs");
+		Errors not_logged_in = Errors::login_failed;
+		ErrorHandler::DisplayMessage(not_logged_in);
+		ui.UserNameField->clear();
+		ui.PasswordField->clear();
 	}
 }
 

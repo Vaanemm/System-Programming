@@ -1,6 +1,7 @@
 #include "student_management.h"
 #include "database.h"
 #include "mail.h"
+#include "errors_class.h"
 
 void StudentManagement::SendNewMail() {
 	QString qstring_receiver = ui.MailTo->text();
@@ -15,7 +16,7 @@ void StudentManagement::SendNewMail() {
 	std::string sender = m_logged_in->GetEmail();
 
 	if (receiver.empty()) {
-		QMessageBox::warning(this, "Warning", "Please specify a receiver");
+		ErrorHandler::DisplayMessage(Errors::receiver_empty);
 		return;
 	}
 	else if (subject.empty()) {
@@ -63,9 +64,12 @@ void StudentManagement::RefreshInbox() {
 	ui.MailInbox->clear();
 	std::vector<std::unique_ptr<Mail>> mails = Database::GetMailsForReceiver(m_logged_in->GetEmail());
 
+	//Reversing order of emails, so that newer ones are on top of the Inbox list
+	std::reverse(mails.begin(), mails.end());
+
 	for (const auto& mail : mails) {
 		std::string Headline;
-		Headline = mail->GetSender() +"  -  " + mail->GetSubject();
+		Headline = mail->GetSender() + "  -  " + mail->GetSubject();
 		QString item = QString::fromStdString(Headline);
 		ui.MailInbox->addItem(item);
 	}
@@ -77,6 +81,9 @@ void StudentManagement::RefreshSent() {
 	ui.MailSent->clear();
 	std::vector<std::unique_ptr<Mail>> mails = Database::GetMailsForSender(m_logged_in->GetEmail());
 
+	//Reversing order of emails, so that newer ones are on top of the Sent list
+	std::reverse(mails.begin(), mails.end());
+
 	for (const auto& mail : mails) {
 		std::string Headline;
 		Headline = mail->GetReceiver() + "  -  " + mail->GetSubject();
@@ -85,3 +92,38 @@ void StudentManagement::RefreshSent() {
 	}
 	return;
 }
+
+void StudentManagement::SelectMailInbox(int index) {
+	std::vector<std::unique_ptr<Mail>> mails = Database::GetMailsForReceiver(m_logged_in->GetEmail());
+	//Reversing order of emails, so we follow the same order as in RefresgInbox()
+	std::reverse(mails.begin(), mails.end());
+
+	if (index < 0 || index >= (int)mails.size()) {
+		return;
+	}
+
+	std::string displayed_text;
+	displayed_text = "Sender: " + mails[index]->GetSender() + "\n";
+	displayed_text += "Subject: " + mails[index]->GetSubject() + "\n";
+	displayed_text += "\n " + mails[index]->GetText();
+
+	ui.MailInboxInhoud->setText(QString::fromStdString(displayed_text));
+}
+
+void StudentManagement::SelectMailSent(int index) {
+	std::vector<std::unique_ptr<Mail>> mails = Database::GetMailsForSender(m_logged_in->GetEmail());
+	//Reversing order of emails, so we follow the same order as in RefresgSent()
+	std::reverse(mails.begin(), mails.end());
+
+	if (index < 0 || index >= (int)mails.size()) {
+		return;
+	}
+
+	std::string displayed_text;
+	displayed_text = "Receiver: " + mails[index]->GetReceiver() + "\n";
+	displayed_text += "Subject: " + mails[index]->GetSubject() + "\n";
+	displayed_text += "\n " + mails[index]->GetText();
+
+	ui.MailSentInhoud->setText(QString::fromStdString(displayed_text));
+}
+

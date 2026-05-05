@@ -49,6 +49,9 @@
     <ClCompile Include="mailing_system.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="error.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="date.h">
@@ -79,6 +82,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="mail.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="errors_class.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

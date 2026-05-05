@@ -2,6 +2,7 @@
 #include "database.h"
 #include "assignment.h"
 #include "parent.h"
+#include "errors_class.h"
 #include <iostream>
 #include <QFileDialog>
 #include <QFileInfo>
@@ -29,6 +30,7 @@ void StudentManagement::goToSettings() {
 
 void StudentManagement::goToMail() {
 	ui.stackedWidget->setCurrentWidget(ui.MailPage);
+	RefreshInbox();
 }
 
 void StudentManagement::AddSubject() {
@@ -206,7 +208,8 @@ void StudentManagement::RefreshEnrollments() {
 		std::shared_ptr<User> child_user = Database::FindUser(child_email, " ", false);
 		std::shared_ptr<Student> child_ptr = std::dynamic_pointer_cast<Student>(child_user);
 		if (child_ptr == nullptr) {
-			std::cout << "child bestaat niet" << std::endl;
+			//std::cout << "child bestaat niet" << std::endl;
+			ErrorHandler::DisplayMessage(Errors::no_child_found);
 		}
 
 		const auto& subjects = child_ptr->GetSubjects();
@@ -269,7 +272,7 @@ void StudentManagement::CreateAssignment() {
 	std::string description = qstring_description.toStdString();
 
 	if (title.empty() || description.empty()) {
-		QMessageBox::warning(this, "Not good", "You have to fill in: title and description");
+		ErrorHandler::DisplayMessage(Errors::invalid_input);
 		return;
 	}
 
@@ -285,7 +288,7 @@ void StudentManagement::CreateAssignment() {
 
 		ViewAssignments();
 
-		QMessageBox::information(this, "LETSSS GOOOO", "W");
+		QMessageBox::information(this, "Success", "Assignment made");
 	}
 }
 
@@ -390,6 +393,9 @@ void StudentManagement::UploadFile()
 		m_selected_file_path = file_path.toStdString();
 
 		ui.SelectFileButton->setText("File selected");
+	}
+	else {
+		ErrorHandler::DisplayMessage(Errors::file_path_empty);
 	}
 }
 //Qt UI elementen kunnen enkel met normale pointers

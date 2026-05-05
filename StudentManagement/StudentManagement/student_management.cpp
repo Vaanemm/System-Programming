@@ -54,4 +54,7 @@ StudentManagement::StudentManagement(QWidget *parent)
 	//MAIL
 	connect(ui.SendMailButton, &QPushButton::clicked, this, &StudentManagement::SendNewMail);
 	connect(ui.tabWidget, &QTabWidget::currentChanged, this, &StudentManagement::MailTabChanged);
+	connect(ui.MailInbox, &QListWidget::currentRowChanged, this, &StudentManagement::SelectMailInbox);
+	connect(ui.MailSent, &QListWidget::currentRowChanged, this, &StudentManagement::SelectMailSent);
+
 }

@@ -8,6 +8,7 @@
 #include "parent.h"
 #include "assignment.h"
 #include "database.h"
+#include "errors_class.h"
 
 
 
