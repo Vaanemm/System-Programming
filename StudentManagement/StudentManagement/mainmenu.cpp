@@ -402,7 +402,7 @@ void StudentManagement::UploadFile()
 void StudentManagement::OpenAssignment(QTreeWidgetItem* item, int column) {
 	if (item->parent() == nullptr) return;
 
-	m_selected_assignment_item = item; // bewaar pointer voor later verwijderen
+	m_selected_assignment_item = item; 
 
 	std::string title = item->text(0).toStdString();
 	std::string description = item->text(1).toStdString();
@@ -420,7 +420,6 @@ void StudentManagement::OpenAssignment(QTreeWidgetItem* item, int column) {
 		ui.DownloadFileButton->setEnabled(false);
 	}
 
-	// Submission buttons alleen voor student
 	auto student_ptr = std::dynamic_pointer_cast<Student>(m_logged_in);
 	if (student_ptr) {
 		ui.UploadSubmissionButton->show();
