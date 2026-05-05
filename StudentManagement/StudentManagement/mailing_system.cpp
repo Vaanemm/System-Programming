@@ -1,7 +1,6 @@
 #include "student_management.h"
 #include "database.h"
 #include "mail.h"
-#include 
 
 void StudentManagement::SendNewMail() {
 	QString qstring_receiver = ui.MailTo->text();
@@ -52,6 +51,7 @@ void StudentManagement::MailTabChanged(int index) {
 		RefreshInbox();
 		break;
 	case 1:
+		RefreshSent();
 		break;
 	case 2:
 		break;
@@ -68,7 +68,20 @@ void StudentManagement::RefreshInbox() {
 		Headline = mail->GetSender() +"  -  " + mail->GetSubject();
 		QString item = QString::fromStdString(Headline);
 		ui.MailInbox->addItem(item);
+	}
+	return;
+}
 
+void StudentManagement::RefreshSent() {
+	//empty the list before filling it again
+	ui.MailSent->clear();
+	std::vector<std::unique_ptr<Mail>> mails = Database::GetMailsForSender(m_logged_in->GetEmail());
+
+	for (const auto& mail : mails) {
+		std::string Headline;
+		Headline = mail->GetReceiver() + "  -  " + mail->GetSubject();
+		QString item = QString::fromStdString(Headline);
+		ui.MailSent->addItem(item);
 	}
 	return;
 }

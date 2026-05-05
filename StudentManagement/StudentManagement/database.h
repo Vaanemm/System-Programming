@@ -41,6 +41,9 @@ public:
 	//Mails
 	static void SendEmail(const Mail& mail);
 	static std::vector<std::unique_ptr<Mail>> Database::GetMailsForReceiver(const std::string& receiver);
+	static std::vector<std::unique_ptr<Mail>> Database::GetMailsForSender(const std::string& sender);
+
+
 
 };
 

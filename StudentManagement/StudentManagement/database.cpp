@@ -177,8 +177,31 @@ std::vector<std::unique_ptr<Mail>> Database::GetMailsForReceiver(const std::stri
 		}
 	}
 	return ReceivedMails;
+}
 
+std::vector<std::unique_ptr<Mail>> Database::GetMailsForSender(const std::string& sender) {
+	std::ifstream file("mails.csv");
+	std::vector<std::unique_ptr<Mail>> SentMails;
 
+	std::string line;
+
+	if (file.is_open()) {
+		while (std::getline(file, line)) {
+			std::stringstream ss(line);
+			std::string sender2, receiver, subject, body;
+
+			std::getline(ss, sender2, ',');
+			std::getline(ss, receiver, ',');
+			std::getline(ss, subject, ',');
+			std::getline(ss, body);
+
+			Mail mail_for_list(sender2, receiver, subject, body);
+			if (sender2 == sender) {
+				SentMails.push_back(std::make_unique<Mail>(sender, receiver, subject, body));
+			}
+		}
+	}
+	return SentMails;
 }
 
 bool Database::AddUser(const std::shared_ptr<User>& user) {

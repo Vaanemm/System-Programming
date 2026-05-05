@@ -52,6 +52,7 @@ private slots:
 	//Mail
 	void SendNewMail();
 	void RefreshInbox();
+	void RefreshSent();
 	void MailTabChanged(int index);
 
 
