@@ -44,6 +44,6 @@ StudentManagement::StudentManagement(QWidget *parent)
 	//SETTINGS
 	connect(ui.SaveSettingsButton, &QPushButton::clicked, this, &StudentManagement::UpdateAccount);
 
-	//Mail
+	//MAIL
 	connect(ui.SendMailButton, &QPushButton::clicked, this, &StudentManagement::SendNewMail);
 }
