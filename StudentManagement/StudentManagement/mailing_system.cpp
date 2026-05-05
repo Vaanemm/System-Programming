@@ -1,6 +1,7 @@
 #include "student_management.h"
 #include "database.h"
 #include "mail.h"
+#include 
 
 void StudentManagement::SendNewMail() {
 	QString qstring_receiver = ui.MailTo->text();
@@ -43,6 +44,18 @@ void StudentManagement::SendNewMail() {
 	Database::SendEmail(mail);
 
 	QMessageBox::information(this, "Info", "Mail succesfuly sent!");
+}
+
+void StudentManagement::MailTabChanged(int index) {
+	switch (index) {
+	case 0:
+		RefreshInbox();
+		break;
+	case 1:
+		break;
+	case 2:
+		break;
+	}
 }
 
 void StudentManagement::RefreshInbox() {

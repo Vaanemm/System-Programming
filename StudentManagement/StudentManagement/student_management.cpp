@@ -46,4 +46,5 @@ StudentManagement::StudentManagement(QWidget *parent)
 
 	//Mail
 	connect(ui.SendMailButton, &QPushButton::clicked, this, &StudentManagement::SendNewMail);
+	connect(ui.tabWidget, &QTabWidget::currentChanged, this, &StudentManagement::MailTabChanged);
 }
