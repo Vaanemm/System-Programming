@@ -25,6 +25,7 @@ void StudentManagement::goToSettings() {
 
 void StudentManagement::goToMail() {
 	ui.stackedWidget->setCurrentWidget(ui.MailPage);
+	RefreshInbox();
 }
 
 void StudentManagement::AddSubject() {
