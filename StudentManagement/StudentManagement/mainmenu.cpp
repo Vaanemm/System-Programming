@@ -380,9 +380,9 @@ void StudentManagement::OpenAssignment(QTreeWidgetItem* item, int column) {
 	std::string description = item->text(1).toStdString();
 	std::string file_path = item->text(2).toStdString();
 
-	ui.AssignmentInfoText->setText(QString::fromStdString(title));
-	ui.CourseInfoText->setText(QString::fromStdString(item->parent()->text(0).toStdString()));
-	ui.DescriptionText_2->setText(QString::fromStdString(description));
+	ui.AssignmentInfoText->setText(QString::fromStdString("Assignment: " + title));
+	ui.CourseInfoText->setText("Course: " + item->parent()->text(0));
+	ui.DescriptionText_2->setText(QString::fromStdString("Description: " + description));
 
 	if (!file_path.empty()) {
 		ui.DownloadFileButton->setEnabled(true);

@@ -152,11 +152,8 @@ public:
     QFrame *frame_3;
     QVBoxLayout *verticalLayout_7;
     QLabel *label_2;
-    QLabel *label_5;
     QLabel *CourseInfoText;
-    QLabel *label_7;
     QLabel *AssignmentInfoText;
-    QLabel *label_9;
     QLabel *DescriptionText_2;
     QLabel *label_11;
     QPushButton *DownloadFileButton;
@@ -787,30 +784,15 @@ public:
 
         verticalLayout_7->addWidget(label_2);
 
-        label_5 = new QLabel(frame_3);
-        label_5->setObjectName(QString::fromUtf8("label_5"));
-
-        verticalLayout_7->addWidget(label_5);
-
         CourseInfoText = new QLabel(frame_3);
         CourseInfoText->setObjectName(QString::fromUtf8("CourseInfoText"));
 
         verticalLayout_7->addWidget(CourseInfoText);
 
-        label_7 = new QLabel(frame_3);
-        label_7->setObjectName(QString::fromUtf8("label_7"));
-
-        verticalLayout_7->addWidget(label_7);
-
         AssignmentInfoText = new QLabel(frame_3);
         AssignmentInfoText->setObjectName(QString::fromUtf8("AssignmentInfoText"));
 
         verticalLayout_7->addWidget(AssignmentInfoText);
-
-        label_9 = new QLabel(frame_3);
-        label_9->setObjectName(QString::fromUtf8("label_9"));
-
-        verticalLayout_7->addWidget(label_9);
 
         DescriptionText_2 = new QLabel(frame_3);
         DescriptionText_2->setObjectName(QString::fromUtf8("DescriptionText_2"));
@@ -994,11 +976,8 @@ public:
         label_4->setText(QApplication::translate("StudentManagementClass", "Assignments", nullptr));
         AddAssignmentButton->setText(QApplication::translate("StudentManagementClass", "+", nullptr));
         label_2->setText(QApplication::translate("StudentManagementClass", "Assignment info", nullptr));
-        label_5->setText(QApplication::translate("StudentManagementClass", "Course:", nullptr));
         CourseInfoText->setText(QString());
-        label_7->setText(QApplication::translate("StudentManagementClass", "Assignment:", nullptr));
         AssignmentInfoText->setText(QString());
-        label_9->setText(QApplication::translate("StudentManagementClass", "Description:", nullptr));
         DescriptionText_2->setText(QString());
         label_11->setText(QApplication::translate("StudentManagementClass", "Download file:", nullptr));
         DownloadFileButton->setText(QApplication::translate("StudentManagementClass", "File", nullptr));

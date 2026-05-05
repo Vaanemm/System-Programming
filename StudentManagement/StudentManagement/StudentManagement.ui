@@ -994,13 +994,6 @@
                 </widget>
                </item>
                <item>
-                <widget class="QLabel" name="label_5">
-                 <property name="text">
-                  <string>Course:</string>
-                 </property>
-                </widget>
-               </item>
-               <item>
                 <widget class="QLabel" name="CourseInfoText">
                  <property name="text">
                   <string/>
@@ -1008,23 +1001,9 @@
                 </widget>
                </item>
                <item>
-                <widget class="QLabel" name="label_7">
-                 <property name="text">
-                  <string>Assignment:</string>
-                 </property>
-                </widget>
-               </item>
-               <item>
                 <widget class="QLabel" name="AssignmentInfoText">
                  <property name="text">
                   <string/>
-                 </property>
-                </widget>
-               </item>
-               <item>
-                <widget class="QLabel" name="label_9">
-                 <property name="text">
-                  <string>Description:</string>
                  </property>
                 </widget>
                </item>
