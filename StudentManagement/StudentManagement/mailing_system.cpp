@@ -1,6 +1,7 @@
 #include "student_management.h"
 #include "database.h"
 #include "mail.h"
+#include "errors_class.h"
 
 void StudentManagement::SendNewMail() {
 	QString qstring_receiver = ui.MailTo->text();
@@ -15,7 +16,7 @@ void StudentManagement::SendNewMail() {
 	std::string sender = m_logged_in->GetEmail();
 
 	if (receiver.empty()) {
-		QMessageBox::warning(this, "Warning", "Please specify a receiver");
+		ErrorHandler::DisplayMessage(Errors::receiver_empty);
 		return;
 	}
 	else if (subject.empty()) {
