@@ -241,11 +241,14 @@ void Database::SaveEnrollment(const std::string& subject_name, const std::string
 
 void Database::SaveTeacherForSubject(const std::string& subject_name, const std::string& teacher_email) {
 	std::ifstream file_in("enrollment.csv");
+
 	std::ostringstream ChangedInfo;
 	std::string line;
 	if (!file_in.is_open()) {
+
 		ErrorHandler::DisplayMessage(Errors::enrollment_not_open);
-	} return;
+		return;
+	} 
 
 	std::getline(file_in, line);
 	ChangedInfo << line << "\n";
@@ -254,6 +257,7 @@ void Database::SaveTeacherForSubject(const std::string& subject_name, const std:
 		std::stringstream ss(line);
 		std::string subject, teacher, student;
 		std::getline(ss, subject, ',');
+		std::cout << subject << std::endl;
 		std::getline(ss, teacher, ',');
 		std::getline(ss, student, ',');
 
@@ -428,7 +432,7 @@ std::vector<std::tuple<std::string, std::string, std::string, std::string, std::
 	std::vector<std::tuple<std::string, std::string, std::string, std::string, std::string, std::string>> results;
 	std::string line;
 	if (!file.is_open()) return {};
-
+	 
 	while (std::getline(file, line)) {
 		if (line.empty()) continue;
 		std::stringstream ss(line);
