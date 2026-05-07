@@ -44,7 +44,7 @@ public:
 	static bool HasStudentSubmitted(const std::string& subject_name, const std::string& assignment_title, const std::string& student_email);
 	static void UpdateSubmissionGrade(const std::string& subject_name, const std::string& assignment_title, const std::string& student_email, int grade, const std::string& comment);
 
-	//Mails
+	//MAILS
 	static void SendEmail(const Mail& mail);
 	static std::vector<std::unique_ptr<Mail>> Database::GetMailsForReceiver(const std::string& receiver);
 	static std::vector<std::unique_ptr<Mail>> Database::GetMailsForSender(const std::string& sender);

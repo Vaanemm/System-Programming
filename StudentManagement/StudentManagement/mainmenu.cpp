@@ -135,7 +135,6 @@ void StudentManagement::AddSubject() {
 					std::string teachers_email = m_logged_in->GetEmail();
 					std::string subjects_name = subject->GetName();
 
-
 					Database::SaveTeacherForSubject(subjects_name, teachers_email);
 
 					auto teacher_ptr = std::dynamic_pointer_cast<Teacher>(m_logged_in);
