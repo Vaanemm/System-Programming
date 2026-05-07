@@ -68,13 +68,10 @@ void StudentManagement::AddSubject() {
 				std::string subjects_name = subject->GetName();
 
 
-
 				if (Database::CheckUserInSubject(subjects_name, students_email)) {
 					enrollBtn->setText("Enrolled");
 					enrollBtn->setEnabled(false);
 				}
-
-
 
 				rowLayout->addWidget(label);
 				rowLayout->addStretch();
@@ -149,18 +146,14 @@ void StudentManagement::AddSubject() {
 				});
 				ui.EnrollmentListWidget->addItem(item);
 				ui.EnrollmentListWidget->setItemWidget(item, rowWidget);
-			}
-
-			
+			}		
 		}
 	}
 	else {
 		ui.AddSubjectButton->setText("+");
 		ui.EnrollmentListWidget->clear();
 		RefreshEnrollments();
-	}
-
-	
+	}	
 }
 
 void StudentManagement::RefreshEnrollments() {
@@ -196,7 +189,6 @@ void StudentManagement::RefreshEnrollments() {
 			ui.EnrollmentListWidget->addItem(item);
 			ui.EnrollmentListWidget->setItemWidget(item, rowWidget);
 		}
-
 		
 	}
 	else if (parent_ptr) {
@@ -270,11 +262,6 @@ void StudentManagement::CreateAssignment() {
 	std::string title = qstring_title.toStdString();
 	std::string description = qstring_description.toStdString();
 
-	if (title.empty() || description.empty()) {
-		ErrorHandler::DisplayMessage(Errors::invalid_input);
-		return;
-	}
-
 	int index = ui.SelectCourseComboBox->currentIndex();
 	if (index >= 0 && index < m_all_subjects.size()) {
 		m_all_subjects[index]->MakeAssignment(title, description, m_selected_file_path);
@@ -310,20 +297,23 @@ void StudentManagement::ViewAssignments()
 	ui.AssignmentsTreeWidget->clear();
 	ui.frame_2->hide();
 	ui.AddAssignmentButton->hide();
-	//dynamic pointers ipv getters omdat getstudent en getsubjects niet in user zitten, kan mss fixe met iets van virtual
+	//dynamic pointers so you can easily access GetStudent and GetEmail
 	auto student_ptr = std::dynamic_pointer_cast<Student>(m_logged_in);
 	auto parent_ptr = std::dynamic_pointer_cast<Parent>(m_logged_in);
 	auto teacher_ptr = std::dynamic_pointer_cast<Teacher>(m_logged_in);
 
 	std::vector<std::shared_ptr<Subject>> subjects_to_show;
+	std::string logged_in_student_email = "";
 
 	if (student_ptr) {
 		subjects_to_show = student_ptr->GetSubjects();
+		logged_in_student_email = student_ptr->GetEmail();
 	}
 	else if (parent_ptr) {
 		Student* child = parent_ptr->GetStudent();
 		if (child) {
 			subjects_to_show = child->GetSubjects();
+			logged_in_student_email = child->GetEmail();
 		}
 	}
 	else if (teacher_ptr) {
@@ -332,16 +322,6 @@ void StudentManagement::ViewAssignments()
 	}
 
 	if (subjects_to_show.empty()) return;
-
-	std::string logged_in_student_email = "";
-	if (student_ptr) {
-		logged_in_student_email = student_ptr->GetEmail();
-	}
-	else if (parent_ptr) {
-		Student* child = parent_ptr->GetStudent();
-		if (child)
-			logged_in_student_email = child->GetEmail();
-	}
 
 	auto all_assignments = Database::GetAllAssignments();
 
@@ -405,11 +385,12 @@ void StudentManagement::OpenAssignment(QTreeWidgetItem* item, int column) {
 
 	std::string title = item->text(0).toStdString();
 	std::string description = item->text(1).toStdString();
+	std::string course = item->parent()->text(0).toStdString();
 	std::string file_path = item->text(2).toStdString();
 
 	ui.AssignmentInfoText->setText(QString::fromStdString("Assignment: " + title));
-	ui.CourseInfoText->setText("Course: " + item->parent()->text(0));
 	ui.DescriptionText_2->setText(QString::fromStdString("Description: " + description));
+	ui.CourseInfoText->setText(QString::fromStdString("Course: " + course));
 
 	if (!file_path.empty()) {
 		ui.DownloadFileButton->setEnabled(true);
@@ -420,6 +401,7 @@ void StudentManagement::OpenAssignment(QTreeWidgetItem* item, int column) {
 	}
 
 	auto student_ptr = std::dynamic_pointer_cast<Student>(m_logged_in);
+
 	if (student_ptr) {
 		ui.UploadSubmissionButton->show();
 		ui.SubmitAssignmentButton->show();
@@ -436,7 +418,6 @@ void StudentManagement::OpenAssignment(QTreeWidgetItem* item, int column) {
 }
 
 void StudentManagement::SubmitAssignment() {
-	if (!m_selected_assignment_item) return;
 
 	std::string title = m_selected_assignment_item->text(0).toStdString();
 	std::string subject_name = m_selected_assignment_item->parent()->text(0).toStdString();
@@ -453,13 +434,16 @@ void StudentManagement::SubmitAssignment() {
 	ui.UploadSubmissionButton->setText("Upload File");
 
 	ViewSubmissions();
-	QMessageBox::information(this, "Submitted", "Assignment submitted successfully!");
+	QMessageBox::information(this, "Done", "Submitted successfully!");
 }
 
 void StudentManagement::DownloadFile() {
 	if (!m_selected_file_path.empty()) {
 		std::string command = "start \"\" \"" + m_selected_file_path + "\"";
 		system(command.c_str());
+	}
+	else {
+		ErrorHandler::DisplayMessage(Errors::file_path_empty);
 	}
 }
 
@@ -468,10 +452,23 @@ void StudentManagement::CloseAssignmentInfo() {
 }
 
 void StudentManagement::UploadSubmissionFile() {
-	QString file_path = QFileDialog::getOpenFileName(this, "Pick a submission file", QString(), "");
+	QString file_path = QFileDialog::getOpenFileName(this, "Pick a  file", QString(), "");
 	if (!file_path.isEmpty()) {
 		m_submission_file_path = file_path.toStdString();
 		ui.UploadSubmissionButton->setText("File selected");
+	}
+	else {
+		ErrorHandler::DisplayMessage(Errors::file_path_empty);
+	}
+}
+
+void StudentManagement::DownloadSubmissionFile() {
+	if (!m_selected_file_path.empty()) {
+		std::string command = "start \"\" \"" + m_selected_file_path + "\"";
+		system(command.c_str());
+	}
+	else {
+		ErrorHandler::DisplayMessage(Errors::file_path_empty);
 	}
 }
 
@@ -514,15 +511,15 @@ void StudentManagement::ViewSubmissions() {
 		for (const auto& sub : subs) {
 			QTreeWidgetItem* subItem = new QTreeWidgetItem(subjectItem);
 
-			subItem->setText(0, QString::fromUtf8(std::get<1>(sub).c_str()));
-			subItem->setText(1, QString::fromUtf8(std::get<2>(sub).c_str()));
-			subItem->setText(2, QString::fromUtf8(std::get<3>(sub).c_str()));
-			subItem->setData(0, Qt::UserRole, QString::fromUtf8(std::get<4>(sub).c_str())); 
-			subItem->setData(0, Qt::UserRole + 1, QString::fromUtf8(std::get<5>(sub).c_str()));
+			subItem->setText(0, QString::fromStdString(std::get<1>(sub)));
+			subItem->setText(1, QString::fromStdString(std::get<2>(sub)));
+			subItem->setText(2, QString::fromStdString(std::get<3>(sub)));
+			subItem->setData(0, Qt::UserRole, QString::fromStdString(std::get<4>(sub)));
+			subItem->setData(0, Qt::UserRole + 1, QString::fromStdString(std::get<5>(sub)));
 
 			if (teacher_ptr) {
-				std::string display = std::get<1>(sub) + " - " + std::get<2>(sub);
-				subItem->setText(0, QString::fromUtf8(display.c_str()));
+				std::string display = std::get<1>(sub) + " - " + std::get<2>(sub); // Title - StudentEmail
+				subItem->setText(0, QString::fromStdString(display));
 			}
 		}
 	}
@@ -530,7 +527,6 @@ void StudentManagement::ViewSubmissions() {
 }
 
 void StudentManagement::OpenSubmission(QTreeWidgetItem* item, int column) {
-	if (item == nullptr || item->parent() == nullptr) return;
 
 	auto teacher_ptr = std::dynamic_pointer_cast<Teacher>(m_logged_in);
 
@@ -541,21 +537,20 @@ void StudentManagement::OpenSubmission(QTreeWidgetItem* item, int column) {
 	int current_grade = item->data(0, Qt::UserRole).toString().toInt();
 	std::string comment = item->data(0, Qt::UserRole + 1).toString().toStdString();
 
+	//Splitst de term op 534 op het streepje zodat je enkel de Title krijgt
 	std::string assignment_title = display_text;
-	size_t delimiter_pos = display_text.find(" - ");
-	if (delimiter_pos != std::string::npos) {
-		assignment_title = display_text.substr(0, delimiter_pos);
+	size_t locationOfStreepje = display_text.find(" - ");
+	if (locationOfStreepje != std::string::npos) {
+		assignment_title = display_text.substr(0, locationOfStreepje);
 	}
 
-	ui.CourseSubmissionText->setText(QString::fromUtf8(("Course: " + subject).c_str()));
-	ui.NameSubmissionText->setText(QString::fromUtf8(("Name: " + assignment_title).c_str()));
-	ui.NameStudentSubmissionText->setText(QString::fromUtf8(("Student: " + student_email).c_str()));
-	ui.DescriptionSubmissionText->setText(QString::fromUtf8(("Comment: " + comment).c_str()));
+	ui.CourseSubmissionText->setText(QString::fromStdString("Course: " + subject));
+	ui.NameSubmissionText->setText(QString::fromStdString("Name: " + assignment_title));
+	ui.NameStudentSubmissionText->setText(QString::fromStdString("Student: " + student_email));
+	ui.DescriptionSubmissionText->setText(QString::fromStdString("Comment: " + comment));
+	ui.GradeSubmissionText->setText(QString::fromStdString("Grade: " + std::to_string(current_grade)));
 
 	ui.DownloadSubmissionFileButton->setEnabled(!file_path.empty());
-
-	ui.GradeSubmissionText->setText(QString::fromUtf8(("Grade: " + std::to_string(current_grade)).c_str()));
-
 	ui.frame_4->show();
 
 	if (teacher_ptr == nullptr) {
@@ -583,23 +578,17 @@ void StudentManagement::CloseSubmissionInfo() {
 void StudentManagement::GradeSubmission() {
 	QTreeWidgetItem* item = ui.SubmissionsTreeWidget->currentItem();
 
-	if (item == nullptr || item->parent() == nullptr) {
-		QMessageBox::warning(this, "error", "not good");
-		return;
-	}
-
 	std::string subject = item->parent()->text(0).toStdString();
 	std::string display_text = item->text(0).toStdString();
+	std::string student_email = item->text(1).toStdString();
+	std::string comment = ui.CommentsSubmissionField->text().toStdString();
+	int grade = ui.GradeSubmissionSpinBox->value();
 
 	std::string assignment_title = display_text;
-	size_t delimiter_pos = display_text.find(" - ");
-	if (delimiter_pos != std::string::npos) {
-		assignment_title = display_text.substr(0, delimiter_pos);
+	size_t locationOfStreepje = display_text.find(" - ");
+	if (locationOfStreepje != std::string::npos) {
+		assignment_title = display_text.substr(0, locationOfStreepje);
 	}
-
-	std::string student_email = item->text(1).toStdString();
-	int grade = ui.GradeSubmissionSpinBox->value();
-	std::string comment = ui.CommentsSubmissionField->text().toStdString();
 
 	Database::UpdateSubmissionGrade(subject, assignment_title, student_email, grade, comment);
 

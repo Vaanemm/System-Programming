@@ -1115,9 +1115,9 @@ public:
         AssignmentInfoText->setText(QString());
         DescriptionText_2->setText(QString());
         label_11->setText(QApplication::translate("StudentManagementClass", "Download file:", nullptr));
-        DownloadFileButton->setText(QApplication::translate("StudentManagementClass", "File", nullptr));
-        label_5->setText(QApplication::translate("StudentManagementClass", "Download file:", nullptr));
-        UploadSubmissionButton->setText(QApplication::translate("StudentManagementClass", "Assignment file", nullptr));
+        DownloadFileButton->setText(QApplication::translate("StudentManagementClass", "Assignment File", nullptr));
+        label_5->setText(QApplication::translate("StudentManagementClass", "Upload submission file:", nullptr));
+        UploadSubmissionButton->setText(QApplication::translate("StudentManagementClass", "File", nullptr));
         SubmitAssignmentButton->setText(QApplication::translate("StudentManagementClass", "Submit assignment", nullptr));
         CloseAssignmentInfoButton->setText(QApplication::translate("StudentManagementClass", "Close assignment info", nullptr));
         CreateAssignmentText->setText(QApplication::translate("StudentManagementClass", "Create assignment", nullptr));

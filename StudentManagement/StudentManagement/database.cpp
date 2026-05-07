@@ -291,7 +291,6 @@ void Database::SaveAssignment(const std::string& subject_name, const std::string
 }
 
 std::vector<std::tuple<std::string, std::string, std::string, std::string>> Database::GetAllAssignments() {
-
 	std::vector<std::tuple<std::string, std::string, std::string, std::string>> assignments;
 	std::ifstream file("assignments.csv");
 	std::string line;
