@@ -1024,21 +1024,21 @@
                <item>
                 <widget class="QPushButton" name="DownloadFileButton">
                  <property name="text">
-                  <string>File</string>
+                  <string>Assignment File</string>
                  </property>
                 </widget>
                </item>
                <item>
                 <widget class="QLabel" name="label_5">
                  <property name="text">
-                  <string>Download file:</string>
+                  <string>Upload submission file:</string>
                  </property>
                 </widget>
                </item>
                <item>
                 <widget class="QPushButton" name="UploadSubmissionButton">
                  <property name="text">
-                  <string>Assignment file</string>
+                  <string>File</string>
                  </property>
                 </widget>
                </item>

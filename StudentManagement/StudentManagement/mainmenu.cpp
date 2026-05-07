@@ -430,7 +430,7 @@ void StudentManagement::OpenAssignment(QTreeWidgetItem* item, int column) {
 	}
 
 	m_submission_file_path.clear();
-	ui.UploadSubmissionButton->setText("Upload File");
+	ui.UploadSubmissionButton->setText("File");
 
 	ui.frame_3->show();
 }
