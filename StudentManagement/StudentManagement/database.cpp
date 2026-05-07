@@ -243,9 +243,11 @@ void Database::SaveTeacherForSubject(const std::string& subject_name, const std:
 	std::ifstream file_in("enrollment.csv");
 	std::ostringstream ChangedInfo;
 	std::string line;
+
 	if (!file_in.is_open()) {
 		ErrorHandler::DisplayMessage(Errors::enrollment_not_open);
-	} return;
+		return; 
+	}
 
 	std::getline(file_in, line);
 	ChangedInfo << line << "\n";
@@ -286,12 +288,14 @@ void Database::SaveAssignment(const std::string& subject_name, const std::string
 
 std::vector<std::tuple<std::string, std::string, std::string, std::string>> Database::GetAllAssignments() {
 
-	std::vector<std::tuple<std::string, std::string, std::string, std::string>> assignments; 
+	std::vector<std::tuple<std::string, std::string, std::string, std::string>> assignments;
 	std::ifstream file("assignments.csv");
 	std::string line;
+
 	if (!file.is_open()) {
 		ErrorHandler::DisplayMessage(Errors::assignments_not_open);
-	}return {};
+		return {}; 
+	}
 
 	while (std::getline(file, line)) {
 		if (line.empty()) continue;
@@ -310,9 +314,11 @@ void Database::UpdateUserInDatabase(const std::shared_ptr<User>& updated_user, c
 	std::ifstream file_in("database.csv");
 	std::ostringstream ChangedInfo;
 	std::string line;
+
 	if (!file_in.is_open()) {
 		ErrorHandler::DisplayMessage(Errors::database_not_open);
-	}return;
+		return;
+	}
 
 	std::getline(file_in, line);
 	ChangedInfo << line << "\n";
