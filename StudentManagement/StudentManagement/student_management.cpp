@@ -45,6 +45,7 @@ StudentManagement::StudentManagement(QWidget *parent)
 	connect(ui.SubmissionsTreeWidget, &QTreeWidget::itemClicked, this, &StudentManagement::OpenSubmission);
 	connect(ui.CloseSubmissionInfoButton, &QPushButton::clicked, this, &StudentManagement::CloseSubmissionInfo);
 	connect(ui.GradeSubmissionFile, &QPushButton::clicked, this, &StudentManagement::GradeSubmission);
+	connect(ui.DownloadSubmissionFileButton, &QPushButton::clicked, this, &StudentManagement::DownloadSubmissionFile);
 
 
 	

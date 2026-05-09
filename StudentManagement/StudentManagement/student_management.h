@@ -53,6 +53,7 @@ private slots:
 	void CloseSubmissionInfo();
 	void OpenSubmission(QTreeWidgetItem* item, int column);
 	void GradeSubmission();
+	void DownloadSubmissionFile();
 
 	//SETTINGS
 	void UpdateAccount();
