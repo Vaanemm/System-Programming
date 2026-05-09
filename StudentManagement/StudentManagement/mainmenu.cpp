@@ -259,6 +259,24 @@ void StudentManagement::RefreshEnrollments() {
 			//add the item and set the widget
 			ui.EnrollmentListWidget->addItem(item);
 			ui.EnrollmentListWidget->setItemWidget(item, rowWidget);
+
+			const std::vector<std::string>& students = subject->GetEnrolledStudents();
+			
+
+			for (const auto& str : students) {
+				std::cout << str << "\n";
+			}
+
+			if (students.empty()) {
+				QListWidgetItem* noStudentItem = new QListWidgetItem(ui.EnrollmentListWidget);
+				QWidget* noStudentWidget = new QWidget();
+				QHBoxLayout* noStudentLayout = new QHBoxLayout(noStudentWidget);
+				QLabel* noStudentLabel = new QLabel("No students enrolled.");
+				noStudentLayout->addWidget(noStudentLabel);
+				noStudentLayout->setContentsMargins(20, 2, 5, 2); //more on the right than the subjects so its indented
+				ui.EnrollmentListWidget->addItem(noStudentItem);
+				ui.EnrollmentListWidget->setItemWidget(noStudentItem, noStudentWidget);
+			}
 		}
 	}
 }
