@@ -739,8 +739,8 @@ public:
         horizontalLayout_4 = new QHBoxLayout();
         horizontalLayout_4->setSpacing(6);
         horizontalLayout_4->setObjectName(QString::fromUtf8("horizontalLayout_4"));
-        horizontalLayout_4->setSizeConstraint(QLayout::SetDefaultConstraint);
-        horizontalLayout_4->setContentsMargins(-1, 0, -1, -1);
+        horizontalLayout_4->setSizeConstraint(QLayout::SetMaximumSize);
+        horizontalLayout_4->setContentsMargins(-1, 0, 1, -1);
         pushButton_3 = new QPushButton(MainMenuPage);
         pushButton_3->setObjectName(QString::fromUtf8("pushButton_3"));
         pushButton_3->setMaximumSize(QSize(30, 30));
@@ -754,6 +754,7 @@ public:
 
         label_4 = new QLabel(MainMenuPage);
         label_4->setObjectName(QString::fromUtf8("label_4"));
+        label_4->setMaximumSize(QSize(16777215, 100));
         label_4->setFont(font1);
         label_4->setAlignment(Qt::AlignCenter);
 
@@ -925,6 +926,7 @@ public:
         verticalLayout_5->setObjectName(QString::fromUtf8("verticalLayout_5"));
         SubmissionsText = new QLabel(MainMenuPage);
         SubmissionsText->setObjectName(QString::fromUtf8("SubmissionsText"));
+        SubmissionsText->setMaximumSize(QSize(1000, 100));
         SubmissionsText->setFont(font1);
         SubmissionsText->setAlignment(Qt::AlignCenter);
 

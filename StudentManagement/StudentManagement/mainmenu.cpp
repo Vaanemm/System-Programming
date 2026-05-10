@@ -357,10 +357,12 @@ void StudentManagement::ShowCreateAssignment() {
 		ui.AddAssignmentButton->setText("-");
 		FillInComboBoxSubjects();
 		ui.frame_2->show();
+		ui.AssignmentsTreeWidget->hide();
 	}
 	else {
 		ui.AddAssignmentButton->setText("+");
 		ui.frame_2->hide();
+		ui.AssignmentsTreeWidget->show();
 	}
 }
 
@@ -415,6 +417,7 @@ void StudentManagement::OpenAssignment(QTreeWidgetItem* item, int column) {
 	ui.UploadSubmissionButton->setText("File");
 
 	ui.frame_3->show();
+	ui.AssignmentsTreeWidget->hide();
 }
 
 void StudentManagement::SubmitAssignment() {
@@ -449,6 +452,7 @@ void StudentManagement::DownloadFile() {
 
 void StudentManagement::CloseAssignmentInfo() {
 	ui.frame_3->hide();
+	ui.AssignmentsTreeWidget->show();
 }
 
 void StudentManagement::UploadSubmissionFile() {
@@ -552,6 +556,7 @@ void StudentManagement::OpenSubmission(QTreeWidgetItem* item, int column) {
 
 	ui.DownloadSubmissionFileButton->setEnabled(!file_path.empty());
 	ui.frame_4->show();
+	ui.SubmissionsTreeWidget->hide();
 
 	if (teacher_ptr == nullptr) {
 		ui.NameStudentSubmissionText->hide();
@@ -573,6 +578,7 @@ void StudentManagement::OpenSubmission(QTreeWidgetItem* item, int column) {
 
 void StudentManagement::CloseSubmissionInfo() {
 	ui.frame_4->hide();
+	ui.SubmissionsTreeWidget->show();
 }
 
 void StudentManagement::GradeSubmission() {

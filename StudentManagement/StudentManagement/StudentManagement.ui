@@ -858,10 +858,13 @@
                <number>6</number>
               </property>
               <property name="sizeConstraint">
-               <enum>QLayout::SetDefaultConstraint</enum>
+               <enum>QLayout::SetMaximumSize</enum>
               </property>
               <property name="topMargin">
                <number>0</number>
+              </property>
+              <property name="rightMargin">
+               <number>1</number>
               </property>
               <item>
                <widget class="QPushButton" name="pushButton_3">
@@ -894,6 +897,12 @@
               </item>
               <item>
                <widget class="QLabel" name="label_4">
+                <property name="maximumSize">
+                 <size>
+                  <width>16777215</width>
+                  <height>100</height>
+                 </size>
+                </property>
                 <property name="font">
                  <font>
                   <weight>75</weight>
@@ -1157,6 +1166,12 @@
            <layout class="QVBoxLayout" name="verticalLayout_5">
             <item>
              <widget class="QLabel" name="SubmissionsText">
+              <property name="maximumSize">
+               <size>
+                <width>1000</width>
+                <height>100</height>
+               </size>
+              </property>
               <property name="font">
                <font>
                 <weight>75</weight>
