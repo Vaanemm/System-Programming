@@ -47,8 +47,6 @@ StudentManagement::StudentManagement(QWidget *parent)
 	connect(ui.GradeSubmissionFile, &QPushButton::clicked, this, &StudentManagement::GradeSubmission);
 	connect(ui.DownloadSubmissionFileButton, &QPushButton::clicked, this, &StudentManagement::DownloadSubmissionFile);
 
-
-	
 	//SETTINGS
 	connect(ui.SaveSettingsButton, &QPushButton::clicked, this, &StudentManagement::UpdateAccount);
 
