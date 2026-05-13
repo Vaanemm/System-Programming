@@ -7,6 +7,9 @@
 #include <vector>
 #include <set>
 
+#include <thread>
+#include <chrono>
+
 std::string Database::Read() {
 
 	std::ifstream file("database.csv");
@@ -35,6 +38,9 @@ void Database::Write(const std::vector<std::shared_ptr<Student>>& stud_list) { /
 std::shared_ptr<User> Database::FindUser(const std::string& _email, const std::string& _password, const bool _for_login) {
 	std::ifstream file("database.csv");
 	std::string line;
+
+	std::this_thread::sleep_for(std::chrono::milliseconds(2000));
+
 
 	if (!file.is_open()) {
 		return nullptr;

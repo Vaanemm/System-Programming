@@ -3,6 +3,7 @@
 #include <QtWidgets/QMainWindow>
 #include "ui_StudentManagement.h"
 #include "user.h"
+#include <thread>
 
 class Subject;
 class School; // useful so we can use m_currentuser in login for ex.
@@ -71,6 +72,8 @@ private slots:
 
 private:
 	std::shared_ptr<User> m_logged_in = nullptr;
+	std::thread m_thread_load_folder;
+
 	Ui::StudentManagementClass ui;
 	
 	std::string m_selected_file_path;
