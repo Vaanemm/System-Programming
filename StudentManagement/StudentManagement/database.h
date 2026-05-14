@@ -26,6 +26,7 @@ public:
 
 	static void UpdateUserInDatabase(const std::shared_ptr<User>& updated_user, const std::string& original_email);
 	static bool AddUser(const std::shared_ptr<User>& student);
+	static std::string Database::HashPassword(const std::string& _password);
 
 	// SUBJECTS
 	static void SaveEnrollment(const std::string& subject_name, const std::string& teacher_email, const std::string& student_email);

@@ -35,6 +35,14 @@ void Database::Write(const std::vector<std::shared_ptr<Student>>& stud_list) { /
 	file.close();
 }
 
+//hashing function: djb2, not strongest but very simple
+std::string Database::HashPassword(const std::string& _password) {
+	unsigned long hash = 5381; //starting seed
+	for (char c : _password)
+		hash = hash * 33 + c;
+	return std::to_string(hash);
+}
+
 std::shared_ptr<User> Database::FindUser(const std::string& _email, const std::string& _password, const bool _for_login, std::atomic<bool>* _cancel) {
 	std::ifstream file("database.csv");
 	std::string line;
@@ -72,7 +80,7 @@ std::shared_ptr<User> Database::FindUser(const std::string& _email, const std::s
 
 		bool is_valid;
 		if (_for_login == true) {
-			is_valid = (email == _email && password == _password);
+			is_valid = (email == _email && password == HashPassword(_password));
 		}
 		else {
 			is_valid = (email == _email);
