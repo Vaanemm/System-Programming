@@ -508,9 +508,30 @@ void StudentManagement::CloseAssignmentInfo() {
 }
 
 void StudentManagement::UploadSubmissionFile() {
-	QString file_path = QFileDialog::getOpenFileName(this, "Pick a  file", QString(), "");
+	
+	std::cout << "file asked" << std::endl;
+	QString file_path = QFileDialog::getOpenFileName(this, "Pick a file", QString(), "");
+	std::cout << "file submitted" << std::endl;
+
 	if (!file_path.isEmpty()) {
-		m_submission_file_path = file_path.toStdString();
+		QFileInfo source_info(file_path);
+		QString file_name = source_info.baseName();
+		QString suffix = source_info.suffix();
+		QString new_file_path = "submissions/" + file_name + "." + suffix;
+
+		int counter = 1;
+		while (QFile::exists(new_file_path)) {
+			counter++;
+			QString tag = "_" + QString::number(counter);
+			new_file_path = "submissions/" + file_name + tag + "." + suffix;
+		}
+
+		if (!QFile::copy(file_path, new_file_path)) {
+			ErrorHandler::DisplayMessage(Errors::upload_failed);
+			return;
+		}
+
+		m_submission_file_path = new_file_path.toStdString();
 		ui.UploadSubmissionButton->setText("File selected");
 	}
 	else {
@@ -520,8 +541,9 @@ void StudentManagement::UploadSubmissionFile() {
 
 void StudentManagement::DownloadSubmissionFile() {
 	if (!m_selected_file_path.empty()) {
-		std::string command = "start \"\" \"" + m_selected_file_path + "\"";
-		system(command.c_str());
+		std::vector<char> data;
+		data = LoadPDF();
+		RenderPDF(data);
 	}
 	else {
 		ErrorHandler::DisplayMessage(Errors::file_path_empty);
