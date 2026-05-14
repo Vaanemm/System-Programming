@@ -6,6 +6,9 @@
 #include <iostream>
 #include <QFileDialog>
 #include <QFileInfo>
+#include <fstream>
+#include <QDesktopServices>
+#include <QUrl>
 
 void StudentManagement::handleLogout() {
 	m_logged_in = nullptr;
@@ -373,8 +376,24 @@ void StudentManagement::UploadFile()
 	QString file_path = QFileDialog::getOpenFileName(this,"Pick a file",QString(),"");
 
 	if (!file_path.isEmpty()) {
-		m_selected_file_path = file_path.toStdString();
+		QFileInfo source_info(file_path);
+		QString file_name = source_info.baseName();
+		QString suffix = source_info.suffix();
+		QString new_file_path = "assignments/" + file_name + "." + suffix;
 
+		int counter = 1;
+		while (QFile::exists(new_file_path)) {
+			counter++;
+			QString tag = "_" + QString::number(counter);
+			new_file_path = "assignments/" + file_name + tag + "." + suffix;
+		}
+
+		if (!QFile::copy(file_path, new_file_path)) {
+			ErrorHandler::DisplayMessage(Errors::upload_failed);
+			return;
+		}
+
+		m_selected_file_path = new_file_path.toStdString();
 		ui.SelectFileButton->setText("File selected");
 	}
 	else {
@@ -444,12 +463,43 @@ void StudentManagement::SubmitAssignment() {
 
 void StudentManagement::DownloadFile() {
 	if (!m_selected_file_path.empty()) {
-		std::string command = "start \"\" \"" + m_selected_file_path + "\"";
-		system(command.c_str());
+		std::vector<char> data;
+		data = LoadPDF();
+		RenderPDF(data);
 	}
 	else {
 		ErrorHandler::DisplayMessage(Errors::file_path_empty);
 	}
+}
+
+std::vector<char> StudentManagement::LoadPDF()
+{
+	if (m_pdfCache.count(m_selected_file_path))
+		return m_pdfCache[m_selected_file_path];
+
+	std::ifstream file(m_selected_file_path, std::ios::binary);
+	if (!file)
+		return {};
+
+	std::vector<char> data((std::istreambuf_iterator<char>(file)),
+		std::istreambuf_iterator<char>());
+
+	if (m_pdfCache.size() >= MAX_CACHE_SIZE)
+		m_pdfCache.erase(m_pdfCache.begin());
+
+	m_pdfCache[m_selected_file_path] = data;
+	return data;
+}
+
+void StudentManagement::RenderPDF(const std::vector<char>& _pdfData)
+{
+	QString tempPath = QDir::temp().filePath("assignment.pdf");
+	QFile temp(tempPath);
+	if (temp.open(QIODevice::WriteOnly)) {
+		temp.write(_pdfData.data(), _pdfData.size());
+		temp.close();
+	}
+	QDesktopServices::openUrl(QUrl::fromLocalFile(tempPath));
 }
 
 void StudentManagement::CloseAssignmentInfo() {

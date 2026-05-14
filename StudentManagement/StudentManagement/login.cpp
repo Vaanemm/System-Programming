@@ -10,9 +10,12 @@ void StudentManagement::handleLogin() {
 	QString email = ui.UserNameField->text();
 	QString pass = ui.PasswordField->text();
 
+	
+	m_cancel_login = false;
+
 	//m_logged_in = Database::FindUser(email.toStdString(), pass.toStdString(), true);
 	m_thread_load_folder = std::thread([this, email, pass]() {
-		m_logged_in = Database::FindUser(email.toStdString(), pass.toStdString(), true);
+		m_logged_in = Database::FindUser(email.toStdString(), pass.toStdString(), true, &m_cancel_login);
 	});
 
 	QDialog* popup = new QDialog(this);
@@ -23,12 +26,21 @@ void StudentManagement::handleLogin() {
 	layout->addWidget(cancelBtn);
 	popup->show();
 
-	QApplication::processEvents();
+	connect(cancelBtn, &QPushButton::clicked, this, [this, popup]() {
+		m_cancel_login = true;
+		popup->close();
+	});
 
-	m_thread_load_folder.join(); //waiting for the thread to end before continuing
+	while (!m_cancel_login && m_logged_in == nullptr) {
+		QCoreApplication::processEvents();
+		std::this_thread::sleep_for(std::chrono::milliseconds(50));
+	}
+
+	m_thread_load_folder.join();
 
 
 	if (m_logged_in != nullptr) {
+		popup->close();
 		ui.stackedWidget->setCurrentWidget(ui.MainMenuPage);
 		StudentManagement::RefreshEnrollments();
 		StudentManagement::ViewAssignments();
@@ -37,6 +49,10 @@ void StudentManagement::handleLogin() {
 		StudentManagement::CloseSubmissionInfo();
 
 	}
+	else if (m_cancel_login) {
+		return;
+	}
+
 	else {
 		Errors not_logged_in = Errors::login_failed;
 		ErrorHandler::DisplayMessage(not_logged_in);

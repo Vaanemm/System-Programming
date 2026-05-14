@@ -10,7 +10,8 @@ enum class Errors {
 	enrollment_not_open,
 	assignments_not_open,
 	email_taken,
-	receiver_empty
+	receiver_empty,
+	upload_failed
 };
 
 class ErrorHandler {
