@@ -202,7 +202,6 @@ void StudentManagement::RefreshEnrollments() {
 		std::shared_ptr<User> child_user = Database::FindUser(child_email, " ", false);
 		std::shared_ptr<Student> child_ptr = std::dynamic_pointer_cast<Student>(child_user);
 		if (child_ptr == nullptr) {
-			//std::cout << "child bestaat niet" << std::endl;
 			ErrorHandler::DisplayMessage(Errors::no_child_found);
 		}
 
@@ -355,6 +354,7 @@ void StudentManagement::ViewAssignments()
 		}
 	}
 	ui.AssignmentsTreeWidget->expandAll();
+	ui.AssignmentsTreeWidget->show();
 }
 
 void StudentManagement::ShowCreateAssignment() {
@@ -459,6 +459,8 @@ void StudentManagement::SubmitAssignment() {
 
 	ViewSubmissions();
 	QMessageBox::information(this, "Done", "Submitted successfully!");
+
+	ui.AssignmentsTreeWidget->show();
 }
 
 void StudentManagement::DownloadFile() {
@@ -509,9 +511,7 @@ void StudentManagement::CloseAssignmentInfo() {
 
 void StudentManagement::UploadSubmissionFile() {
 	
-	std::cout << "file asked" << std::endl;
 	QString file_path = QFileDialog::getOpenFileName(this, "Pick a file", QString(), "");
-	std::cout << "file submitted" << std::endl;
 
 	if (!file_path.isEmpty()) {
 		QFileInfo source_info(file_path);

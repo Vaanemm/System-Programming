@@ -2,7 +2,6 @@
 #include <QMessageBox>
 #include "database.h"
 #include <iostream>
-#include <errors_class.h>
 
 
 

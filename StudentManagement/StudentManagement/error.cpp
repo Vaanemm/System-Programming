@@ -8,6 +8,8 @@ void ErrorHandler::DisplayMessage(Errors _error) {
 	switch (_error) {
 	case Errors::login_failed:
 		QMessageBox::critical(nullptr, "Error, could not log in", "The e-mail or password is incorrect, please try again."); break;
+	case Errors::signup_failed:
+		QMessageBox::critical(nullptr, "Error", "Signup failed."); break;
 	case Errors::invalid_input:
 		QMessageBox::critical(nullptr, "Error", "The input is not valid.\nMake sure to fill in every box."); break;
 	case Errors::no_child_found:

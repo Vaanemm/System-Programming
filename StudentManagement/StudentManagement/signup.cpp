@@ -44,17 +44,18 @@ void StudentManagement::SignUp() {
 	}
 
 	bool success = Database::AddUser(new_user);
+	ui.SurnameField->clear();
+	ui.NameField->clear();
+	ui.EmailField->clear();
+	ui.DobField->clear();
+	ui.PasswordFieldSignUp->clear();
+	ui.ChildsNameField->clear();
 	if (success == true) {
 		ui.stackedWidget->setCurrentWidget(ui.LoginPage);
 	}
 	else {
-		ui.SurnameField->clear();
-		ui.NameField->clear();
-		ui.EmailField->clear();
-		ui.DobField->clear();
-		ui.PasswordFieldSignUp->clear();
-		ui.ChildsNameField->clear();
-		ui.RoleFieldSignUp->clear();
+		Errors not_logged_in = Errors::login_failed;
+		ErrorHandler::DisplayMessage(not_logged_in);
 	}
 	
 }

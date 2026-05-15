@@ -3,6 +3,7 @@
 
 enum class Errors {
 	login_failed,
+	signup_failed,
 	invalid_input,
 	database_not_open,
 	no_child_found,

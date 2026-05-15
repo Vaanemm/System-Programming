@@ -4,6 +4,8 @@
 #include "ui_StudentManagement.h"
 #include "user.h"
 #include <thread>
+#include <errors_class.h>
+
 
 class Subject;
 class School; // useful so we can use m_currentuser in login for ex.

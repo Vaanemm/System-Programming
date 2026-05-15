@@ -135,7 +135,9 @@ std::shared_ptr<User> Database::FindUser(const std::string& _email, const std::s
 						std::getline(ss_enroll, teach_email, ',');
 						std::getline(ss_enroll, stud_email);
 
-						if (teach_email == email) {
+						//We need to check if it's the teacher's subject.
+						//But we also need to check if the line is not a student enrollment, these must be ignored
+						if (teach_email == email && stud_email =="") {
 							SubjectName subject_name = StringToSubjectName(sub_name);
 
 							auto new_subject = std::make_shared<Subject>(subject_name, teach_ptr);
