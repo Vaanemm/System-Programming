@@ -3,7 +3,7 @@
 
 //if else dus als error gelijk is aan login failed
 //nullptr, nrml heb je parent QWidget hier aangegeven met this
-// als je oproept nogsteeds nullptr dus niet gelinkt aan MainWIdonw
+//blijft nullptr als je oproept dus minder goed dan this
 void ErrorHandler::DisplayMessage(Errors _error) {
 	switch (_error) {
 	case Errors::login_failed:
