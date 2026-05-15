@@ -22,7 +22,7 @@ void StudentManagement::SignUp() {
 	std::string surname = qstring_surname.toStdString();
 	std::string name = qstring_name.toStdString();
 	std::string email = qstring_email.toStdString();
-	std::string password = qstring_password.toStdString();
+	std::string password = Database::HashPassword(qstring_password.toStdString());
 	std::string string_child = qstring_child.toStdString();
 
 	std::shared_ptr<User> child = Database::FindUser(string_child, " ", false);

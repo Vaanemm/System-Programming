@@ -24,6 +24,8 @@ void ErrorHandler::DisplayMessage(Errors _error) {
 		QMessageBox::critical(nullptr, "Error", "Could not open assignnments.csv"); break;
 	case Errors::receiver_empty:
 		QMessageBox::critical(nullptr, "Error", "Please fill in a receiver."); break;
+	case Errors::upload_failed:
+		QMessageBox::critical(nullptr, "Error", "Failed to upload file."); break;
 	default: QMessageBox::critical(nullptr, "Error", "An unknown error occurred");
 	}
 }

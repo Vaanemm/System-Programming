@@ -45,6 +45,8 @@ private slots:
 	void UploadFile();
 	void OpenAssignment(QTreeWidgetItem* item, int column);
 	void DownloadFile();
+	std::vector<char> StudentManagement::LoadPDF();
+	void StudentManagement::RenderPDF(const std::vector<char>& _pdfData);
 	void CloseAssignmentInfo();
 
 	//submissions
@@ -74,10 +76,17 @@ private:
 	std::shared_ptr<User> m_logged_in = nullptr;
 	std::thread m_thread_load_folder;
 
+	// = false because it should always stay false, unless a thread is stopped early
+	std::atomic<bool> m_cancel_login = false;
+	std::atomic<bool> m_thread_finished = false;
+
 	Ui::StudentManagementClass ui;
 	
 	std::string m_selected_file_path;
 	std::string m_submission_file_path;
+
+	std::map<std::string, std::vector<char>> m_pdfCache;
+	const int MAX_CACHE_SIZE = 5;
 
 	QTreeWidgetItem* m_selected_assignment_item = nullptr;
 

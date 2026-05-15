@@ -35,11 +35,19 @@ void Database::Write(const std::vector<std::shared_ptr<Student>>& stud_list) { /
 	file.close();
 }
 
-std::shared_ptr<User> Database::FindUser(const std::string& _email, const std::string& _password, const bool _for_login) {
+//hashing function: djb2, not strongest but very simple
+std::string Database::HashPassword(const std::string& _password) {
+	unsigned long hash = 5381; //starting seed
+	for (char c : _password)
+		hash = hash * 33 + c;
+	return std::to_string(hash);
+}
+
+std::shared_ptr<User> Database::FindUser(const std::string& _email, const std::string& _password, const bool _for_login, std::atomic<bool>* _cancel) {
 	std::ifstream file("database.csv");
 	std::string line;
 
-	std::this_thread::sleep_for(std::chrono::milliseconds(2000));
+	//std::this_thread::sleep_for(std::chrono::milliseconds(2000));
 
 
 	if (!file.is_open()) {
@@ -49,6 +57,14 @@ std::shared_ptr<User> Database::FindUser(const std::string& _email, const std::s
 	std::getline(file, line); // skip header
 
 	while (std::getline(file, line)) {
+		
+		//checks if pointer exists
+		if (_cancel) {
+			//checks if the search for user was cancelled
+			if (*_cancel) {
+				return nullptr;
+			}
+		}
 		std::stringstream ss(line); //this splits the line with commas
 		std::string surname, name, email, password, dob_str, role, child;
 
@@ -64,7 +80,7 @@ std::shared_ptr<User> Database::FindUser(const std::string& _email, const std::s
 
 		bool is_valid;
 		if (_for_login == true) {
-			is_valid = (email == _email && password == _password);
+			is_valid = (email == _email && password == HashPassword(_password));
 		}
 		else {
 			is_valid = (email == _email);

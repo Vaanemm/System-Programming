@@ -22,10 +22,11 @@ public:
 	static void Write(const std::vector<std::shared_ptr<Student>>& stud_list);
 
 	// static so we don't have to create an object and can user Database::FindUser
-	static std::shared_ptr<User> FindUser(const std::string& _email, const std::string& _password, const bool _for_login);
+	static std::shared_ptr<User> FindUser(const std::string& _email, const std::string& _password, const bool _for_login, std::atomic<bool>* _cancel = nullptr);
 
 	static void UpdateUserInDatabase(const std::shared_ptr<User>& updated_user, const std::string& original_email);
 	static bool AddUser(const std::shared_ptr<User>& student);
+	static std::string Database::HashPassword(const std::string& _password);
 
 	// SUBJECTS
 	static void SaveEnrollment(const std::string& subject_name, const std::string& teacher_email, const std::string& student_email);
