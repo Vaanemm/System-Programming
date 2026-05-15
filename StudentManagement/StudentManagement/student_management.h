@@ -78,6 +78,7 @@ private:
 
 	// = false because it should always stay false, unless a thread is stopped early
 	std::atomic<bool> m_cancel_login = false;
+	std::atomic<bool> m_thread_finished = false;
 
 	Ui::StudentManagementClass ui;
 	
