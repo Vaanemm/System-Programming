@@ -628,6 +628,8 @@ void StudentManagement::OpenSubmission(QTreeWidgetItem* item, int column) {
 	ui.DescriptionSubmissionText->setText(QString::fromStdString("Comment: " + comment));
 	ui.GradeSubmissionText->setText(QString::fromStdString("Grade: " + std::to_string(current_grade)));
 
+	m_selected_file_path = file_path;
+
 	ui.DownloadSubmissionFileButton->setEnabled(!file_path.empty());
 	ui.frame_4->show();
 	ui.SubmissionsTreeWidget->hide();
@@ -678,4 +680,5 @@ void StudentManagement::GradeSubmission() {
 	ui.GradeSubmissionSpinBox->setValue(0);
 	ui.CommentsSubmissionField->clear();
 	ui.frame_4->hide();
+	ui.SubmissionsTreeWidget->show();
 }
