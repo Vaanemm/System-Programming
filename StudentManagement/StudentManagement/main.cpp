@@ -67,13 +67,13 @@ int main(int argc, char *argv[])
 
 	std::cout << prof_ptr->ToString() << std::endl;
 
-	physics_ptr->MakeAssignment("Sterke toets", "ja het is moeilijk he");
+	//physics_ptr->MakeAssignment("Sterke toets", "ja het is moeilijk he");
 
 	std::cout << physics_ptr->SubjectAssignmentToString() << std::endl;
 
 	auto assignments = physics_ptr->GetAssignments();
 	auto current_assignment = assignments[0];
-	//current_assignment->MakeSubmission(6, "that was shit ngl");
+	//current_assignment->MakeSubmission(6, "niet goed");
 	std::cout << current_assignment->AssignmentSubmissionToString() << std::endl;
 
 	physics_ptr->AddStudent("student1");
