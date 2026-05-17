@@ -25,42 +25,41 @@ void StudentManagement::SignUp() {
 	std::string password = Database::HashPassword(qstring_password.toStdString());
 	std::string string_child = qstring_child.toStdString();
 
-	std::shared_ptr<User> child = Database::FindUser(string_child, " ", false);
-
 	std::shared_ptr<User> new_user;
 
 	if (role == "Student") {
-		new_user = std::shared_ptr<Student>(new Student(email, password, name, surname, dob));
-		
-	} else if(role=="Teacher") {
+		new_user = std::shared_ptr<Student>(new Student(email, password, name, surname, dob));	
+	} 
+	else if(role=="Teacher") {
 		new_user = std::shared_ptr<Teacher>(new Teacher(email, password, name, surname, dob));
 	}
 	else if (role == "Parent") {
+		std::shared_ptr<User> child = Database::FindUser(string_child, " ", false);
 		auto student_child = std::dynamic_pointer_cast<Student>(child); // we cast it to a student bc we need student but its a user
-		new_user = std::shared_ptr<Parent>(new Parent(email, password, name, surname, dob, student_child));
 		if (student_child == nullptr) {
 			ErrorHandler::DisplayMessage(Errors::no_child_found);
 			return;
 		}
-		else {
-			std::cout << "No role found " << std::endl;
-			ErrorHandler::DisplayMessage(Errors::signup_failed);
-			return;
-		}
+		new_user = std::shared_ptr<Parent>(new Parent(email, password, name, surname, dob, student_child));
+	}
+	else {
+		std::cout << "No role found " << std::endl;
+		ErrorHandler::DisplayMessage(Errors::signup_failed);
+		return;
+	}
 
-		bool success = Database::AddUser(new_user);
-		ui.SurnameField->clear();
-		ui.NameField->clear();
-		ui.EmailField->clear();
-		ui.DobField->clear();
-		ui.PasswordFieldSignUp->clear();
-		ui.ChildsNameField->clear();
-		if (success == true) {
-			ui.stackedWidget->setCurrentWidget(ui.LoginPage);
-		}
-		else {
-			ErrorHandler::DisplayMessage(Errors::signup_failed);
-		}
+	bool success = Database::AddUser(new_user);
+	ui.SurnameField->clear();
+	ui.NameField->clear();
+	ui.EmailField->clear();
+	ui.DobField->clear();
+	ui.PasswordFieldSignUp->clear();
+	ui.ChildsNameField->clear();
+	if (success == true) {
+		ui.stackedWidget->setCurrentWidget(ui.LoginPage);
+	}
+	else {
+		ErrorHandler::DisplayMessage(Errors::signup_failed);
 	}
 	
 }

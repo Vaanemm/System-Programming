@@ -270,26 +270,21 @@ void Database::SaveTeacherForSubject(const std::string& subject_name, const std:
 	std::string line;
 
 	if (!file_in.is_open()) {
-
 		ErrorHandler::DisplayMessage(Errors::enrollment_not_open);
-		return; 
+		return;
 	}
 
-
-	std::getline(file_in, line);
-	ChangedInfo << line << "\n";
-
 	while (std::getline(file_in, line)) {
+		if (line.empty()) continue;
+
 		std::stringstream ss(line);
 		std::string subject, teacher, student;
 		std::getline(ss, subject, ',');
-		std::cout << subject << std::endl;
 		std::getline(ss, teacher, ',');
 		std::getline(ss, student);
 
 		if (subject == subject_name) {
-			std::string new_line = subject_name + "," + teacher_email + ",";
-			ChangedInfo << new_line << "\n";
+			ChangedInfo << subject << "," << teacher_email << "," << student << "\n";
 		}
 		else {
 			ChangedInfo << line << "\n";

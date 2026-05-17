@@ -197,10 +197,8 @@ void StudentManagement::RefreshEnrollments() {
 	else if (parent_ptr) {
 		ui.label_3->setText("Child's enrollments");
 		ui.AddSubjectButton->show();
-		const auto& child_email = parent_ptr->GetChild();
 
-		std::shared_ptr<User> child_user = Database::FindUser(child_email, " ", false);
-		std::shared_ptr<Student> child_ptr = std::dynamic_pointer_cast<Student>(child_user);
+		Student* child_ptr = parent_ptr->GetStudent();
 		if (child_ptr == nullptr) {
 			ErrorHandler::DisplayMessage(Errors::no_child_found);
 			return;
@@ -227,7 +225,6 @@ void StudentManagement::RefreshEnrollments() {
 			ui.EnrollmentListWidget->addItem(item);
 			ui.EnrollmentListWidget->setItemWidget(item, rowWidget);
 		}
-
 	}
 	else if (teacher_ptr) {
 		ui.AddSubjectButton->show();
