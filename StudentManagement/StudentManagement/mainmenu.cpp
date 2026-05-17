@@ -28,6 +28,13 @@ void StudentManagement::goToMainMenu() {
 }
 
 void StudentManagement::goToSettings() {
+	//fill in all the fields so the user can see its name, surname, etc
+	ui.SurnameFieldSettings->setText(QString::fromStdString(m_logged_in->GetSurname()));
+	ui.NameFieldSettings->setText(QString::fromStdString(m_logged_in->GetName()));
+	ui.EmailFieldSettings->setText(QString::fromStdString(m_logged_in->GetEmail()));
+	Date dob = m_logged_in->GetDob();
+	ui.DobFieldSettings->setDate(QDate(dob.year, dob.month, dob.day));
+
 	ui.stackedWidget->setCurrentWidget(ui.SettingsPage);
 }
 

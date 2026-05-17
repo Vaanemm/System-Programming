@@ -8,6 +8,7 @@ void StudentManagement::UpdateAccount() {
 	QString qstring_name = ui.NameFieldSettings->text();
 	QString qstring_email = ui.EmailFieldSettings->text();
 	QString qstring_password = ui.PasswordFieldSettings->text();
+	ui.PasswordFieldSettings->clear();
 	QDate dob_qdate = ui.DobFieldSettings->date();
 	Date dob = Date(dob_qdate);
 

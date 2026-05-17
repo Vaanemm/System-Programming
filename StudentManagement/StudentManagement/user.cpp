@@ -1,4 +1,6 @@
 #include "user.h"
+#include <iostream>
+
 
 User::User(const std::string& _email, const std::string& _password,
 	const std::string& _name, const std::string& _surname,
@@ -69,7 +71,11 @@ void User::updateUser(const std::string& email, const std::string& password,
 	const std::string& name, const std::string& surname, const Date& dob)
 {
 	SetEmail(email);
-	SetPassword(password);
+
+	// 5381 is the hashed value for an empty password
+	if (password != "5381") {
+		SetPassword(password);
+	}
 	SetName(name);
 	SetSurname(surname);
 	SetDob(dob);
