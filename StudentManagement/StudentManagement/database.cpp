@@ -369,6 +369,33 @@ void Database::UpdateUserInDatabase(const std::shared_ptr<User>& updated_user, c
 	std::ofstream file_out("database.csv");
 	file_out << ChangedInfo.str();
 	file_out.close();
+
+	if (updated_user->GetEmail() != original_email) {
+		std::ifstream mail_in("mails.csv");
+		std::ostringstream UpdatedMails;
+		std::string mail_line;
+
+		if (mail_in.is_open()) {
+			while (std::getline(mail_in, mail_line)) {
+				std::stringstream ss(mail_line);
+				std::string sender, receiver, subject, body;
+				std::getline(ss, sender, ',');
+				std::getline(ss, receiver, ',');
+				std::getline(ss, subject, ',');
+				std::getline(ss, body);
+
+				if (sender == original_email) sender = updated_user->GetEmail();
+				if (receiver == original_email) receiver = updated_user->GetEmail();
+
+				UpdatedMails << sender << "," << receiver << "," << subject << "," << body << "\n";
+			}
+			mail_in.close();
+
+			std::ofstream mail_out("mails.csv");
+			mail_out << UpdatedMails.str();
+			mail_out.close();
+		}
+	}
 }
 
 std::vector<SubjectTeacher> Database::GetAllSubjects() {
