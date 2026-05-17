@@ -346,6 +346,8 @@ std::vector<std::tuple<std::string, std::string, std::string, std::string>> Data
 }
 
 void Database::UpdateUserInDatabase(const std::shared_ptr<User>& updated_user, const std::string& original_email) {
+
+	//update user in the main database
 	std::ifstream file_in("database.csv");
 	std::ostringstream ChangedInfo;
 	std::string line;
@@ -378,6 +380,7 @@ void Database::UpdateUserInDatabase(const std::shared_ptr<User>& updated_user, c
 	file_out << ChangedInfo.str();
 	file_out.close();
 
+	// update email adress in mail.csv
 	if (updated_user->GetEmail() != original_email) {
 		std::ifstream mail_in("mails.csv");
 		std::ostringstream UpdatedMails;
@@ -404,6 +407,70 @@ void Database::UpdateUserInDatabase(const std::shared_ptr<User>& updated_user, c
 			mail_out.close();
 		}
 	}
+
+	if (updated_user->GetEmail() != original_email) {
+
+		// update email adress in enrollment.csv
+
+		std::ifstream enrollment_in("enrollment.csv");
+		std::ostringstream UpdatedEnrollments;
+		std::string enrollment_line;
+
+		if (enrollment_in.is_open()) {
+			while (std::getline(enrollment_in, enrollment_line)) {
+				std::stringstream ss(enrollment_line);
+				std::string subject, teacher, student ;
+				std::getline(ss, subject, ',');
+				std::getline(ss, teacher, ',');
+				std::getline(ss, student);
+				if ( teacher == original_email) {
+					teacher = updated_user->GetEmail();
+				}
+				if (student == original_email) {
+					student = updated_user->GetEmail();
+				}
+
+				UpdatedEnrollments << subject << "," << teacher << "," << student << "\n";
+			}
+			enrollment_in.close();
+
+			std::ofstream enrollment_out("enrollment.csv");
+			enrollment_out << UpdatedEnrollments.str();
+			enrollment_out.close();
+		}
+
+		//update email in submission.csv
+		std::ifstream sub_in("submissions.csv");
+		std::ostringstream UpdatedSubmissions;
+		std::string sub_line;
+
+		if (sub_in.is_open()) {
+			while (std::getline(sub_in, sub_line)) {
+				if (sub_line.empty()) continue;
+				std::stringstream ss(sub_line);
+				std::string subject, title, student_email, file_path, grade, comment;
+				std::getline(ss, subject, ',');
+				std::getline(ss, title, ',');
+				std::getline(ss, student_email, ',');
+				std::getline(ss, file_path, ',');
+				std::getline(ss, grade, ',');
+				std::getline(ss, comment);
+
+				if (student_email == original_email) {
+					student_email = updated_user->GetEmail();
+				}
+
+				UpdatedSubmissions << subject << "," << title << "," << student_email << "," << file_path << "," << grade << "," << comment << "\n";
+			}
+			sub_in.close();
+			std::ofstream sub_out("submissions.csv");
+			sub_out << UpdatedSubmissions.str();
+			sub_out.close();
+		}
+	}
+	}
+
+
 }
 
 std::vector<SubjectTeacher> Database::GetAllSubjects() {
