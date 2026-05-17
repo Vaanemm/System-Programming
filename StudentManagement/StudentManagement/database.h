@@ -20,6 +20,7 @@ class Database {
 public:	
 	std::string Read();
 	static void Write(const std::vector<std::shared_ptr<Student>>& stud_list);
+	static std::string DeleteKommas(const std::string& input);
 
 	// static so we don't have to create an object and can user Database::FindUser
 	static std::shared_ptr<User> FindUser(const std::string& _email, const std::string& _password, const bool _for_login, std::atomic<bool>* _cancel = nullptr);

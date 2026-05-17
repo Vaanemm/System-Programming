@@ -34,6 +34,14 @@ void Database::Write(const std::vector<std::shared_ptr<Student>>& stud_list) { /
 	}
 	file.close();
 }
+//als er komma's staan in de mail bvb zo da niet goed opslaan, dus maak er gewoon ; van
+std::string Database::DeleteKommas(const std::string& input) {
+	std::string output = input; 
+	for (char& c : output) {
+		if (c == ',') c = ' ;';
+	}
+	return output;
+}
 
 //hashing function: djb2, not strongest but very simple
 std::string Database::HashPassword(const std::string& _password) {
@@ -170,10 +178,10 @@ void Database::SendEmail(const Mail& mail) {
 	file_stream.open("mails.csv", std::ios::app);
 	if (file_stream.is_open()) {
 		std::string new_email;
-		new_email = mail.GetSender() + ",";
-		new_email += mail.GetReceiver() + ",";
-		new_email += mail.GetSubject() + ",";
-		new_email += mail.GetText() + "\n";
+		new_email = DeleteKommas(mail.GetSender()) + ",";
+		new_email += DeleteKommas(mail.GetReceiver()) + ",";
+		new_email += DeleteKommas(mail.GetSubject()) + ",";
+		new_email += DeleteKommas(mail.GetText()) + "\n";
 		file_stream << new_email;
 	}
 	return;
@@ -255,7 +263,9 @@ bool Database::AddUser(const std::shared_ptr<User>& user) {
 void Database::SaveEnrollment(const std::string& subject_name, const std::string& teacher_email, const std::string& student_email) {
 	std::ofstream outFile("enrollment.csv", std::ios::app);
 	if (outFile.is_open()) {
-		outFile << subject_name << "," << teacher_email << "," << student_email << "\n";
+		outFile << DeleteKommas(subject_name) << ","
+			<< DeleteKommas(teacher_email) << ","
+			<< DeleteKommas(student_email) << "\n";
 		outFile.close();
 	}
 	else {
@@ -301,7 +311,10 @@ void Database::SaveAssignment(const std::string& subject_name, const std::string
 {
 	std::ofstream file("assignments.csv", std::ios::app);
 	if (file.is_open()) {
-		file << subject_name << "," << name << "," << description << "," << file_path << "\n";
+		file << DeleteKommas(subject_name) << ","
+			<< DeleteKommas(name) << ","
+			<< DeleteKommas(description) << ","
+			<< DeleteKommas(file_path) << "\n";
 		file.close();
 	}
 	else {
@@ -472,8 +485,10 @@ bool Database::CheckTeacherEmptyInSubject(const std::string& subjects_name) {
 void Database::SaveSubmission(const std::string& subject_name, const std::string& assignment_title, const std::string& student_email, const std::string& file_path) {
 	std::ofstream file("submissions.csv", std::ios::app);
 	if (file.is_open()) {
-		file << subject_name << "," << assignment_title << ","
-			<< student_email << "," << file_path << ",0,\n";
+		file << DeleteKommas(subject_name) << ","
+			<< DeleteKommas(assignment_title) << ","
+			<< DeleteKommas(student_email) << ","
+			<< DeleteKommas(file_path) << ",0,\n";
 		file.close();
 	}
 }
@@ -553,7 +568,7 @@ void Database::UpdateSubmissionGrade(const std::string& subject_name, const std:
 		std::getline(ss, old_comment);
 
 		if (subject == subject_name && title == assignment_title && email == student_email) {
-			updated_data << subject << "," << title << "," << email << "," << file_path << "," << grade << "," << comment << "\n";
+			updated_data << subject << "," << title << "," << email << "," << file_path << "," << grade << "," << DeleteKommas(comment) << "\n";
 		}
 		else {
 			updated_data << line << "\n";

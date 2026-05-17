@@ -24,7 +24,7 @@ public:
 	void SetSurname(const std::string& surname);
 	void SetDob(const Date& dob);
 
-	std::string ToString() const;
+	virtual std::string ToString() const;
 	virtual std::string PrepareForDatabase() const;
 	void updateUser(const std::string& email, const std::string& password, const std::string& name, const std::string& surname, const Date& dob);
 
