@@ -70,7 +70,9 @@ void User::updateUser(const std::string& email, const std::string& password,
 	const std::string& name, const std::string& surname, const Date& dob)
 {
 	SetEmail(email);
-	SetPassword(password);
+	if (password != "5381") {
+		SetPassword(password);
+	}
 	SetName(name);
 	SetSurname(surname);
 	SetDob(dob);
