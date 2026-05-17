@@ -203,6 +203,7 @@ void StudentManagement::RefreshEnrollments() {
 		std::shared_ptr<Student> child_ptr = std::dynamic_pointer_cast<Student>(child_user);
 		if (child_ptr == nullptr) {
 			ErrorHandler::DisplayMessage(Errors::no_child_found);
+			return;
 		}
 
 		const auto& subjects = child_ptr->GetSubjects();
@@ -465,21 +466,19 @@ void StudentManagement::SubmitAssignment() {
 
 void StudentManagement::DownloadFile() {
 	if (!m_selected_file_path.empty()) {
-		std::vector<char> data;
-		data = LoadPDF();
-		RenderPDF(data);
+		RenderPDF(LoadPDF(m_selected_file_path));
 	}
 	else {
 		ErrorHandler::DisplayMessage(Errors::file_path_empty);
 	}
 }
 
-std::vector<char> StudentManagement::LoadPDF()
+std::vector<char> StudentManagement::LoadPDF(const std::string& path) 
 {
-	if (m_pdfCache.count(m_selected_file_path))
-		return m_pdfCache[m_selected_file_path];
+	if (m_pdfCache.count(path))
+		return m_pdfCache[path];
 
-	std::ifstream file(m_selected_file_path, std::ios::binary);
+	std::ifstream file(path, std::ios::binary);
 	if (!file)
 		return {};
 
@@ -489,7 +488,7 @@ std::vector<char> StudentManagement::LoadPDF()
 	if (m_pdfCache.size() >= MAX_CACHE_SIZE)
 		m_pdfCache.erase(m_pdfCache.begin());
 
-	m_pdfCache[m_selected_file_path] = data;
+	m_pdfCache[path] = data;
 	return data;
 }
 
@@ -540,10 +539,8 @@ void StudentManagement::UploadSubmissionFile() {
 }
 
 void StudentManagement::DownloadSubmissionFile() {
-	if (!m_selected_file_path.empty()) {
-		std::vector<char> data;
-		data = LoadPDF();
-		RenderPDF(data);
+	if (!m_selected_submission_download_path.empty()) {
+		RenderPDF(LoadPDF(m_selected_submission_download_path));
 	}
 	else {
 		ErrorHandler::DisplayMessage(Errors::file_path_empty);
@@ -628,7 +625,7 @@ void StudentManagement::OpenSubmission(QTreeWidgetItem* item, int column) {
 	ui.DescriptionSubmissionText->setText(QString::fromStdString("Comment: " + comment));
 	ui.GradeSubmissionText->setText(QString::fromStdString("Grade: " + std::to_string(current_grade)));
 
-	m_selected_file_path = file_path;
+	m_selected_submission_download_path = file_path;
 
 	ui.DownloadSubmissionFileButton->setEnabled(!file_path.empty());
 	ui.frame_4->show();
@@ -674,7 +671,7 @@ void StudentManagement::GradeSubmission() {
 
 	Database::UpdateSubmissionGrade(subject, assignment_title, student_email, grade, comment);
 
-	QMessageBox::information(this, "yess", " wwww!");
+	QMessageBox::information(this, "Done", " Grade has been changed");
 
 	ViewSubmissions();
 	ui.GradeSubmissionSpinBox->setValue(0);

@@ -285,7 +285,7 @@ void Database::SaveTeacherForSubject(const std::string& subject_name, const std:
 		std::getline(ss, subject, ',');
 		std::cout << subject << std::endl;
 		std::getline(ss, teacher, ',');
-		std::getline(ss, student, ',');
+		std::getline(ss, student);
 
 		if (subject == subject_name) {
 			std::string new_line = subject_name + "," + teacher_email + ",";

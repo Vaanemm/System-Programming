@@ -38,24 +38,29 @@ void StudentManagement::SignUp() {
 	else if (role == "Parent") {
 		auto student_child = std::dynamic_pointer_cast<Student>(child); // we cast it to a student bc we need student but its a user
 		new_user = std::shared_ptr<Parent>(new Parent(email, password, name, surname, dob, student_child));
-	}
-	else {
-		std::cout << "No role found " << std::endl;
-	}
+		if (student_child == nullptr) {
+			ErrorHandler::DisplayMessage(Errors::no_child_found);
+			return;
+		}
+		else {
+			std::cout << "No role found " << std::endl;
+			ErrorHandler::DisplayMessage(Errors::signup_failed);
+			return;
+		}
 
-	bool success = Database::AddUser(new_user);
-	ui.SurnameField->clear();
-	ui.NameField->clear();
-	ui.EmailField->clear();
-	ui.DobField->clear();
-	ui.PasswordFieldSignUp->clear();
-	ui.ChildsNameField->clear();
-	if (success == true) {
-		ui.stackedWidget->setCurrentWidget(ui.LoginPage);
-	}
-	else {
-		Errors not_logged_in = Errors::login_failed;
-		ErrorHandler::DisplayMessage(not_logged_in);
+		bool success = Database::AddUser(new_user);
+		ui.SurnameField->clear();
+		ui.NameField->clear();
+		ui.EmailField->clear();
+		ui.DobField->clear();
+		ui.PasswordFieldSignUp->clear();
+		ui.ChildsNameField->clear();
+		if (success == true) {
+			ui.stackedWidget->setCurrentWidget(ui.LoginPage);
+		}
+		else {
+			ErrorHandler::DisplayMessage(Errors::signup_failed);
+		}
 	}
 	
 }

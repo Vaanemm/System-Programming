@@ -47,8 +47,8 @@ private slots:
 	void UploadFile();
 	void OpenAssignment(QTreeWidgetItem* item, int column);
 	void DownloadFile();
-	std::vector<char> StudentManagement::LoadPDF();
-	void StudentManagement::RenderPDF(const std::vector<char>& _pdfData);
+	std::vector<char> LoadPDF(const std::string& path);
+	void RenderPDF(const std::vector<char>& _pdfData);
 	void CloseAssignmentInfo();
 
 	//submissions
@@ -86,6 +86,7 @@ private:
 	
 	std::string m_selected_file_path;
 	std::string m_submission_file_path;
+	std::string m_selected_submission_download_path;
 
 	std::map<std::string, std::vector<char>> m_pdfCache;
 	const int MAX_CACHE_SIZE = 5;

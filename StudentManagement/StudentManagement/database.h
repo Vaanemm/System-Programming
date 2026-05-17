@@ -26,7 +26,7 @@ public:
 
 	static void UpdateUserInDatabase(const std::shared_ptr<User>& updated_user, const std::string& original_email);
 	static bool AddUser(const std::shared_ptr<User>& student);
-	static std::string Database::HashPassword(const std::string& _password);
+	static std::string HashPassword(const std::string& _password);
 
 	// SUBJECTS
 	static void SaveEnrollment(const std::string& subject_name, const std::string& teacher_email, const std::string& student_email);
@@ -41,14 +41,14 @@ public:
 
 	//SUBMISSIONS
 	static void SaveSubmission(const std::string& subject_name, const std::string& assignment_title,	const std::string& student_email, const std::string& file_path);
-	static std::vector<std::tuple<std::string, std::string, std::string, std::string, std::string, std::string>> Database::GetSubmissions(const std::string& filter_email, bool is_student, const std::vector<std::string>& subject_names);
+	static std::vector<std::tuple<std::string, std::string, std::string, std::string, std::string, std::string>> GetSubmissions(const std::string& filter_email, bool is_student, const std::vector<std::string>& subject_names);
 	static bool HasStudentSubmitted(const std::string& subject_name, const std::string& assignment_title, const std::string& student_email);
 	static void UpdateSubmissionGrade(const std::string& subject_name, const std::string& assignment_title, const std::string& student_email, int grade, const std::string& comment);
 
 	//MAILS
 	static void SendEmail(const Mail& mail);
-	static std::vector<std::unique_ptr<Mail>> Database::GetMailsForReceiver(const std::string& receiver);
-	static std::vector<std::unique_ptr<Mail>> Database::GetMailsForSender(const std::string& sender);
+	static std::vector<std::unique_ptr<Mail>> GetMailsForReceiver(const std::string& receiver);
+	static std::vector<std::unique_ptr<Mail>> GetMailsForSender(const std::string& sender);
 
 
 
