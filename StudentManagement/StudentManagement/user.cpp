@@ -1,6 +1,5 @@
 #include "user.h"
-#include <iostream>
-
+#include "database.h"
 
 User::User(const std::string& _email, const std::string& _password,
 	const std::string& _name, const std::string& _surname,
@@ -57,13 +56,13 @@ std::string User::ToString() const {
 
 std::string User::PrepareForDatabase() const {
 	std::string database_line;
-	database_line += GetName() + ",";
-	database_line += GetSurname() + ",";
-	database_line += GetEmail() + ",";
+	database_line += Database::DeleteKommas(GetName()) + ",";
+	database_line += Database::DeleteKommas(GetSurname()) + ",";
+	database_line += Database::DeleteKommas(GetEmail()) + ",";
 	database_line += GetPassword() + ",";
 	database_line += GetDobString() + ",";
 	database_line += GetRole() + ",";
-	database_line += GetChild() + '\n';
+	database_line += Database::DeleteKommas(GetChild()) + '\n';
 	return database_line;
 }
 
@@ -71,11 +70,7 @@ void User::updateUser(const std::string& email, const std::string& password,
 	const std::string& name, const std::string& surname, const Date& dob)
 {
 	SetEmail(email);
-
-	// 5381 is the hashed value for an empty password
-	if (password != "5381") {
-		SetPassword(password);
-	}
+	SetPassword(password);
 	SetName(name);
 	SetSurname(surname);
 	SetDob(dob);

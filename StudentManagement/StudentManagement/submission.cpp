@@ -14,7 +14,7 @@ std::string Submission::GetAssignment() const {
 	if (m_assignment != nullptr) { // have to see if it exists
 		return m_assignment->GetName();
 	}
-	return "No teacher assigned";
+	return "No assignment";
 }
 
 std::string Submission::GetStudentEmail() const { 
