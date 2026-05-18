@@ -468,9 +468,6 @@ void Database::UpdateUserInDatabase(const std::shared_ptr<User>& updated_user, c
 			sub_out.close();
 		}
 	}
-	}
-
-
 }
 
 std::vector<SubjectTeacher> Database::GetAllSubjects() {
